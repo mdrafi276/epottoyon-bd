@@ -1,6 +1,7 @@
 
 const ChetegoryList = () => {
     return (
+      // chetegory section
       <div className="flex flex-col  w-full lg:w-[100%] gap-2  mx-auto md:flex-col  lg:flex-row justify-center items-center ">
         <div className=" w-full lg:w-[290px] h-full  mx-auto border/10 my-10 p-4 md:p-8 rounded-2xl shadow-lg bg-white ">
           <div className="space-y-6  gap-1 flex flex-row  justify-center items-center">
