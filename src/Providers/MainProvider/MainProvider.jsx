@@ -11,35 +11,50 @@ const MainProvider = ({ children }) => {
         },
         {
             label: "সেবাসমূহ",
-            link: "/",
+            link: "/services",
         },
         {
             label: "আবেদনের অবস্থা জানুন",
-            link: "/",
+            link: "/application-status",
         },
         {
             label: "সনদ যাচাইকরণ",
-            link: "/",
+            link: "/certificate-verification",
         },
         {
             label: "ফর্মস",
-            link: "/",
+            link: "/forms",
         },
         {
             label: "ব্যবহার নির্দেশিকা",
-            link: "/",
+            link: "/usage-guidelines",
         },
         {
             label: "সচরাচর জিজ্ঞাসা",
-            link: "/",
+            link: "/faq",
         },
         {
             label: "ডিজিটাল বাংলাদেশ",
-            link: "/",
+            link: "/digital-bangladesh",
         },
     ];
 
-    const values = { mainMenuItems };
+    const topMenuItems = [
+        {
+            label: "যোগাযোগ",
+            link: "/contact",
+        },
+        {
+            label: "প্রাইভেসি এন্ড পলিসি",
+            link: "/privacy-policy",
+        },
+        {
+            label: "টার্মস এন্ড কন্ডিশনস",
+            link: "/terms-and-conditions",
+        },
+    ];
+
+    const values = { mainMenuItems, topMenuItems };
     return <MainContext.Provider value={values}>{children}</MainContext.Provider>;
 };
 
