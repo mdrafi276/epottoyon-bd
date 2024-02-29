@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Select from "../../Select/Select";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "./ThemeToggle/ThemeToggle";
 
 const TopNav = () => {
     return (

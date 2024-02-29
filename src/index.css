@@ -5,3 +5,7 @@
 option {
     color: black;
 }
+
+.rfm-initial-child-container {
+    gap: 3rem;
+}
