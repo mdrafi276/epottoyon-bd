@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 export const MainContext = createContext(null);
 
 const MainProvider = ({ children }) => {
-    const values = {};
+    const value = "asdf";
+    const values = { value };
     return <MainContext.Provider value={values}>{children}</MainContext.Provider>;
 };
 
