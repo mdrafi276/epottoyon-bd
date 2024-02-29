@@ -1,5 +1,12 @@
+
 const Home = () => {
-    return <div>homepage</div>;
+    return (
+    <div>
+        
+        <Hero/>
+        <ChetegoryList/>
+        </div>
+        )
 };
 
 export default Home;
