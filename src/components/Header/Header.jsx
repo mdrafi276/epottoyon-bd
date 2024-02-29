@@ -1,9 +1,11 @@
+import TopNav from "./components/TopNav";
+
 const Header = () => {
-      return (
-            <div>
-                  navbar
-            </div>
-      );
+    return (
+        <header>
+            <TopNav />
+        </header>
+    );
 };
 
 export default Header;
