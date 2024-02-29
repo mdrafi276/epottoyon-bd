@@ -10,14 +10,14 @@ const Menu = () => {
     const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
     return (
-        <nav className="bg-[#efefef] border-b-4 border-b-[#8a569b]">
-            <div className="container h-20 mx-auto hidden lg:flex justify-between items-center">
+        <nav className="w-full">
+            <div className="h-20 hidden lg:flex gap-3 xl:gap-6 items-center">
                 {mainMenuItems?.map((item) => (
                     <NavLink
                         className={({ isActive }) =>
                             `${
-                                isActive ? "bg-[#8a569b] px-3" : ""
-                            } text-base xl:text-xl h-full flex items-center`
+                                isActive ? "bg-[#8a569b] px-3 text-white" : ""
+                            } text-sm xl:text-xl h-full flex items-center`
                         }
                         key={item?.label}
                         to={item?.link}
@@ -28,8 +28,9 @@ const Menu = () => {
             </div>
 
             <div className="flex lg:hidden justify-between items-center px-4 py-2">
-                <img className="w-20" src={logo} alt="UDCBD Logo" />
-
+                <Link to="/">
+                    <img className="w-20" src={logo} alt="UDCBD Logo" />
+                </Link>
                 <FaBarsStaggered
                     onClick={() => setOpenMobileMenu(true)}
                     className="text-3xl"
@@ -43,7 +44,9 @@ const Menu = () => {
                 className="space-y-6 p-4 overflow-y-auto"
             >
                 <div className="flex justify-between items-center">
-                    <img className="w-20" src={logo} alt="UDCBD Logo" />
+                    <Link to="/">
+                        <img className="w-20" src={logo} alt="UDCBD Logo" />
+                    </Link>
                     <FaX className="text-2xl" onClick={() => setOpenMobileMenu(false)} />
                 </div>
 
@@ -65,9 +68,7 @@ const Menu = () => {
                     {topMenuItems?.map((item) => (
                         <NavLink
                             className={({ isActive }) =>
-                                `${
-                                    isActive ? "font-bold" : "font-medium"
-                                } text-xs`
+                                `${isActive ? "font-bold" : "font-medium"} text-xs`
                             }
                             to={item?.link}
                             key={item?.label}
