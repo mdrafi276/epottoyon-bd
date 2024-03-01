@@ -1,6 +1,7 @@
 import ChetegoryList from "./components/ChetegoryList/ChetegoryList";
 import Hero from "./components/Hero/Hero";
 import ImportantLinks from "./components/ImportantLinks/ImportantLinks";
+import NewUnionAd from "./components/NewUnionAd/NewUnionAd";
 import Services from "./components/Services/Services";
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
                 <Services />
                 <ImportantLinks />
             </div>
+            <NewUnionAd />
         </>
     );
 };

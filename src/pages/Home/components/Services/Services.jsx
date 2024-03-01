@@ -34,15 +34,16 @@ const Services = () => {
                     )
                     ?.map((service) => (
                         <div
-                            className="text-center cursor-pointer shadow rounded p-2 flex flex-col gap-2"
+                            className="text-center cursor-pointer shadow-md hover:shadow-lg hover:bg-gray-100 transition-all rounded p-2 h-fit flex flex-col gap-2"
                             key={service?.id}
                         >
                             <img
-                                className="w-20 mx-auto"
+                                className="w-20 mx-auto rounded-full"
                                 src={service?.image}
                                 alt={service?.label}
                             />
                             <p className="font-bold">{service.label}</p>
+                        
                         </div>
                     ))}
             </div>
