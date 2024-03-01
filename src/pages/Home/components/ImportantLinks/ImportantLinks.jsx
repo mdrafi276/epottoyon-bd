@@ -6,7 +6,7 @@ const ImportantLinks = () => {
     const { importantLinks } = useMainContext();
 
     return (
-        <div className="w-1/3">
+        <div className="w-full lg:w-1/3">
             <div className="w-full border-l-4 border-l-[#8a569b] shadow-md py-6 px-3 text-xl text-[#8a569b] font-bold">
                 গুরুত্বপূর্ণ লিংক
             </div>
