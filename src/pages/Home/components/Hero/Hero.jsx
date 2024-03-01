@@ -77,23 +77,23 @@ const Hero = () => {
                 <Slide />
             </Carousel>
 
-                <Link to="/login">
-                    <div className="flex flex-col md:py-0 py-5 justify-center shadow-2xl rounded-xl shadow-[#898989] cursor-pointer items-center  h-full md:h-[270px] lg:h-[380px] w-full lg:w-[350px] xl:w-400 bg-[#8E53A2]">
-                        <figure className="md:w-[70px]  w-[50px] lg:w-[80px]">
-                            <img
-                                className=" w-full lg:mb-6 rounded-full"
-                                src="https://prottoyon.gov.bd/upload/backend/certificate_image/CRT20231227112845OL.svg"
-                                alt=""
-                            />
-                        </figure>
-                        <h1 className=" md:text-[25px]  text-[28px]  mt-2 lg:text-[38px] text-white font-semibold">
-                            উত্তরাধিকার সনদ{" "}
-                        </h1>
-                        <h1 className=" md:-text-[15px] text-[15px] mt-1 lg:text-[24px] lg:mt-8 py-1 px-5 rounded-xl lg:mb-11 bg-[#8CC63F] text-white font-semibold">
-                            আবেদন করুণ{" "}
-                        </h1>
-                    </div>
-                </Link>
+            <Link to="/login">
+                <div className="flex flex-col md:py-0 py-5 justify-center shadow-2xl rounded-xl shadow-[#898989] cursor-pointer items-center  h-full md:h-[270px] lg:h-[380px] w-full lg:w-[350px] xl:w-400 bg-[#8E53A2]">
+                    <figure className="md:w-[70px]  w-[50px] lg:w-[80px]">
+                        <img
+                            className=" w-full lg:mb-6 rounded-full"
+                            src="https://prottoyon.gov.bd/upload/backend/certificate_image/CRT20231227112845OL.svg"
+                            alt=""
+                        />
+                    </figure>
+                    <h1 className=" md:text-[25px]  text-[28px]  mt-2 lg:text-[38px] text-white font-semibold">
+                        উত্তরাধিকার সনদ{" "}
+                    </h1>
+                    <h1 className=" md:-text-[15px] text-[15px] mt-1 lg:text-[24px] lg:mt-8 py-1 px-5 rounded-xl lg:mb-11 bg-[#8CC63F] text-white font-semibold">
+                        আবেদন করুণ{" "}
+                    </h1>
+                </div>
+            </Link>
         </div>
     );
 };
