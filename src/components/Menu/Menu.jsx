@@ -31,6 +31,7 @@ const Menu = () => {
                 <Link to="/">
                     <img className="w-20" src={logo} alt="UDCBD Logo" />
                 </Link>
+                
                 <FaBarsStaggered
                     onClick={() => setOpenMobileMenu(true)}
                     className="text-3xl"
