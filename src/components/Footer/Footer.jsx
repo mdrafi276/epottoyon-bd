@@ -12,7 +12,7 @@ import {
 
 const Footer = () => {
     return (
-        <footer className="bg-gray-200 border-t-4 border-t-[#8a569b] py-6 px-4 xl:px-0">
+        <footer className="bg-gray-200 border-t-4 mt-9 border-t-[#8a569b] py-6 px-4 xl:px-0">
             <div className="container mx-auto gap-4 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5">
                 <div>
                      <h4 className="font-bold text-xl">পরিকল্পনা ও বাস্তবায়নে</h4>
