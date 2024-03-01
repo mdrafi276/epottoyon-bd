@@ -4,14 +4,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 
 const Services = () => {
     const [services, setServices] = useState([]);
-
-    const handleSearch = (e) => {
-        const value = e.target.value;
-        const filteredServices = services?.filter((service) =>
-            service?.label?.includes(value)
-        );
-        setServices(filteredServices);
-    };
+    const [searchInputValue, setSearchInputValue] = useState("");
 
     useEffect(() => {
         fetch("/services.json")
@@ -27,25 +20,31 @@ const Services = () => {
                     <Input
                         icon={<FaMagnifyingGlass />}
                         label="সেবাসমুহ সার্চ করুন"
-                        onChange={handleSearch}
+                        onChange={(e) => setSearchInputValue(e.target.value)}
                     />
                 </div>
             </div>
 
             <div className="h-96 overflow-y-scroll grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 p-5">
-                {services?.map((service) => (
-                    <div
-                        className="text-center cursor-pointer shadow rounded p-2 flex flex-col gap-2"
-                        key={service?.id}
-                    >
-                        <img
-                            className="w-20 mx-auto"
-                            src={service?.image}
-                            alt={service?.label}
-                        />
-                        <p className="font-bold">{service.label}</p>
-                    </div>
-                ))}
+                {services
+                    ?.filter((service) =>
+                        service?.label
+                            .toLowerCase()
+                            .includes(searchInputValue.toLowerCase())
+                    )
+                    ?.map((service) => (
+                        <div
+                            className="text-center cursor-pointer shadow rounded p-2 flex flex-col gap-2"
+                            key={service?.id}
+                        >
+                            <img
+                                className="w-20 mx-auto"
+                                src={service?.image}
+                                alt={service?.label}
+                            />
+                            <p className="font-bold">{service.label}</p>
+                        </div>
+                    ))}
             </div>
         </div>
     );
