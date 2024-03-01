@@ -17,7 +17,7 @@ const Menu = () => {
                         className={({ isActive }) =>
                             `${
                                 isActive ? "bg-[#8a569b] px-3 text-white" : ""
-                            } text-sm xl:text-xl h-full flex items-center`
+                            } text-sm xl:text-base h-full flex items-center`
                         }
                         key={item?.label}
                         to={item?.link}

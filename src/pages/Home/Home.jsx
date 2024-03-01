@@ -1,13 +1,21 @@
-import ChetegoryList from "../../components/Header/components/ChetegoryList/ChetegoryList";
-import Hero from "../../components/Header/components/Hero/Hero";
+import ChetegoryList from "./components/ChetegoryList/ChetegoryList";
+import Hero from "./components/Hero/Hero";
+import ImportantLinks from "./components/ImportantLinks/ImportantLinks";
+import NewUnionAd from "./components/NewUnionAd/NewUnionAd";
+import Services from "./components/Services/Services";
 
 const Home = () => {
     return (
-    <div>
-        <Hero/>
-        <ChetegoryList/>
-     </div>
-        )
+        <>
+            <Hero />
+            <ChetegoryList />
+            <div className="container mx-auto mt-9 flex flex-col lg:flex-row gap-4 px-4 xl:px-0">
+                <Services />
+                <ImportantLinks />
+            </div>
+            <NewUnionAd />
+        </>
+    );
 };
 
 export default Home;
