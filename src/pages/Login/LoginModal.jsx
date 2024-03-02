@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordFill } from "react-icons/ri";
+import { Link } from 'react-router-dom';
 
 
-import RedioInput from './RedioInpot/RedioInput';
-import RedioInputPhoneOrEmail from './RedioInpot/RedioInputPhoneOrEmail';
 
  const LoginModal = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -52,12 +51,7 @@ import RedioInputPhoneOrEmail from './RedioInpot/RedioInputPhoneOrEmail';
                 </g>
               </svg>
               <h1 className=" text-black text-xl text-center pb-5">লগইন</h1>
-              <div>
-                <RedioInput />
-              </div>
-              <div>
-                <RedioInputPhoneOrEmail className="text-black" />
-              </div>
+
               <div className="space-y-1 mt-2">
                 <label htmlFor="email" className="block text-black">
                   ইমেল
@@ -102,9 +96,15 @@ import RedioInputPhoneOrEmail from './RedioInpot/RedioInputPhoneOrEmail';
                   <h1 className="lg:text-[13px] hover:text-[#466320] text-black">
                     পাসওয়ার্ড ভুলে গেছেন ?
                   </h1>
-                  <h1 className="lg:text-[13px] text-black hover:text-[#466320]">
-                    একাউন্ট নেই? ফ্রি একাউন্ট খুলুন।
-                  </h1>
+                  <Link to="/register">
+                    {" "}
+                    <h1
+                      onClick={() => setOpenModal(false)}
+                      className="lg:text-[13px] text-black hover:text-[#466320]"
+                    >
+                      একাউন্ট নেই? ফ্রি একাউন্ট খুলুন।
+                    </h1>
+                  </Link>
                 </div>
               </div>
               <div className="mt-5">

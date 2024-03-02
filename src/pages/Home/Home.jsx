@@ -1,3 +1,5 @@
+import LossInformation from "../../components/Header/components/LossInformation/LossInformation";
+import OurPathner from "../../components/OurPathner/OurPathner";
 import ChetegoryList from "./components/ChetegoryList/ChetegoryList";
 import Hero from "./components/Hero/Hero";
 import ImportantLinks from "./components/ImportantLinks/ImportantLinks";
@@ -14,6 +16,8 @@ const Home = () => {
                 <ImportantLinks />
             </div>
             <NewUnionAd />
+            <LossInformation/>
+            <OurPathner/>
         </>
     );
 };

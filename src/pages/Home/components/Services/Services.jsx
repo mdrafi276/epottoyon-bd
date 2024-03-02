@@ -14,8 +14,8 @@ const Services = () => {
 
     return (
         <div className="w-full lg:w-2/3 flex-col lg:flex-row shadow-xl">
-            <div className="flex justify-center gap-9 items-center py-3">
-                <h3 className="text-[#8e53a2] text-2xl font-semibold">সনদের সেবাসমুহ</h3>
+            <div className="flex justify-center md:flex-row flex-col gap-5 md:gap-9 items-center py-3">
+                <h3 className="text-[#8e53a2] text-3xl  md:text-2xl font-semibold">সনদের সেবাসমুহ</h3>
                 <div className="w-64">
                     <Input
                         icon={<FaMagnifyingGlass />}
