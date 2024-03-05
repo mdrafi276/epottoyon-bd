@@ -7,7 +7,7 @@ const LoyalRegister = () => {
     return (
         <div>
             <div className="bg-[#327A62]">
-                <div className="flex  items-center justify-between md:mx-20  lg:mx-28 mx-4 h-[50px]">
+                <div className="flex  items-center justify-between md:mx-20  lg:mx-40 mx-4 h-[50px]">
                     <Link to="/register">
                         <h1 className=" text-[11px] md:text-[15px] lg:text-[22px] cursor-pointer text-white">
                             নাগরিক একাউন্ট তৈরি করুণ
@@ -27,7 +27,7 @@ const LoyalRegister = () => {
                     </h1>
                     <hr />
 
-                    <div className=" flex justify-center items-center lg:mt-20"></div>
+                    <div className=" flex justify-center items-center lg:mt-5"></div>
                     {/* input one************ */}
                     <div className="flex flex-col  justify-center">
                         <label

@@ -1,15 +1,28 @@
 import "./InputFild.css";
 import { Checkbox, Typography } from "@material-tailwind/react";
-
 import "./Button.css";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 const Register = () => {
+        const { createUser } = useContext(AuthContext);
+
+    const handleRegister = (e) =>{
+        e.preventDefault()
+        console.log("hello");
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name,  email, password);
+    }
+    
     return (
         <div>
             {" "}
             <div className="bg-[#327A62]">
                 {" "}
-                <div className="flex  items-center justify-between md:mx-20  lg:mx-28 mx-4 h-[50px]">
+                <div className="flex  items-center justify-between md:mx-20  lg:mx-40 mx-4 h-[50px]">
                     <Link to="/register">
                         <h1 className=" text-[11px] md:text-[15px] lg:text-[22px] cursor-pointer text-white">
                             নাগরিক একাউন্ট তৈরি করুণ
@@ -23,27 +36,28 @@ const Register = () => {
                 </div>
             </div>
             <div className="flex w-[95%] md:w-[85%] my-5 min:h-[500px] gap-5  rounded-2xl  py-20 mx-auto  flex-col lg:flex-row">
-                <div className="lg:w-[930px] w-full  lg:h-[850px] bg-gray-200  border-4 border-blue-400 lg:pb-20  rounded-2xl">
+                <form onSubmit={handleRegister} className="lg:w-[930px] w-full  lg:h-[850px] bg-gray-200  border-4 border-blue-400 lg:pb-20  rounded-2xl">
                     <h1 className=" text-[15px] md:text-[22px] mt-8 bg-[#8e53a2] py-4 rounded-lg w-10/12 mx-auto text-white mb-4 md:mt-5 lg:mt-14 lg:text-[26px] font-extrabold  text-center ">
                         নাগরিক একাউন্ট তৈরি করুণ{" "}
                     </h1>
                     <hr />
 
-                    <div className=" flex justify-center items-center lg:mt-20"></div>
+                    <div className=" flex justify-center items-center lg:mt-5"></div>
                     {/* input one************ */}
                     <div className="flex flex-col  justify-center">
                         <label
-                            htmlFor="password"
+                            htmlFor="নাম"
                             className="  lg:ml-[118px] md:ml-[75px] mb-2 block text-black text-[15px] lg:text-[18px] font-bold "
                         >
                             নাম(*)
                         </label>
                         <div className="containerss">
                             <input
+                            required
                                 type="text"
                                 placeholder="নাম"
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
-                                name="text"
+                                name="name"
                             />
                         </div>
                     </div>
@@ -51,17 +65,18 @@ const Register = () => {
 
                     <div className="flex flex-col  lg:mt-3 justify-center">
                         <label
-                            htmlFor="password"
+                            htmlFor="ইমেল"
                             className="  lg:ml-[118px] md:mt-2 md:ml-[75px]  mb-2 block text-black text-[15px] lg:text-[18px] font-bold "
                         >
                             ইমেল(*)
                         </label>
                         <div className="containerss">
                             <input
-                                type="text"
+                            required
+                                type="email"
                                 placeholder="example@gmail.com"
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
-                                name="text"
+                                name="email"
                             />
                         </div>
                     </div>
@@ -74,10 +89,11 @@ const Register = () => {
                         </label>
                         <div className="containerss">
                             <input
+                            required
                                 type="text"
                                 placeholder="০১৮৮০৩৮৪৫৬৪"
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
-                                name="text"
+                                name="number"
                             />
                         </div>
                     </div>
@@ -90,10 +106,11 @@ const Register = () => {
                         </label>
                         <div className="containerss">
                             <input
+                            required
                                 type="password"
                                 placeholder="পাসওয়ার্ড "
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
-                                name="text"
+                                name="password"
                             />
                         </div>
                     </div>
@@ -106,10 +123,11 @@ const Register = () => {
                         </label>
                         <div className="containerss">
                             <input
+                            required
                                 type="password"
                                 placeholder="  কনফার্ম পাসওয়ার্ড "
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
-                                name="text"
+                                name="conPassword"
                             />
                         </div>
                     </div>
@@ -134,13 +152,13 @@ const Register = () => {
                             }
                         />
 
-                        <a href="##" className="btn lg:mt-1">
+                        <button href="#" type="submit" className="btn lg:mt-1">
                             {" "}
                             নিবন্ধন করুন{" "}
-                        </a>
+                        </button>
                     </div>
                     <div></div>
-                </div>
+                </form>
                 <div>
                     <div className="lg:w-[500px] w-full border-4 border-blue-400 h-fit bg-gray-200 md:p-3 rounded-2xl">
                         <h1 className="text-center lg:mt-10 md:mt-10 md:mb-5  lg:mb-5 text-[18px] mt-4 mb-2 md:text-[23px]  lg:text-[26px] font-extrabold bg-[#8e53a2] w-10/12 py-3 rounded mx-auto text-white">
