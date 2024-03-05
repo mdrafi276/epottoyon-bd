@@ -15,7 +15,9 @@ const Services = () => {
     return (
         <div className="w-full lg:w-2/3 flex-col lg:flex-row shadow-xl">
             <div className="flex justify-center md:flex-row flex-col gap-5 md:gap-9 items-center py-3">
-                <h3 className="text-[#8e53a2] text-3xl  md:text-2xl font-semibold">সনদের সেবাসমুহ</h3>
+                <h3 className="text-[#8e53a2] text-3xl  md:text-2xl font-semibold">
+                    সনদের সেবাসমুহ
+                </h3>
                 <div className="w-64">
                     <Input
                         icon={<FaMagnifyingGlass />}
@@ -34,7 +36,7 @@ const Services = () => {
                     )
                     ?.map((service) => (
                         <div
-                            className="text-center cursor-pointer shadow-md hover:shadow-lg hover:bg-gray-100 transition-all rounded p-2 h-fit flex flex-col gap-2"
+                            className="text-center cursor-pointer shadow-md hover:shadow-lg hover:bg-gray-100 transition-all rounded p-2 h-auto sm:h-fit flex flex-col gap-2"
                             key={service?.id}
                         >
                             <img
@@ -43,7 +45,6 @@ const Services = () => {
                                 alt={service?.label}
                             />
                             <p className="font-bold">{service.label}</p>
-                        
                         </div>
                     ))}
             </div>
