@@ -11,7 +11,7 @@ const Menu = () => {
 
     return (
         <nav className="w-full">
-            <div className="h-20 hidden lg:flex gap-3 xl:gap-6 items-center">
+            <div className="h-14 hidden lg:flex gap-3 xl:gap-6 items-center">
                 {mainMenuItems?.map((item) => (
                     <NavLink
                         className={({ isActive }) =>

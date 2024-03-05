@@ -1,7 +1,7 @@
 import Menu from "../Menu/Menu";
 import NoticeBar from "./components/NoticeBar";
 import TopNav from "./components/TopNav";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/short-logo.png";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -12,7 +12,7 @@ const Header = () => {
                 <div className="px-0 lg:px-8 block sm:flex justify-between items-center gap-3">
                     <Link to="/">
                         <img
-                            className="w-36 hidden lg:block"
+                            className="w-28 hidden lg:block"
                             src={logo}
                             alt="UDCBD Logo"
                         />
