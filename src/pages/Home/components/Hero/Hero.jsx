@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
     return (
-        <div className="flex flex-col lg:flex-row gap-4 container mx-auto my-9 px-8 sm:px-0">
+        <div className="flex flex-col lg:flex-row gap-4 container mx-auto my-4 px-8 sm:px-0">
             <Carousel
                 autoplay
                 loop
