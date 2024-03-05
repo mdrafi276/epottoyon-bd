@@ -27,7 +27,7 @@ const LoyalRegister = () => {
                     </h1>
                     <hr />
 
-                    <div className=" flex justify-center items-center lg:mt-20"></div>
+                    <div className=" flex justify-center items-center lg:mt-5"></div>
                     {/* input one************ */}
                     <div className="flex flex-col  justify-center">
                         <label

@@ -8,7 +8,7 @@ import {
     signOut,
 } from "firebase/auth";
 
-const AuthContext = createContext(null);
+export const AuthContext = createContext(null);
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
@@ -48,4 +48,4 @@ const AuthProvider = ({ children }) => {
     return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
 };
 
-export default AuthProvider;
+export default AuthProvider ;
