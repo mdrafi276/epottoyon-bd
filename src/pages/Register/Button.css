@@ -1,5 +1,5 @@
-.btn:link,
-.btn:visited {
+
+.btn {
     text-transform: uppercase;
     text-decoration: none;
     color: rgb(27, 27, 27);
