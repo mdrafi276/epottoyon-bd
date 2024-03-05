@@ -24,11 +24,11 @@ export default function RedioInput() {
         name="type"
         ripple={false}
         icon={<Icon />}
-        className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
+        className="border-gray-900/10 bg-white p-0 transition-all hover:before:opacity-0"
         label={
           <Typography
             color="blue-gray"
-            className="font-normal text-black lg:text-[14px]"
+            className="font-normal text-black font-bold lg:text-[16px]"
           >
             নাগরিক
           </Typography>
@@ -39,11 +39,11 @@ export default function RedioInput() {
         defaultChecked
         ripple={false}
         icon={<Icon />}
-        className="border-gray-900/10 bg-gray-900/5 p-0 transition-all hover:before:opacity-0"
+        className="border-gray-900/10 bg-white p-0 transition-all hover:before:opacity-0"
         label={
           <Typography
             color="blue-gray"
-            className="font-normal text-black md:text-[14px]"
+            className="  text-black font-bold md:text-[16px]"
           >
             প্রশাসনিক
           </Typography>

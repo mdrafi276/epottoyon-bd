@@ -3,7 +3,6 @@ import Select from "../../Select/Select";
 import ThemeToggle from "./ThemeToggle/ThemeToggle";
 import useMainContext from "../../../hooks/useMainContext/useMainContext";
 import LoginModal from "../../../pages/Login/LoginModal";
-import RegisterModal from "../../../pages/Register/Register";
 
 const TopNav = () => {
     const { topMenuItems } = useMainContext();

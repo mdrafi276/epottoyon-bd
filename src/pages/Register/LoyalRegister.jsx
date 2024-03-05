@@ -3,7 +3,7 @@ import { Checkbox, Typography } from "@material-tailwind/react";
 
 import "./Button.css";
 import { Link } from "react-router-dom";
-const Register = () => {
+const LoyalRegister = () => {
   return (
     <div>
       {" "}
@@ -25,7 +25,7 @@ const Register = () => {
       <div className="flex w-[95%] md:w-[85%] my-5 min:h-[500px]  gap-5  rounded-2xl  py-20 mx-auto  flex-col lg:flex-row">
         <div className="lg:w-[930px] w-full  lg:h-[850px] bg-gray-200 lg:pb-20  rounded-2xl border-2">
           <h1 className=" text-[15px] md:text-[22px] mt-8 mb-4 md:mt-5 lg:mt-14 lg:text-[26px] font-extrabold  text-center ">
-            নাগরিক একাউন্ট তৈরি করুণ{" "}
+            প্রশাসনিক একাউন্ট তৈরি করুণ{" "}
           </h1>
           <hr />
 
@@ -36,7 +36,7 @@ const Register = () => {
               htmlFor="password"
               className="  lg:ml-[118px] md:ml-[75px] mb-2 block text-black text-[15px] lg:text-[18px] font-bold "
             >
-              নাম(*)
+              প্রতিষ্ঠানের নাম (*)
             </label>
             <div className="containerss">
               <input
@@ -70,7 +70,7 @@ const Register = () => {
               htmlFor="password"
               className="  lg:ml-[118px] md:ml-[75px]  lg:mb-2 block text-black text-[15px] lg:text-[18px] font-bold "
             >
-              মোবাইল নাম্বার
+              মোবাইল নাম্বার(*)
             </label>
             <div className="containerss">
               <input
@@ -152,13 +152,13 @@ const Register = () => {
               (*) চিহ্নিত ক্ষেত্রগুলি পূরণ করা বাধ্যতামূলক। অন্যগুলো ঐচ্ছিক।{" "}
             </li>
             <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-2 px-2 md:h-[65px] lg:h-[65px] bg-white rounded-md ">
-              আপনার ১১ ডিজিটের মোবাইল নম্বর পূরণ করুন।
+              আপনার ১০ অথবা ১৭ ডিজিটের জন্ম নিবন্ধন নম্বর পূরণ করুন।
             </li>
             <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-5 px-2 md:h-[65px] lg:h-[65px] bg-white rounded-md ">
-              আপনার সঠিক নাম্বার প্রদান করুন।
+              আপনার সঠিক জন্ম তারিখ প্রদান করুন।
             </li>
             <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-1 px-2 md:h-[65px] lg:h-[65px] bg-white rounded-md ">
-              আপনার ১১ ডিজিটের মোবাইল নম্বর পূরণ করুন এবং ইমেইল এড্রেস লিখুন।
+              আপনার ১১ ডিজিটের মোবাইল নম্বর পূরণ করুন অথবা ইমেইল এড্রেস লিখুন।
             </li>
             <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-2 px-2 lg:h-[75px] bg-white rounded-md ">
               তথ্য জমা দেওয়ার পর একটি যাচাইকরণ কোড প্রদানকৃত মোবাইল নম্বর অথবা
@@ -192,4 +192,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default LoyalRegister;

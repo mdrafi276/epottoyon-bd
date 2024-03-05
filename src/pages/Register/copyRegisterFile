@@ -1,0 +1,70 @@
+import RedioInput from "../Login/RedioInpot/RedioInput";
+
+const Register = () => {
+  return (
+    <div className="flex w-[85%] my-5 min:h-[500px]  rounded-2xl  py-20 mx-auto  flex-col lg:flex-row">
+      <div className="w-[930px] bg-gray-200  rounded-l-2xl border-2">
+        <h1 className=" text-[15px]  mt-10 lg:text-[26px] font-extrabold  text-center ">
+          নাগরিক একাউন্ট তৈরি করুণ{" "}
+        </h1>
+        <hr />
+
+        <div className=" flex justify-center items-center mt-5">
+          <RedioInput />
+        </div>
+        {/* input one************ */}
+        <div className="flex flex-col  justify-center">
+          <label
+            htmlFor="password"
+            className="  lg:ml-10 mb-2 block text-black text-[15px] lg:text-[18px] font-bold "
+          >
+            নাম
+          </label>
+          <div className="relative lg:px-10 lg:pb-2  rounded-lg">
+            <input
+              className="peer bg-[#ddfaff] w-full rounded-lg border border-[#000] px-4 lg:py-4 text-[#000] focus:outline-none"
+              type="text"
+              placeholder="নাম"
+            />
+          </div>
+        </div>
+        {/* input two************ */}
+       
+      <div className="flex flex-col  lg:mt-3 justify-center">
+        <label htmlFor="password" className="  lg:ml-10 mb-2 block text-black text-[15px] lg:text-[18px] font-bold ">
+          ইমেল
+        </label>
+        <div className="relative lg:px-10  rounded-lg">
+          <input
+            className="peer bg-[#ddfaff] w-full rounded-lg border border-[#000] px-4 lg:py-4 text-[#000] focus:outline-none"
+            type="text"
+            placeholder="example@gmail.com"
+          />
+        </div>
+      </div>
+      <div className="flex flex-col lg:mb-20  mt-5 justify-center">
+        <label htmlFor="password" className="  lg:ml-10 lg:mb-2 block text-black text-[15px] lg:text-[18px] font-bold ">
+          মোবাইল নাম্বার
+        </label>
+        <div className="relative px-10  rounded-lg">
+          <input
+            className="peer text-black bg-[#ddfaff] w-full rounded-lg border border-[#000] px-4 lg:py-4  focus:outline-none"
+            type="text"
+            placeholder=" 01990384564"
+          />
+        </div>
+      </div>
+      <div><button></button></div>
+      
+      </div>
+
+      
+      <div className="w-[500px]  rounded-r-md border-2">
+        <h1 className="text-center text-[14px] lg:text-[22px] ">নির্দেশনা</h1>{" "}
+        <hr />
+      </div>
+    </div>
+  );
+};
+
+export default Register;
