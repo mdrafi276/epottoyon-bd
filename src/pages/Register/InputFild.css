@@ -16,7 +16,6 @@
 }
 
 .inputs {
-  
   height: 45px;
   border: none;
   outline: none;
@@ -24,18 +23,19 @@
   border-radius: 6px;
   color: black;
   font-size: 15px;
-  background-color: transparent;
-  box-shadow: 3px 3px 10px rgb(255, 255, 255),
-  -1px -1px 6px rgb(255, 255, 255);
+  background-color: #c7f8ff71;
+  box-shadow: 3px 3px 10px rgb(218, 216, 216),
+  -1px -1px 6px rgb(207, 206, 206);
+  border: 1px solid black;
 }
 
 .inputs:focus {
-  border: 2px solid black;
+  border: 2.5px solid black;
   color: black;
-  box-shadow: 3px 3px 10px rgba(0,0,0,1),
+  /* box-shadow: 3px 3px 10px rgba(0,0,0,1),
   -1px -1px 6px rgba(255, 255, 255, 0.4),
   inset 3px 3px 10px rgba(0,0,0,1),
-  inset -1px -1px 6px rgba(255, 255, 255, 0.4);
+  inset -1px -1px 6px rgba(255, 255, 255, 0.4); */
 }
 
 /* .containerss .inputs:valid ~ .label,
@@ -47,8 +47,8 @@
 
 .containerss .inputs:valid,
 .containerss .inputs:focus {
-  box-shadow: 3px 3px 10px rgb(53, 53, 53),
+  /* box-shadow: 3px 3px 10px rgb(53, 53, 53),
   -1px -1px 6px rgba(255, 255, 255, 0.4),
   inset 3px 3px 10px rgb(66, 65, 65),
-  inset -1px -1px 6px rgba(255, 255, 255, 0.4);
+  inset -1px -1px 6px rgba(255, 255, 255, 0.4); */
 }

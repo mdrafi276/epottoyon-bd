@@ -4,192 +4,194 @@ import { Checkbox, Typography } from "@material-tailwind/react";
 import "./Button.css";
 import { Link } from "react-router-dom";
 const Register = () => {
-  return (
-    <div>
-      {" "}
-      <div className="bg-[#327A62]">
-        {" "}
-        <div className="flex  items-center justify-between md:mx-20  lg:mx-28 mx-4 h-[50px]">
-          <Link to="/register">
-            <h1 className=" text-[11px] md:text-[15px] lg:text-[22px] cursor-pointer text-white">
-              নাগরিক একাউন্ট তৈরি করুণ
-            </h1>
-          </Link>
-          <Link to="/loRegister">
-            <h1 className=" text-[11px] md:text-[15px] lg:text-[22px] cursor-pointer text-white">
-              প্রশাসনিক একাউন্ট তৈরী করুন
-            </h1>
-          </Link>
-        </div>
-      </div>
-      <div className="flex w-[95%] md:w-[85%] my-5 min:h-[500px]  gap-5  rounded-2xl  py-20 mx-auto  flex-col lg:flex-row">
-        <div className="lg:w-[930px] w-full  lg:h-[850px] bg-gray-200 lg:pb-20  rounded-2xl border-2">
-          <h1 className=" text-[15px] md:text-[22px] mt-8 mb-4 md:mt-5 lg:mt-14 lg:text-[26px] font-extrabold  text-center ">
-            নাগরিক একাউন্ট তৈরি করুণ{" "}
-          </h1>
-          <hr />
-
-          <div className=" flex justify-center items-center lg:mt-20"></div>
-          {/* input one************ */}
-          <div className="flex flex-col  justify-center">
-            <label
-              htmlFor="password"
-              className="  lg:ml-[118px] md:ml-[75px] mb-2 block text-black text-[15px] lg:text-[18px] font-bold "
-            >
-              নাম(*)
-            </label>
-            <div className="containerss">
-              <input
-                type="text"
-                placeholder="নাম"
-                className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
-                name="text"
-              />
-            </div>
-          </div>
-          {/* input two************ */}
-
-          <div className="flex flex-col  lg:mt-3 justify-center">
-            <label
-              htmlFor="password"
-              className="  lg:ml-[118px] md:mt-2 md:ml-[75px]  mb-5 block text-black text-[15px] lg:text-[18px] font-bold "
-            >
-              ইমেল(*)
-            </label>
-            <div className="containerss">
-              <input
-                type="text"
-                placeholder="example@gmail.com"
-                className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
-                name="text"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col lg:mb-2  mt-5 justify-center">
-            <label
-              htmlFor="password"
-              className="  lg:ml-[118px] md:ml-[75px]  lg:mb-2 block text-black text-[15px] lg:text-[18px] font-bold "
-            >
-              মোবাইল নাম্বার
-            </label>
-            <div className="containerss">
-              <input
-                type="text"
-                placeholder="০১৮৮০৩৮৪৫৬৪"
-                className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
-                name="text"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col lg:mb-1  mt-5 justify-center">
-            <label
-              htmlFor="password"
-              className="  lg:ml-[118px] md:ml-[75px]  lg:mb-1 block text-black text-[15px] lg:text-[18px] font-bold "
-            >
-              পাসওয়ার্ড(*)
-            </label>
-            <div className="containerss">
-              <input
-                type="password"
-                placeholder="পাসওয়ার্ড "
-                className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
-                name="text"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col lg:mb-2  mt-5 justify-center">
-            <label
-              htmlFor="password"
-              className="  lg:ml-[118px] md:ml-[75px]  lg:mb-1 block text-black text-[15px] lg:text-[18px] font-bold "
-            >
-              কনফার্ম পাসওয়ার্ড(*)
-            </label>
-            <div className="containerss">
-              <input
-                type="password"
-                placeholder="  কনফার্ম পাসওয়ার্ড "
-                className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
-                name="text"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col mb-5 mt-6 md:flex-row lg:mt-10 md:mb-8 md:mt-8 gap-5 justify-center items-center">
-            <Checkbox
-              label={
-                <Typography
-                  color="blue-gray"
-                  className="flex text-[13px]  font-medium"
-                >
-                  আমি প্রত্যয়ন সিস্টেমের
-                  <Typography
-                    as="a"
-                    href="#"
-                    color="blue"
-                    className="font-medium transition-colors  text-[13px] hover:text-blue-700"
-                  >
-                    &nbsp;তথ্য অ্যাক্সেস নীতিমালা সাথে একমত
-                  </Typography>
-                  .
-                </Typography>
-              }
-            />
-
-            <a href="##" className="btn lg:mt-1">
-              {" "}
-              নিবন্ধন করুন{" "}
-            </a>
-          </div>
-          <div></div>
-        </div>
-
-        <div className="lg:w-[500px] w-full  lg:h-[620px] bg-gray-200 md:p-3 rounded-2xl border-2">
-          <h1 className="text-center lg:mt-10 md:mt-10 md:mb-5  lg:mb-5 text-[18px] mt-4 mb-2 md:text-[23px]  lg:text-[26px] font-extrabold   ">
-            নির্দেশনা
-          </h1>{" "}
-          <hr />
-          <div className="flex flex-col justify-center  lg:p-3 gap-3 p-2 md:gap-4 ">
-            <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-2 px-2  md:h-[65px] lg:h-[65px] bg-white rounded-md ">
-              (*) চিহ্নিত ক্ষেত্রগুলি পূরণ করা বাধ্যতামূলক। অন্যগুলো ঐচ্ছিক।{" "}
-            </li>
-            <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-2 px-2 md:h-[65px] lg:h-[65px] bg-white rounded-md ">
-              আপনার ১১ ডিজিটের মোবাইল নম্বর পূরণ করুন।
-            </li>
-            <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-5 px-2 md:h-[65px] lg:h-[65px] bg-white rounded-md ">
-              আপনার সঠিক নাম্বার প্রদান করুন।
-            </li>
-            <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-1 px-2 md:h-[65px] lg:h-[65px] bg-white rounded-md ">
-              আপনার ১১ ডিজিটের মোবাইল নম্বর পূরণ করুন এবং ইমেইল এড্রেস লিখুন।
-            </li>
-            <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-2 px-2 lg:h-[75px] bg-white rounded-md ">
-              তথ্য জমা দেওয়ার পর একটি যাচাইকরণ কোড প্রদানকৃত মোবাইল নম্বর অথবা
-              ইমেইল এড্রেসে পাঠানো হবে।
-            </li>
-            <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-5 px-2 md:h-[65px] lg:h-[65px] bg-white rounded-md ">
-              অনুগ্রহ করে সঠিক তথ্য প্রদান করুন।
-            </li>
-          </div>
-          <div className="bg-gray-200 lg:h-[200px] rounded-md lg:mt-10">
+    return (
+        <div>
             {" "}
-            <div className="  lg:pt-5">
-              <h1 className="text-[14px] md:mt-0 mt-3  lg:text-[20px]  text-center  font-extrabold  ">
-                জরুরী প্রয়োজনে
-              </h1>
+            <div className="bg-[#327A62]">
+                {" "}
+                <div className="flex  items-center justify-between md:mx-20  lg:mx-28 mx-4 h-[50px]">
+                    <Link to="/register">
+                        <h1 className=" text-[11px] md:text-[15px] lg:text-[22px] cursor-pointer text-white">
+                            নাগরিক একাউন্ট তৈরি করুণ
+                        </h1>
+                    </Link>
+                    <Link to="/loRegister">
+                        <h1 className=" text-[11px] md:text-[15px] lg:text-[22px] cursor-pointer text-white">
+                            প্রশাসনিক একাউন্ট তৈরী করুন
+                        </h1>
+                    </Link>
+                </div>
             </div>
-            <div className="lg:mx-3 mx-2 md:mx-0 rounded-md  bg-white mt-5 ">
-              <h1 className="text-[14px] lg:text-[14px] font-semibold pt-3 px-2 text-black ">
-                যদি আপনি কোনো সমস্যার সম্মুখীন হোন অথবা আপনার কোনো জিজ্ঞাসা
-                থাকলে আমাদের সাথে যোগাযোগ করতে পারেন।
-              </h1>
-              <h1 className="text-[14px] mt-2 lg:text-[14px] font-samibold px-2 pb-3 lg:mb-5 text-black ">
-                যোগাযোগ করতে এখানে{" "}
-                <Link className="text-[#427bff]">ক্লিক করুন</Link>
-              </h1>
+            <div className="flex w-[95%] md:w-[85%] my-5 min:h-[500px] gap-5  rounded-2xl  py-20 mx-auto  flex-col lg:flex-row">
+                <div className="lg:w-[930px] w-full  lg:h-[850px] bg-gray-200  border-4 border-blue-400 lg:pb-20  rounded-2xl">
+                    <h1 className=" text-[15px] md:text-[22px] mt-8 bg-[#8e53a2] py-4 rounded-lg w-10/12 mx-auto text-white mb-4 md:mt-5 lg:mt-14 lg:text-[26px] font-extrabold  text-center ">
+                        নাগরিক একাউন্ট তৈরি করুণ{" "}
+                    </h1>
+                    <hr />
+
+                    <div className=" flex justify-center items-center lg:mt-20"></div>
+                    {/* input one************ */}
+                    <div className="flex flex-col  justify-center">
+                        <label
+                            htmlFor="password"
+                            className="  lg:ml-[118px] md:ml-[75px] mb-2 block text-black text-[15px] lg:text-[18px] font-bold "
+                        >
+                            নাম(*)
+                        </label>
+                        <div className="containerss">
+                            <input
+                                type="text"
+                                placeholder="নাম"
+                                className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
+                                name="text"
+                            />
+                        </div>
+                    </div>
+                    {/* input two************ */}
+
+                    <div className="flex flex-col  lg:mt-3 justify-center">
+                        <label
+                            htmlFor="password"
+                            className="  lg:ml-[118px] md:mt-2 md:ml-[75px]  mb-2 block text-black text-[15px] lg:text-[18px] font-bold "
+                        >
+                            ইমেল(*)
+                        </label>
+                        <div className="containerss">
+                            <input
+                                type="text"
+                                placeholder="example@gmail.com"
+                                className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
+                                name="text"
+                            />
+                        </div>
+                    </div>
+                    <div className="flex flex-col lg:mb-2  mt-5 justify-center">
+                        <label
+                            htmlFor="password"
+                            className="  lg:ml-[118px] md:ml-[75px]  lg:mb-2 block text-black text-[15px] lg:text-[18px] font-bold "
+                        >
+                            মোবাইল নাম্বার
+                        </label>
+                        <div className="containerss">
+                            <input
+                                type="text"
+                                placeholder="০১৮৮০৩৮৪৫৬৪"
+                                className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
+                                name="text"
+                            />
+                        </div>
+                    </div>
+                    <div className="flex flex-col lg:mb-1  mt-5 justify-center">
+                        <label
+                            htmlFor="password"
+                            className="  lg:ml-[118px] md:ml-[75px]  lg:mb-1 block text-black text-[15px] lg:text-[18px] font-bold "
+                        >
+                            পাসওয়ার্ড(*)
+                        </label>
+                        <div className="containerss">
+                            <input
+                                type="password"
+                                placeholder="পাসওয়ার্ড "
+                                className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
+                                name="text"
+                            />
+                        </div>
+                    </div>
+                    <div className="flex flex-col lg:mb-2  mt-5 justify-center">
+                        <label
+                            htmlFor="password"
+                            className="  lg:ml-[118px] md:ml-[75px]  lg:mb-1 block text-black text-[15px] lg:text-[18px] font-bold "
+                        >
+                            কনফার্ম পাসওয়ার্ড(*)
+                        </label>
+                        <div className="containerss">
+                            <input
+                                type="password"
+                                placeholder="  কনফার্ম পাসওয়ার্ড "
+                                className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
+                                name="text"
+                            />
+                        </div>
+                    </div>
+                    <div className="flex flex-col mb-5 mt-6 md:flex-row lg:mt-10 md:mb-8 md:mt-8 gap-5 justify-center items-center">
+                        <Checkbox
+                            label={
+                                <Typography
+                                    color="blue-gray"
+                                    className="flex text-[13px]  font-medium"
+                                >
+                                    আমি প্রত্যয়ন সিস্টেমের
+                                    <Typography
+                                        as="a"
+                                        href="#"
+                                        color="blue"
+                                        className="font-medium transition-colors  text-[13px] hover:text-blue-700"
+                                    >
+                                        &nbsp;তথ্য অ্যাক্সেস নীতিমালা সাথে একমত
+                                    </Typography>
+                                    .
+                                </Typography>
+                            }
+                        />
+
+                        <a href="##" className="btn lg:mt-1">
+                            {" "}
+                            নিবন্ধন করুন{" "}
+                        </a>
+                    </div>
+                    <div></div>
+                </div>
+                <div>
+                    <div className="lg:w-[500px] w-full border-4 border-blue-400 h-fit bg-gray-200 md:p-3 rounded-2xl">
+                        <h1 className="text-center lg:mt-10 md:mt-10 md:mb-5  lg:mb-5 text-[18px] mt-4 mb-2 md:text-[23px]  lg:text-[26px] font-extrabold bg-[#8e53a2] w-10/12 py-3 rounded mx-auto text-white">
+                            নির্দেশনা
+                        </h1>{" "}
+                        <hr />
+                        <div className="flex flex-col justify-center  lg:p-3 gap-3 p-2 md:gap-4 ">
+                            <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-2 px-2  md:h-[65px] lg:h-[65px] bg-white rounded-md ">
+                                (*) চিহ্নিত ক্ষেত্রগুলি পূরণ করা বাধ্যতামূলক। অন্যগুলো
+                                ঐচ্ছিক।{" "}
+                            </li>
+                            <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-2 px-2 md:h-[65px] lg:h-[65px] bg-white rounded-md ">
+                                আপনার ১১ ডিজিটের মোবাইল নম্বর পূরণ করুন।
+                            </li>
+                            <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-5 px-2 md:h-[65px] lg:h-[65px] bg-white rounded-md ">
+                                আপনার সঠিক নাম্বার প্রদান করুন।
+                            </li>
+                            <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-1 px-2 md:h-[65px] lg:h-[65px] bg-white rounded-md ">
+                                আপনার ১১ ডিজিটের মোবাইল নম্বর পূরণ করুন এবং ইমেইল এড্রেস
+                                লিখুন।
+                            </li>
+                            <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-2 px-2 lg:h-[75px] bg-white rounded-md ">
+                                তথ্য জমা দেওয়ার পর একটি যাচাইকরণ কোড প্রদানকৃত মোবাইল
+                                নম্বর অথবা ইমেইল এড্রেসে পাঠানো হবে।
+                            </li>
+                            <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-5 px-2 md:h-[65px] lg:h-[65px] bg-white rounded-md ">
+                                অনুগ্রহ করে সঠিক তথ্য প্রদান করুন।
+                            </li>
+                        </div>
+                    </div>
+                    <div className="lg:w-[500px] w-full bg-gray-200 border-4 border-blue-400 lg:h-[200px] rounded-md lg:mt-10">
+                        <div className="lg:pt-5">
+                            <h1 className="text-[14px] md:mt-0 mt-3 bg-[#8e53a2] py-2 text-white w-10/12 mx-auto rounded lg:text-[20px]  text-center  font-extrabold  ">
+                                জরুরী প্রয়োজনে
+                            </h1>
+                        </div>
+                        <div className="lg:mx-3 mx-2 md:mx-0 rounded-md  bg-white mt-5 ">
+                            <h1 className="text-[14px] lg:text-[14px] font-semibold pt-3 px-2 text-black ">
+                                যদি আপনি কোনো সমস্যার সম্মুখীন হোন অথবা আপনার কোনো
+                                জিজ্ঞাসা থাকলে আমাদের সাথে যোগাযোগ করতে পারেন।
+                            </h1>
+                            <h1 className="text-[14px] mt-2 lg:text-[14px] font-samibold px-2 pb-3 lg:mb-5 text-black ">
+                                যোগাযোগ করতে এখানে{" "}
+                                <Link className="text-[#427bff]">ক্লিক করুন</Link>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Register;
