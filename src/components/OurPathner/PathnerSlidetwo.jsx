@@ -12,7 +12,7 @@ const PathnarSlideTwo = () => {
 
     return (
       <div className="w-full lg:w-[98%] mx-auto flex-col lg:flex-row shadow-xl">
-        <div className="lg:min-h-[450px]  grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-6 gap-4 p-5">
+        <div className="lg:min-h-[450px]  grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 p-5">
           {services?.map((service) => (
             <div
               className="text-center flex flex-col justify-center items-center cursor-pointer shadow-md hover:shadow-lg hover:bg-gray-100  rounded p-2 h-fit flex flex-col gap-2"

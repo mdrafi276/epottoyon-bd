@@ -4,8 +4,8 @@ import PathnarSlideTwo from "./PathnerSlidetwo";
 
 const OurPathner = () => {
     return (
-        <div className="my-10 mb-20">
-            <div className="flex container mx-auto justify-center md:flex-row flex-col gap-5 md:gap-9 items-center py-3 ">
+        <div className="my-10 container mx-auto mb-20">
+            <div className="flex justify-center md:flex-row flex-col gap-5 md:gap-9 items-center py-3 ">
                 <h3 className="text-[#8e53a2] text-3xl mb-20 text-center md:text-[36px] font-semibold">
                     আমাদের পাঠনার
                 </h3>
