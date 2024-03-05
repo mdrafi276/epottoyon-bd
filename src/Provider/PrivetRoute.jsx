@@ -10,6 +10,8 @@ const PrivetRoute = ({ children }) => {
   if (loading) {
     return <Spinner className="h-16 w-16 text-gray-900/50" />;
   }
+
+  // lll
   if (user) {
     return children;
   }
