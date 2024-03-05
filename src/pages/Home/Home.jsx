@@ -13,14 +13,13 @@ const Home = () => {
             <Hero />
             <ChetegoryList />
             <div className="container mx-auto mt-9 flex flex-col lg:flex-row gap-4 px-4 xl:px-0">
-            <Services />
-            <ImportantLinks />
+                <Services />
+                <ImportantLinks />
             </div>
             <NewUnionAd />
-            <LossInformation/>
-            <OurPathner/>
-            <Riview/>
-            
+            <LossInformation />
+            <OurPathner />
+            <Riview />
         </>
     );
 };
