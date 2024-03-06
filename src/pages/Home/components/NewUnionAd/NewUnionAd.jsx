@@ -20,7 +20,7 @@ const NewUnionAd = () => {
     };
 
     return (
-        <section className="container mx-auto py-20 space-y-6 px-4 xl:px-0">
+        <section className="container mx-auto py-3 space-y-6 px-4 xl:px-0">
             <h2 className="text-2xl font-semibold text-center p-4 shadow-lg rounded mx-auto text-white bg-[#8e53a2]">
                 আমাদের সাথে ইউনিয়ন পরিষদ
             </h2>

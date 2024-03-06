@@ -12,7 +12,7 @@ const Home = () => {
         <>
             <Hero />
             <ChetegoryList />
-            <div className="container mx-auto mt-9 flex flex-col lg:flex-row gap-4 px-4 xl:px-0">
+            <div className="container mx-auto mt-6 flex flex-col lg:flex-row gap-8 px-4 xl:px-0">
                 <Services />
                 <ImportantLinks />
             </div>

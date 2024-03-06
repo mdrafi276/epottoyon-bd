@@ -5,38 +5,41 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 const Register = () => {
-        const { createUser } = useContext(AuthContext);
+    const { createUser } = useContext(AuthContext);
 
-    const handleRegister = (e) =>{
-        e.preventDefault()
+    const handleRegister = (e) => {
+        e.preventDefault();
         console.log("hello");
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name,  email, password);
-    }
-    
+        console.log(name, email, password);
+    };
+
     return (
         <div>
             {" "}
             <div className="bg-[#327A62]">
                 {" "}
-                <div className="flex  items-center justify-between md:mx-20  lg:mx-40 mx-4 h-[50px]">
+                <div className="flex items-center justify-between md:mx-20  lg:mx-80 mx-4 h-[50px]">
                     <Link to="/register">
-                        <h1 className=" text-[11px] md:text-[15px] lg:text-[22px] cursor-pointer text-white">
+                        <h1 className="  md:border-4 md:border-red-900 px-4 py-0.5 rounded text-[11px] md:text-[15px] lg:text-[22px] hover:text-[#71ff4a] cursor-pointer text-white">
                             নাগরিক একাউন্ট তৈরি করুণ
                         </h1>
                     </Link>
                     <Link to="/loRegister">
-                        <h1 className=" text-[11px] md:text-[15px] lg:text-[22px] cursor-pointer text-white">
+                        <h1 className="  md:border-4 md:border-red-900 px-4 py-0.5 rounded text-[11px] md:text-[15px] lg:text-[22px] hover:text-[#71ff4a] cursor-pointer text-white">
                             প্রশাসনিক একাউন্ট তৈরী করুন
                         </h1>
                     </Link>
                 </div>
             </div>
-            <div className="flex w-[95%] md:w-[85%] my-5 min:h-[500px] gap-5  rounded-2xl  py-20 mx-auto  flex-col lg:flex-row">
-                <form onSubmit={handleRegister} className="lg:w-[930px] w-full  lg:h-[850px] bg-gray-200  border-4 border-blue-400 lg:pb-20  rounded-2xl">
+            <div className="flex w-[95%] md:w-[85%]  min:h-[500px] gap-5  rounded-2xl  py-2 mx-auto  flex-col lg:flex-row">
+                <form
+                    onSubmit={handleRegister}
+                    className="lg:w-[930px] w-full px-4 sm:px-0 lg:h-[866px] bg-gray-200  border-4 border-blue-400 lg:pb-20  rounded-2xl"
+                >
                     <h1 className=" text-[15px] md:text-[22px] mt-8 bg-[#8e53a2] py-4 rounded-lg w-10/12 mx-auto text-white mb-4 md:mt-5 lg:mt-14 lg:text-[26px] font-extrabold  text-center ">
                         নাগরিক একাউন্ট তৈরি করুণ{" "}
                     </h1>
@@ -44,7 +47,7 @@ const Register = () => {
 
                     <div className=" flex justify-center items-center lg:mt-5"></div>
                     {/* input one************ */}
-                    <div className="flex flex-col  justify-center">
+                    <div className="flex flex-col justify-center">
                         <label
                             htmlFor="নাম"
                             className="  lg:ml-[118px] md:ml-[75px] mb-2 block text-black text-[15px] lg:text-[18px] font-bold "
@@ -53,7 +56,7 @@ const Register = () => {
                         </label>
                         <div className="containerss">
                             <input
-                            required
+                                required
                                 type="text"
                                 placeholder="নাম"
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
@@ -72,7 +75,7 @@ const Register = () => {
                         </label>
                         <div className="containerss">
                             <input
-                            required
+                                required
                                 type="email"
                                 placeholder="example@gmail.com"
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
@@ -89,7 +92,7 @@ const Register = () => {
                         </label>
                         <div className="containerss">
                             <input
-                            required
+                                required
                                 type="text"
                                 placeholder="০১৮৮০৩৮৪৫৬৪"
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
@@ -106,7 +109,7 @@ const Register = () => {
                         </label>
                         <div className="containerss">
                             <input
-                            required
+                                required
                                 type="password"
                                 placeholder="পাসওয়ার্ড "
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
@@ -123,7 +126,7 @@ const Register = () => {
                         </label>
                         <div className="containerss">
                             <input
-                            required
+                                required
                                 type="password"
                                 placeholder="  কনফার্ম পাসওয়ার্ড "
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
@@ -152,16 +155,16 @@ const Register = () => {
                             }
                         />
 
-                        <button href="#" type="submit" className="btn lg:mt-1">
+                        <button type="submit" className="btn lg:mt-1">
                             {" "}
                             নিবন্ধন করুন{" "}
                         </button>
                     </div>
                     <div></div>
                 </form>
-                <div>
+                <div className="space-y-4 lg:space-y-1 xl:space-y-1.5">
                     <div className="lg:w-[500px] w-full border-4 border-blue-400 h-fit bg-gray-200 md:p-3 rounded-2xl">
-                        <h1 className="text-center lg:mt-10 md:mt-10 md:mb-5  lg:mb-5 text-[18px] mt-4 mb-2 md:text-[23px]  lg:text-[26px] font-extrabold bg-[#8e53a2] w-10/12 py-3 rounded mx-auto text-white">
+                        <h1 className="text-center lg:mt-10 md:mt-10 md:mb-5 bg-[#8e53a2] rounded text-white py-3 lg:mb-5 text-[18px] mt-4 mb-2 md:text-[23px]  lg:text-[26px] font-extrabold   ">
                             নির্দেশনা
                         </h1>{" "}
                         <hr />
@@ -189,7 +192,7 @@ const Register = () => {
                             </li>
                         </div>
                     </div>
-                    <div className="lg:w-[500px] w-full bg-gray-200 border-4 border-blue-400 lg:h-[200px] rounded-md lg:mt-10">
+                    <div className="lg:w-[500px] w-full bg-gray-200 border-4 border-blue-400 lg:h-[200px] rounded-2xl lg:mt-2">
                         <div className="lg:pt-5">
                             <h1 className="text-[14px] md:mt-0 mt-3 bg-[#8e53a2] py-2 text-white w-10/12 mx-auto rounded lg:text-[20px]  text-center  font-extrabold  ">
                                 জরুরী প্রয়োজনে

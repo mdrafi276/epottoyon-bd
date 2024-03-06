@@ -13,9 +13,9 @@ const Services = () => {
     }, []);
 
     return (
-        <div className="w-full lg:w-2/3 flex-col lg:flex-row shadow-xl">
+        <div className="w-full lg:w-2/3 flex-col border-2 border-black lg:flex-row shadow-xl">
             <div className="flex justify-center md:flex-row flex-col gap-5 md:gap-9 items-center py-3">
-                <h3 className="text-[#8e53a2] text-3xl  md:text-2xl font-semibold">
+                <h3 className="text-[#8e53a2] text-3xl  md:text-2xl font-bold">
                     সনদের সেবাসমুহ
                 </h3>
                 <div className="w-64">
@@ -36,7 +36,7 @@ const Services = () => {
                     )
                     ?.map((service) => (
                         <div
-                            className="text-center cursor-pointer shadow-md hover:shadow-lg hover:bg-gray-100 transition-all rounded p-2 h-auto sm:h-fit flex flex-col gap-2"
+                            className="text-center cursor-pointer shadow-md bg-[#2b5b2e] text-white hover:text-black hover:shadow-lg hover:bg-gray-100 transition-all rounded py-2 h-44 sm:h-fit flex flex-col gap-2 items-center justify-center"
                             key={service?.id}
                         >
                             <img
