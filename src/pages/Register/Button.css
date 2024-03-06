@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 
+>>>>>>> 4e59475a2dd55d3ae509c135e9b831a4cf8aeea1
 .btn {
     text-transform: uppercase;
     text-decoration: none;
@@ -7,7 +10,7 @@
     border: 1px solid;
     border-radius: 1000px;
     display: inline-block;
-    transition: all .2s;
+    transition: all 0.2s;
     position: relative;
 }
 
@@ -30,7 +33,7 @@
     left: 0;
     position: absolute;
     z-index: -1;
-    transition: all .3s;
+    transition: all 0.3s;
 }
 
 .btn:hover::after {
