@@ -4,42 +4,38 @@ import "./Button.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import axios from "axios";
-import alertGradient from "@material-tailwind/react/theme/components/alert/alertGradient";
 const Register = () => {
     const { createUser } = useContext(AuthContext);
 
-    const handleRegister = async (e) => {
+    const handleRegister = (e) => {
         e.preventDefault();
-        console.log("hello");
+
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        const phoneNumber = form.phoneNumber.value;
-        const user ={
+        const phone = form.phoneNumber.value;
+        const user = {
             name,
+            phone,
             email,
             password,
-            phoneNumber
-        }
+        };
 
-     try{
-             const result = await axios.post(
-               "http://localhost:5000/api/v1/users",
-               user
-             );
-
-     console.log(result)
-
-    
-     }
-     catch(error){
-        console.log(error)
-        alert(error.message)
-     }
+        fetch("http://localhost:5000/api/v1/users", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+        })
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((error) => {
+                console.error("There was a problem with the fetch operation:", error);
+            });
     };
-
 
     return (
         <div>
