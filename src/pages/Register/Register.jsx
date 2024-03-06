@@ -4,18 +4,42 @@ import "./Button.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import axios from "axios";
+import alertGradient from "@material-tailwind/react/theme/components/alert/alertGradient";
 const Register = () => {
     const { createUser } = useContext(AuthContext);
 
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
         console.log("hello");
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, password);
+        const phoneNumber = form.phoneNumber.value;
+        const user ={
+            name,
+            email,
+            password,
+            phoneNumber
+        }
+
+     try{
+             const result = await axios.post(
+               "http://localhost:5000/api/v1/users",
+               user
+             );
+
+     console.log(result)
+
+    
+     }
+     catch(error){
+        console.log(error)
+        alert(error.message)
+     }
     };
+
 
     return (
         <div>
@@ -96,7 +120,7 @@ const Register = () => {
                                 type="text"
                                 placeholder="০১৮৮০৩৮৪৫৬৪"
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
-                                name="number"
+                                name="phoneNumber"
                             />
                         </div>
                     </div>
