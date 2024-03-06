@@ -22,7 +22,7 @@ const LossInformation = () => {
           <div className="h-96 overflow-y-scroll  grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
             {services.map((service) => (
               <div
-                className="text-center bg-[#2B5B2E] cursor-pointer shadow-md text-white hover:text-black hover:shadow-lg hover:bg-gray-100 transition-all rounded p-2 h-auto sm:h-fit flex flex-col gap-2"
+                className="text-center bg-[#2B5B2E] cursor-pointer shadow-md text-white hover:text-black hover:shadow-lg hover:bg-gray-100 transition-all rounded p-2 h-44 sm:h-fit flex flex-col gap-2 items-center justify-center"
                 key={service?.id}
               >
                 <img
