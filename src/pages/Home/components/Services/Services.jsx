@@ -36,7 +36,7 @@ const Services = () => {
                     )
                     ?.map((service) => (
                         <div
-                            className="text-center cursor-pointer shadow-md bg-[#2b5b2e] text-white hover:text-black hover:shadow-lg hover:bg-gray-100 transition-all rounded p-2 h-auto sm:h-fit flex flex-col gap-2"
+                            className="text-center cursor-pointer shadow-md bg-[#2b5b2e] text-white hover:text-black hover:shadow-lg hover:bg-gray-100 transition-all rounded py-2 h-44 sm:h-fit flex flex-col gap-2 items-center justify-center"
                             key={service?.id}
                         >
                             <img
