@@ -7,7 +7,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 const Register = () => {
     const [loading, setLoading] = useState(false);
-    const { user, createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser } = useContext(AuthContext);
 
     const handleRegister = async (e) => {
         setLoading(true);
