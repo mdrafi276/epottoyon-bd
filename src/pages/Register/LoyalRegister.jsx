@@ -1,11 +1,47 @@
 import "./InputFild.css";
 import { Checkbox, Typography } from "@material-tailwind/react";
-
 import "./Button.css";
 import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import axios from "axios";
+
 const LoyalRegister = () => {
+    const [loading, setLoading] = useState(false);
+    const { createUser, updateUser } = useContext(AuthContext);
+
+    const handleRegister = async (e) => {
+        setLoading(true);
+        e.preventDefault();
+
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const phone = form.phoneNumber.value;
+        const user = {
+            name,
+            phone,
+            email,
+            password,
+            type: "user",
+            register_for: "প্রশাসনিক",
+        };
+
+        try {
+            const res = await createUser(email, password);
+            await updateUser(name, phone);
+            await axios.post("http://localhost:5000/api/v1/users", user);
+            setLoading(false);
+        } catch (error) {
+            console.error(error);
+            setLoading(false);
+        }
+    };
+
     return (
         <div>
+            {" "}
             <div className="bg-[#327A62]">
                 {" "}
                 <div className="flex items-center justify-between md:mx-20  lg:mx-80 mx-4 h-[50px]">
@@ -21,28 +57,32 @@ const LoyalRegister = () => {
                     </Link>
                 </div>
             </div>
-            <div className="flex w-[95%] md:w-[85%]  min:h-[500px]  gap-5  rounded-2xl  py-2 mx-auto  flex-col lg:flex-row">
-                <div className="lg:w-[930px] w-full px-4 sm:px-0 lg:h-[866px] border-4 border-blue-400 bg-gray-200 lg:pb-20  rounded-2xl">
-                    <h1 className="text-[15px] md:text-[22px] mt-8 mb-4 md:mt-5 lg:mt-14 lg:text-[26px] font-extrabold text-center bg-[#8e53a2] rounded-lg w-10/12 p-4 mx-auto text-white">
-                        প্রশাসনিক একাউন্ট তৈরি করুণ
+            <div className="flex w-[95%] md:w-[85%]  min:h-[500px] gap-5  rounded-2xl  py-2 mx-auto  flex-col lg:flex-row">
+                <form
+                    onSubmit={handleRegister}
+                    className="lg:w-[930px] w-full px-4 sm:px-0 lg:h-[866px] bg-gray-200  border-4 border-blue-400 lg:pb-20  rounded-2xl"
+                >
+                    <h1 className=" text-[15px] md:text-[22px] mt-8 bg-[#8e53a2] py-4 rounded-lg w-10/12 mx-auto text-white mb-4 md:mt-5 lg:mt-14 lg:text-[26px] font-extrabold  text-center ">
+                    প্রশাসনিক একাউন্ট তৈরি করুণ{" "}
                     </h1>
                     <hr />
 
                     <div className=" flex justify-center items-center lg:mt-5"></div>
                     {/* input one************ */}
-                    <div className="flex flex-col  justify-center">
+                    <div className="flex flex-col justify-center">
                         <label
-                            htmlFor="password"
+                            htmlFor="নাম"
                             className="  lg:ml-[118px] md:ml-[75px] mb-2 block text-black text-[15px] lg:text-[18px] font-bold "
                         >
-                            প্রতিষ্ঠানের নাম (*)
+                            নাম(*)
                         </label>
                         <div className="containerss">
                             <input
+                                required
                                 type="text"
                                 placeholder="নাম"
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
-                                name="text"
+                                name="name"
                             />
                         </div>
                     </div>
@@ -50,17 +90,18 @@ const LoyalRegister = () => {
 
                     <div className="flex flex-col  lg:mt-3 justify-center">
                         <label
-                            htmlFor="password"
+                            htmlFor="ইমেল"
                             className="  lg:ml-[118px] md:mt-2 md:ml-[75px]  mb-2 block text-black text-[15px] lg:text-[18px] font-bold "
                         >
                             ইমেল(*)
                         </label>
                         <div className="containerss">
                             <input
-                                type="text"
+                                required
+                                type="email"
                                 placeholder="example@gmail.com"
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
-                                name="text"
+                                name="email"
                             />
                         </div>
                     </div>
@@ -69,14 +110,15 @@ const LoyalRegister = () => {
                             htmlFor="password"
                             className="  lg:ml-[118px] md:ml-[75px]  lg:mb-2 block text-black text-[15px] lg:text-[18px] font-bold "
                         >
-                            মোবাইল নাম্বার(*)
+                            মোবাইল নাম্বার
                         </label>
                         <div className="containerss">
                             <input
+                                required
                                 type="text"
                                 placeholder="০১৮৮০৩৮৪৫৬৪"
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
-                                name="text"
+                                name="phoneNumber"
                             />
                         </div>
                     </div>
@@ -89,10 +131,11 @@ const LoyalRegister = () => {
                         </label>
                         <div className="containerss">
                             <input
+                                required
                                 type="password"
                                 placeholder="পাসওয়ার্ড "
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
-                                name="text"
+                                name="password"
                             />
                         </div>
                     </div>
@@ -105,10 +148,11 @@ const LoyalRegister = () => {
                         </label>
                         <div className="containerss">
                             <input
+                                required
                                 type="password"
                                 placeholder="  কনফার্ম পাসওয়ার্ড "
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
-                                name="text"
+                                name="conPassword"
                             />
                         </div>
                     </div>
@@ -134,15 +178,13 @@ const LoyalRegister = () => {
                         />
 
                         <button type="submit" className="btn lg:mt-1">
-                            {" "}
-                            নিবন্ধন করুন{" "}
+                            {loading ? <Spinner /> : "নিবন্ধন করুন"}
                         </button>
                     </div>
                     <div></div>
-                </div>
-
+                </form>
                 <div className="space-y-4 lg:space-y-1 xl:space-y-1.5">
-                    <div className="lg:w-[500px] w-full border-4 border-blue-400 lg:h-fit bg-gray-200 md:p-3 rounded-2xl">
+                    <div className="lg:w-[500px] w-full border-4 border-blue-400 h-fit bg-gray-200 md:p-3 rounded-2xl">
                         <h1 className="text-center lg:mt-10 md:mt-10 md:mb-5 bg-[#8e53a2] rounded text-white py-3 lg:mb-5 text-[18px] mt-4 mb-2 md:text-[23px]  lg:text-[26px] font-extrabold   ">
                             নির্দেশনা
                         </h1>{" "}
@@ -153,13 +195,13 @@ const LoyalRegister = () => {
                                 ঐচ্ছিক।{" "}
                             </li>
                             <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-2 px-2 md:h-[65px] lg:h-[65px] bg-white rounded-md ">
-                                আপনার ১০ অথবা ১৭ ডিজিটের জন্ম নিবন্ধন নম্বর পূরণ করুন।
+                                আপনার ১১ ডিজিটের মোবাইল নম্বর পূরণ করুন।
                             </li>
                             <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-5 px-2 md:h-[65px] lg:h-[65px] bg-white rounded-md ">
-                                আপনার সঠিক জন্ম তারিখ প্রদান করুন।
+                                আপনার সঠিক নাম্বার প্রদান করুন।
                             </li>
                             <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-1 px-2 md:h-[65px] lg:h-[65px] bg-white rounded-md ">
-                                আপনার ১১ ডিজিটের মোবাইল নম্বর পূরণ করুন অথবা ইমেইল এড্রেস
+                                আপনার ১১ ডিজিটের মোবাইল নম্বর পূরণ করুন এবং ইমেইল এড্রেস
                                 লিখুন।
                             </li>
                             <li className="text-[14px] lg:text-[15px] text-black font-semibold pt-2 px-2 lg:h-[75px] bg-white rounded-md ">
@@ -171,10 +213,9 @@ const LoyalRegister = () => {
                             </li>
                         </div>
                     </div>
-                    <div className="bg-gray-200 border-4 lg:w-[500px] w-full border-blue-400 lg:h-[200px] rounded-2xl lg:mt-2">
-                        {" "}
-                        <div className="  lg:pt-5">
-                            <h1 className="text-[14px] md:mt-0 mt-3  lg:text-[20px] bg-[#8e53a2] rounded py-3 text-white mx-auto w-10/12 mx- text-center  font-extrabold  ">
+                    <div className="lg:w-[500px] w-full bg-gray-200 border-4 border-blue-400 lg:h-[200px] rounded-2xl lg:mt-2">
+                        <div className="lg:pt-5">
+                            <h1 className="text-[14px] md:mt-0 mt-3 bg-[#8e53a2] py-2 text-white w-10/12 mx-auto rounded lg:text-[20px]  text-center  font-extrabold  ">
                                 জরুরী প্রয়োজনে
                             </h1>
                         </div>
