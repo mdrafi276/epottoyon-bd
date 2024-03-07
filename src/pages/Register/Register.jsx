@@ -1,13 +1,16 @@
 import "./InputFild.css";
-import { Checkbox, Typography } from "@material-tailwind/react";
+import { Checkbox, Spinner, Typography } from "@material-tailwind/react";
 import "./Button.css";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import axios from "axios";
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const [loading, setLoading] = useState(false);
+    const { user, createUser, updateUser } = useContext(AuthContext);
 
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => {
+        setLoading(true);
         e.preventDefault();
 
         const form = e.target;
@@ -20,21 +23,19 @@ const Register = () => {
             phone,
             email,
             password,
+            type: "user",
+            register_for: "নাগরিক",
         };
 
-        fetch("http://localhost:5000/api/v1/users", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(user),
-        })
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((error) => {
-                console.error("There was a problem with the fetch operation:", error);
-            });
+        try {
+            const res = await createUser(email, password);
+            await updateUser(name, phone);
+            await axios.post("http://localhost:5000/api/v1/users", user);
+            setLoading(false);
+        } catch (error) {
+            console.error(error);
+            setLoading(false);
+        }
     };
 
     return (
@@ -176,8 +177,7 @@ const Register = () => {
                         />
 
                         <button type="submit" className="btn lg:mt-1">
-                            {" "}
-                            নিবন্ধন করুন{" "}
+                            {loading ? <Spinner /> : "নিবন্ধন করুন"}
                         </button>
                     </div>
                     <div></div>
