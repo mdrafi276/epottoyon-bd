@@ -3,8 +3,10 @@ import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
+
 const LoginModal = () => {
   const [openModal, setOpenModal] = useState(false);
+  
 
   return (
     <div className="w-[99%] mx-auto flex items-center justify-end">
@@ -50,7 +52,7 @@ const LoginModal = () => {
               </g>
             </svg>
             <h1 className=" text-black text-xl text-center pb-5">লগইন</h1>
-
+          
             <div className="space-y-1 mt-2">
               <label htmlFor="email" className="block text-black">
                 ইমেল
