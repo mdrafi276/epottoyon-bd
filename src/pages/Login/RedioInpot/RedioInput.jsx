@@ -1,4 +1,6 @@
 import { Radio, Typography } from "@material-tailwind/react";
+import { useState } from "react";
+
 
 function Icon() {
   return (
@@ -18,10 +20,17 @@ function Icon() {
 }
 
 export default function RedioInput() {
+  const [redi, setRedi] = useState()
   return (
-    <div className="flex gap-5">
+    <div className="flex justify-center gap-5">
+      ( 
+        
+      )
+      <h1>{redi}</h1>
       <Radio
+      onChange={e => setRedi(e.target.value)}
         name="type"
+        value="email"
         ripple={false}
         icon={<Icon />}
         className="border-gray-900/10 bg-white p-0 transition-all hover:before:opacity-0"
@@ -30,12 +39,16 @@ export default function RedioInput() {
             color="blue-gray"
             className="font-normal text-black font-bold lg:text-[16px]"
           >
-            নাগরিক
+            ইমেল
           </Typography>
         }
       />
       <Radio
+      onChange={e => setRedi(e.target.value)}
+      
+      value="phone"
         name="type"
+
         defaultChecked
         ripple={false}
         icon={<Icon />}
@@ -45,7 +58,7 @@ export default function RedioInput() {
             color="blue-gray"
             className="  text-black font-bold md:text-[16px]"
           >
-            প্রশাসনিক
+            মোবাইল নাম্বার
           </Typography>
         }
       />
