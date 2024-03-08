@@ -3,7 +3,6 @@ import MainLayout from "../../layouts/MainLayout/MainLayout";
 import Home from "../../pages/Home/Home";
 import Register from "../../pages/Register/Register";
 import LoyalRegister from "../../pages/Register/LoyalRegister";
-import Dashboard from "../../Dashboard/Dashboard";
 
 const MainRouter = createBrowserRouter([
     {
@@ -22,15 +21,7 @@ const MainRouter = createBrowserRouter([
                 path:"/loRegister",
                 element:<LoyalRegister/>
             },
-            {
-                path:"/dashboard",
-                element:<Dashboard/>,
-                children:[
-                    {
-                        path:""
-                    }
-                ]
-            }
+            
         ],
     },
 ]);
