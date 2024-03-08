@@ -11,11 +11,10 @@ const PrivetRoute = ({ children }) => {
     return <Spinner className="h-16 w-16 text-gray-900/50" />;
   }
 
-  // lll
   if (user) {
     return children;
   }
-  return <Navigate state={location.pathname} to="/login"></Navigate>;
+  return <Navigate state={location.pathname} to="/register"></Navigate>;
 };
 
 export default PrivetRoute;
