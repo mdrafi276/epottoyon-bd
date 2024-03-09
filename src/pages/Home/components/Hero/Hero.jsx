@@ -77,7 +77,7 @@ const Hero = () => {
                 <Slide />
             </Carousel>
 
-            <Link to="/login">
+            <Link to="/register">
                 <div className="flex flex-col md:py-0 py-5 justify-center shadow-2xl rounded-xl shadow-[#898989] cursor-pointer items-center  h-full md:h-[270px] lg:h-[380px] w-full lg:w-[350px] xl:w-400 bg-[#8E53A2]">
                     <figure className="md:w-[70px]  w-[50px] lg:w-[80px]">
                         <img

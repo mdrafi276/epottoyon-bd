@@ -4,6 +4,11 @@ import Home from "../../pages/Home/Home";
 import Register from "../../pages/Register/Register";
 import LoyalRegister from "../../pages/Register/LoyalRegister";
 
+import DashboardLayout from "../../layouts/DashboardLayout/DashboardLayout";
+import Dashboard from "../../pages/Dashboard/Dashboard";
+import Profile from "../../pages/Profile/Profile";
+import DashboardHome from "../../pages/Dashboard/DashboardHome/DashboardHome";
+
 const MainRouter = createBrowserRouter([
     {
         path: "/",
@@ -14,14 +19,33 @@ const MainRouter = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path: '/register',
-                element:<Register/>
+                path: "/register",
+                element: <Register />,
             },
             {
-                path:"/loRegister",
-                element:<LoyalRegister/>
+                path: "/loRegister",
+                element: <LoyalRegister />,
             },
-            
+        ],
+    },
+    {
+        path: "/dashboard",
+        element: <DashboardLayout />,
+        children: [
+            {
+                index: true,
+                element: <Dashboard />,
+            },
+
+            {
+                path: "/dashboard/profile",
+                element: <Profile />,
+            },
+            {
+                path: "dashboardHome",
+                element: <DashboardHome />,
+            },
+
         ],
     },
 ]);
