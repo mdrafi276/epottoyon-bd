@@ -359,6 +359,13 @@ const Sidebar = () => {
             <ListItemPrefix>
               <BsCurrencyDollar className="h-5 w-5" />
             </ListItemPrefix>
+            পেমেন্ট সেটিং
+            <ListItemSuffix></ListItemSuffix>
+          </ListItem>
+          <ListItem>
+            <ListItemPrefix>
+              <BsCurrencyDollar className="h-5 w-5" />
+            </ListItemPrefix>
             এড ব্যালেন্স
             <ListItemSuffix></ListItemSuffix>
           </ListItem>
