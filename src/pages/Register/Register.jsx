@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
+
 const Register = () => {
     const [loading, setLoading] = useState(false);
     const { createUser, updateUser, verifyEmail } = useContext(AuthContext);
@@ -54,7 +55,7 @@ const Register = () => {
             }
         } else {
             setLoading(false);
-            alert("Oops! It seems there's a mismatch in the passwords you entered");
+            alert("কনফার্ম পাসওয়ার্ড সঠিক নয়");
         }
     };
 
@@ -127,7 +128,7 @@ const Register = () => {
                             htmlFor="password"
                             className="  lg:ml-[118px] md:ml-[75px]  lg:mb-2 block text-black text-[15px] lg:text-[18px] font-bold "
                         >
-                            মোবাইল নাম্বার
+                            মোবাইল নাম্বার(*)
                         </label>
                         <div className="containerss">
                             <input
