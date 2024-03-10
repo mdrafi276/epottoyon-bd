@@ -14,6 +14,22 @@ import {
 import { useState } from "react";
 import logo from "../../assets/logo.png";
 import { Fa42Group } from "react-icons/fa6";
+import { MdOutlineArrowForwardIos } from "react-icons/md";
+
+import { RxDashboard } from "react-icons/rx";
+import { CgProfile } from "react-icons/cg";
+import { MdLogout } from "react-icons/md";
+import { IoSettingsOutline } from "react-icons/io5";
+import { PiCertificate } from "react-icons/pi";
+import { LiaCertificateSolid } from "react-icons/lia";
+import { MdReportGmailerrorred } from "react-icons/md";
+import { TbMessageReport } from "react-icons/tb";
+import { TbReceiptTax } from "react-icons/tb";
+import { BsCurrencyDollar } from "react-icons/bs";
+import { MdPostAdd } from "react-icons/md";
+import { Link } from "react-router-dom";
+
+
 
 const Sidebar = () => {
     const [open, setOpen] = useState(0);
@@ -26,141 +42,348 @@ const Sidebar = () => {
 
     return (
       //   <Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-            <Card className="h-screen overflow-y-auto w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
-                <div className="mb-2 flex items-center gap-4 p-4">
-                    <img className="w-44 mx-auto" src={logo} alt="UDCBD Logo" />
-                </div>
-                <List>
-                    <Accordion
-                        open={open === 1}
-                        icon={
-                            <Fa42Group
-                                strokeWidth={2.5}
-                                className={`mx-auto h-4 w-4 transition-transform ${
-                                    open === 1 ? "rotate-180" : ""
-                                }`}
-                            />
-                        }
-                    >
-                        <ListItem className="p-0" selected={open === 1}>
-                            <AccordionHeader
-                                onClick={() => handleOpen(1)}
-                                className="border-b-0 p-3"
-                            >
-                                <ListItemPrefix>
-                                    <Fa42Group className="h-5 w-5" />
-                                </ListItemPrefix>
-                                <Typography
-                                    color="blue-gray"
-                                    className="mr-auto font-normal"
-                                >
-                                    Dashboard
-                                </Typography>
-                            </AccordionHeader>
+      <Card className="h-screen overflow-y-auto w-full  bg-gray-100 max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
+        <Link to="/" className="mb-2 flex items-center gap-4 p-4">
+          <img className="w-44 mx-auto" src={logo} alt="UDCBD Logo" />
+        </Link>
+        <List>
+          <Accordion
+            open={open === 1}
+            icon={
+              <MdOutlineArrowForwardIos
+                className={`mx-auto h-4  w-4 border-none transition-transform ${
+                  open === 1 ? "rotate-90" : ""
+                }`}
+              />
+            }
+          >
+            {/* dashobrdroute */}
+            <Link to="/dashboard/dashboardHome">
+              {" "}
+              <ListItem>
+                <ListItemPrefix>
+                  <RxDashboard className="h-5 w-5" />
+                </ListItemPrefix>
+                ড্যাশবোর্ড
+                <ListItemSuffix></ListItemSuffix>
+              </ListItem>
+            </Link>
+            <ListItem>
+              <ListItemPrefix>
+                <MdPostAdd className="h-5 w-5" />
+              </ListItemPrefix>
+              সনদের জন্য আবেদন
+              <ListItemSuffix></ListItemSuffix>
+            </ListItem>
+            <ListItem>
+              <ListItemPrefix>
+                <LiaCertificateSolid className="h-5 w-5" />
+              </ListItemPrefix>
+              সকল সনদ
+              <ListItemSuffix></ListItemSuffix>
+            </ListItem>
+            {/* dashobrdroute */}
+            <ListItem className="p-0" selected={open === 1}>
+              <AccordionHeader
+                onClick={() => handleOpen(1)}
+                className="border-b-0 p-3"
+              >
+                <ListItemPrefix>
+                  <Fa42Group className="h-5 w-5" />
+                </ListItemPrefix>
+                <Typography color="blue-gray" className="mr-auto font-normal">
+                  গ্রাম আদালত নোটিশ
+                </Typography>
+              </AccordionHeader>
+            </ListItem>
+            <AccordionBody className="py-1">
+              <List className="p-0">
+                <ListItem>
+                  <ListItemPrefix>
+                    <Fa42Group strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  নোটিশ তৈরি করুন
+                </ListItem>
+                <ListItem>
+                  <ListItemPrefix>
+                    <Fa42Group strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  সকল নোটিশ
+                </ListItem>
+              </List>
+            </AccordionBody>
+          </Accordion>
+          <Accordion
+            open={open === 2}
+            icon={
+              <MdOutlineArrowForwardIos
+                className={`mx-auto h-4  w-4 transition-transform ${
+                  open === 2 ? "rotate-90" : ""
+                }`}
+              />
+            }
+          >
+            <ListItem className="p-0" selected={open === 2}>
+              <AccordionHeader
+                onClick={() => handleOpen(2)}
+                className="border-b-0 p-3"
+              >
+                <ListItemPrefix>
+                  <Fa42Group className="h-5 w-5" />
+                </ListItemPrefix>
+                <Typography color="blue-gray" className="mr-auto font-normal">
+                  বিচারের রায়
+                </Typography>
+              </AccordionHeader>
+            </ListItem>
+            <AccordionBody className="py-1">
+              <List className="p-0">
+                <ListItem>
+                  <ListItemPrefix>
+                    <Fa42Group strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  বিচারের রায় তৈরি করুন
+                </ListItem>
+                <ListItem>
+                  <ListItemPrefix>
+                    <Fa42Group strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  সকল বিচারের রায়
+                </ListItem>
+              </List>
+            </AccordionBody>
+          </Accordion>
+          <Accordion
+            open={open === 3}
+            icon={
+              <MdOutlineArrowForwardIos
+                className={`mx-auto h-4  w-4 transition-transform ${
+                  open === 3 ? "rotate-90" : ""
+                }`}
+              />
+            }
+          >
+            <ListItem className="p-0" selected={open === 3}>
+              <AccordionHeader
+                onClick={() => handleOpen(3)}
+                className="border-b-0 p-3"
+              >
+                <ListItemPrefix>
+                  <TbMessageReport className="h-5 w-5" />
+                </ListItemPrefix>
+                <Typography color="blue-gray" className="mr-auto font-normal">
+                  প্রতিবেদন
+                </Typography>
+              </AccordionHeader>
+            </ListItem>
+            <AccordionBody className="py-1">
+              <List className="p-0">
+                <ListItem>
+                  <ListItemPrefix>
+                    <Fa42Group strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  প্রতিবেদন তৈরি করুন
+                </ListItem>
+                <ListItem>
+                  <ListItemPrefix>
+                    <Fa42Group strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  সকল প্রতিবেদন
+                </ListItem>
+              </List>
+            </AccordionBody>
+          </Accordion>
+          <Accordion
+            open={open === 4}
+            icon={
+              <MdOutlineArrowForwardIos
+                className={`mx-auto h-4  w-4 transition-transform ${
+                  open === 4 ? "rotate-90" : ""
+                }`}
+              />
+            }
+          >
+            <ListItem className="p-0" selected={open === 4}>
+              <AccordionHeader
+                onClick={() => handleOpen(4)}
+                className="border-b-0 p-3"
+              >
+                <ListItemPrefix>
+                  <TbReceiptTax className="h-5 w-5" />
+                </ListItemPrefix>
+                <Typography color="blue-gray" className="mr-auto font-normal">
+                  ট্যাক্স আদায়
+                </Typography>
+              </AccordionHeader>
+            </ListItem>
+            <AccordionBody className="py-1">
+              <List className="p-0">
+                <ListItem>
+                  <ListItemPrefix>
+                    <Fa42Group strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  ট্যাক্স আদায়
+                </ListItem>
+                <ListItem>
+                  <ListItemPrefix>
+                    <Fa42Group strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  সকল ট্যাক্স আদায় লিস্ট
+                </ListItem>
+              </List>
+            </AccordionBody>
+          </Accordion>
+          <Accordion
+            open={open === 5}
+            icon={
+              <MdOutlineArrowForwardIos
+                className={`mx-auto h-4  w-4 transition-transform ${
+                  open === 5 ? "rotate-90" : ""
+                }`}
+              />
+            }
+          >
+            <ListItem className="p-0" selected={open === 5}>
+              <AccordionHeader
+                onClick={() => handleOpen(5)}
+                className="border-b-0 p-3"
+              >
+                <ListItemPrefix>
+                  <MdReportGmailerrorred className="h-5 w-5" />
+                </ListItemPrefix>
+                <Typography color="blue-gray" className="mr-auto font-normal">
+                  রিপোর্ট
+                </Typography>
+              </AccordionHeader>
+            </ListItem>
+            <AccordionBody className="py-1">
+              <List className="p-0">
+                <ListItem>
+                  <ListItemPrefix>
+                    <MdReportGmailerrorred className="h-3 w-5" />
+                  </ListItemPrefix>
+                  রিপোর্ট
+                </ListItem>
+                <ListItem>
+                  <ListItemPrefix>
+                    <MdReportGmailerrorred className="h-3 w-5" />
+                  </ListItemPrefix>
+                  রিপোর্ট
+                </ListItem>
+              </List>
+            </AccordionBody>
+          </Accordion>
+
+          <Accordion
+            open={open === 6}
+            icon={
+              <MdOutlineArrowForwardIos
+                className={`mx-auto h-4  w-4 transition-transform ${
+                  open === 6 ? "rotate-90" : ""
+                }`}
+              />
+            }
+          >
+            <ListItem className="p-0" selected={open === 6}>
+              <AccordionHeader
+                onClick={() => handleOpen(6)}
+                className="border-b-0 p-3"
+              >
+                <ListItemPrefix>
+                  <IoSettingsOutline className="h-5 w-5" />
+                </ListItemPrefix>
+                <Typography color="blue-gray" className="mr-auto font-normal">
+                  সেটিং
+                </Typography>
+              </AccordionHeader>
+            </ListItem>
+            <AccordionBody className="py-1">
+              <List className="p-0">
+                <ListItem>
+                  <Accordion
+                    open={open === 7}
+                    icon={
+                      <MdOutlineArrowForwardIos
+                        className={`mx-auto h-4  w-4 transition-transform ${
+                          open === 7 ? "rotate-90" : ""
+                        }`}
+                      />
+                    }
+                  >
+                    <ListItem className="p-0" selected={open === 7}>
+                      <AccordionHeader
+                        onClick={() => handleOpen(7)}
+                        className="border-b-0 p-3"
+                      >
+                        <ListItemPrefix>
+                          <Fa42Group className="h-5 w-5" />
+                        </ListItemPrefix>
+                        <Typography
+                          color="blue-gray"
+                          className="mr-auto font-normal"
+                        >
+                          ইউজার সেটিং
+                        </Typography>
+                      </AccordionHeader>
+                    </ListItem>
+                    <AccordionBody className="py-1">
+                      <List className="p-0">
+                        <ListItem>
+                          <ListItemPrefix>
+                            <Fa42Group className="h-3 w-5" />
+                          </ListItemPrefix>
+                          এড ইউজার
                         </ListItem>
-                        <AccordionBody className="py-1">
-                            <List className="p-0">
-                                <ListItem>
-                                    <ListItemPrefix>
-                                        <Fa42Group strokeWidth={3} className="h-3 w-5" />
-                                    </ListItemPrefix>
-                                    Analytics
-                                </ListItem>
-                                <ListItem>
-                                    <ListItemPrefix>
-                                        <Fa42Group strokeWidth={3} className="h-3 w-5" />
-                                    </ListItemPrefix>
-                                    Reporting
-                                </ListItem>
-                                <ListItem>
-                                    <ListItemPrefix>
-                                        <Fa42Group strokeWidth={3} className="h-3 w-5" />
-                                    </ListItemPrefix>
-                                    Projects
-                                </ListItem>
-                            </List>
-                        </AccordionBody>
-                    </Accordion>
-                    <Accordion
-                        open={open === 2}
-                        icon={
-                            <Fa42Group
-                                strokeWidth={2.5}
-                                className={`mx-auto h-4 w-4 transition-transform ${
-                                    open === 2 ? "rotate-180" : ""
-                                }`}
-                            />
-                        }
-                    >
-                        <ListItem className="p-0" selected={open === 2}>
-                            <AccordionHeader
-                                onClick={() => handleOpen(2)}
-                                className="border-b-0 p-3"
-                            >
-                                <ListItemPrefix>
-                                    <Fa42Group className="h-5 w-5" />
-                                </ListItemPrefix>
-                                <Typography
-                                    color="blue-gray"
-                                    className="mr-auto font-normal"
-                                >
-                                    E-Commerce
-                                </Typography>
-                            </AccordionHeader>
+                        <ListItem>
+                          <ListItemPrefix>
+                            <Fa42Group className="h-3 w-5" />
+                          </ListItemPrefix>
+                          ইউজার পারমিশন
                         </ListItem>
-                        <AccordionBody className="py-1">
-                            <List className="p-0">
-                                <ListItem>
-                                    <ListItemPrefix>
-                                        <Fa42Group strokeWidth={3} className="h-3 w-5" />
-                                    </ListItemPrefix>
-                                    Orders
-                                </ListItem>
-                                <ListItem>
-                                    <ListItemPrefix>
-                                        <Fa42Group strokeWidth={3} className="h-3 w-5" />
-                                    </ListItemPrefix>
-                                    Products
-                                </ListItem>
-                            </List>
-                        </AccordionBody>
-                    </Accordion>
-                    <hr className="my-2 border-blue-gray-50" />
-                    <ListItem>
-                        <ListItemPrefix>
-                            <Fa42Group className="h-5 w-5" />
-                        </ListItemPrefix>
-                        Inbox
-                        <ListItemSuffix>
-                            <Chip
-                                value="14"
-                                size="sm"
-                                variant="ghost"
-                                color="blue-gray"
-                                className="rounded-full"
-                            />
-                        </ListItemSuffix>
-                    </ListItem>
-                    <ListItem>
-                        <ListItemPrefix>
-                            <Fa42Group className="h-5 w-5" />
-                        </ListItemPrefix>
-                        Profile
-                    </ListItem>
-                    <ListItem>
-                        <ListItemPrefix>
-                            <Fa42Group className="h-5 w-5" />
-                        </ListItemPrefix>
-                        Settings
-                    </ListItem>
-                    <ListItem>
-                        <ListItemPrefix>
-                            <Fa42Group className="h-5 w-5" />
-                        </ListItemPrefix>
-                        Log Out
-                    </ListItem>
-                </List>
-                {/* <Alert
+                      </List>
+                    </AccordionBody>
+                  </Accordion>
+                </ListItem>
+              </List>
+            </AccordionBody>
+          </Accordion>
+          <hr className="my-2 border-blue-gray-50" />
+          <ListItem>
+            <ListItemPrefix>
+              <PiCertificate className="h-5 w-5" />
+            </ListItemPrefix>
+            সনদ সেটিং
+            <ListItemSuffix></ListItemSuffix>
+          </ListItem>
+          <ListItem>
+            <ListItemPrefix>
+              <BsCurrencyDollar className="h-5 w-5" />
+            </ListItemPrefix>
+            পেমেন্ট সেটিং
+            <ListItemSuffix></ListItemSuffix>
+          </ListItem>
+          <ListItem>
+            <ListItemPrefix>
+              <BsCurrencyDollar className="h-5 w-5" />
+            </ListItemPrefix>
+            এড ব্যালেন্স
+            <ListItemSuffix></ListItemSuffix>
+          </ListItem>
+          <ListItem>
+            <ListItemPrefix>
+              <CgProfile className="h-5 w-5" />
+            </ListItemPrefix>
+            ইউজার প্রফাইল
+          </ListItem>
+
+          <ListItem>
+            <ListItemPrefix>
+              <MdLogout className="h-5 w-5" />
+            </ListItemPrefix>
+            লগ আউট
+          </ListItem>
+        </List>
+        {/* <Alert
                     open={openAlert}
                     className="mt-auto"
                     onClose={() => setOpenAlert(false)}
@@ -193,7 +416,7 @@ const Sidebar = () => {
                         </Typography>
                     </div>
                 </Alert> */}
-            </Card>
+      </Card>
       //   {/* </Drawer> */}
     );
 };
