@@ -1,13 +1,15 @@
 import "./InputFild.css";
-import { Checkbox, Spinner, Typography } from "@material-tailwind/react";
+import { Checkbox, Dialog, Spinner, Typography } from "@material-tailwind/react";
 import "./Button.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 const Register = () => {
     const [loading, setLoading] = useState(false);
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser, verifyEmail } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const [openVerificationModal, setOpenVerificationModal] = useState(false);
 
     const handleRegister = async (e) => {
         setLoading(true);
@@ -16,33 +18,49 @@ const Register = () => {
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
-        const password = form.password.value;
         const phone = form.phoneNumber.value;
-        const user = {
+        const password = form.password.value;
+        const confirmedPassword = form.conPassword.value;
+        const newUser = {
             name,
             phone,
             email,
             password,
             type: "user",
-            register_for: "নাগরিক",
         };
 
-        try {
-            const res = await createUser(email, password);
-            await updateUser(name, phone);
-            await axios.post("http://localhost:5000/api/v1/users", user);
+        if (password === confirmedPassword) {
+            try {
+                const res = await createUser(email, password);
+                await updateUser(name, phone);
+                await verifyEmail();
+                // await axios.post("http://localhost:5000/api/v1/users", newUser);
+
+                setLoading(false);
+                setOpenVerificationModal(true);
+                let interval = setInterval(async () => {
+                    if (res.user.emailVerified) {
+                        clearInterval(interval);
+                        setOpenVerificationModal(false);
+                        navigate("/");
+                    } else {
+                        await res.user.reload();
+                    }
+                }, 2000);
+            } catch (error) {
+                console.error(error);
+                alert(error.message);
+                setLoading(false);
+            }
+        } else {
             setLoading(false);
-        } catch (error) {
-            console.error(error);
-            setLoading(false);
+            alert("Oops! It seems there's a mismatch in the passwords you entered");
         }
     };
 
     return (
-        <div>
-            {" "}
+        <>
             <div className="bg-[#327A62]">
-                {" "}
                 <div className="flex items-center justify-between md:mx-20  lg:mx-80 mx-4 h-[50px]">
                     <Link to="/register">
                         <h1 className="  md:border-4 md:border-red-900 px-4 py-0.5 rounded text-[11px] md:text-[15px] lg:text-[22px] hover:text-[#71ff4a] cursor-pointer text-white">
@@ -149,7 +167,7 @@ const Register = () => {
                             <input
                                 required
                                 type="password"
-                                placeholder="  কনফার্ম পাসওয়ার্ড "
+                                placeholder="কনফার্ম পাসওয়ার্ড "
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
                                 name="conPassword"
                             />
@@ -231,7 +249,27 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-        </div>
+
+            <Dialog
+                open={openVerificationModal}
+                handler={() => setOpenVerificationModal(!openVerificationModal)}
+                className="p-8 flex flex-col text-center gap-3 justify-center items-center"
+            >
+                <h3 className="text-xl font-mediu">
+                    আপনার ইমেইলে আমরা ভেরিফিকেশন লিংক পাঠিয়েছি। দয়া করে ইমেইল ভেরিফিকেশন
+                    করুন
+                </h3>
+                <p>
+                    লিংক পাননি?{" "}
+                    <span
+                        onClick={verifyEmail}
+                        className="text-blue-600 hover:underline cursor-pointer"
+                    >
+                        আবার লিংক পাঠান
+                    </span>
+                </p>
+            </Dialog>
+        </>
     );
 };
 
