@@ -4,6 +4,7 @@ import {
     createUserWithEmailAndPassword,
     getAuth,
     onAuthStateChanged,
+    sendEmailVerification,
     signInWithEmailAndPassword,
     signOut,
     updateProfile,
@@ -16,7 +17,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    
+    const [openLoginModal, setOpenLoginModal] = useState(false);
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -37,6 +38,10 @@ const AuthProvider = ({ children }) => {
         updateProfile(auth.currentUser, { displayName: name, phoneNumber: phone });
     };
 
+    const verifyEmail = () => {
+        sendEmailVerification(auth.currentUser);
+    };
+
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
@@ -49,10 +54,13 @@ const AuthProvider = ({ children }) => {
     const authInfo = {
         user,
         loading,
+        openLoginModal,
+        setOpenLoginModal,
         createUser,
         logOut,
         signIn,
         updateUser,
+        verifyEmail,
     };
     return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
 };
