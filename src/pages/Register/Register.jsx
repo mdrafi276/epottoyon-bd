@@ -175,6 +175,7 @@ const Register = () => {
                     </div>
                     <div className="flex flex-col mb-5 mt-6 md:flex-row lg:mt-10 md:mb-8 md:mt-8 gap-5 justify-center items-center">
                         <Checkbox
+                            required
                             label={
                                 <Typography
                                     color="blue-gray"
