@@ -3,11 +3,9 @@ import MainLayout from "../../layouts/MainLayout/MainLayout";
 import Home from "../../pages/Home/Home";
 import Register from "../../pages/Register/Register";
 import LoyalRegister from "../../pages/Register/LoyalRegister";
-
 import DashboardLayout from "../../layouts/DashboardLayout/DashboardLayout";
 import Dashboard from "../../pages/Dashboard/Dashboard";
 import Profile from "../../pages/Profile/Profile";
-import DashboardHome from "../../pages/Dashboard/DashboardHome/DashboardHome";
 import ResetPassword from "../../pages/ResetPassword/ResetPassword";
 
 const MainRouter = createBrowserRouter([
@@ -45,10 +43,6 @@ const MainRouter = createBrowserRouter([
             {
                 path: "/dashboard/profile",
                 element: <Profile />,
-            },
-            {
-                path: "dashboardHome",
-                element: <DashboardHome />,
             },
         ],
     },

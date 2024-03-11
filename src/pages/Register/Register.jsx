@@ -27,7 +27,7 @@ const Register = () => {
             phone,
             email,
             password,
-            type: "user",
+            role: "নাগরিক",
         };
 
         if (password === confirmedPassword) {
@@ -35,7 +35,7 @@ const Register = () => {
                 const res = await createUser(email, password);
                 await updateUser(name, phone);
                 await verifyEmail();
-                // await axios.post("http://localhost:5000/api/v1/users", newUser);
+                await axios.post("http://localhost:5000/api/v1/users", newUser);
 
                 setLoading(false);
                 setOpenVerificationModal(true);
