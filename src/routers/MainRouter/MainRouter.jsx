@@ -8,6 +8,7 @@ import DashboardLayout from "../../layouts/DashboardLayout/DashboardLayout";
 import Dashboard from "../../pages/Dashboard/Dashboard";
 import Profile from "../../pages/Profile/Profile";
 import DashboardHome from "../../pages/Dashboard/DashboardHome/DashboardHome";
+import ResetPassword from "../../pages/ResetPassword/ResetPassword";
 
 const MainRouter = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const MainRouter = createBrowserRouter([
             {
                 path: "/loRegister",
                 element: <LoyalRegister />,
+            },
+            {
+                path: "/reset-password",
+                element: <ResetPassword />,
             },
         ],
     },
@@ -45,7 +50,6 @@ const MainRouter = createBrowserRouter([
                 path: "dashboardHome",
                 element: <DashboardHome />,
             },
-
         ],
     },
 ]);

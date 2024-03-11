@@ -92,10 +92,12 @@ const LoginModal = () => {
                                 লগইন
                             </button>
                             <div className="flex  flex-col justify-start gap-1  items-center  ">
-                                {" "}
-                                <h1 className="lg:text-[13px] hover:text-[#466320] text-black">
+                                <Link
+                                    to={"/reset-password"}
+                                    className="lg:text-[13px] hover:text-[#466320] text-black"
+                                >
                                     পাসওয়ার্ড ভুলে গেছেন ?
-                                </h1>
+                                </Link>
                                 <Link to="/register">
                                     {" "}
                                     <h1
