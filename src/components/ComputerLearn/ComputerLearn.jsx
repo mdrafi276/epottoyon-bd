@@ -31,11 +31,11 @@ const ComputerLearn = () => {
             <hr />
           </div>
           <div>
-            <h1 className="text-white py-2 lg:mx-8 text-2xl bg-[#a41a88]  rounded-md  font-bold text-center">
+            <h1 className="text-white py-2 mx-3 lg:mx-8 text-2xl md:text-2xl bg-[#a41a88]  rounded-md  font-bold text-center">
               সামাজিক যোগাযোগ
             </h1>
           </div>
-          <div className="w-[95%] mx-auto">
+          <div className="w-[95%] flex flex-col justify-center items-center mx-auto">
             <a  href="https://web.facebook.com/udcbd.2023/?_rdc=1&_rdr">
               {" "}
               <img
