@@ -93,12 +93,16 @@ const LoginModal = () => {
                             </button>
                             <div className="flex  flex-col justify-start gap-1  items-center  ">
                                 <Link
+                                    onClick={() => setOpenLoginModal(false)}
                                     to={"/reset-password"}
                                     className="lg:text-[13px] hover:text-[#466320] text-black"
                                 >
                                     পাসওয়ার্ড ভুলে গেছেন ?
                                 </Link>
-                                <Link to="/register">
+                                <Link
+                                    onClick={() => setOpenLoginModal(false)}
+                                    to="/register"
+                                >
                                     {" "}
                                     <h1
                                         onClick={() => setOpenLoginModal(false)}

@@ -5,12 +5,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 const Register = () => {
     const [loading, setLoading] = useState(false);
     const { createUser, updateUser, verifyEmail } = useContext(AuthContext);
-    const navigate = useNavigate();
     const [openVerificationModal, setOpenVerificationModal] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
 
     const handleRegister = async (e) => {
         setLoading(true);
@@ -150,7 +152,7 @@ const Register = () => {
                         <div className="containerss">
                             <input
                                 required
-                                type="password"
+                                type={showPassword ? "text" : "password"}
                                 placeholder="পাসওয়ার্ড "
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
                                 name="password"
@@ -164,16 +166,23 @@ const Register = () => {
                         >
                             কনফার্ম পাসওয়ার্ড(*)
                         </label>
+
                         <div className="containerss">
                             <input
                                 required
-                                type="password"
+                                type={showPassword ? "text" : "password"}
                                 placeholder="কনফার্ম পাসওয়ার্ড "
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
                                 name="conPassword"
                             />
                         </div>
                     </div>
+                    <h4
+                        className="text-blue-600 cursor-pointer text-center hover:underline"
+                        onClick={() => setShowPassword(!showPassword)}
+                    >
+                        {showPassword ? "পাসওয়ার্ড লুকান" : "পাসওয়ার্ড দেখান"}
+                    </h4>
                     <div className="flex flex-col mb-5 mt-6 md:flex-row lg:mt-10 md:mb-8 md:mt-8 gap-5 justify-center items-center">
                         <Checkbox
                             required
