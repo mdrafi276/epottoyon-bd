@@ -23,13 +23,13 @@ const LoginModal = () => {
             >
                 <div
                     onClick={(e_) => e_.stopPropagation()}
-                    className={`absolute w-full lg:h-[500px]   lg:w-[600px] bg-[#e8e8e8] drop-shadow-2xl rounded-lg ${
+                    className={`absolute w-full lg:w-[600px] bg-[#e8e8e8] drop-shadow-2xl rounded-lg ${
                         openLoginModal
                             ? "opacity-1 duration-300 translate-y-0"
                             : "-translate-y-20 opacity-0 duration-150"
                     }`}
                 >
-                    <form className="p-12">
+                    <form className="p-12 border-[6px] rounded-lg border-blue-700">
                         <svg
                             onClick={() => setOpenLoginModal(false)}
                             className="w-10 mx-auto mr-0 "
