@@ -50,6 +50,7 @@ const TopNav = () => {
               </span>
               <span>/</span>
 
+
               <Link to="/register">
                 <span className="cursor-pointer">Register</span>
               </Link>

@@ -4,13 +4,13 @@ import Footer from "../../components/Footer/Footer";
 
 const MainLayout = () => {
     return (
-      <>
-        <div className="dark:bg-[#323232]  ">
-          <Header />
-          <Outlet />
-          <Footer />
-        </div>
-      </>
+        <>
+            <Header />
+            <div className="min-h-[calc(100vh-355px)]">
+                <Outlet />
+            </div>
+            <Footer />
+        </>
     );
 };
 

@@ -5,6 +5,7 @@ import {
     getAuth,
     onAuthStateChanged,
     sendEmailVerification,
+    sendPasswordResetEmail,
     signInWithEmailAndPassword,
     signOut,
     updateProfile,
@@ -12,7 +13,6 @@ import {
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
-
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -39,7 +39,11 @@ const AuthProvider = ({ children }) => {
     };
 
     const verifyEmail = () => {
-        sendEmailVerification(auth.currentUser);
+        return sendEmailVerification(auth.currentUser);
+    };
+
+    const resetPassword = (email) => {
+        return sendPasswordResetEmail(auth, email);
     };
 
     useEffect(() => {
@@ -61,6 +65,7 @@ const AuthProvider = ({ children }) => {
         signIn,
         updateUser,
         verifyEmail,
+        resetPassword,
     };
     return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
 };

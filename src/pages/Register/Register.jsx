@@ -1,16 +1,19 @@
 import "./InputFild.css";
-import { Checkbox, Dialog, Spinner, Typography } from "@material-tailwind/react";
+import { Checkbox, Dialog, Input, Spinner, Typography } from "@material-tailwind/react";
 import "./Button.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 const Register = () => {
     const [loading, setLoading] = useState(false);
     const { createUser, updateUser, verifyEmail } = useContext(AuthContext);
-    const navigate = useNavigate();
     const [openVerificationModal, setOpenVerificationModal] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const navigate = useNavigate();
 
     const handleRegister = async (e) => {
         setLoading(true);
@@ -27,7 +30,7 @@ const Register = () => {
             phone,
             email,
             password,
-            type: "user",
+            role: "নাগরিক",
         };
 
         if (password === confirmedPassword) {
@@ -35,7 +38,7 @@ const Register = () => {
                 const res = await createUser(email, password);
                 await updateUser(name, phone);
                 await verifyEmail();
-                // await axios.post("http://localhost:5000/api/v1/users", newUser);
+                await axios.post("http://localhost:5000/api/v1/users", newUser);
 
                 setLoading(false);
                 setOpenVerificationModal(true);
@@ -147,12 +150,24 @@ const Register = () => {
                         >
                             পাসওয়ার্ড(*)
                         </label>
-                        <div className="containerss">
-                            <input
+                        <div className="containerss w-full md:w-[80%] lg:w-[70%] mx-auto">
+                            <Input
+                                icon={
+                                    showPassword ? (
+                                        <FaEyeSlash
+                                            className="cursor-pointer text-lg"
+                                            onClick={() => setShowPassword(!showPassword)}
+                                        />
+                                    ) : (
+                                        <FaEye
+                                            className="cursor-pointer text-lg"
+                                            onClick={() => setShowPassword(!showPassword)}
+                                        />
+                                    )
+                                }
                                 required
-                                type="password"
-                                placeholder="পাসওয়ার্ড "
-                                className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
+                                type={showPassword ? "text" : "password"}
+                                className="inputs"
                                 name="password"
                             />
                         </div>
@@ -164,16 +179,47 @@ const Register = () => {
                         >
                             কনফার্ম পাসওয়ার্ড(*)
                         </label>
-                        <div className="containerss">
+
+                        {/* <div className="containerss">
                             <input
                                 required
-                                type="password"
+                                type={showPassword ? "text" : "password"}
                                 placeholder="কনফার্ম পাসওয়ার্ড "
                                 className="inputs w-full md:w-[80%] lg:w-[70%] mx-auto"
+                            />
+                        </div> */}
+
+                        <div className="containerss w-full md:w-[80%] lg:w-[70%] mx-auto">
+                            <Input
+                                icon={
+                                    showConfirmPassword ? (
+                                        <FaEyeSlash
+                                            className="cursor-pointer text-lg"
+                                            onClick={() =>
+                                                setShowConfirmPassword(
+                                                    !showConfirmPassword
+                                                )
+                                            }
+                                        />
+                                    ) : (
+                                        <FaEye
+                                            className="cursor-pointer text-lg"
+                                            onClick={() =>
+                                                setShowConfirmPassword(
+                                                    !showConfirmPassword
+                                                )
+                                            }
+                                        />
+                                    )
+                                }
+                                required
+                                type={showConfirmPassword ? "text" : "password"}
+                                className="inputs"
                                 name="conPassword"
                             />
                         </div>
                     </div>
+
                     <div className="flex flex-col mb-5 mt-6 md:flex-row lg:mt-10 md:mb-8 md:mt-8 gap-5 justify-center items-center">
                         <Checkbox
                             required
