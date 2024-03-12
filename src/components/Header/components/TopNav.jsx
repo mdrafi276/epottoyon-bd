@@ -3,9 +3,12 @@ import Select from "../../Select/Select";
 import ThemeToggle from "./ThemeToggle/ThemeToggle";
 import useMainContext from "../../../hooks/useMainContext/useMainContext";
 import LoginModal from "../../../pages/Login/LoginModal";
+import { useContext } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const TopNav = () => {
     const { topMenuItems } = useMainContext();
+    const { user } = useContext(AuthContext);
 
     return (
         <nav className="bg-[#327a62] p-3 text-white">
@@ -19,16 +22,20 @@ const TopNav = () => {
                 </ul>
 
                 <ul className="flex items-center gap-4">
-                    <div className="flex gap-1 items-center">
-                        <span className="cursor-pointer">
-                            <LoginModal />
-                        </span>
-                        <span>/</span>
+                    {user ? (
+                        <Link to="/dashboard">ড্যাশবোর্ড</Link>
+                    ) : (
+                        <div className="flex gap-1 items-center">
+                            <span className="cursor-pointer">
+                                <LoginModal />
+                            </span>
+                            <span>/</span>
 
-                        <Link to="/register">
-                            <span className="cursor-pointer">Register</span>
-                        </Link>
-                    </div>
+                            <Link to="/register">
+                                <span className="cursor-pointer">রেজিস্টার</span>
+                            </Link>
+                        </div>
+                    )}
 
                     <Select>
                         <option>বাংলা</option>

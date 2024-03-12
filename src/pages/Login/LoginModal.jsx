@@ -1,15 +1,16 @@
 import { useContext, useState } from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordFill } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { Input } from "@material-tailwind/react";
+import { Input, Spinner } from "@material-tailwind/react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 const LoginModal = () => {
     const { openLoginModal, setOpenLoginModal, signIn } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         setLoading(true);
@@ -19,8 +20,11 @@ const LoginModal = () => {
         const password = e.target.password.value;
 
         try {
-            const res = await signIn(email, password)
-            alert('')
+            const res = await signIn(email, password);
+            alert("লগইন সফল হয়েছে");
+            setLoading(false);
+            navigate("dashboard");
+            setOpenLoginModal(false);
         } catch (error) {
             console.error(error);
             alert(error.message);
@@ -131,7 +135,7 @@ const LoginModal = () => {
                                 type="submit"
                                 className="py-2 text-black before:text-black after:text-black px-6 mb-4 mt-6  rounded-lg before:block before:-left-1 before:-top-1 before:bg-black before:rounded-lg before:absolute before:h-0 before:w-0 before:hover:w-[100%] before:hover:h-[100%]  before:duration-500 before:-z-40 after:block after:-right-1 after:-bottom-1 after:bg-black after:rounded-lg after:absolute after:h-0 after:w-0 after:hover:w-[100%] after:hover:h-[100%] after:duration-500 after:-z-40  bg-white  relative inline-block font-bold  shadow-2xl shadow-[#141414]"
                             >
-                                লগইন
+                                {loading ? <Spinner /> : "লগইন"}
                             </button>
                             <div className="flex  flex-col justify-start gap-1  items-center  ">
                                 <Link
