@@ -1,7 +1,7 @@
 const Riview = () => {
     return (
         <div className="">
-            <div className="flex flex-col   lg:flex-row w-[100%] mx-auto justify-center items-center ">
+            <div className="flex flex-col  dark:text-black lg:flex-row w-[100%] mx-auto justify-center items-center ">
                 <div className=" w-full bg-[#e7e7e7] md:h-[200px] h-[150px] md mt-1:md:mt-5 lg:h-[250px] ">
                     <h1 className="text-[15px]  lg:text-[20px] mt-4 md:mt-5 lg  lg:mt-5  text-purple-600 text-center font-bold  ">
                         জানুয়ারি মাসের সেবা উপার্জনকারী উদ্যোক্তা{" "}
