@@ -7,6 +7,7 @@ import DashboardLayout from "../../layouts/DashboardLayout/DashboardLayout";
 import Dashboard from "../../pages/Dashboard/Dashboard";
 import Profile from "../../pages/Profile/Profile";
 import ResetPassword from "../../pages/ResetPassword/ResetPassword";
+import ContactUs from "../../pages/ContactUs/contactUs";
 
 const MainRouter = createBrowserRouter([
     {
@@ -28,6 +29,11 @@ const MainRouter = createBrowserRouter([
             {
                 path: "/reset-password",
                 element: <ResetPassword />,
+            },
+            
+            {
+                path: "/contactUs",
+                element: <ContactUs />,
             },
         ],
     },
