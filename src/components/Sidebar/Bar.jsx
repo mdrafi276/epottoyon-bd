@@ -1,40 +1,48 @@
 import {
-      Accordion,
-      AccordionBody,
-      AccordionHeader,
-      Card,
-      List,
-      ListItem,
-      ListItemPrefix,
-      ListItemSuffix,
-      Typography,
-  } from "@material-tailwind/react";
-  import { useState } from "react";
-  import logo from "../../assets/logo.png";
-  import { Fa42Group } from "react-icons/fa6";
-  import { MdOutlineArrowForwardIos } from "react-icons/md";
-  import { RxDashboard } from "react-icons/rx";
-  import { CgProfile } from "react-icons/cg";
-  import { MdLogout } from "react-icons/md";
-  import { IoSettingsOutline } from "react-icons/io5";
-  import { PiCertificate } from "react-icons/pi";
-  import { LiaCertificateSolid } from "react-icons/lia";
-  import { MdReportGmailerrorred } from "react-icons/md";
-  import { TbMessageReport } from "react-icons/tb";
-  import { TbReceiptTax } from "react-icons/tb";
-  import { BsCurrencyDollar } from "react-icons/bs";
-  import { MdPostAdd } from "react-icons/md";
-  import { Link } from "react-router-dom";
+    Accordion,
+    AccordionBody,
+    AccordionHeader,
+    Card,
+    IconButton,
+    List,
+    ListItem,
+    ListItemPrefix,
+    ListItemSuffix,
+    Typography,
+} from "@material-tailwind/react";
+import { useState } from "react";
+import logo from "../../assets/logo.png";
+import { Fa42Group, FaX } from "react-icons/fa6";
+import { MdOutlineArrowForwardIos } from "react-icons/md";
+import { RxDashboard } from "react-icons/rx";
+import { CgProfile } from "react-icons/cg";
+import { MdLogout } from "react-icons/md";
+import { IoSettingsOutline } from "react-icons/io5";
+import { PiCertificate } from "react-icons/pi";
+import { LiaCertificateSolid } from "react-icons/lia";
+import { MdReportGmailerrorred } from "react-icons/md";
+import { TbMessageReport } from "react-icons/tb";
+import { TbReceiptTax } from "react-icons/tb";
+import { BsCurrencyDollar } from "react-icons/bs";
+import { MdPostAdd } from "react-icons/md";
+import { Link } from "react-router-dom";
 
-const Bar = () => {
-      const [open, setOpen] = useState(0);
-  
-      const handleOpen = (value) => {
-          setOpen(open === value ? 0 : value);
-      };
+const Bar = ({ setDrawerOpen }) => {
+    const [open, setOpen] = useState(0);
 
-      return (
-            <Card className="h-screen sticky top-0 left-0 overflow-y-auto bg-blue-50 p-4 shadow-xl shadow-blue-gray-900/5">
+    const handleOpen = (value) => {
+        setOpen(open === value ? 0 : value);
+    };
+
+    return (
+        <Card className="h-screen relative lg:sticky top-0 left-0 overflow-y-auto bg-blue-50 p-4 shadow-xl shadow-blue-gray-900/5">
+            <IconButton
+                color="green"
+                onClick={() => setDrawerOpen(false)}
+                className="!absolute block lg:hidden top-4 right-4 z-20"
+            >
+                <FaX className="text-lg" />
+            </IconButton>
             <Link to="/" className="mb-2 flex items-center gap-4 p-4">
                 <img className="w-44 mx-auto" src={logo} alt="UDCBD Logo" />
             </Link>
@@ -57,7 +65,7 @@ const Bar = () => {
                                 <RxDashboard className="h-5 w-5" />
                             </ListItemPrefix>
                             ড্যাশবোর্ড
-                            <ListItemSuffix></ListItemSuffix>
+                            {/* <ListItemSuffix></ListItemSuffix> */}
                         </ListItem>
                     </Link>
                     <ListItem>
@@ -65,14 +73,14 @@ const Bar = () => {
                             <MdPostAdd className="h-5 w-5" />
                         </ListItemPrefix>
                         সনদের জন্য আবেদন
-                        <ListItemSuffix></ListItemSuffix>
+                        {/* <ListItemSuffix></ListItemSuffix> */}
                     </ListItem>
                     <ListItem>
                         <ListItemPrefix>
                             <LiaCertificateSolid className="h-5 w-5" />
                         </ListItemPrefix>
                         সকল সনদ
-                        <ListItemSuffix></ListItemSuffix>
+                        {/* <ListItemSuffix></ListItemSuffix> */}
                     </ListItem>
                     {/* dashobrdroute */}
                     <ListItem className="p-0" selected={open === 1}>
@@ -344,21 +352,21 @@ const Bar = () => {
                         <PiCertificate className="h-5 w-5" />
                     </ListItemPrefix>
                     সনদ সেটিং
-                    <ListItemSuffix></ListItemSuffix>
+                    {/* <ListItemSuffix></ListItemSuffix> */}
                 </ListItem>
                 <ListItem>
                     <ListItemPrefix>
                         <BsCurrencyDollar className="h-5 w-5" />
                     </ListItemPrefix>
                     পেমেন্ট সেটিং
-                    <ListItemSuffix></ListItemSuffix>
+                    {/* <ListItemSuffix></ListItemSuffix> */}
                 </ListItem>
                 <ListItem>
                     <ListItemPrefix>
                         <BsCurrencyDollar className="h-5 w-5" />
                     </ListItemPrefix>
                     এড ব্যালেন্স
-                    <ListItemSuffix></ListItemSuffix>
+                    {/* <ListItemSuffix></ListItemSuffix> */}
                 </ListItem>
 
                 <ListItem>
@@ -381,7 +389,7 @@ const Bar = () => {
                 </ListItem>
             </List>
         </Card>
-      );
+    );
 };
 
 export default Bar;
