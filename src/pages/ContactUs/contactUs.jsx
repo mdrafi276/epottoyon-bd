@@ -67,10 +67,10 @@ const ContactUs = () => {
     });
   };
   return (
-    <div className="lg:w-[60%] md:w-[75%] w-[95%] mt-2 border-4 border-[#8A569B] bg-[#dcdcdc] rounded-2xl mb-20 py-5  lg:py-10  mx-auto ">
+    <div className="lg:w-[50%] md:w-[75%] w-[95%] mt-2 border-4 border-[#8A569B] bg-[#dcdcdc] rounded-2xl mb-20 py-5  lg:py-20  mx-auto ">
       <Card color="transparent" shadow={false}>
         <Typography
-          className="text-center bg-[#8A569B]  md:py-2 text-white dark:text-white md:mx-24 lg:mx-[150px] rounded-xl text-sm py-2 mx-10 md:text-xl lg:text-3xl "
+          className="text-center bg-[#8A569B]  md:py-2 text-white dark:text-white md:mx-24 lg:mx-[90px] rounded-xl text-sm py-2 mx-10 md:text-xl lg:text-2xl "
           variant="h4"
           color="blue-gray"
         >
@@ -80,7 +80,7 @@ const ContactUs = () => {
         <form
           ref={ref}
           onSubmit={handleSubmit}
-          className=" lg:w-[90%] w-full  mx-auto w- mt-8 mb-2  max-w-screen-lg sm:w-96"
+          className=" lg:w-[75%] w-full  mx-auto w- mt-8 mb-2  max-w-screen-lg sm:w-96"
         >
           <div className="mb-1 flex flex-col gap-6">
             <Typography variant="h6" color="blue-gray" className="-mb-3">
@@ -89,9 +89,10 @@ const ContactUs = () => {
             <Input
               name="name"
               size="lg"
+              required
               placeholder="নাম"
               onChange={handleChange}
-              className=" !border-t-blue-gray-200 w-[98%] md:w-full mx auto bg-cyan-100 focus:!border-t-gray-900"
+              className=" !border-t-blue-gray-200 w-[98%] md:w-full mx auto !bg-cyan-50 focus:!border-t-gray-900"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
@@ -101,10 +102,11 @@ const ContactUs = () => {
             </Typography>
             <Input
               size="lg"
+              required
               onChange={handleChange}
               name="email"
               placeholder="name@mail.com"
-              className=" !border-t-blue-gray-200 w-[98%] md:w-full mx auto bg-cyan-100 focus:!border-t-gray-900"
+              className=" !border-t-blue-gray-200 w-[98%] md:w-full mx auto !bg-cyan-50 focus:!border-t-gray-900"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
@@ -114,11 +116,12 @@ const ContactUs = () => {
             </Typography>
             <Input
               type="text"
-              size="lg"
+              
+              required
               name="message"
               onChange={handleChange}
               placeholder="মেসেজ লিখুন "
-              className=" !border-t-blue-gray-200  w-[98%] md:w-full mx auto bg-cyan-100 focus:!border-t-gray-900"
+              className=" !border-t-blue-gray-600 !h-[50px] w-[98%] md:w-full mx auto !bg-cyan-50 focus:!border-t-gray-900"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
@@ -127,7 +130,7 @@ const ContactUs = () => {
 
           <Button
             type="submit"
-            className="mt-6 w-[98%] md:w-full mx auto py-2 text-xl "
+            className="mt-6 w-[98%]  md:w-[50%] mx-auto py-2 text-xl "
             fullWidth
           >
             {loading ? "Sending..." : "সাবমিট"}

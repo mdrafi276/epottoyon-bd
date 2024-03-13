@@ -8,50 +8,65 @@ import Dashboard from "../../pages/Dashboard/Dashboard";
 import Profile from "../../pages/Profile/Profile";
 import ResetPassword from "../../pages/ResetPassword/ResetPassword";
 import ContactUs from "../../pages/ContactUs/contactUs";
+import Trams from "../../pages/Trams/Trams";
+import UserInfoForm from "../../pages/Dashboard/UserInfoForm/UserInfoForm";
+import UnionInfoForm from "../../pages/Dashboard/UnionInfoForm/UnionInfoForm";
 
 const MainRouter = createBrowserRouter([
-    {
-        path: "/",
-        element: <MainLayout />,
-        children: [
-            {
-                index: true,
-                element: <Home />,
-            },
-            {
-                path: "/register",
-                element: <Register />,
-            },
-            {
-                path: "/loRegister",
-                element: <LoyalRegister />,
-            },
-            {
-                path: "/reset-password",
-                element: <ResetPassword />,
-            },
-            
-            {
-                path: "/contactUs",
-                element: <ContactUs />,
-            },
-        ],
-    },
-    {
-        path: "/dashboard",
-        element: <DashboardLayout />,
-        children: [
-            {
-                index: true,
-                element: <Dashboard />,
-            },
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/loRegister",
+        element: <LoyalRegister />,
+      },
+      {
+        path: "/reset-password",
+        element: <ResetPassword />,
+      },
 
-            {
-                path: "/dashboard/profile",
-                element: <Profile />,
-            },
-        ],
-    },
+      {
+        path: "/contact",
+        element: <ContactUs />,
+      },
+      {
+        path: "/terms-and-conditions",
+        element: <Trams />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <Dashboard />,
+      },
+
+      {
+        path: "/dashboard/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/dashboard/user-info-form",
+        element: <UserInfoForm />,
+      },
+      {
+        path: "/dashboard/union-info-form",
+        element: <UnionInfoForm />,
+      },
+    ],
+  },
 ]);
 
 export default MainRouter;
