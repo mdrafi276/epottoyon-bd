@@ -1,16 +1,25 @@
-import { Input } from "@material-tailwind/react";
-import { useEffect, useState } from "react";
+import { Input, Spinner } from "@material-tailwind/react";
+import { useContext, useState } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
+import { getAllCertificates } from "../../../../api/certificates";
+import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../../../Provider/AuthProvider";
 
 const Services = () => {
-    const [services, setServices] = useState([]);
     const [searchInputValue, setSearchInputValue] = useState("");
+    const { user } = useContext(AuthContext);
 
-    useEffect(() => {
-        fetch("/services.json")
-            .then((res) => res.json())
-            .then((data) => setServices(data));
-    }, []);
+    const {
+        data: certificates,
+        isLoading,
+        isError,
+        error,
+        refetch,
+    } = useQuery({
+        queryKey: ["certificate"],
+        queryFn: getAllCertificates,
+    });
 
     return (
         <div className="w-full lg:w-2/3 flex-col border-2 border-black lg:flex-row shadow-xl">
@@ -26,28 +35,50 @@ const Services = () => {
                     />
                 </div>
             </div>
-
-            <div className="h-96 overflow-y-scroll grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 p-5">
-                {services
-                    ?.filter((service) =>
-                        service?.label
-                            .toLowerCase()
-                            .includes(searchInputValue.toLowerCase())
-                    )
-                    ?.map((service) => (
-                        <div
-                            className="text-center cursor-pointer shadow-md bg-[#2b5b2e] text-white hover:text-black hover:shadow-lg hover:bg-gray-100 transition-all rounded py-2 h-44 sm:h-fit flex flex-col gap-2 items-center justify-center"
-                            key={service?.id}
+            {isLoading ? (
+                <Spinner color="green" className="mx-auto h-16 w-16 my-5" />
+            ) : isError ? (
+                <>
+                    {console.error(error)}
+                    <p className="text-center">
+                        {error.message}
+                        {". "}
+                        <span
+                            onClick={refetch}
+                            className="text-blue-500 hover:underline cursor-pointer"
                         >
-                            <img
-                                className="w-20 mx-auto rounded-full"
-                                src={service?.image}
-                                alt={service?.label}
-                            />
-                            <p className="font-bold">{service.label}</p>
-                        </div>
-                    ))}
-            </div>
+                            Try Again
+                        </span>
+                    </p>
+                </>
+            ) : (
+                <div className="h-96 overflow-y-scroll grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 p-5">
+                    {certificates
+                        ?.filter((certificate) =>
+                            certificate.description
+                                .toLowerCase()
+                                .includes(searchInputValue.toLowerCase())
+                        )
+                        ?.map((certificate) => (
+                            <Link
+                                to={
+                                    user && user.emailVerified
+                                        ? "/dashboard/apply-for-certificate"
+                                        : "register"
+                                }
+                                className="text-center cursor-pointer shadow-md bg-[#2b5b2e] text-white hover:text-black hover:shadow-lg hover:bg-gray-100 transition-all rounded h-40 flex flex-col gap-2 items-center justify-center"
+                                key={certificate.id}
+                            >
+                                <img
+                                    className="w-20 mx-auto rounded-full"
+                                    src={`https://www.udcbd.net/setting/banner/${certificate.image}`}
+                                    alt={certificate.description}
+                                />
+                                <p className="font-bold">{certificate.description}</p>
+                            </Link>
+                        ))}
+                </div>
+            )}
         </div>
     );
 };

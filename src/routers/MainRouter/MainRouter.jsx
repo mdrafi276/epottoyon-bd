@@ -7,6 +7,7 @@ import DashboardLayout from "../../layouts/DashboardLayout/DashboardLayout";
 import Dashboard from "../../pages/Dashboard/Dashboard";
 import Profile from "../../pages/Profile/Profile";
 import ResetPassword from "../../pages/ResetPassword/ResetPassword";
+import ApplyForCertificate from "../../pages/ApplyForCertificate/ApplyForCertificate";
 
 const MainRouter = createBrowserRouter([
     {
@@ -39,10 +40,13 @@ const MainRouter = createBrowserRouter([
                 index: true,
                 element: <Dashboard />,
             },
-
             {
                 path: "/dashboard/profile",
                 element: <Profile />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate",
+                element: <ApplyForCertificate />,
             },
         ],
     },

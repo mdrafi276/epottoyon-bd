@@ -7,7 +7,6 @@ import {
     List,
     ListItem,
     ListItemPrefix,
-    ListItemSuffix,
     Typography,
 } from "@material-tailwind/react";
 import { useState } from "react";
@@ -58,29 +57,28 @@ const Bar = ({ setDrawerOpen }) => {
                     }
                 >
                     {/* dashobrdroute */}
-                    <Link to="/dashboard/dashboardHome">
+                    <Link to="/dashboard">
                         {" "}
                         <ListItem>
                             <ListItemPrefix>
                                 <RxDashboard className="h-5 w-5" />
                             </ListItemPrefix>
                             ড্যাশবোর্ড
-                            {/* <ListItemSuffix></ListItemSuffix> */}
                         </ListItem>
                     </Link>
-                    <ListItem>
-                        <ListItemPrefix>
-                            <MdPostAdd className="h-5 w-5" />
-                        </ListItemPrefix>
-                        সনদের জন্য আবেদন
-                        {/* <ListItemSuffix></ListItemSuffix> */}
-                    </ListItem>
+                    <Link to="/dashboard/apply-for-certificate">
+                        <ListItem>
+                            <ListItemPrefix>
+                                <MdPostAdd className="h-5 w-5" />
+                            </ListItemPrefix>
+                            সনদের জন্য আবেদন
+                        </ListItem>
+                    </Link>
                     <ListItem>
                         <ListItemPrefix>
                             <LiaCertificateSolid className="h-5 w-5" />
                         </ListItemPrefix>
                         সকল সনদ
-                        {/* <ListItemSuffix></ListItemSuffix> */}
                     </ListItem>
                     {/* dashobrdroute */}
                     <ListItem className="p-0" selected={open === 1}>
@@ -299,74 +297,38 @@ const Bar = ({ setDrawerOpen }) => {
                     <AccordionBody className="py-1">
                         <List className="p-0">
                             <ListItem>
-                                <Accordion
-                                    open={open === 7}
-                                    icon={
-                                        <MdOutlineArrowForwardIos
-                                            className={`mx-auto h-4  w-4 transition-transform ${
-                                                open === 7 ? "rotate-90" : ""
-                                            }`}
-                                        />
-                                    }
-                                >
-                                    <ListItem className="p-0" selected={open === 7}>
-                                        <AccordionHeader
-                                            onClick={() => handleOpen(7)}
-                                            className="border-b-0 p-3"
-                                        >
-                                            <ListItemPrefix>
-                                                <Fa42Group className="h-5 w-5" />
-                                            </ListItemPrefix>
-                                            <Typography
-                                                color="blue-gray"
-                                                className="mr-auto font-normal"
-                                            >
-                                                ইউজার সেটিং
-                                            </Typography>
-                                        </AccordionHeader>
-                                    </ListItem>
-                                    <AccordionBody className="py-1">
-                                        <List className="p-0">
-                                            <ListItem>
-                                                <ListItemPrefix>
-                                                    <Fa42Group className="h-3 w-5" />
-                                                </ListItemPrefix>
-                                                এড ইউজার
-                                            </ListItem>
-                                            <ListItem>
-                                                <ListItemPrefix>
-                                                    <Fa42Group className="h-3 w-5" />
-                                                </ListItemPrefix>
-                                                ইউজার পারমিশন
-                                            </ListItem>
-                                        </List>
-                                    </AccordionBody>
-                                </Accordion>
+                                <ListItemPrefix>
+                                    <Fa42Group className="h-3 w-5" />
+                                </ListItemPrefix>
+                                এড ইউজার
+                            </ListItem>
+                            <ListItem>
+                                <ListItemPrefix>
+                                    <Fa42Group className="h-3 w-5" />
+                                </ListItemPrefix>
+                                ইউজার পারমিশন
                             </ListItem>
                         </List>
                     </AccordionBody>
                 </Accordion>
-                <hr className="my-2 border-blue-gray-50" />
+                <hr className="my-2 border-gray-500" />
                 <ListItem>
                     <ListItemPrefix>
                         <PiCertificate className="h-5 w-5" />
                     </ListItemPrefix>
                     সনদ সেটিং
-                    {/* <ListItemSuffix></ListItemSuffix> */}
                 </ListItem>
                 <ListItem>
                     <ListItemPrefix>
                         <BsCurrencyDollar className="h-5 w-5" />
                     </ListItemPrefix>
                     পেমেন্ট সেটিং
-                    {/* <ListItemSuffix></ListItemSuffix> */}
                 </ListItem>
                 <ListItem>
                     <ListItemPrefix>
                         <BsCurrencyDollar className="h-5 w-5" />
                     </ListItemPrefix>
                     এড ব্যালেন্স
-                    {/* <ListItemSuffix></ListItemSuffix> */}
                 </ListItem>
 
                 <ListItem>
