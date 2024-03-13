@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getAllCertificates } from "../../api/certificates";
+import { getAllCertificates } from "../../../api/certificates";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Input, Spinner } from "@material-tailwind/react";
@@ -58,6 +58,7 @@ const ApplyForCertificate = () => {
                         )
                         ?.map((certificate) => (
                             <Link
+                                to={`/dashboard/apply-for-certificate/${certificate?.description}`}
                                 className="text-center cursor-pointer shadow-md bg-[#2b5b2e] text-white hover:text-black hover:shadow-lg hover:bg-yellow-50 transition-all rounded h-40 flex flex-col gap-2 items-center justify-center"
                                 key={certificate.id}
                             >
