@@ -1,13 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAllCertificates } from "../../api/certificates";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
+import { useState } from "react";
 import { Input, Spinner } from "@material-tailwind/react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
 const ApplyForCertificate = () => {
-    const { user } = useContext(AuthContext);
     const [searchInputValue, setSearchInputValue] = useState("");
 
     const {
