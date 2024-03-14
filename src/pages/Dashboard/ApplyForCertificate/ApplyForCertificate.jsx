@@ -21,8 +21,8 @@ const ApplyForCertificate = () => {
 
     return (
         <div className="p-8 space-y-6">
-            <div className="flex flex-col sm:flex-row gap-4 justify-between items-center">
-                <h2 className="text-3xl font-bold">সনদ বেছে নিন</h2>
+            <div className="flex flex-col sm:flex-row gap-6 justify-end items-center">
+                <h2 className="text-2xl font-bold">সনদ বেছে নিন</h2>
                 <span className="w-60">
                     <Input
                         icon={<FaMagnifyingGlass />}
@@ -49,7 +49,7 @@ const ApplyForCertificate = () => {
                     </p>
                 </>
             ) : (
-                <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-5 xl:grid-cols-6 gap-4">
                     {certificates
                         ?.filter((certificate) =>
                             certificate.description
@@ -59,15 +59,17 @@ const ApplyForCertificate = () => {
                         ?.map((certificate) => (
                             <Link
                                 to={`/dashboard/apply-for-certificate/${certificate?.description}`}
-                                className="text-center cursor-pointer shadow-md bg-[#2b5b2e] text-white hover:text-black hover:shadow-lg hover:bg-yellow-50 transition-all rounded h-40 flex flex-col gap-2 items-center justify-center"
+                                className="text-center cursor-pointer shadow-md bg-[#2b5b2e] text-white hover:text-black hover:shadow-lg hover:bg-yellow-50 transition-all rounded h-32 flex flex-col gap-2 items-center justify-center"
                                 key={certificate.id}
                             >
                                 <img
-                                    className="w-20 mx-auto rounded-full"
+                                    className="w-16 mx-auto rounded-full"
                                     src={`https://www.udcbd.net/setting/banner/${certificate.image}`}
                                     alt={certificate.description}
                                 />
-                                <p className="font-bold">{certificate.description}</p>
+                                <p className="font-bold text-sm">
+                                    {certificate.description}
+                                </p>
                             </Link>
                         ))}
                 </div>
