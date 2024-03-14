@@ -3,7 +3,7 @@ import { Input } from "postcss";
 const UserInfoForm = () => {
     return (
       <div>
-        <form className="w-[95%] lg:px-0 md:px-24 px-5 mb-3 mt-3  md:mt-8 md:w-[85%] lg:w-[95%] lg:mt-10 lg:py-8  mx-auto border-4 bg-gray-100 border-[#8A569B]">
+        <form className="w-[95%] rounded-md lg:px-0 md:px-24 px-5 mb-3 mt-3  md:mt-8 md:w-[85%] lg:w-[95%] lg:mt-10 lg:py-8  mx-auto border-4 bg-gray-100 border-[#8A569B]">
           {" "}
           <div>
             <h1 className="text-xl text-center border-2 mt-2 bg-[#8A569B]  text-white rounded-xl font-bold file: md:text-2xl md:mt-5 lg:mt-0 lg:text-3xl  py-2">
