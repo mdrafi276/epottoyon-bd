@@ -54,7 +54,6 @@ const MainRouter = createBrowserRouter([
         index: true,
         element: <Dashboard />,
       },
-
       {
         path: "/dashboard/profile",
         element: <Profile />,
@@ -70,13 +69,14 @@ const MainRouter = createBrowserRouter([
       {
         path: "/dashboard/apply-for-certificate",
         element: <ApplyForCertificate />,
-       },
-       {
+      },
+      {
          path: "/dashboard/apply-for-certificate/পারিবারিক সনদ",
          element: <FamilyCertificate />,
-        },
+      },
     ],
   },
+]);
 
 
 export default MainRouter;
