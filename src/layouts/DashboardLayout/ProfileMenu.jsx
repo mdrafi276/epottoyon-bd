@@ -10,32 +10,38 @@ import {
 import React, { useContext, useState } from "react";
 import { FaMarkdown, FaUser } from "react-icons/fa6";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 function ProfileMenu() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { user, logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
+
     const closeMenu = () => setIsMenuOpen(false);
-    const { user } = useContext(AuthContext);
 
     const profileMenuItems = [
         {
-            label: "My Profile",
+            label: "Profile",
             icon: FaUser,
+            func: () => {
+                closeMenu();
+                return navigate("/dashboard/profile");
+            },
         },
         {
-            label: "Edit Profile",
+            label: "Top Up",
             icon: FaUser,
-        },
-        {
-            label: "Inbox",
-            icon: FaUser,
-        },
-        {
-            label: "Help",
-            icon: FaUser,
+            func: () => {
+                closeMenu();
+            },
         },
         {
             label: "Sign Out",
             icon: FaUser,
+            func: () => {
+                closeMenu();
+                logOut();
+            },
         },
     ];
 
@@ -63,12 +69,12 @@ function ProfileMenu() {
                 </Button>
             </MenuHandler>
             <MenuList className="p-1 border-2 border-green-500">
-                {profileMenuItems.map(({ label, icon }, key) => {
+                {profileMenuItems.map(({ label, icon, func }, key) => {
                     const isLastItem = key === profileMenuItems.length - 1;
                     return (
                         <MenuItem
                             key={label}
-                            onClick={closeMenu}
+                            onClick={func}
                             className={`flex items-center gap-2 rounded ${
                                 isLastItem
                                     ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
@@ -76,7 +82,9 @@ function ProfileMenu() {
                             }`}
                         >
                             {React.createElement(icon, {
-                                className: `h-4 w-4 ${isLastItem ? "text-red-500" : "text-green-500"}`,
+                                className: `h-4 w-4 ${
+                                    isLastItem ? "text-red-500" : "text-green-500"
+                                }`,
                                 strokeWidth: 2,
                             })}
                             <Typography

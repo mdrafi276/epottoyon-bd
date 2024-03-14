@@ -7,7 +7,6 @@ import {
     List,
     ListItem,
     ListItemPrefix,
-    ListItemSuffix,
     Typography,
 } from "@material-tailwind/react";
 import { useState } from "react";
@@ -119,6 +118,7 @@ const Bar = ({ setDrawerOpen }) => {
                     <Fa42Group strokeWidth={3} className="h-3 w-5" />
                   </ListItemPrefix>
                   সকল নোটিশ
+
                 </ListItem>
               </List>
             </AccordionBody>
@@ -153,6 +153,7 @@ const Bar = ({ setDrawerOpen }) => {
                     <Fa42Group strokeWidth={3} className="h-3 w-5" />
                   </ListItemPrefix>
                   বিচারের রায় তৈরি করুন
+
                 </ListItem>
                 <ListItem>
                   <ListItemPrefix>

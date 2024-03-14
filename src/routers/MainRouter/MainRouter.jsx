@@ -11,6 +11,8 @@ import ContactUs from "../../pages/ContactUs/contactUs";
 import Trams from "../../pages/Trams/Trams";
 import UserInfoForm from "../../pages/Dashboard/UserInfoForm/UserInfoForm";
 import UnionInfoForm from "../../pages/Dashboard/UnionInfoForm/UnionInfoForm";
+import ApplyForCertificate from "../../pages/Dashboard/ApplyForCertificate/ApplyForCertificate";
+import FamilyCertificate from "../../pages/Dashboard/FamilyCertificate/FamilyCertificate";
 
 const MainRouter = createBrowserRouter([
   {
@@ -65,8 +67,16 @@ const MainRouter = createBrowserRouter([
         path: "/dashboard/union-info-form",
         element: <UnionInfoForm />,
       },
+      {
+        path: "/dashboard/apply-for-certificate",
+        element: <ApplyForCertificate />,
+       },
+       {
+         path: "/dashboard/apply-for-certificate/পারিবারিক সনদ",
+         element: <FamilyCertificate />,
+        },
     ],
   },
-]);
+
 
 export default MainRouter;
