@@ -7,6 +7,8 @@ import DashboardLayout from "../../layouts/DashboardLayout/DashboardLayout";
 import Dashboard from "../../pages/Dashboard/Dashboard";
 import Profile from "../../pages/Profile/Profile";
 import ResetPassword from "../../pages/ResetPassword/ResetPassword";
+import ApplyForCertificate from "../../pages/Dashboard/ApplyForCertificate/ApplyForCertificate";
+import FamilyCertificate from "../../pages/Dashboard/FamilyCertificate/FamilyCertificate";
 
 const MainRouter = createBrowserRouter([
     {
@@ -39,10 +41,17 @@ const MainRouter = createBrowserRouter([
                 index: true,
                 element: <Dashboard />,
             },
-
             {
                 path: "/dashboard/profile",
                 element: <Profile />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate",
+                element: <ApplyForCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/পারিবারিক সনদ",
+                element: <FamilyCertificate />,
             },
         ],
     },

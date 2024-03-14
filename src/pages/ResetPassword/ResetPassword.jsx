@@ -29,11 +29,14 @@ const ResetPassword = () => {
 
     return (
         <div className="flex justify-center items-center h-[calc(100vh-355px)]">
-            <form onSubmit={handleResetPassword} className="w-10/12 sm:w-2/3 lg:w-1/2">
-                <h3 className="text-lg sm:text-2xl xl:text-3xl text-center pb-4 font-bold">
+            <form
+                onSubmit={handleResetPassword}
+                className="w-10/12 sm:w-2/3 lg:w-1/3 border-4 p-8 shadow-xl rounded-xl border-green-600"
+            >
+                <h3 className="text-lg sm:text-2xl text-center pb-6 font-bold dark:text-white">
                     পাসওয়ার্ড রিসেটের জন্য আপনার একাউন্ট এর ইমেইলটি লিখুন।
                 </h3>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-4">
                     <input
                         required
                         name="email"
@@ -43,7 +46,7 @@ const ResetPassword = () => {
                         className="p-3 bg-[#9ef9ff] text-black drop-shadow-lg rounded-lg outline-none"
                     />
 
-                    <Button type="submit" color="blue">
+                    <Button className="w-fit mx-auto rounded-xl" type="submit" color="blue">
                         {loading ? <Spinner className="mx-auto" /> : "রিসেট ইমেইল পাঠান"}
                     </Button>
                 </div>
