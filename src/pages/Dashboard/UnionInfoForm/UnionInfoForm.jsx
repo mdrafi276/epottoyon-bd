@@ -1,7 +1,10 @@
 import { Input } from "@material-tailwind/react";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getAllUnions } from "../../../api/certificates";
 
 const UnionInfoForm = () => {
+  
 
   const [selectedRole1, setSelectedRole1] = useState("")
   const [selectedRole2, setSelectedRole2] = useState("")
@@ -9,6 +12,15 @@ const UnionInfoForm = () => {
   const [selectedRole4, setSelectedRole4] = useState("")
   const [selectedRole5, setSelectedRole5] = useState("")
   const [selectedRole6, setSelectedRole6] = useState("")
+ 
+  const {data:unions, isLoading, isError, error, refetch} = useQuery({
+
+    queryKey:['union'],
+    queryFn:getAllUnions
+  }) 
+  console.log(unions)
+
+
 
     const handleChange1 = (event) => {
       setSelectedRole1(event.target.value);
@@ -165,7 +177,17 @@ console.log(
                     <h1 className="text-sm pt-5 lg:text-[16px]  text-black  pl-4 mb-2">
                       ইউনিয়ন পরিষদের নাম *
                     </h1>
-                    <Input className="bg-cyan-50" name="ইউনিয়নপরিষদেরনাম" type="text" />
+                    <select
+                        onChange={handleChange2}
+                        className="peer h-full bg-cyan-50 w-full rounded-[7px] border border-blue-gray-200 border-t-transparent  px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 empty:!bg-gray-900 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                      >
+                       {unions?.map(union =><option value="brazil">{union.name}</option> )}
+                        
+                        
+                      </select>
+                      <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                        নির্বাচন করুন
+                      </label>
                   </div>{" "}
                 </div>
               </div>
