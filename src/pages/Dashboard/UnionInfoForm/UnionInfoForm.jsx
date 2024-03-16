@@ -6,9 +6,11 @@ import {
     getDivisions,
     getUnions,
     getUpazillas,
+    uploadImage,
 } from "../../../api/certificates";
 
 const UnionInfoForm = () => {
+    const [loading, setLoading] = useState(false);
     const [selectedDivision, setSelectedDivision] = useState("");
     const [selectedDistrict, setSelectedDistrict] = useState("");
     const [selectedUpazilla, setSelectedUpazilla] = useState("");
@@ -96,8 +98,9 @@ const UnionInfoForm = () => {
         queryFn: () => getUnions(selectedEnglishUpazilla),
     });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
 
         const chairmanName = e.target.chairmanName.value;
         const chairmanPhone = e.target.chairmanPhone.value;
@@ -148,10 +151,19 @@ const UnionInfoForm = () => {
             selectedDistrict !== selectedEnglishDistrict ||
             selectedDivision !== selectedEnglishDivision
         ) {
-            
             alert("বাংলা এবং ইংরেজি লোকেশন এক নয়");
         } else {
-            console.log(unionInfos);
+            try {
+                const idCardData = await uploadImage(idCard);
+                const unionLogoData = await uploadImage(unionLogo);
+                const photoData = await uploadImage(photo);
+
+                setLoading(false);
+            } catch (error) {
+                console.error(error);
+                alert(error.message);
+                setLoading(false);
+            }
         }
     };
 

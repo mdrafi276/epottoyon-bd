@@ -24,3 +24,16 @@ export const getDivisions = async () => {
       const { data } = await axiosSecure.get("/divisions")
       return data;
 }
+
+export const uploadImage = async (image) => {
+      //will take the full image variable as an argument
+      const formData = new FormData();
+      formData.append("image", image);
+
+      const { data } = await axiosSecure.post(
+          `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_imgBbApiKey}`,
+          formData
+      );
+
+      return data;
+  };
