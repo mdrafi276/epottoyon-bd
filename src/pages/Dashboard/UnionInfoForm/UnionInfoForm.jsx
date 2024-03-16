@@ -17,8 +17,6 @@ const UnionInfoForm = () => {
     const [selectedEnglishDistrict, setSelectedEnglishDistrict] = useState("");
     const [selectedEnglishUpazilla, setSelectedEnglishUpazilla] = useState("");
     const [selectedEnglishUnion, setSelectedEnglishUnion] = useState("");
-    const [selectedRole5, setSelectedRole5] = useState("");
-    const [selectedRole6, setSelectedRole6] = useState("");
 
     const handleChangeSelectedDivision = (event) => {
         setSelectedDivision(event);
@@ -43,12 +41,6 @@ const UnionInfoForm = () => {
     };
     const handleChangeEnglishUnion = (event) => {
         setSelectedEnglishUnion(event);
-    };
-    const handleChange5 = (event) => {
-        setSelectedRole5(event.target.value);
-    };
-    const handleChange6 = (event) => {
-        setSelectedRole6(event.target.value);
     };
 
     //loading the divisions
@@ -106,25 +98,61 @@ const UnionInfoForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const form = e.target;
-        const ইউনিয়নপরিষদেরনাম = form.ইউনিয়নপরিষদেরনাম.value;
-        const VoterIDNumber = form.VoterIDNumber.value;
-        const PatisthanaName = form.PatisthanaName.value;
-        const ChairmanMobileNumber = form.ChairmanMobileNumber.value;
-        const ChairmanName = form.ChairmanName.value;
-        const ছবিআপলোড = form.ছবিআপলোড.value;
-        const ইউনিয়নপরিষদলোগো = form.ইউনিয়নপরিষদলোগো.value;
-        const ফেসবুকআইডিলিংক = form.ফেসবুকআইডিলিংক.value;
-        const পতিস্থানেরনাম = form.পতিস্থানেরনাম.value;
-        const ভোটারআইডিকার্ডআপলোড = form.ভোটারআইডিকার্ডআপলোড.value;
-        const ভোটারআইডিনম্বার = form.ভোটারআইডিনম্বার.value;
-        const মোবাইলনাম্বার = form.মোবাইলনাম্বার.value;
-        const চেয়ারম্যানেরমোবাইলনম্বার = form.চেয়ারম্যানেরমোবাইলনম্বার.value;
-        const UnionParishadName = form.UnionParishadName.value;
-        const ইমেল = form.ইমেল.value;
-        const চেয়ারম্যানেরনাম = form.চেয়ারম্যানেরনাম.value;
 
-        console.log(selectedDivision, selectedDistrict, selectedUpazilla, selectedUnion);
+        const chairmanName = e.target.chairmanName.value;
+        const chairmanPhone = e.target.chairmanPhone.value;
+        const phone = e.target.phone.value;
+        const voterId = e.target.voterId.value;
+        const idCard = e.target.idCard.files[0];
+        const email = e.target.email.value;
+        const institutionName = e.target.institutionName.value;
+        const facebookLink = e.target.facebookLink.value;
+        const unionLogo = e.target.unionLogo.files[0];
+        const photo = e.target.photo.files[0];
+        const chairmanEng = e.target.chairmanEng.value;
+        const chairmanPhoneEng = e.target.chairmanPhoneEng.value;
+        const institutionNameEng = e.target.institutionNameEng.value;
+        const voterIdEng = e.target.voterIdEng.value;
+
+        const unionInfos = {
+            selectedUnion,
+            selectedUpazilla,
+            selectedDistrict,
+            selectedDivision,
+            chairmanName,
+            chairmanPhone,
+            phone,
+            voterId,
+            idCard,
+            email,
+            institutionName,
+            facebookLink,
+            unionLogo,
+            photo,
+        };
+
+        if (
+            !selectedUnion ||
+            !selectedUpazilla ||
+            !selectedDistrict ||
+            !selectedDivision ||
+            !selectedEnglishUnion ||
+            !selectedEnglishUpazilla ||
+            !selectedEnglishDistrict ||
+            !selectedEnglishDivision
+        ) {
+            alert("লোকেশন সিলেক্ট করুন");
+        } else if (
+            selectedUnion !== selectedEnglishUnion ||
+            selectedUpazilla !== selectedEnglishUpazilla ||
+            selectedDistrict !== selectedEnglishDistrict ||
+            selectedDivision !== selectedEnglishDivision
+        ) {
+            
+            alert("বাংলা এবং ইংরেজি লোকেশন এক নয়");
+        } else {
+            console.log(unionInfos);
+        }
     };
 
     return (
@@ -157,7 +185,7 @@ const UnionInfoForm = () => {
                                         <div>বিভাগসমূহ লোড হচ্ছে...</div>
                                     ) : (
                                         <Select
-                                            required
+                                            required={true}
                                             value={selectedDivision}
                                             onChange={handleChangeSelectedDivision}
                                             label="নির্বাচন করুন"
@@ -183,7 +211,7 @@ const UnionInfoForm = () => {
                                         <div>উপজেলাসমূহ লোড হচ্ছে...</div>
                                     ) : (
                                         <Select
-                                            required
+                                            required={true}
                                             value={selectedUpazilla}
                                             onChange={handleChangeUpazilla}
                                             label="নির্বাচন করুন"
@@ -217,7 +245,7 @@ const UnionInfoForm = () => {
                                         <div>জেলাসমূহ লোড হচ্ছে...</div>
                                     ) : (
                                         <Select
-                                            required
+                                            required={true}
                                             value={selectedDistrict}
                                             onChange={handleChangeDistrict}
                                             label="নির্বাচন করুন"
@@ -249,7 +277,7 @@ const UnionInfoForm = () => {
                                         <div>ইউনিয়নসমূহ লোড হচ্ছে...</div>
                                     ) : (
                                         <Select
-                                            required
+                                            required={true}
                                             value={selectedUnion}
                                             onChange={handleChangeUnion}
                                             label="নির্বাচন করুন"
@@ -295,7 +323,7 @@ const UnionInfoForm = () => {
                                         <div>Loading Divisions...</div>
                                     ) : (
                                         <Select
-                                            required
+                                            required={true}
                                             value={selectedEnglishDivision}
                                             onChange={handleChangeSelectedEnglishDivision}
                                             label="Select Division"
@@ -321,7 +349,7 @@ const UnionInfoForm = () => {
                                         <div>Loading Upazillas...</div>
                                     ) : (
                                         <Select
-                                            required
+                                            required={true}
                                             value={selectedEnglishUpazilla}
                                             onChange={handleChangeEnglishUpazilla}
                                             label="Select Upazilla"
@@ -354,7 +382,7 @@ const UnionInfoForm = () => {
                                         <div>Loading Districts...</div>
                                     ) : (
                                         <Select
-                                            required
+                                            required={true}
                                             value={selectedEnglishDistrict}
                                             onChange={handleChangeEnglishDistrict}
                                             label="Select District"
@@ -384,7 +412,7 @@ const UnionInfoForm = () => {
                                         <div>Loading Unions...</div>
                                     ) : (
                                         <Select
-                                            required
+                                            required={true}
                                             value={selectedEnglishUnion}
                                             onChange={handleChangeEnglishUnion}
                                             label="Select Union"
@@ -424,9 +452,11 @@ const UnionInfoForm = () => {
                                     <h1 className="text-sm pt-5 lg:text-[16px]  text-black  pl-4 mb-2">
                                         চেয়ারম্যানের নাম *
                                     </h1>
-                                    <Input required
+                                    <Input
+                                        color="blue"
+                                        required={true}
                                         className="bg-cyan-50"
-                                        name="chairman"
+                                        name="chairmanName"
                                         type="text"
                                     />
                                 </div>{" "}
@@ -434,9 +464,11 @@ const UnionInfoForm = () => {
                                     <h1 className="text-sm pt-5 lg:text-[16px]  text-black  pl-4 mb-2">
                                         চেয়ারম্যানের মোবাইল নম্বার
                                     </h1>
-                                    <Input required
+                                    <Input
+                                        color="blue"
+                                        required={true}
                                         className="bg-cyan-50"
-                                        name="চেয়ারম্যানেরমোবাইলনম্বার"
+                                        name="chairmanPhone"
                                         type="text"
                                     />
                                 </div>{" "}
@@ -444,9 +476,11 @@ const UnionInfoForm = () => {
                                     <h1 className="text-sm pt-5 lg:text-[16px]  text-black  pl-4 mb-2">
                                         মোবাইল নাম্বার
                                     </h1>
-                                    <Input required
+                                    <Input
+                                        color="blue"
+                                        required={true}
                                         className="bg-cyan-50"
-                                        name="মোবাইলনাম্বার"
+                                        name="phone"
                                         type="text"
                                     />
                                 </div>{" "}
@@ -454,9 +488,11 @@ const UnionInfoForm = () => {
                                     <h1 className="text-sm pt-5 lg:text-[16px]  text-black  pl-4 mb-2">
                                         ভোটার আইডি নম্বার
                                     </h1>
-                                    <Input required
+                                    <Input
+                                        color="blue"
+                                        required={true}
                                         className="bg-cyan-50"
-                                        name="ভোটারআইডিনম্বার"
+                                        name="voterId"
                                         type="text"
                                     />
                                 </div>{" "}
@@ -464,9 +500,11 @@ const UnionInfoForm = () => {
                                     <h1 className="text-sm pt-5 lg:text-[16px]  text-black  pl-4 mb-2">
                                         ভোটার আইডি কার্ড আপলোড
                                     </h1>
-                                    <Input required
+                                    <Input
+                                        color="blue"
+                                        required={true}
                                         className="bg-cyan-50"
-                                        name="ভোটারআইডিকার্ডআপলোড"
+                                        name="idCard"
                                         type="file"
                                     />
                                 </div>{" "}
@@ -476,19 +514,23 @@ const UnionInfoForm = () => {
                                     <h1 className="text-sm pt-5 lg:text-[16px]  text-black  pl-4 mb-2">
                                         ইমেল
                                     </h1>
-                                    <Input required
+                                    <Input
+                                        color="blue"
+                                        required={true}
                                         className="bg-cyan-50"
-                                        name="ইমেল"
+                                        name="email"
                                         type="text"
                                     />
                                 </div>{" "}
                                 <div className="lg:w-[450px] mt-2">
                                     <h1 className="text-sm pt-5 lg:text-[16px]  text-black  pl-4 mb-2">
-                                        পতিস্থানের নাম
+                                        প্রতিষ্ঠানের নাম
                                     </h1>
-                                    <Input required
+                                    <Input
+                                        color="blue"
+                                        required={true}
                                         className="bg-cyan-50"
-                                        name="পতিস্থানেরনাম"
+                                        name="institutionName"
                                         type="text"
                                     />
                                 </div>{" "}
@@ -496,9 +538,11 @@ const UnionInfoForm = () => {
                                     <h1 className="text-sm pt-5 lg:text-[16px]  text-black  pl-4 mb-2">
                                         ফেসবুক আইডি লিংক
                                     </h1>
-                                    <Input required
+                                    <Input
+                                        color="blue"
+                                        required={true}
                                         className="bg-cyan-50"
-                                        name="ফেসবুকআইডিলিংক"
+                                        name="facebookLink"
                                         type="text"
                                     />
                                 </div>{" "}
@@ -506,9 +550,11 @@ const UnionInfoForm = () => {
                                     <h1 className="text-sm pt-5 lg:text-[16px]  text-black  pl-4 mb-2">
                                         ইউনিয়ন পরিষদ লোগো *
                                     </h1>
-                                    <Input required
+                                    <Input
+                                        color="blue"
+                                        required={true}
                                         className="bg-cyan-50"
-                                        name="ইউনিয়নপরিষদলোগো"
+                                        name="unionLogo"
                                         type="file"
                                     />
                                 </div>{" "}
@@ -516,10 +562,12 @@ const UnionInfoForm = () => {
                                     <h1 className="text-sm pt-5 lg:text-[16px]  text-black  pl-4 mb-2">
                                         ছবি আপলোড
                                     </h1>
-                                    <Input required
+                                    <Input
+                                        color="blue"
+                                        required={true}
                                         className="bg-cyan-50"
-                                        name="ছবিআপলোড"
-                                        type="text"
+                                        name="photo"
+                                        type="file"
                                     />
                                 </div>{" "}
                             </div>
@@ -538,9 +586,11 @@ const UnionInfoForm = () => {
                                     <h1 className="text-sm pt-5 lg:text-[16px]  text-black  pl-4 mb-2">
                                         Chairman Name
                                     </h1>
-                                    <Input required
+                                    <Input
+                                        color="blue"
+                                        required={true}
                                         className="bg-cyan-50"
-                                        name="ChairmanName"
+                                        name="chairmanEng"
                                         type="text"
                                     />
                                 </div>{" "}
@@ -548,9 +598,11 @@ const UnionInfoForm = () => {
                                     <h1 className="text-sm pt-5 lg:text-[16px]  text-black  pl-4 mb-2">
                                         Chairman mobile number
                                     </h1>
-                                    <Input required
+                                    <Input
+                                        color="blue"
+                                        required={true}
                                         className="bg-cyan-50"
-                                        name="ChairmanMobileNumber"
+                                        name="chairmanPhoneEng"
                                         type="text"
                                     />
                                 </div>{" "}
@@ -560,9 +612,11 @@ const UnionInfoForm = () => {
                                     <h1 className="text-sm pt-5 lg:text-[16px]  text-black  pl-4 mb-2">
                                         Patisthana name
                                     </h1>
-                                    <Input required
+                                    <Input
+                                        color="blue"
+                                        required={true}
                                         className="bg-cyan-50"
-                                        name="PatisthanaName"
+                                        name="institutionNameEng"
                                         type="text"
                                     />
                                 </div>{" "}
@@ -570,10 +624,12 @@ const UnionInfoForm = () => {
                                     <h1 className="text-sm pt-5 lg:text-[16px]  text-black  pl-4 mb-2">
                                         Voter ID Number
                                     </h1>
-                                    <Input required
+                                    <Input
+                                        color="blue"
+                                        required={true}
                                         className="bg-cyan-50"
-                                        name="VoterIDNumber"
-                                        type="text"
+                                        name="voterIdEng"
+                                        type="number"
                                     />
                                 </div>{" "}
                             </div>
@@ -589,7 +645,9 @@ const UnionInfoForm = () => {
                                 বলুনঃ 01734327110
                             </h1>
                         </div>
-                        <Button type="submit" color="amber">Submit</Button>
+                        <Button type="submit" color="amber">
+                            Submit
+                        </Button>
                     </div>
                 </div>
             </div>
