@@ -1,4 +1,4 @@
-import { Button, Input, Option, Select } from "@material-tailwind/react";
+import { Button, Input, Option, Select, Spinner } from "@material-tailwind/react";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -117,23 +117,6 @@ const UnionInfoForm = () => {
         const institutionNameEng = e.target.institutionNameEng.value;
         const voterIdEng = e.target.voterIdEng.value;
 
-        const unionInfos = {
-            selectedUnion,
-            selectedUpazilla,
-            selectedDistrict,
-            selectedDivision,
-            chairmanName,
-            chairmanPhone,
-            phone,
-            voterId,
-            idCard,
-            email,
-            institutionName,
-            facebookLink,
-            unionLogo,
-            photo,
-        };
-
         if (
             !selectedUnion ||
             !selectedUpazilla ||
@@ -157,6 +140,38 @@ const UnionInfoForm = () => {
                 const idCardData = await uploadImage(idCard);
                 const unionLogoData = await uploadImage(unionLogo);
                 const photoData = await uploadImage(photo);
+
+                const unionInfos = {
+                    division_id: selectedDivision,
+                    district_id: selectedDistrict,
+                    upazilla_id: selectedUpazilla,
+                    union_id: selectedUnion,
+                    user_id: 331,
+                    //TODO: post and get users method
+                    chairman: chairmanName,
+                    logo: unionLogoData?.data?.url,
+                    vie: divisions?.find((division) => division?.id === selectedDivision)
+                        ?.name,
+                    zee: districts?.find((district) => district?.id === selectedDistrict)
+                        ?.name,
+                    upe: upazillas?.find((upazilla) => upazilla?.id === selectedUpazilla)
+                        ?.name,
+                    che: chairmanEng,
+                    che_mobile: chairmanPhoneEng,
+                    nid_no: voterId,
+                    
+
+                    // chairmanName,
+                    // chairmanPhone,
+                    // phone,
+                    // voterId,
+                    // idCard,
+                    // email,
+                    // institutionName,
+                    // facebookLink,
+                    // unionLogo,
+                    // photo,
+                };
 
                 setLoading(false);
             } catch (error) {
@@ -467,7 +482,7 @@ const UnionInfoForm = () => {
                                     <Input
                                         color="blue"
                                         required={true}
-                                        className="bg-cyan-50"
+                                        className="!bg-blue-50"
                                         name="chairmanName"
                                         type="text"
                                     />
@@ -479,7 +494,7 @@ const UnionInfoForm = () => {
                                     <Input
                                         color="blue"
                                         required={true}
-                                        className="bg-cyan-50"
+                                        className="!bg-blue-50"
                                         name="chairmanPhone"
                                         type="text"
                                     />
@@ -491,7 +506,7 @@ const UnionInfoForm = () => {
                                     <Input
                                         color="blue"
                                         required={true}
-                                        className="bg-cyan-50"
+                                        className="!bg-blue-50"
                                         name="phone"
                                         type="text"
                                     />
@@ -503,7 +518,7 @@ const UnionInfoForm = () => {
                                     <Input
                                         color="blue"
                                         required={true}
-                                        className="bg-cyan-50"
+                                        className="!bg-blue-50"
                                         name="voterId"
                                         type="text"
                                     />
@@ -515,7 +530,7 @@ const UnionInfoForm = () => {
                                     <Input
                                         color="blue"
                                         required={true}
-                                        className="bg-cyan-50"
+                                        className="!bg-blue-50"
                                         name="idCard"
                                         type="file"
                                     />
@@ -529,7 +544,7 @@ const UnionInfoForm = () => {
                                     <Input
                                         color="blue"
                                         required={true}
-                                        className="bg-cyan-50"
+                                        className="!bg-blue-50"
                                         name="email"
                                         type="text"
                                     />
@@ -541,7 +556,7 @@ const UnionInfoForm = () => {
                                     <Input
                                         color="blue"
                                         required={true}
-                                        className="bg-cyan-50"
+                                        className="!bg-blue-50"
                                         name="institutionName"
                                         type="text"
                                     />
@@ -553,7 +568,7 @@ const UnionInfoForm = () => {
                                     <Input
                                         color="blue"
                                         required={true}
-                                        className="bg-cyan-50"
+                                        className="!bg-blue-50"
                                         name="facebookLink"
                                         type="text"
                                     />
@@ -565,7 +580,7 @@ const UnionInfoForm = () => {
                                     <Input
                                         color="blue"
                                         required={true}
-                                        className="bg-cyan-50"
+                                        className="!bg-blue-50"
                                         name="unionLogo"
                                         type="file"
                                     />
@@ -577,7 +592,7 @@ const UnionInfoForm = () => {
                                     <Input
                                         color="blue"
                                         required={true}
-                                        className="bg-cyan-50"
+                                        className="!bg-blue-50"
                                         name="photo"
                                         type="file"
                                     />
@@ -601,7 +616,7 @@ const UnionInfoForm = () => {
                                     <Input
                                         color="blue"
                                         required={true}
-                                        className="bg-cyan-50"
+                                        className="!bg-blue-50"
                                         name="chairmanEng"
                                         type="text"
                                     />
@@ -613,7 +628,7 @@ const UnionInfoForm = () => {
                                     <Input
                                         color="blue"
                                         required={true}
-                                        className="bg-cyan-50"
+                                        className="!bg-blue-50"
                                         name="chairmanPhoneEng"
                                         type="text"
                                     />
@@ -627,7 +642,7 @@ const UnionInfoForm = () => {
                                     <Input
                                         color="blue"
                                         required={true}
-                                        className="bg-cyan-50"
+                                        className="!bg-blue-50"
                                         name="institutionNameEng"
                                         type="text"
                                     />
@@ -639,7 +654,7 @@ const UnionInfoForm = () => {
                                     <Input
                                         color="blue"
                                         required={true}
-                                        className="bg-cyan-50"
+                                        className="!bg-blue-50"
                                         name="voterIdEng"
                                         type="number"
                                     />
@@ -658,7 +673,7 @@ const UnionInfoForm = () => {
                             </h1>
                         </div>
                         <Button type="submit" color="amber">
-                            Submit
+                            {loading ? <Spinner /> : "Submit"}
                         </Button>
                     </div>
                 </div>
