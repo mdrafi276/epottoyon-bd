@@ -39,7 +39,7 @@ const Table = ({ columns, data, onAddRow, onDeleteRow, onUpdateData }) => {
                 {row.cells.map(cell => {
                   return (
                     <td key={cell.getCellProps().key} {...cell.getCellProps()}>
-                      <input
+                      <input className="border-2 border-black " 
                         {...cell.getCellProps().inputProps}
                         value={cell.value}
                         onChange={e => handleInputChange(e, row.index, cell.column.id)}
