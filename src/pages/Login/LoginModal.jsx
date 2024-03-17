@@ -130,6 +130,7 @@ const LoginModal = () => {
                     if (passwordMatches?.success) {
                         // Passwords match, proceed with creating user in Firebase
                         await createUser(email, password);
+                        //TODO: fetch the user data and update the profile
 
                         // Proceed with login process
                         alert("লগইন সফল হয়েছে");
