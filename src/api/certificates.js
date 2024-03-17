@@ -47,3 +47,21 @@ export const makeUserVerified = async (email) => {
     const { data } = await axiosSecure.patch(`/users/make-user-verified?email=${email}`);
     return data;
 };
+
+export const checkIfUserExists = async (email) => {
+    const { data } = await axiosSecure.get(`/users/check-email?email=${email}`);
+    return data;
+};
+
+export const getUser = async (email) => {
+    const { data } = await axiosSecure.get(`/users/get-user?email=${email}`);
+    return data;
+};
+
+export const comparePassword = async (email, password) => {
+    const { data } = await axiosSecure.post("/users/compare-password", {
+        email,
+        password,
+    });
+    return data;
+};
