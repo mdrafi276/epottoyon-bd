@@ -35,7 +35,7 @@ const App = () => {
     return (
         <div>
             <h1>Dynamic Table</h1>
-            <Table
+            <Table 
                 columns={columns}
                 data={data}
                 onAddRow={handleAddRow}
