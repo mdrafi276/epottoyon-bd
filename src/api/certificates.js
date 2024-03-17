@@ -37,3 +37,13 @@ export const uploadImage = async (image) => {
 
     return data;
 };
+
+export const addUser = async (newUser) => {
+    const { data } = await axiosSecure.post("/users", newUser);
+    return data;
+};
+
+export const makeUserVerified = async (email) => {
+    const { data } = await axiosSecure.patch(`/users/make-user-verified?email=${email}`);
+    return data;
+};

@@ -159,7 +159,6 @@ const UnionInfoForm = () => {
                     che: chairmanEng,
                     che_mobile: chairmanPhoneEng,
                     nid_no: voterId,
-                    
 
                     // chairmanName,
                     // chairmanPhone,
