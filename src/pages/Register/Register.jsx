@@ -4,8 +4,8 @@ import "./Button.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import axios from "axios";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
+import { addUser, makeUserVerified } from "../../api/certificates";
 
 const Register = () => {
     const [loading, setLoading] = useState(false);
@@ -26,34 +26,38 @@ const Register = () => {
         const password = form.password.value;
         const confirmedPassword = form.conPassword.value;
         const newUser = {
+            type: "user",
             name,
+            status: false,
             phone,
             email,
+            register_for: "নাগরিক",
             password,
             role: "নাগরিক",
         };
 
         if (password === confirmedPassword) {
             try {
+                await addUser(newUser);
                 const res = await createUser(email, password);
                 await updateUser(name, phone);
                 await verifyEmail();
-                await axios.post("http://localhost:5000/api/v1/users", newUser);
 
                 setLoading(false);
                 setOpenVerificationModal(true);
                 let interval = setInterval(async () => {
                     if (res.user.emailVerified) {
+                        makeUserVerified(email);
                         clearInterval(interval);
                         setOpenVerificationModal(false);
-                        navigate("/");
+                        navigate("/dashboard/user-info-form");
                     } else {
                         await res.user.reload();
                     }
                 }, 2000);
             } catch (error) {
                 console.error(error);
-                alert(error.message);
+                alert(error.response.data.error);
                 setLoading(false);
             }
         } else {

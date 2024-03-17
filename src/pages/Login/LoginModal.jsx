@@ -5,12 +5,104 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Input, Spinner } from "@material-tailwind/react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
+import { checkIfUserExists, comparePassword, getUser } from "../../api/certificates";
 
 const LoginModal = () => {
-    const { openLoginModal, setOpenLoginModal, signIn } = useContext(AuthContext);
+    const { openLoginModal, setOpenLoginModal, signIn, createUser } =
+        useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+
+    // const handleLogin = async (e) => {
+    //     setLoading(true);
+    //     e.preventDefault();
+
+    //     const email = e.target.email.value;
+    //     const password = e.target.password.value;
+
+    //     try {
+    //         // Check if the user exists in the MySQL database
+    //         const res = await checkIfUserExists(email);
+
+    //         if (res.emailExists) {
+    //             // User exists in the MySQL database
+    //             // Attempt to sign in with Firebase
+    //             try {
+    //                 await signIn(email, password);
+    //                 alert("লগইন সফল হয়েছে");
+    //                 setLoading(false);
+    //                 navigate("/dashboard");
+    //                 setOpenLoginModal(false);
+    //             } catch (signInError) {
+    //                 console.error("Firebase sign-in error:", signInError);
+    //                 alert(signInError.message);
+    //                 setLoading(false);
+    //             }
+    //         } else {
+    //             // User does not exist in the MySQL database
+    //             // Fetch user information from MySQL database
+    //             const user = await getUser(email);
+
+    //             // Create user in Firebase with fetched user data
+    //             console.log(user);
+    //             // Proceed with login process
+    //             alert("লগইন সফল হয়েছে");
+    //             setLoading(false);
+    //             navigate("/dashboard");
+    //             setOpenLoginModal(false);
+    //         }
+    //     } catch (error) {
+    //         console.error("Login error:", error);
+    //         alert(error.message);
+    //         setLoading(false);
+    //     }
+    // };
+
+    // const handleLogin = async (e) => {
+    //     setLoading(true);
+    //     e.preventDefault();
+
+    //     const email = e.target.email.value;
+    //     const password = e.target.password.value;
+
+    //     try {
+    //         // Check if the user exists in Firebase
+    //         await signIn(email, password);
+
+    //         // If sign-in succeeds, proceed with the login process
+    //         alert("লগইন সফল হয়েছে");
+    //         setLoading(false);
+    //         navigate("/dashboard");
+    //         setOpenLoginModal(false);
+    //     } catch (signInError) {
+    //         // If user does not exist in Firebase, attempt to create user
+    //         if (signInError.code === "auth/user-not-found") {
+    //             try {
+    //                 // Fetch user information from MySQL database
+    //                 const userData = await getUser(email);
+
+    //                 // Create user in Firebase with fetched user data
+    //                 await createUser(userData?.email, userData?.password);
+
+    //                 // Proceed with login process
+    //                 alert("লগইন সফল হয়েছে");
+    //                 setLoading(false);
+    //                 navigate("/dashboard");
+    //                 setOpenLoginModal(false);
+    //             } catch (createUserError) {
+    //                 console.error("Sign-in error:", createUserError);
+    //                 alert(createUserError.message);
+    //                 setLoading(false);
+    //             }
+    //         } else {
+    //             // Other sign-in errors
+    //             console.error("Sign-in error:", signInError);
+    //             alert(signInError.message);
+    //             setLoading(false);
+    //         }
+    //     }
+    // };
 
     const handleLogin = async (e) => {
         setLoading(true);
@@ -20,15 +112,46 @@ const LoginModal = () => {
         const password = e.target.password.value;
 
         try {
-            const res = await signIn(email, password);
+            // Check if the user exists in Firebase
+            await signIn(email, password);
+
+            // If sign-in succeeds, proceed with the login process
             alert("লগইন সফল হয়েছে");
             setLoading(false);
-            navigate("dashboard");
+            navigate("/dashboard");
             setOpenLoginModal(false);
-        } catch (error) {
-            console.error(error);
-            alert(error.message);
-            setLoading(false);
+        } catch (signInError) {
+            // If user does not exist in Firebase or incorrect password
+            if (signInError.code === "auth/invalid-credential") {
+                try {
+                    // Compare the entered password with the hashed password from the database
+                    const passwordMatches = await comparePassword(email, password);
+
+                    if (passwordMatches?.success) {
+                        // Passwords match, proceed with creating user in Firebase
+                        await createUser(email, password);
+
+                        // Proceed with login process
+                        alert("লগইন সফল হয়েছে");
+                        setLoading(false);
+                        navigate("/dashboard");
+                        setOpenLoginModal(false);
+                    } else {
+                        // Incorrect password
+                        alert("পাসওয়ার্ড ভুল");
+                        setLoading(false);
+                    }
+                } catch (error) {
+                    console.error("Sign-in error:", error);
+                    alert(error.message);
+                    setLoading(false);
+                }
+            } else {
+                // Other sign-in errors
+                console.error("Sign-in error:", signInError);
+                alert(signInError.message);
+                setLoading(false);
+            }
         }
     };
 
