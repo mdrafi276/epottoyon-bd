@@ -1,99 +1,75 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
-import { useTable } from "react-table";
+import { Button } from "@material-tailwind/react";
 
-const Table = () => {
-    const [data, setData] = useState([
-        { firstName: "", lastName: "" }, // Default row
-    ]);
-
-    const columns = [
-        {
-            Header: "First Name",
-            accessor: "firstName",
-            Cell: ({ cell }) => <input {...cell.getCellProps().inputProps} />,
-        },
-        {
-            Header: "Last Name",
-            accessor: "lastName",
-            Cell: ({ cell }) => <input {...cell.getCellProps().inputProps} />,
-        },
-    ];
-
+const Table = ({ rows, setRows }) => {
     const handleAddRow = () => {
-        setData([...data, { firstName: "", lastName: "" }]);
-    };
-
-    const handleDeleteRow = (index) => {
-        setData(data.filter((row, i) => i !== index));
-    };
-
-    const handleUpdateData = (newData) => {
-        setData(newData);
-    };
-
-    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable(
-        {
-            columns,
-            data,
+        const newRow = {};
+        if (rows.length > 0) {
+            Object.keys(rows[0]).forEach((key) => {
+                newRow[key] = "";
+            });
         }
-    );
+        setRows([...rows, newRow]);
+    };
 
-    const handleInputChange = (e, rowIndex, accessor) => {
-        const newData = [...data];
-        newData[rowIndex][accessor] = e.target.value;
-        onUpdateData(newData);
+    const handleRemoveRow = (index) => {
+        const updatedRows = rows.filter((_, i) => i !== index);
+        setRows(updatedRows);
+    };
+
+    const handleInputChange = (index, key, value) => {
+        const updatedRows = rows.map((row, i) =>
+            i === index ? { ...row, [key]: value } : row
+        );
+        setRows(updatedRows);
     };
 
     return (
-        <div>
-            <button onClick={onAddRow}>Add Row</button>
-            <table {...getTableProps()}>
-                <thead>
-                    {headerGroups.map((headerGroup) => (
-                        <tr {...headerGroup.getHeaderGroupProps()}>
-                            {headerGroup.headers.map((column) => (
-                                <th key={column.id} {...column.getHeaderProps()}>
-                                    {column.render("Header")}
+        <div className="overflow-x-auto mx-3">
+            <Button className="my-4" onClick={handleAddRow} color="blue">
+                Add Row
+            </Button>
+            <table className="w-full border-collapse">
+                <thead className="bg-blue-500 text-white">
+                    <tr>
+                        {rows.length > 0 &&
+                            Object.keys(rows[0]).map((key) => (
+                                <th key={key} className="px-4 py-2">
+                                    {key}
                                 </th>
                             ))}
+                        <th className="px-4 py-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody className="bg-gray-100 text-gray-700">
+                    {rows.map((row, index) => (
+                        <tr key={index}>
+                            {Object.keys(row).map((key) => (
+                                <td key={key} className="px-4 py-2 border">
+                                    <input
+                                        type="text"
+                                        value={row[key]}
+                                        onChange={(e) =>
+                                            handleInputChange(index, key, e.target.value)
+                                        }
+                                        className="w-full bg-transparent focus:outline-none text-center"
+                                    />
+                                </td>
+                            ))}
+
+                            <td className="px-4 py-2 border">
+                                {rows?.length > 1 && (
+                                    <Button
+                                        onClick={() => handleRemoveRow(index)}
+                                        color="red"
+                                        ripple="light"
+                                    >
+                                        Remove
+                                    </Button>
+                                )}
+                            </td>
                         </tr>
                     ))}
-                </thead>
-                <tbody {...getTableBodyProps()}>
-                    {rows.map((row) => {
-                        prepareRow(row);
-                        return (
-                            <tr key={row.id} {...row.getRowProps()}>
-                                {row.cells.map((cell) => {
-                                    return (
-                                        <td
-                                            key={cell.getCellProps().key}
-                                            {...cell.getCellProps()}
-                                        >
-                                            <input
-                                                className="border-2 border-black "
-                                                {...cell.getCellProps().inputProps}
-                                                value={cell.value}
-                                                onChange={(e) =>
-                                                    handleInputChange(
-                                                        e,
-                                                        row.index,
-                                                        cell.column.id
-                                                    )
-                                                }
-                                            />
-                                        </td>
-                                    );
-                                })}
-                                <td>
-                                    <button onClick={() => onDeleteRow(row.index)}>
-                                        Delete
-                                    </button>
-                                </td>
-                            </tr>
-                        );
-                    })}
                 </tbody>
             </table>
         </div>

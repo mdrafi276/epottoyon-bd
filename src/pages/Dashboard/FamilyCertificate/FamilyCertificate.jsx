@@ -1,10 +1,14 @@
 import { Input, Spinner } from "@material-tailwind/react";
 import { useState } from "react";
 import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
+import Table from "../../../components/Table/Table";
 
 const FamilyCertificate = () => {
     const [isEngOpen, setIsEngOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [rows, setRows] = useState([
+        { serial: 1, name: "", relation: "", birthday: "", value: "" },
+    ]);
 
     const handleBanglaSubmit = async (e) => {
         setLoading(true);
@@ -102,14 +106,28 @@ const FamilyCertificate = () => {
                     </h1>
                 </div>{" "}
                 <div className="flex justify-center gap-12 items-center text-xl  text-center  text-white md:text-2xl lg:text-xl lg:mt-5 mt-3  lg:pl-2 bg-[#aa2ec3] py-2">
-                    <h1 onClick={() => setIsEngOpen(false)} className="cursor-pointer flex items-start gap-2">
+                    <h1
+                        onClick={() => setIsEngOpen(false)}
+                        className="cursor-pointer flex items-start gap-2"
+                    >
                         {" "}
-                        {isEngOpen ? <MdCheckBoxOutlineBlank className="text-2xl" /> : <MdCheckBox className="text-2xl" />}
+                        {isEngOpen ? (
+                            <MdCheckBoxOutlineBlank className="text-2xl" />
+                        ) : (
+                            <MdCheckBox className="text-2xl" />
+                        )}
                         বাংলায় আবেদন করুন
                     </h1>
-                    <h1 onClick={() => setIsEngOpen(true)} className="cursor-pointer flex items-start gap-2">
-                        {isEngOpen ? <MdCheckBox className="text-2xl" /> : <MdCheckBoxOutlineBlank className="text-2xl" />} ইংরেজিতে
-                        আবেদন করুন{" "}
+                    <h1
+                        onClick={() => setIsEngOpen(true)}
+                        className="cursor-pointer flex items-start gap-2"
+                    >
+                        {isEngOpen ? (
+                            <MdCheckBox className="text-2xl" />
+                        ) : (
+                            <MdCheckBoxOutlineBlank className="text-2xl" />
+                        )}{" "}
+                        ইংরেজিতে আবেদন করুন{" "}
                     </h1>
                 </div>
                 {isEngOpen && (
@@ -377,6 +395,7 @@ const FamilyCertificate = () => {
                             />
                         </div>
                     </div>
+                    <Table rows={rows} setRows={setRows} />
                     <div>
                         <div className="flex justify-center items-start p-2 md:mx-16 mx-5 mt-5  lg:pt-3 lg:mx-4 lg:px-2 gap-2  lg:mt-10 lg:h-[70px] bg-[#F8DDCC]">
                             <input

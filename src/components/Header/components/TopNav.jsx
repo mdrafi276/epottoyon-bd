@@ -45,7 +45,7 @@ const TopNav = () => {
                 </ul>
 
                 <ul className="flex items-center gap-4">
-                    {user && user.emailVerified ? (
+                    {user ? (
                         <Link to="/dashboard">ড্যাশবোর্ড</Link>
                     ) : (
                         <div className="flex gap-1 items-center">
