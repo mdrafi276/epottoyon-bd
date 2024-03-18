@@ -41,6 +41,7 @@ const UserInfoForm = () => {
         className="w-[96%] rounded-md md:pb-10 pb-5 lg:px-0 md:px-10   px-3 mb-3 mt-3  md:mt-8 md:w-[95%] lg:w-[90%] lg:mt-10 lg:py-8  mx-auto border-4 bg-gray-100 border-[#8A569B]"
       >
         {" "}
+
         <div>
           <h1 className="text-xl text-center border-2 mt-2 bg-[#8A569B]  text-white rounded-xl font-bold file: md:text-2xl lg::mt-5 lg:mt-0 lg:text-3xl  py-2">
             Create User Information

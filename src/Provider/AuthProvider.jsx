@@ -34,8 +34,11 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     };
 
-    const updateUser = (name, phone) => {
-        updateProfile(auth.currentUser, { displayName: name, phoneNumber: phone });
+    const updateUser = (name, photo) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name || null,
+            photoURL: photo || null,
+        });
     };
 
     const verifyEmail = () => {

@@ -65,3 +65,8 @@ export const comparePassword = async (email, password) => {
     });
     return data;
 };
+
+export const addUnion = async (newUnion) => {
+    const { data } = await axiosSecure.post("/union-infos/add-union", newUnion);
+    return data;
+};

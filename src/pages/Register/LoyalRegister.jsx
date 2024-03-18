@@ -30,7 +30,7 @@ const LoyalRegister = () => {
 
         try {
             const res = await createUser(email, password);
-            await updateUser(name, phone);
+            await updateUser(name);
             await axios.post("http://localhost:5000/api/v1/users", user);
             setLoading(false);
         } catch (error) {
