@@ -40,7 +40,7 @@ const Register = () => {
             try {
                 await addUser(newUser);
                 const res = await createUser(email, password);
-                await updateUser(name, phone);
+                await updateUser(name);
                 await verifyEmail();
 
                 setLoading(false);
@@ -57,7 +57,7 @@ const Register = () => {
                 }, 2000);
             } catch (error) {
                 console.error(error);
-                alert(error.response.data.error);
+                alert(error.message);
                 setLoading(false);
             }
         } else {

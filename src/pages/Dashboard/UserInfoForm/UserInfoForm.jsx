@@ -1,6 +1,8 @@
 import { Input } from "@material-tailwind/react";
 
 const UserInfoForm = () => {
+    //TODO: create a column about profile picture in the database in users table. and set a default dummy profile picture for each user. and also update the picture in firebase
+    //FIXME:https://www.udcbd.net/setting/unioninfo/1694876087union17.jpg
     return (
         <div>
             <form className="w-[95%] rounded-md lg:px-0 md:px-24 px-5 mb-3 mt-3  md:mt-8 md:w-[85%] lg:w-[95%] lg:mt-10 lg:py-8  mx-auto border-4 bg-gray-100 border-[#8A569B]">

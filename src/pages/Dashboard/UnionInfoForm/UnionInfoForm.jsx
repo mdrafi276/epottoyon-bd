@@ -1,13 +1,16 @@
 import { Button, Input, Option, Select, Spinner } from "@material-tailwind/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
+    addUnion,
     getDistricts,
     getDivisions,
     getUnions,
     getUpazillas,
+    getUser,
     uploadImage,
 } from "../../../api/certificates";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const UnionInfoForm = () => {
     const [loading, setLoading] = useState(false);
@@ -19,6 +22,7 @@ const UnionInfoForm = () => {
     const [selectedEnglishDistrict, setSelectedEnglishDistrict] = useState("");
     const [selectedEnglishUpazilla, setSelectedEnglishUpazilla] = useState("");
     const [selectedEnglishUnion, setSelectedEnglishUnion] = useState("");
+    const { user } = useContext(AuthContext);
 
     const handleChangeSelectedDivision = (event) => {
         setSelectedDivision(event);
@@ -140,14 +144,16 @@ const UnionInfoForm = () => {
                 const idCardData = await uploadImage(idCard);
                 const unionLogoData = await uploadImage(unionLogo);
                 const photoData = await uploadImage(photo);
+                const response = await getUser(user?.email);
+
+                //FIXME: ei idcard ar photo ta kar?
 
                 const unionInfos = {
                     division_id: selectedDivision,
                     district_id: selectedDistrict,
                     upazilla_id: selectedUpazilla,
                     union_id: selectedUnion,
-                    user_id: 331,
-                    //TODO: post and get users method
+                    user_id: response?.id,
                     chairman: chairmanName,
                     logo: unionLogoData?.data?.url,
                     vie: divisions?.find((division) => division?.id === selectedDivision)
@@ -159,19 +165,10 @@ const UnionInfoForm = () => {
                     che: chairmanEng,
                     che_mobile: chairmanPhoneEng,
                     nid_no: voterId,
-                    
-                    // chairmanName,
-                    // chairmanPhone,
-                    // phone,
-                    // voterId,
-                    // idCard,
-                    // email,
-                    // institutionName,
-                    // facebookLink,
-                    // unionLogo,
-                    // photo,
+                    facebook_page: facebookLink,
                 };
 
+                await addUnion(unionInfos);
                 setLoading(false);
             } catch (error) {
                 console.error(error);
