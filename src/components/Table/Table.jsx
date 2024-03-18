@@ -62,7 +62,6 @@ const Table = ({ rows, setRows }) => {
                                     <Button
                                         onClick={() => handleRemoveRow(index)}
                                         color="red"
-                                        ripple="light"
                                     >
                                         Remove
                                     </Button>

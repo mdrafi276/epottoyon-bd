@@ -6,8 +6,25 @@ import Table from "../../../components/Table/Table";
 const FamilyCertificate = () => {
     const [isEngOpen, setIsEngOpen] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [rows, setRows] = useState([
-        { serial: 1, name: "", relation: "", birthday: "", value: "" },
+    const [banglaRows, setBanglaRows] = useState([
+        {
+            ক্রমিক: 1,
+            নাম: "",
+            সম্পর্ক: "",
+            "ভোটার/জম্ম নিবন্ধন": "",
+            জন্মতারিখ: "",
+            মন্তব্য: "",
+        },
+    ]);
+    const [englishRows, setEnglishRows] = useState([
+        {
+            Serial: 1,
+            Name: "",
+            Relation: "",
+            "Voter / Birth Certificate": "",
+            Birthday: "",
+            Comment: "",
+        },
     ]);
 
     const handleBanglaSubmit = async (e) => {
@@ -47,6 +64,7 @@ const FamilyCertificate = () => {
         try {
             setLoading(false);
             console.log("bangla => ", document);
+            console.log(banglaRows);
         } catch (error) {
             setLoading(false);
             console.error(error);
@@ -253,6 +271,7 @@ const FamilyCertificate = () => {
                                 />
                             </div>
                         </div>
+                        <Table rows={englishRows} setRows={setEnglishRows} />
                         <div>
                             <div className="flex justify-center items-start p-2 md:mx-16 mx-5 mt-5  lg:pt-3 lg:mx-4 lg:px-2 gap-2  lg:mt-10 lg:h-[70px] bg-[#F8DDCC]">
                                 <input className="mt-1" type="checkbox" name="" id="" />
@@ -395,7 +414,7 @@ const FamilyCertificate = () => {
                             />
                         </div>
                     </div>
-                    <Table rows={rows} setRows={setRows} />
+                    <Table rows={banglaRows} setRows={setBanglaRows} />
                     <div>
                         <div className="flex justify-center items-start p-2 md:mx-16 mx-5 mt-5  lg:pt-3 lg:mx-4 lg:px-2 gap-2  lg:mt-10 lg:h-[70px] bg-[#F8DDCC]">
                             <input
