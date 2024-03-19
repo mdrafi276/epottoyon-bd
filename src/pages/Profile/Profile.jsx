@@ -7,6 +7,20 @@ const Profile = () => {
           <div className="text-start text-black  lg:p-3     border-b  border-gray-300 ">
             My Account
           </div>
+          <div className="flex justify-start w-[97%] lg:px-1 py-2  lg:py-3 mx-auto items-center gap-2 md:gap-5 text-black       border-b  border-gray-300 ">
+            <ul>
+              <li className="text-[11px] md:text-[14px] lg:text-[16px] cursor-pointer">My Profile</li>
+            </ul>
+            <ul>
+              <li className="text-[11px] md:text-[14px] lg:text-[16px] cursor-pointer">Edit Information</li>
+            </ul>
+            <ul>
+              <li className="text-[11px] md:text-[14px] lg:text-[16px] cursor-pointer">Password</li>
+            </ul>
+            <ul>
+              <li className="text-[11px] md:text-[14px] lg:text-[16px] cursor-pointer">Two Factor Authentication</li>
+            </ul>
+          </div>
           <div className="lg:m-3 border border-gray-500 ">
             {/* row one */}
             <div className="flex    hover:bg-[#ECECEC] justify-center items-center bg-[#F2F2F2]">
@@ -27,7 +41,7 @@ const Profile = () => {
               <div className="lg:w-[600px] w-full md:w-full border-l  p-3 md:p-3  border-gray-500  ">
                 <img
                   className="lg:h-[90px] h-[70px]"
-                  src="https://i.ibb.co/ZM3FpL7/user.png"
+                  src="https://i.ibb.co/sJYr5mr/images-2.jpg"
                   alt=""
                 />
               </div>
