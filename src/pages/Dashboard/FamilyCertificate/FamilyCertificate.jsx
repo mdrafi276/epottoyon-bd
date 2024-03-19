@@ -155,20 +155,78 @@ const FamilyCertificate = () => {
         e.preventDefault();
 
         const name = e.target.name.value;
-        const voterId = e.target.name.value;
-        const guardian = e.target.guardian.value;
+        const voterId = identity === "voterId" ? e.target.voterId.value : null;
+        const birthCertificate =
+            identity === "birthCertificate" ? e.target.birthCertificate.value : null;
+        const father = guardian === "father" ? e.target.father.value : null;
+        const husband = guardian === "husband" ? e.target.father.value : null;
         const mother = e.target.mother.value;
         const village = e.target.village.value;
-        const holdingNumber = e.target.holdingNumber.value;
         const word = e.target.word.value;
         const postOffice = e.target.postOffice.value;
-        const union = e.target.union.value;
-        const upazilla = e.target.upazilla.value;
-        const district = e.target.district.value;
         const photo = e.target.photo.files[0];
         const attachment = e.target.attachment.files[0];
+        // Get current date
+        const currentDate = new Date();
+        let day = currentDate.getDate();
+        let month = currentDate.getMonth() + 1;
+        const year = currentDate.getFullYear();
+        day = day < 10 ? "0" + day : day;
+        month = month < 10 ? "0" + month : month;
+        const date = day + "-" + month + "-" + year;
 
         try {
+            const photoData = photo && (await uploadImage(photo));
+            const attachmentData = attachment && (await uploadImage(attachment));
+
+            const application = {
+                union_id: unionInfo?.id,
+                applied_union_no: unionInfo?.id,
+                union_logo: unionInfo?.logo,
+                applied_upazilla_name: unionInfo?.upazilla_id,
+                applied_zilla_name: unionInfo?.district_id,
+                applied_chairman_name: unionInfo?.chairman,
+                applicant: name,
+                user_id: userInfo?.id,
+                user_info_id: null,
+                //TODO: user info form
+                status: "approved",
+                sanad_file: attachmentData?.data?.url,
+                sanad_id: 1,
+                application: userInfo?.name,
+                form_date: date,
+                nid_birth: birthCertificate,
+                nid: voterId,
+                father_husband_name: father,
+                husband: husband,
+                mother_name: mother,
+                village_name: village,
+                union_name: unionInfo?.name,
+                upazilla_name: unionInfo?.id,
+                zilla_name: unionInfo?.district_id,
+                ward_no: word,
+                name: name,
+                mrgram: village,
+                mrdak: postOffice,
+                mrword: word,
+                date: date,
+                photo: photoData?.data?.url,
+            };
+            const res = await addCertificate(application);
+
+            const oarishes = {
+                application_id: res?.id,
+                sanad_id: 1,
+                chairman_name: unionInfo?.chairman,
+                no: banglaRows.map((item) => item?.ক্রমিক).join(","),
+                o_name: banglaRows?.map((item) => item.নাম).join(","),
+                o_relation: banglaRows?.map((item) => item.সম্পর্ক).join(","),
+                rnid: banglaRows?.map((item) => item["আইডি নম্বর"]).join(","),
+                rbirth: banglaRows?.map((item) => item["জন্ম সনদ নম্বর"]).join(","),
+                rcom: banglaRows?.map((item) => item.মন্তব্য).join(","),
+            };
+            await addOarishes(oarishes);
+
             setSpinner(false);
         } catch (error) {
             setSpinner(false);
