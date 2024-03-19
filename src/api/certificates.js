@@ -70,3 +70,21 @@ export const addUnion = async (newUnion) => {
     const { data } = await axiosSecure.post("/union-infos/add-union", newUnion);
     return data;
 };
+
+export const getUsersUnion = async (userId) => {
+    const { data } = await axiosSecure.get(`/union-infos/users-union?userId=${userId}`);
+    return data;
+};
+
+export const addCertificate = async (newCertificate) => {
+    const { data } = await axiosSecure.post(
+        "/applications/add-certificate",
+        newCertificate
+    );
+    return data;
+};
+
+export const addOarishes = async (newOarishes) => {
+    const { data } = await axiosSecure.post("/oarishes/add-oarishes", newOarishes);
+    return data;
+};
