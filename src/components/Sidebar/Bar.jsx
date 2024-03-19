@@ -67,16 +67,7 @@ const Bar = ({ setDrawerOpen }) => {
                 {/* <ListItemSuffix></ListItemSuffix> */}
               </ListItem>
             </Link>
-            <Link to="/dashboard/user-info-form">
-              {" "}
-              <ListItem>
-                <ListItemPrefix>
-                  <MdPostAdd className="h-5 w-5" />
-                </ListItemPrefix>
-                ব্যাবহারকারীর তথ্য
-                {/* <ListItemSuffix></ListItemSuffix> */}
-              </ListItem>
-            </Link>
+          
             <Link to="/dashboard/union-info-form">
               {" "}
               <ListItem>
