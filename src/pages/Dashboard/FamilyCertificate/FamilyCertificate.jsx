@@ -1,18 +1,29 @@
 import { Input, Spinner } from "@material-tailwind/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
 import Table from "../../../components/Table/Table";
+import { useQuery } from "@tanstack/react-query";
+import {
+    addCertificate,
+    addOarishes,
+    getUser,
+    getUsersUnion,
+    uploadImage,
+} from "../../../api/certificates";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const FamilyCertificate = () => {
     const [isEngOpen, setIsEngOpen] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [spinner, setSpinner] = useState(false);
+    const { user } = useContext(AuthContext);
+
     const [banglaRows, setBanglaRows] = useState([
         {
             ক্রমিক: 1,
             নাম: "",
             সম্পর্ক: "",
-            "ভোটার/জম্ম নিবন্ধন": "",
-            জন্মতারিখ: "",
+            "আইডি নম্বর": "",
+            "জন্ম সনদ নম্বর": "",
             মন্তব্য: "",
         },
     ]);
@@ -27,14 +38,41 @@ const FamilyCertificate = () => {
         },
     ]);
 
+    //TODO: create a column about profile picture in the database in users table. and set a default dummy profile picture for each user. and also update the picture in firebase
+    //FIXME:https://www.udcbd.net/setting/unioninfo/1694876087union17.jpg
+    // Assuming you have 'loading', 'user', and 'getUser' properly defined elsewhere
+
+    //fetch user's data
+    const { data: userInfo } = useQuery({
+        queryKey: ["userInfo"],
+        queryFn: async () => {
+            if (user.email) {
+                return await getUser(user.email);
+            }
+            return null;
+        },
+    });
+
+    //fetch the user's union's info
+    const { data: unionInfo } = useQuery({
+        queryKey: ["unionInfo"],
+        queryFn: async () => {
+            if (userInfo.id) {
+                return await getUsersUnion(userInfo.id);
+            }
+            return null;
+        },
+    });
+
     const handleBanglaSubmit = async (e) => {
-        setLoading(true);
+        setSpinner(true);
         e.preventDefault();
 
         const name = e.target.name.value;
-        const voterId = e.target.name.value;
+        const voterId = e.target.voterId.value;
         const guardian = e.target.guardian.value;
         const mother = e.target.mother.value;
+        const chairman = e.target.chairman.value;
         const village = e.target.village.value;
         const holdingNumber = e.target.holdingNumber.value;
         const word = e.target.word.value;
@@ -44,35 +82,91 @@ const FamilyCertificate = () => {
         const district = e.target.district.value;
         const photo = e.target.photo.files[0];
         const attachment = e.target.attachment.files[0];
+        // Get current date
+        const currentDate = new Date();
+        let day = currentDate.getDate();
+        let month = currentDate.getMonth() + 1;
+        const year = currentDate.getFullYear();
+        day = day < 10 ? "0" + day : day;
+        month = month < 10 ? "0" + month : month;
+        const date = day + "-" + month + "-" + year;
+        //demo strings
 
-        const document = {
-            name,
-            voterId,
-            guardian,
-            mother,
-            village,
-            holdingNumber,
-            word,
-            postOffice,
-            union,
-            upazilla,
-            district,
-            photo,
-            attachment,
-        };
+        // const document = {
+        //     name,
+        //     voterId,
+        //     guardian,
+        //     mother,
+        //     chairman,
+        //     village,
+        //     holdingNumber,
+        //     word,
+        //     postOffice,
+        //     union,
+        //     upazilla,
+        //     district,
+        //     photo,
+        //     attachment,
+        // };
 
         try {
-            setLoading(false);
-            console.log("bangla => ", document);
-            console.log(banglaRows);
+            const photoData = await uploadImage(photo);
+            const attachmentData = await uploadImage(attachment);
+
+            const application = {
+                union_id: unionInfo?.id,
+                applied_union_no: unionInfo?.id,
+                union_logo: unionInfo?.logo,
+                applied_upazilla_name: upazilla,
+                applied_zilla_name: district,
+                applied_chairman_name: chairman,
+                user_id: userInfo?.id,
+                user_info_id: null,
+                //TODO: user info form
+                status: "approved",
+                sanad_file: attachmentData?.data?.url,
+                sanad_id: 1,
+                application: userInfo?.name,
+                form_date: date,
+                nid_birth: voterId,
+                father_husband_name: guardian,
+                mother_name: mother,
+                village_name: village,
+                union_name: union,
+                upazilla_name: upazilla,
+                zilla_name: district,
+                ward_no: word,
+                name: name,
+                mrgram: holdingNumber,
+                mrdak: postOffice,
+                mrword: word,
+                date: date,
+                photo: photoData?.data?.url,
+            };
+            const res = await addCertificate(application);
+
+            const oarishes = {
+                application_id: res?.id,
+                sanad_id: 1,
+                chairman_name: chairman,
+                no: banglaRows.map((item) => item?.ক্রমিক).join(","),
+                o_name: banglaRows?.map((item) => item.নাম).join(","),
+                o_relation: banglaRows?.map((item) => item.সম্পর্ক).join(","),
+                rnid: banglaRows?.map((item) => item["আইডি নম্বর"]).join(","),
+                rbirth: banglaRows?.map((item) => item["জন্ম সনদ নম্বর"]).join(","),
+                rcom: banglaRows?.map((item) => item.মন্তব্য).join(","),
+            };
+            await addOarishes(oarishes);
+            
+            setSpinner(false);
         } catch (error) {
-            setLoading(false);
+            setSpinner(false);
             console.error(error);
         }
     };
 
     const handleEnglishSubmit = async (e) => {
-        setLoading(true);
+        setSpinner(true);
         e.preventDefault();
 
         const name = e.target.name.value;
@@ -106,10 +200,10 @@ const FamilyCertificate = () => {
         };
 
         try {
-            setLoading(false);
+            setSpinner(false);
             console.log("english =>", document);
         } catch (error) {
-            setLoading(false);
+            setSpinner(false);
             console.error(error);
         }
     };
@@ -156,7 +250,7 @@ const FamilyCertificate = () => {
                                 <Input
                                     name="name"
                                     color="blue"
-                                    className="bg-[#c1fffc]  focus:bg-white"
+                                    className="!bg-[#c1fffc]  focus:bg-white"
                                 />
                             </div>
                             <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
@@ -166,7 +260,7 @@ const FamilyCertificate = () => {
                                 <Input
                                     name="voterId"
                                     color="blue"
-                                    className="bg-[#c1fffc]  focus:bg-white"
+                                    className="!bg-[#c1fffc]  focus:bg-white"
                                 />
                             </div>
                             <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
@@ -174,7 +268,7 @@ const FamilyCertificate = () => {
                                 <Input
                                     name="guardian"
                                     color="blue"
-                                    className="bg-[#c1fffc]  focus:bg-white"
+                                    className="!bg-[#c1fffc]  focus:bg-white"
                                 />
                             </div>
                         </div>
@@ -185,7 +279,7 @@ const FamilyCertificate = () => {
                                 <Input
                                     name="mother"
                                     color="blue"
-                                    className="bg-[#c1fffc]  focus:bg-white"
+                                    className="!bg-[#c1fffc]  focus:bg-white"
                                 />
                             </div>
                             <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
@@ -193,7 +287,7 @@ const FamilyCertificate = () => {
                                 <Input
                                     name="village"
                                     color="blue"
-                                    className="bg-[#c1fffc]  focus:bg-white"
+                                    className="!bg-[#c1fffc]  focus:bg-white"
                                 />
                             </div>
                             <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
@@ -201,7 +295,7 @@ const FamilyCertificate = () => {
                                 <Input
                                     name="holdingNumber"
                                     color="blue"
-                                    className="bg-[#c1fffc]  focus:bg-white"
+                                    className="!bg-[#c1fffc]  focus:bg-white"
                                 />
                             </div>
                         </div>
@@ -212,7 +306,7 @@ const FamilyCertificate = () => {
                                 <Input
                                     name="word"
                                     color="blue"
-                                    className="bg-[#c1fffc]  focus:bg-white"
+                                    className="!bg-[#c1fffc]  focus:bg-white"
                                 />
                             </div>
                             <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[230px]">
@@ -220,7 +314,7 @@ const FamilyCertificate = () => {
                                 <Input
                                     name="postOffice"
                                     color="blue"
-                                    className="bg-[#c1fffc]  focus:bg-white"
+                                    className="!bg-[#c1fffc]  focus:bg-white"
                                 />
                             </div>
                             <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[230px]">
@@ -228,7 +322,7 @@ const FamilyCertificate = () => {
                                 <Input
                                     name="union"
                                     color="blue"
-                                    className="bg-[#c1fffc]  focus:bg-white"
+                                    className="!bg-[#c1fffc]  focus:bg-white"
                                 />
                             </div>
                             <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[230px]">
@@ -236,7 +330,7 @@ const FamilyCertificate = () => {
                                 <Input
                                     name="upazilla"
                                     color="blue"
-                                    className="bg-[#c1fffc]  focus:bg-white"
+                                    className="!bg-[#c1fffc]  focus:bg-white"
                                 />
                             </div>
                         </div>
@@ -247,7 +341,7 @@ const FamilyCertificate = () => {
                                 <Input
                                     name="district"
                                     color="blue"
-                                    className="bg-[#c1fffc]  focus:bg-white"
+                                    className="!bg-[#c1fffc]  focus:bg-white"
                                 />
                             </div>
                             <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
@@ -258,7 +352,7 @@ const FamilyCertificate = () => {
                                     name="photo"
                                     type="file"
                                     color="blue"
-                                    className="bg-[#c1fffc]  focus:bg-white"
+                                    className="!bg-[#c1fffc]  focus:bg-white"
                                 />
                             </div>
                             <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
@@ -267,22 +361,30 @@ const FamilyCertificate = () => {
                                     name="attachment"
                                     type="file"
                                     color="blue"
-                                    className="bg-[#c1fffc]  focus:bg-white"
+                                    className="!bg-[#c1fffc]  focus:bg-white"
                                 />
                             </div>
                         </div>
                         <Table rows={englishRows} setRows={setEnglishRows} />
                         <div>
                             <div className="flex justify-center items-start p-2 md:mx-16 mx-5 mt-5  lg:pt-3 lg:mx-4 lg:px-2 gap-2  lg:mt-10 lg:h-[70px] bg-[#F8DDCC]">
-                                <input className="mt-1" type="checkbox" name="" id="" />
-                                <h1 className="text-black  text-[12px] lg:text-[14px]">
+                                <input
+                                    className="mt-1"
+                                    type="checkbox"
+                                    name=""
+                                    id="eng-notice"
+                                />
+                                <label
+                                    htmlFor="eng-notice"
+                                    className="text-black  text-[12px] lg:text-[14px]"
+                                >
                                     {" "}
                                     I hereby declare that the above information is
                                     completely true. Certificate/certificate shall be void
                                     whenever the information provided by me is found to be
                                     false will be considered and legal action will be
                                     taken.
-                                </h1>
+                                </label>
                             </div>
                         </div>
                         <div className="flex justify-center mt-9 gap-2 md:gap-2 items-center pb-3 md:pb-5 lg:pb-1  lg:gap-2">
@@ -303,7 +405,7 @@ const FamilyCertificate = () => {
                             <Input
                                 name="name"
                                 color="blue"
-                                className="bg-[#c1fffc]  focus:bg-white"
+                                className="!bg-[#c1fffc]  focus:bg-white"
                             />
                         </div>
                         <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
@@ -311,7 +413,7 @@ const FamilyCertificate = () => {
                             <Input
                                 name="voterId"
                                 color="blue"
-                                className="bg-[#c1fffc]  focus:bg-white"
+                                className="!bg-[#c1fffc]  focus:bg-white"
                             />
                         </div>
                         <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
@@ -319,34 +421,42 @@ const FamilyCertificate = () => {
                             <Input
                                 name="guardian"
                                 color="blue"
-                                className="bg-[#c1fffc]  focus:bg-white"
+                                className="!bg-[#c1fffc]  focus:bg-white"
                             />
                         </div>
                     </div>
                     {/* table two */}
-                    <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
-                        <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                    <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-[14px] ">
+                        <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[230px]">
                             <h1 className="text-black">মাতাঃ</h1>
                             <Input
                                 name="mother"
                                 color="blue"
-                                className="bg-[#c1fffc]  focus:bg-white"
+                                className="!bg-[#c1fffc]  focus:bg-white"
                             />
                         </div>
-                        <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                        <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[230px]">
+                            <h1 className="text-black">চেয়ারম্যান</h1>
+                            <Input
+                                name="chairman"
+                                color="blue"
+                                className="!bg-[#c1fffc]  focus:bg-white"
+                            />
+                        </div>
+                        <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[230px]">
                             <h1 className="text-black">গ্রাম/মহল্লা</h1>
                             <Input
                                 name="village"
                                 color="blue"
-                                className="bg-[#c1fffc]  focus:bg-white"
+                                className="!bg-[#c1fffc]  focus:bg-white"
                             />
                         </div>
-                        <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                        <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[230px]">
                             <h1 className="text-black">হোল্ডিং নম্বর</h1>
                             <Input
                                 name="holdingNumber"
                                 color="blue"
-                                className="bg-[#c1fffc]  focus:bg-white"
+                                className="!bg-[#c1fffc]  focus:bg-white"
                             />
                         </div>
                     </div>
@@ -357,7 +467,7 @@ const FamilyCertificate = () => {
                             <Input
                                 name="word"
                                 color="blue"
-                                className="bg-[#c1fffc]  focus:bg-white"
+                                className="!bg-[#c1fffc]  focus:bg-white"
                             />
                         </div>
                         <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[230px]">
@@ -365,7 +475,7 @@ const FamilyCertificate = () => {
                             <Input
                                 name="postOffice"
                                 color="blue"
-                                className="bg-[#c1fffc]  focus:bg-white"
+                                className="!bg-[#c1fffc]  focus:bg-white"
                             />
                         </div>
                         <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[230px]">
@@ -373,7 +483,7 @@ const FamilyCertificate = () => {
                             <Input
                                 name="union"
                                 color="blue"
-                                className="bg-[#c1fffc]  focus:bg-white"
+                                className="!bg-[#c1fffc]  focus:bg-white"
                             />
                         </div>
                         <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[230px]">
@@ -381,7 +491,7 @@ const FamilyCertificate = () => {
                             <Input
                                 name="upazilla"
                                 color="blue"
-                                className="bg-[#c1fffc]  focus:bg-white"
+                                className="!bg-[#c1fffc]  focus:bg-white"
                             />
                         </div>
                     </div>
@@ -392,7 +502,7 @@ const FamilyCertificate = () => {
                             <Input
                                 name="district"
                                 color="blue"
-                                className="bg-[#c1fffc]  focus:bg-white"
+                                className="!bg-[#c1fffc]  focus:bg-white"
                             />
                         </div>
                         <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
@@ -401,7 +511,7 @@ const FamilyCertificate = () => {
                                 name="photo"
                                 type="file"
                                 color="blue"
-                                className="bg-[#c1fffc]  focus:bg-white"
+                                className="!bg-[#c1fffc]  focus:bg-white"
                             />
                         </div>
                         <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
@@ -410,7 +520,7 @@ const FamilyCertificate = () => {
                                 name="attachment"
                                 type="file"
                                 color="blue"
-                                className="bg-[#c1fffc]  focus:bg-white"
+                                className="!bg-[#c1fffc]  focus:bg-white"
                             />
                         </div>
                     </div>
@@ -439,7 +549,7 @@ const FamilyCertificate = () => {
                             type="submit"
                             className="bg-[#84BC46] text-white md:py-2 md:px-5 px-4 py-2  lg:py-2 lg:px-5 rounded-md"
                         >
-                            {loading ? <Spinner /> : "সংরক্ষণ করুন"}
+                            {spinner ? <Spinner /> : "সংরক্ষণ করুন"}
                         </button>
                         <button className="bg-[#ea542a] text-white md:py-2 md:px-5 px-4 py-2  lg:py-2 lg:px-5 rounded-md">
                             প্রিন্ট করুন
