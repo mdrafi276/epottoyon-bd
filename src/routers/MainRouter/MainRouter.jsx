@@ -13,6 +13,9 @@ import UserInfoForm from "../../pages/Dashboard/UserInfoForm/UserInfoForm";
 import UnionInfoForm from "../../pages/Dashboard/UnionInfoForm/UnionInfoForm";
 import ApplyForCertificate from "../../pages/Dashboard/ApplyForCertificate/ApplyForCertificate";
 import FamilyCertificate from "../../pages/Dashboard/FamilyCertificate/FamilyCertificate";
+import EditInformation from "../../pages/Profile/EditInformation";
+import ChangePassword from "../../pages/Profile/ChangePassword";
+import TwoFactorAuthenthication from "../../pages/Profile/TwoFactorAuthenthication";
 
 const MainRouter = createBrowserRouter([
   {
@@ -57,6 +60,18 @@ const MainRouter = createBrowserRouter([
       {
         path: "/dashboard/profile",
         element: <Profile />,
+      },
+      {
+        path: "/dashboard/edit-information",
+        element: <EditInformation />,
+      },
+      {
+        path: "/dashboard/change-password",
+        element: <ChangePassword />,
+      },
+      {
+        path: "/dashboard/twofactor",
+        element: <TwoFactorAuthenthication />,
       },
       {
         path: "/dashboard/user-info-form",
