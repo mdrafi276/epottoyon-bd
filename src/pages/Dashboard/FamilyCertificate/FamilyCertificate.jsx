@@ -240,12 +240,17 @@ const FamilyCertificate = () => {
                         আবেদন &gt; নাগরিক সনদ
                     </h1>
                 </div>{" "}
-                <div className="flex justify-center gap-12 items-center text-xl  text-center  text-white md:text-2xl lg:text-xl lg:mt-5 mt-3  lg:pl-2 bg-[#aa2ec3] py-2">
+                <div className="flex justify-end gap-12 items-center text-xl text-white md:text-2xl lg:text-xl lg:mt-5 mt-3  lg:pl-2 bg-[#aa2ec3] p-2 pr-8">
                     <h1
                         onClick={() => setIsEngOpen(!isEngOpen)}
                         className="cursor-pointer hover:underline font-bold flex items-start gap-2"
                     >
-                        {isEngOpen ? "শুধু বাংলায় আবেদন করুন" : "ইংরেজিতেও আবেদন করুন"}
+                        {isEngOpen ? (
+                            <MdCheckBox className="text-2xl" />
+                        ) : (
+                            <MdCheckBoxOutlineBlank className="text-2xl" />
+                        )}
+                        ইংরেজিতেও আবেদন করুন
                     </h1>
                 </div>
                 <form onSubmit={handleSubmit}>
