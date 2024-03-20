@@ -44,9 +44,9 @@ const ChangePassword = () => {
                 </Link>
               </ul>
             </div>
-            <div className="lg:m-3 py-5 md:py-10 lg:py-8   ">
+            <div className="lg:m-3 py-5 md:py-10 lg:py-5   ">
               {/* row one */}
-              <div className="flex w-[95%]  lg:w-[80%]  mt-8 mx-auto justify-center  lg:gap-5   lg:mt-8 items-center ">
+              <div className="flex w-[95%]  lg:w-[80%]  mt-5 mx-auto justify-center  lg:gap-5   lg:mt-8 items-center ">
                 <h1 className="text-[12px] md:text-[15px] lg:text-[15px] font-medium  md:w-[150px] w-[100px]   ">
                   Current Password
                 </h1>
@@ -58,7 +58,7 @@ const ChangePassword = () => {
                   />
                 </div>
               </div>
-              <div className="flex  w-[95%]  lg:w-[80%]  mt-10 mx-auto justify-center lg:gap-5  lg:mt-10 items-center ">
+              <div className="flex  w-[95%]  lg:w-[80%]  mt-10 mx-auto justify-center lg:gap-5  lg:mt-14 items-center ">
                 <h1 className="text-[12px] md:text-[15px] lg:text-[15px] font-medium  md:w-[150px] w-[100px]   ">
                   New Password
                 </h1>
@@ -66,7 +66,7 @@ const ChangePassword = () => {
                   <Input type="text" color="blue" placeholder=" New Password" />
                 </div>
               </div>
-              <div className="flex  w-[95%]  lg:w-[80%]  mt-10 mx-auto mb-10 justify-center  lg:gap-5   lg:mt-10 items-center ">
+              <div className="flex  w-[95%]  lg:w-[80%]  mt-10 mx-auto mb-10 justify-center  lg:gap-5   lg:mt-14 items-center ">
                 <h1 className="text-[12px] md:text-[15px] lg:text-[15px] font-medium  md:w-[150px] w-[100px]   ">
                   New Password Confirmation
                 </h1>
