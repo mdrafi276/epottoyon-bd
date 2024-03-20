@@ -16,6 +16,7 @@ import FamilyCertificate from "../../pages/Dashboard/FamilyCertificate/FamilyCer
 import EditInformation from "../../pages/Profile/EditInformation";
 import ChangePassword from "../../pages/Profile/ChangePassword";
 import TwoFactorAuthenthication from "../../pages/Profile/TwoFactorAuthenthication";
+import AllCertificate from "../../pages/Dashboard/AllCertificate/AllCertificate";
 
 const MainRouter = createBrowserRouter([
   {
@@ -80,6 +81,11 @@ const MainRouter = createBrowserRouter([
       {
         path: "/dashboard/union-info-form",
         element: <UnionInfoForm />,
+        
+      },
+      {
+        path: "/dashboard/all-certificate",
+        element: <AllCertificate />,
         
       },
       {

@@ -43,7 +43,7 @@ const EditInformation = () => {
                 </Link>
               </ul>
             </div>
-            <div className="lg:m-3 py-5 md:py-10 lg:py-14   ">
+            <div className="lg:m-3 py-5 md:py-10 lg:py-5   ">
               {/* row one */}
               <div className="flex w-[80%]  mt-5 mx-auto justify-center  lg:gap-5   lg:mt-8 items-center ">
                 <h1 className="text-[12px] md:text-[15px] lg:text-[15px] font-medium  md:w-[150px] w-[80px]   ">
@@ -53,7 +53,7 @@ const EditInformation = () => {
                   <Input type="text" color="blue" />
                 </div>
               </div>
-              <div className="flex w-[80%]  mt-8 mx-auto justify-center lg:gap-5  lg:mt-8 items-center ">
+              <div className="flex w-[80%]  mt-10 mx-auto justify-center lg:gap-5  lg:mt-14 items-center ">
                 <h1 className="text-[12px] md:text-[15px] lg:text-[15px] font-medium  md:w-[150px] w-[80px]   ">
                   Phone Number
                 </h1>
@@ -61,7 +61,7 @@ const EditInformation = () => {
                   <Input type="text" color="blue" />
                 </div>
               </div>
-              <div className="flex w-[80%]  mt-8 mx-auto mb-10 justify-center  lg:gap-5   lg:mt-8 items-center ">
+              <div className="flex w-[80%]  mt-10 mx-auto mb-10 justify-center  lg:gap-5   lg:mt-14 items-center ">
                 <h1 className="text-[12px] md:text-[15px] lg:text-[15px] font-medium  md:w-[150px] w-[80px]   ">
                   E-mail Address
                 </h1>

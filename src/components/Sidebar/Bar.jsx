@@ -67,7 +67,17 @@ const Bar = ({ setDrawerOpen }) => {
                 {/* <ListItemSuffix></ListItemSuffix> */}
               </ListItem>
             </Link>
-          
+
+            <Link to="/dashboard/user-info-form">
+              {" "}
+              <ListItem>
+                <ListItemPrefix>
+                  <MdPostAdd className="h-5 w-5" />
+                </ListItemPrefix>
+                ব্যাবহারকরীর তথ্য
+                {/* <ListItemSuffix></ListItemSuffix> */}
+              </ListItem>
+            </Link>
             <Link to="/dashboard/union-info-form">
               {" "}
               <ListItem>
@@ -78,20 +88,26 @@ const Bar = ({ setDrawerOpen }) => {
                 {/* <ListItemSuffix></ListItemSuffix> */}
               </ListItem>
             </Link>
-            <ListItem>
-              <ListItemPrefix>
-                <MdPostAdd className="h-5 w-5" />
-              </ListItemPrefix>
-              সনদের জন্য আবেদন
-              {/* <ListItemSuffix></ListItemSuffix> */}
-            </ListItem>
-            <ListItem>
-              <ListItemPrefix>
-                <LiaCertificateSolid className="h-5 w-5" />
-              </ListItemPrefix>
-              সকল সনদ
-              {/* <ListItemSuffix></ListItemSuffix> */}
-            </ListItem>
+            <Link to="/dashboard/apply-for-certificate">
+              {" "}
+              <ListItem>
+                <ListItemPrefix>
+                  <MdPostAdd className="h-5 w-5" />
+                </ListItemPrefix>
+                সনদের জন্য আবেদন
+                {/* <ListItemSuffix></ListItemSuffix> */}
+              </ListItem>
+            </Link>
+            <Link to="/dashboard/all-certificate">
+              {" "}
+              <ListItem>
+                <ListItemPrefix>
+                  <LiaCertificateSolid className="h-5 w-5" />
+                </ListItemPrefix>
+                সকল সনদ
+                {/* <ListItemSuffix></ListItemSuffix> */}
+              </ListItem>
+            </Link>
             {/* dashobrdroute */}
             <ListItem className="p-0" selected={open === 1}>
               <AccordionHeader
@@ -119,7 +135,6 @@ const Bar = ({ setDrawerOpen }) => {
                     <Fa42Group strokeWidth={3} className="h-3 w-5" />
                   </ListItemPrefix>
                   সকল নোটিশ
-
                 </ListItem>
               </List>
             </AccordionBody>
@@ -154,7 +169,6 @@ const Bar = ({ setDrawerOpen }) => {
                     <Fa42Group strokeWidth={3} className="h-3 w-5" />
                   </ListItemPrefix>
                   বিচারের রায় তৈরি করুন
-
                 </ListItem>
                 <ListItem>
                   <ListItemPrefix>
@@ -381,12 +395,15 @@ const Bar = ({ setDrawerOpen }) => {
             {/* <ListItemSuffix></ListItemSuffix> */}
           </ListItem>
 
-          <ListItem>
-            <ListItemPrefix>
-              <CgProfile className="h-5 w-5" />
-            </ListItemPrefix>
-            ইউজার প্রফাইল
-          </ListItem>
+          <Link to="/dashboard/profile">
+            {" "}
+            <ListItem>
+              <ListItemPrefix>
+                <CgProfile className="h-5 w-5" />
+              </ListItemPrefix>
+              ইউজার প্রফাইল
+            </ListItem>
+          </Link>
           <ListItem>
             <ListItemPrefix>
               <CgProfile className="h-5 w-5" />
