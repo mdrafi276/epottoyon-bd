@@ -45,7 +45,7 @@ const Table = ({ rows, setRows }) => {
                     {rows.map((row, index) => (
                         <tr key={index}>
                             {Object.keys(row).map((key) => (
-                                <td key={key} className="px-4 py-2 border">
+                                <td key={key} className="px-4 py-2 border border-gray-600">
                                     <input
                                         type="text"
                                         value={row[key]}
@@ -57,7 +57,7 @@ const Table = ({ rows, setRows }) => {
                                 </td>
                             ))}
 
-                            <td className="px-4 py-2 border">
+                            <td className="px-4 py-2 border border-black">
                                 {rows?.length > 1 && (
                                     <Button
                                         onClick={() => handleRemoveRow(index)}
