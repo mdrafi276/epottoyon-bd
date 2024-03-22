@@ -78,6 +78,7 @@ const DeathCertificate = () => {
     const mother = e.target.mother.value;
     const village = e.target.village.value;
     const word = e.target.word.value;
+    const deathTimeBn = e.target.deathTimeBn.value;
     const postOffice = e.target.postOffice.value;
     const photo = e.target.photo.files[0];
     const attachment = e.target.attachment.files[0];
@@ -356,6 +357,17 @@ const DeathCertificate = () => {
                 />
               </div>
             </div>
+            <div className="md:mx-3 md:px-[48px] lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[99%] mx-auto">
+                <h1 className="text-black">মৃত্যু তারিখঃ</h1>
+                <Input
+                  name="deathTimeBn"
+                  type="text"
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>
+            </div>
             {/* tabel 4 */}
             {/* <TableTwo rows={banglaRows} setRows={setBanglaRows} /> */}
 
@@ -463,6 +475,17 @@ const DeathCertificate = () => {
                     <Input
                       name="eng_attachment"
                       type="file"
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>
+                </div>
+                <div className="md:mx-3 md:px-[48px] lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[99%] mx-auto">
+                    <h1 className="text-black">Date Time</h1>
+                    <Input
+                      name="deathTimeEn"
+                      type="text"
                       color="blue"
                       className="!bg-[#c1fffc]  focus:bg-white"
                     />
