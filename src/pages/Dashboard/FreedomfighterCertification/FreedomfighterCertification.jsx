@@ -355,6 +355,66 @@ const FreedomfighterCertification = () => {
               />
             </div>
           </div>
+          <div className="mx-5 md:mx-16 lg:mx-5 mt-2 ">
+            <h1 className="text-[14px] text-start text-black md:text-[14px] lg:text-[15px]">
+              মুক্তিযোদ্ধার তথ্য
+            </h1>
+          </div>
+          <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-2  justify-center lg:gap-8 ">
+            <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+              <h1 className="text-black">নাম</h1>
+              <Input
+                name="postOffice"
+                color="blue"
+                type="text"
+                className="!bg-[#c1fffc]  focus:bg-white"
+              />
+            </div>
+
+            <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+              <h1 className="text-black">নাল মুক্তিকর্তা নং:</h1>
+              <Input
+                name="photo"
+                type="text"
+                color="blue"
+                className="!bg-[#c1fffc]  focus:bg-white"
+              />
+            </div>
+            <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+              <h1 className="text-black">গেজেট নং:</h1>
+              <Input
+                name="attachment"
+                type="text"
+                color="blue"
+                className="!bg-[#c1fffc]  focus:bg-white"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col mt-2 lg:mt-2 gap-5  lg:flex-row w-[90%]  md:w-[82%] lg:w-[96%] mx-auto">
+            <div className="w-full lg:mt-0 md:mt-4 mt-3 ">
+              <h1 className="text-black text-[12px] md:text-[14px] lg:text-[15px]">
+                আমার জানামতে তার :
+              </h1>
+              <Input
+                name="photo"
+                type="text"
+                color="blue"
+                className="!bg-[#c1fffc]  focus:bg-white"
+              />
+            </div>
+            <div className="w-full lg:mt-0 md:mt-4 mt-3 ">
+              <h1 className="ttext-black text-[12px] md:text-[14px] lg:text-[15px]">
+                একজন মুক্তিযোদ্ধা মাননীয় প্রধানমন্ত্রীর ঘোষনা অনুযায়ী সে
+                মুক্তিযোদ্ধার:
+              </h1>
+              <Input
+                name="photo"
+                type="text"
+                color="blue"
+                className="!bg-[#c1fffc]  focus:bg-white"
+              />
+            </div>
+          </div>
           {/* tabel 4 */}
           {/* <TableTwo rows={banglaRows} setRows={setBanglaRows} /> */}
 
@@ -462,6 +522,95 @@ const FreedomfighterCertification = () => {
                   <Input
                     name="eng_attachment"
                     type="file"
+                    color="blue"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+                <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                  <h1 className="text-black">ডাকঘরঃ</h1>
+                  <Input
+                    name="postOffice"
+                    color="blue"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>
+
+                <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                  <h1 className="text-black">ছবি (সম্প্রতি তোলা ৫*৫ সে.মি )</h1>
+                  <Input
+                    name="photo"
+                    type="file"
+                    color="blue"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>
+                <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                  <h1 className="text-black">সংযুক্তি</h1>
+                  <Input
+                    name="attachment"
+                    type="file"
+                    color="blue"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>
+              </div>
+              <div className="mx-5 md:mx-16 lg:mx-5 mt-2 ">
+                <h1 className="text-[14px] text-start text-black md:text-[14px] lg:text-[15px]">
+                  মুক্তিযোদ্ধার তথ্য
+                </h1>
+              </div>
+              <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-2  justify-center lg:gap-8 ">
+                <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                  <h1 className="text-black">Name</h1>
+                  <Input
+                    name="postOffice"
+                    color="blue"
+                    type="text"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>
+
+                <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                  <h1 className="text-black">Null Issuer No:</h1>
+                  <Input
+                    name="photo"
+                    type="text"
+                    color="blue"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>
+                <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                  <h1 className="text-black">Gazette No:</h1>
+                  <Input
+                    name="attachment"
+                    type="text"
+                    color="blue"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col mt-2 lg:mt-2 gap-5  lg:flex-row w-[90%]  md:w-[82%] lg:w-[96%] mx-auto">
+                <div className="w-full lg:mt-0 md:mt-4 mt-3 ">
+                  <h1 className="text-black text-[12px] md:text-[14px] lg:text-[15px]">
+                    As far as I know he is:
+                  </h1>
+                  <Input
+                    name="photo"
+                    type="text"
+                    color="blue"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>
+                <div className="w-full lg:mt-0 md:mt-4 mt-3 ">
+                  <h1 className="ttext-black text-[12px] md:text-[14px] lg:text-[15px]">
+                    A Freedom Fighter According to the declaration of the
+                    Honorable Prime Minister, he is a freedom fighter:
+                  </h1>
+                  <Input
+                    name="photo"
+                    type="text"
                     color="blue"
                     className="!bg-[#c1fffc]  focus:bg-white"
                   />

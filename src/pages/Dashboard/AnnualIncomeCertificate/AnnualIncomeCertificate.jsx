@@ -356,6 +356,17 @@ const AnnualIncomeCertificate = () => {
                 />
               </div>
             </div>
+            <div className="md:mx-3 md:px-[48px] lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[99%] mx-auto">
+                <h1 className="text-black">আমার বার্ষিক আয় প্রায়</h1>
+                <Input
+                  name="deathTimeBn"
+                  type="text"
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>
+            </div>
             {/* tabel 4 */}
             {/* <TableTwo rows={banglaRows} setRows={setBanglaRows} /> */}
 
@@ -463,6 +474,17 @@ const AnnualIncomeCertificate = () => {
                     <Input
                       name="eng_attachment"
                       type="file"
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>
+                </div>
+                <div className="md:mx-3 md:px-[48px] lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[99%] mx-auto">
+                    <h1 className="text-black">My annual income is approx</h1>
+                    <Input
+                      name="deathTimeBn"
+                      type="text"
                       color="blue"
                       className="!bg-[#c1fffc]  focus:bg-white"
                     />

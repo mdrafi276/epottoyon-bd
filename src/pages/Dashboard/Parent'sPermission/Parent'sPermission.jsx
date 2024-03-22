@@ -356,6 +356,30 @@ const ParentsPermission = () => {
                 />
               </div>
             </div>
+            <div className="flex flex-col mt-2 lg:mt-2 gap-5  lg:flex-row w-[90%]  md:w-[82%] lg:w-[96%] mx-auto">
+              <div className="w-full lg:mt-0 md:mt-4 mt-3 ">
+                <h1 className="text-black text-[12px] md:text-[14px] lg:text-[15px]">
+                  এই মর্মে আঙ্গিকার করেতিছি যে, আমার পুত্র/কন্যা
+                </h1>
+                <Input
+                  name="photo"
+                  type="text"
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>
+              <div className="w-full lg:mt-0 md:mt-4 mt-3 ">
+                <h1 className="ttext-black text-[12px] md:text-[14px] lg:text-[15px]">
+                  সে সাহসিকতা ও মনোবলে বলিয়ান হেতু বাংলাদেশ
+                </h1>
+                <Input
+                  name="photo"
+                  type="text"
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>
+            </div>
             {/* tabel 4 */}
             {/* <TableTwo rows={banglaRows} setRows={setBanglaRows} /> */}
 
@@ -463,6 +487,30 @@ const ParentsPermission = () => {
                     <Input
                       name="eng_attachment"
                       type="file"
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col mt-2 lg:mt-2 gap-5  lg:flex-row w-[90%]  md:w-[82%] lg:w-[96%] mx-auto">
+                  <div className="w-full lg:mt-0 md:mt-4 mt-3 ">
+                    <h1 className="text-black text-[12px] md:text-[14px] lg:text-[15px]">
+                      I hereby declare that my son/daughter
+                    </h1>
+                    <Input
+                      name="photo"
+                      type="text"
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>
+                  <div className="w-full lg:mt-0 md:mt-4 mt-3 ">
+                    <h1 className="ttext-black text-[12px] md:text-[14px] lg:text-[15px]">
+                      Bangladesh is due to his bravery and morale
+                    </h1>
+                    <Input
+                      name="photo"
+                      type="text"
                       color="blue"
                       className="!bg-[#c1fffc]  focus:bg-white"
                     />
