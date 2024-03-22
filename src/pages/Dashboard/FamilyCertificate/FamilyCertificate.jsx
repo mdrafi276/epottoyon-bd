@@ -240,10 +240,10 @@ const FamilyCertificate = () => {
                         আবেদন &gt; নাগরিক সনদ
                     </h1>
                 </div>{" "}
-                <div className="flex justify-end gap-12 items-center text-xl text-white md:text-2xl lg:text-xl lg:mt-5 mt-3  lg:pl-2 bg-[#aa2ec3] p-2 pr-8">
+                <div className="flex justify-end gap-5 md:gap-12 items-center text-xl text-white md:text-2xl lg:text-xl lg:mt-5 mt-3  lg:pl-2 bg-[#aa2ec3] p-2 pr-8">
                     <h1
                         onClick={() => setIsEngOpen(!isEngOpen)}
-                        className="cursor-pointer hover:underline font-bold flex items-start gap-2"
+                        className="cursor-pointer text-[14px]  md:text-[15px] hover:underline font-bold flex items-start gap-2"
                     >
                         {isEngOpen ? (
                             <MdCheckBox className="text-2xl" />
@@ -365,7 +365,7 @@ const FamilyCertificate = () => {
                     {isEngOpen && (
                         <div>
                             {/* table one */}
-                            <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+                            <div className="flex flex-col lg:flex-row w-full md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
                                 <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
                                     <h1 className="text-black">Name</h1>
                                     <Input
