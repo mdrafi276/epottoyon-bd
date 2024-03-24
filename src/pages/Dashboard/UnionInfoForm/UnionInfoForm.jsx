@@ -147,8 +147,6 @@ const UnionInfoForm = () => {
                 const photoData = await uploadImage(photo);
                 const response = await getUser(user?.email);
 
-                //FIXME: ei idcard ar photo ta kar?
-
                 const unionInfos = {
                     division_id: selectedDivision,
                     district_id: selectedDistrict,
@@ -725,8 +723,12 @@ const UnionInfoForm = () => {
                 {/* second section */}
                 <div>
                     <div className="w-full flex justify-center gap-1 md:gap-8  mt-3 lg:mt-14 itmes-center ">
-                     
-                        <Button size="lg" type="submit" color="blue" className="!hover:bg-blue-500">
+                        <Button
+                            size="lg"
+                            type="submit"
+                            color="blue"
+                            className="!hover:bg-blue-500"
+                        >
                             {loading ? <Spinner /> : "Submit"}
                         </Button>
                     </div>
