@@ -34,18 +34,18 @@ const Table = ({ rows, setRows }) => {
                     <tr>
                         {rows.length > 0 &&
                             Object.keys(rows[0]).map((key) => (
-                                <th key={key} className="px-4 py-2">
+                                <th key={key} className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
                                     {key}
                                 </th>
                             ))}
-                        <th className="px-4 py-2">Actions</th>
+                        <th className="text-[10px] md:text-[16px]  px-3 md:px-4 py-2">Actions</th>
                     </tr>
                 </thead>
                 <tbody className="bg-gray-100 text-gray-700">
                     {rows.map((row, index) => (
                         <tr key={index}>
                             {Object.keys(row).map((key) => (
-                                <td key={key} className="px-4 py-2 border border-gray-600">
+                                <td key={key} className="md:px-4 py-2 border border-gray-600">
                                     <input
                                         type="text"
                                         value={row[key]}
@@ -57,7 +57,7 @@ const Table = ({ rows, setRows }) => {
                                 </td>
                             ))}
 
-                            <td className="px-4 py-2 border border-black">
+                            <td className="  md:px-4 py-2 border border-black">
                                 {rows?.length > 1 && (
                                     <Button
                                         onClick={() => handleRemoveRow(index)}
