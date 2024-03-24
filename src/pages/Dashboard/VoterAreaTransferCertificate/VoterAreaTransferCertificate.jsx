@@ -356,6 +356,80 @@ const VoterAreaTransferCertificate = () => {
                 />
               </div>
             </div>
+            <div className="flex flex-col w-full lg:w-[95%] mx-auto lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+              <div className=" flex w-full  flex-col lg:flex-row lg:mt-0 lg:items-center   md:mt-4 mt-3 ">
+                <h1 className="text-black w-full text-[14px] md:text-[15px] ">
+                  আমার
+                </h1>
+                <Input
+                  name=""
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>
+
+              <div className="w-full flex  flex-col lg:flex-row lg:items-center lg:gap-5 gap-3 lg:mt-0 md:mt-4 mt-3 ">
+                <h1 className="text-black">জেলার</h1>
+                <Input
+                  name=""
+                  type="text"
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>
+              <div className="w-full flex  flex-col lg:flex-row  lg:items-center lg:gap-5  lg:mt-0 md:mt-4 mt-3 ">
+                <h1 className="text-black">উপজেলায়</h1>
+                <Input
+                  name=""
+                  type="text"
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>
+            </div>
+            <div className="md:mx-3 md:px-[48px] lg:px-0 px-5  lg:mt-5   lg:gap-8 ">
+              <div className="w-full   lg:mt-0 md:mt-4 mt-3 justify-center lg:w-[99%] mx-auto">
+                <h1 className="text-black text-[12px] md:text-[13px] lg:w-[800px] lg:text-[16px]">
+                  গ্রামে উল্লেখিত ঠিকানায় ভোটার তালিকায় তার নাম অন্তর্ভুক্ত
+                  আছে।বর্তমানে আমি আপনার গ্রাম:
+                </h1>
+                <Input
+                  name=""
+                  type="text"
+                  color="blue"
+                  className="!bg-[#c1fffc] w-full  focus:bg-white"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                <h1 className="text-black">ডাকঘরঃ</h1>
+                <Input
+                  name="postOffice"
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>
+
+              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                <h1 className="text-black">উপজেলাঃ</h1>
+                <Input
+                  name="photo"
+                  type="text"
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>
+              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                <h1 className="text-black">জেলাঃ</h1>
+                <Input
+                  name="attachment"
+                  type="text"
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>
+            </div>
             {/* tabel 4 */}
             {/* <TableTwo rows={banglaRows} setRows={setBanglaRows} /> */}
 
@@ -463,6 +537,80 @@ const VoterAreaTransferCertificate = () => {
                     <Input
                       name="eng_attachment"
                       type="file"
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col w-full lg:w-[95%] mx-auto lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+                  <div className=" flex flex-col lg:flex-row w-full lg:items-center lg:mt-0 items-center   md:mt-4 mt-3 ">
+                    <h1 className="text-black w-full text-[14px] md:text-[15px] ">
+                      My
+                    </h1>
+                    <Input
+                      name=""
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>
+
+                  <div className="w-full flex  flex-col lg:flex-row  lg:items-center md:gap-5 gap-3 lg:mt-0 md:mt-4 mt-3 ">
+                    <h1 className="text-black">District</h1>
+                    <Input
+                      name=""
+                      type="text"
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>
+                  <div className="w-full flex  flex-col lg:flex-row lg:items-center  lg:gap-5  lg:mt-0 md:mt-4 mt-3 ">
+                    <h1 className="text-black">Upazila</h1>
+                    <Input
+                      name=""
+                      type="text"
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>
+                </div>
+                <div className="md:mx-3 md:px-[48px] lg:px-0 px-5  lg:mt-5   lg:gap-8 ">
+                  <div className="w-full   lg:mt-0 md:mt-4 mt-3 justify-center lg:w-[99%] mx-auto">
+                    <h1 className="text-black text-[12px] md:text-[13px] lg:w-[800px] lg:text-[16px]">
+                      His name is included in the electoral roll at the address
+                      mentioned in the village I am currently in your village:
+                    </h1>
+                    <Input
+                      name=""
+                      type="text"
+                      color="blue"
+                      className="!bg-[#c1fffc] w-full  focus:bg-white"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                    <h1 className="text-black">Post office:</h1>
+                    <Input
+                      name="postOffice"
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>
+
+                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                    <h1 className="text-black">Upazila:</h1>
+                    <Input
+                      name="photo"
+                      type="text"
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>
+                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                    <h1 className="text-black">District:</h1>
+                    <Input
+                      name="attachment"
+                      type="text"
                       color="blue"
                       className="!bg-[#c1fffc]  focus:bg-white"
                     />

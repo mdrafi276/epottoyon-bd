@@ -1,4 +1,3 @@
-
 import { Input, Spinner } from "@material-tailwind/react";
 import { useContext, useState } from "react";
 import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
@@ -11,8 +10,8 @@ import {
   uploadImage,
 } from "../../../api/certificates";
 import { AuthContext } from "../../../Provider/AuthProvider";
-const CertificateName = () => { 
-      const [isEngOpen, setIsEngOpen] = useState(false);
+const CertificateName = () => {
+  const [isEngOpen, setIsEngOpen] = useState(false);
   const [spinner, setSpinner] = useState(false);
   const [guardian, setGuardian] = useState("");
   const [eng_guardian, set_eng_Guardian] = useState("");
@@ -229,288 +228,340 @@ const CertificateName = () => {
       console.error(error);
     }
   };
-    return (
-      <div className="bg-[#dce4ea] pb-10  lg:pt-10 lg:min-h-screen">
-        <div className="  bg-white  w-full md:w-[90%] lg:w-[98%] mx-auto lg:pb-10">
-          <div>
-            <h1 className="text-xl  font-bold   text-white md:text-2xl lg:text-xl   text-start lg:pl-2 bg-[#8BC34A] py-2">
-              {" "}
-              আবেদন &gt; প্রত্যায়ন পত্র নাম
-            </h1>
-          </div>{" "}
-          <div className="flex justify-end gap-12 items-center text-xl text-white md:text-2xl lg:text-xl lg:mt-5 mt-3  lg:pl-2 bg-[#aa2ec3] p-2 pr-8">
-            <h1
-              onClick={() => setIsEngOpen(!isEngOpen)}
-              className="cursor-pointer hover:underline font-bold flex items-start gap-2"
-            >
-              {isEngOpen ? (
-                <MdCheckBox className="text-2xl" />
-              ) : (
-                <MdCheckBoxOutlineBlank className="text-2xl" />
-              )}
-              ইংরেজিতেও আবেদন করুন
-            </h1>
-          </div>
-          <form onSubmit={handleSubmit}>
-            {/* table one */}
-            <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
-              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                <h1 className="text-black">নাম</h1>
-                <Input
-                  name="name"
-                  color="blue"
-                  className="!bg-[#c1fffc]  focus:bg-white"
-                />
-              </div>
-              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                <select
-                  required
-                  value={identity}
-                  onChange={(e) => setIdentity(e.target.value)}
-                  className="focus:outline-none"
-                  name="identity"
-                >
-                  <option value="">পরিচয়পত্র / জন্ম সনদ বেছে নিন</option>
-                  <option value="voterId">জাতীয় পরিচয়পত্র</option>
-                  <option value="birthCertificate">জন্ম সনদ</option>
-                </select>
-                <Input
-                  name={identity}
-                  color="blue"
-                  className="!bg-[#c1fffc]  focus:bg-white"
-                />
-              </div>
-              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                <select
-                  required
-                  value={guardian}
-                  onChange={(e) => setGuardian(e.target.value)}
-                  className="focus:outline-none"
-                  name="guardian"
-                >
-                  <option value="">পিতা / স্বামী বেছে নিন</option>
-                  <option value="father">পিতা</option>
-                  <option value="husband">স্বামী</option>
-                </select>
-                <Input
-                  name={guardian}
-                  color="blue"
-                  className="!bg-[#c1fffc]  focus:bg-white"
-                />
-              </div>
-            </div>
-            {/* table two */}
-            <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
-              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                <h1 className="text-black">মাতাঃ</h1>
-                <Input
-                  name="mother"
-                  color="blue"
-                  className="!bg-[#c1fffc]  focus:bg-white"
-                />
-              </div>
-              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                <h1 className="text-black">গ্রাম/মহল্লা</h1>
-                <Input
-                  name="village"
-                  color="blue"
-                  className="!bg-[#c1fffc]  focus:bg-white"
-                />
-              </div>{" "}
-              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                <h1 className="text-black">ওয়ার্ড</h1>
-                <Input
-                  name="word"
-                  color="blue"
-                  className="!bg-[#c1fffc]  focus:bg-white"
-                />
-              </div>
-            </div>
-            {/* tabel three */}
-            <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
-              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                <h1 className="text-black">ডাকঘরঃ</h1>
-                <Input
-                  name="postOffice"
-                  color="blue"
-                  className="!bg-[#c1fffc]  focus:bg-white"
-                />
-              </div>
-
-              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                <h1 className="text-black">ছবি (সম্প্রতি তোলা ৫*৫ সে.মি )</h1>
-                <Input
-                  name="photo"
-                  type="file"
-                  color="blue"
-                  className="!bg-[#c1fffc]  focus:bg-white"
-                />
-              </div>
-              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                <h1 className="text-black">সংযুক্তি</h1>
-                <Input
-                  name="attachment"
-                  type="file"
-                  color="blue"
-                  className="!bg-[#c1fffc]  focus:bg-white"
-                />
-              </div>
-            </div>
-            {/* tabel 4 */}
-            {/* <TableTwo rows={banglaRows} setRows={setBanglaRows} /> */}
-
-            {/* english form */}
-            {isEngOpen && (
-              <div>
-                {/* table one */}
-                <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
-                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                    <h1 className="text-black">Name</h1>
-                    <Input
-                      name="eng_name"
-                      color="blue"
-                      className="!bg-[#c1fffc]  focus:bg-white"
-                    />
-                  </div>
-                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                    <select
-                      required
-                      value={eng_identity}
-                      onChange={(e) => set_eng_Identity(e.target.value)}
-                      className="focus:outline-none"
-                      name="eng_identity"
-                    >
-                      <option value="">Select NID or Birth Certificate</option>
-                      <option value="eng_voterId">NID</option>
-                      <option value="eng_birthCertificate">
-                        Birth Certificate
-                      </option>
-                    </select>
-                    <Input
-                      name={eng_identity}
-                      color="blue"
-                      className="!bg-[#c1fffc]  focus:bg-white"
-                    />
-                  </div>
-                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                    <select
-                      required
-                      value={eng_guardian}
-                      onChange={(e) => set_eng_Guardian(e.target.value)}
-                      className="focus:outline-none"
-                      name="eng_guardian"
-                    >
-                      <option value="">Select Father or Husband</option>
-                      <option value="eng_father">Father</option>
-                      <option value="eng_husband">Husband</option>
-                    </select>
-                    <Input
-                      name={eng_guardian}
-                      color="blue"
-                      className="!bg-[#c1fffc]  focus:bg-white"
-                    />
-                  </div>
-                </div>
-                {/* table two */}
-                <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
-                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                    <h1 className="text-black">Mother</h1>
-                    <Input
-                      name="eng_mother"
-                      color="blue"
-                      className="!bg-[#c1fffc]  focus:bg-white"
-                    />
-                  </div>
-                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                    <h1 className="text-black">Loacation</h1>
-                    <Input
-                      name="eng_village"
-                      color="blue"
-                      className="!bg-[#c1fffc]  focus:bg-white"
-                    />
-                  </div>{" "}
-                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                    <h1 className="text-black">Word Number</h1>
-                    <Input
-                      name="eng_word"
-                      color="blue"
-                      className="!bg-[#c1fffc]  focus:bg-white"
-                    />
-                  </div>
-                </div>
-                {/* tabel three */}
-                <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
-                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                    <h1 className="text-black">Post Office</h1>
-                    <Input
-                      name="eng_postOffice"
-                      color="blue"
-                      className="!bg-[#c1fffc]  focus:bg-white"
-                    />
-                  </div>
-
-                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                    <h1 className="text-black">Photo (Recently taken 5*5cm)</h1>
-                    <Input
-                      name="eng_photo"
-                      type="file"
-                      color="blue"
-                      className="!bg-[#c1fffc]  focus:bg-white"
-                    />
-                  </div>
-                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                    <h1 className="text-black">Attachment</h1>
-                    <Input
-                      name="eng_attachment"
-                      type="file"
-                      color="blue"
-                      className="!bg-[#c1fffc]  focus:bg-white"
-                    />
-                  </div>
-                </div>
-                {/* tabel 4 */}
-                {/* <TableTwo rows={englishRows} setRows={setEnglishRows} /> */}
-              </div>
+  return (
+    <div className="bg-[#dce4ea] pb-10  lg:pt-10 lg:min-h-screen">
+      <div className="  bg-white  w-full md:w-[90%] lg:w-[98%] mx-auto lg:pb-10">
+        <div>
+          <h1 className="text-xl  font-bold   text-white md:text-2xl lg:text-xl   text-start lg:pl-2 bg-[#8BC34A] py-2">
+            {" "}
+            আবেদন &gt; প্রত্যায়ন পত্র নাম
+          </h1>
+        </div>{" "}
+        <div className="flex justify-end gap-12 items-center text-xl text-white md:text-2xl lg:text-xl lg:mt-5 mt-3  lg:pl-2 bg-[#aa2ec3] p-2 pr-8">
+          <h1
+            onClick={() => setIsEngOpen(!isEngOpen)}
+            className="cursor-pointer hover:underline font-bold flex items-start gap-2"
+          >
+            {isEngOpen ? (
+              <MdCheckBox className="text-2xl" />
+            ) : (
+              <MdCheckBoxOutlineBlank className="text-2xl" />
             )}
-            <div>
-              <div className="flex justify-center items-start p-2 md:mx-16 mx-5 mt-5  lg:pt-3 lg:mx-4 lg:px-2 gap-2  lg:mt-10 lg:h-[70px] bg-[#F8DDCC]">
-                <input
-                  className="mt-1"
-                  type="checkbox"
-                  required
-                  id="bangla-terms"
-                />
-                <label
-                  htmlFor="bangla-terms"
-                  className="text-black  text-[12px] lg:text-[14px]"
-                >
-                  আমি এই মর্মে অঙ্গীকার করছি যে, উপরে বর্ণিত তথ্যাবলী সম্পূর্ণ
-                  সত্য। যেকোন সময় আমার প্রদত্ত তথ্য অসত্য প্রমাণিত হলে
-                  সনদ/প্রত্যয়ন বাতিল বলে গণ্য হবে এবং আইনানুগ ব্যবস্থা গ্রহণ করা
-                  হবে।
-                </label>
-              </div>
-            </div>
-            {!isUserLoading && !isUnionLoading && (
-              <div className="flex justify-center mt-9 gap-2 md:gap-2 items-center pb-3 md:pb-5 lg:pb-1 lg:gap-2">
-                <button
-                  type="submit"
-                  className="bg-[#84BC46] text-white md:py-2 md:px-5 px-4 py-2 lg:py-2 lg:px-5 rounded-md"
-                >
-                  {spinner ? <Spinner /> : "সংরক্ষণ করুন"}
-                </button>
-                <button
-                  type="reset"
-                  className="bg-[#ea542a] text-white md:py-2 md:px-5 px-4 py-2 lg:py-2 lg:px-5 rounded-md"
-                >
-                  রিসেট করুন
-                </button>
-              </div>
-            )}
-          </form>{" "}
+            ইংরেজিতেও আবেদন করুন
+          </h1>
         </div>
+        <form onSubmit={handleSubmit}>
+          {/* table one */}
+          <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+            <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+              <h1 className="text-black">নাম</h1>
+              <Input
+                name="name"
+                color="blue"
+                className="!bg-[#c1fffc]  focus:bg-white"
+              />
+            </div>
+            <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+              <select
+                required
+                value={identity}
+                onChange={(e) => setIdentity(e.target.value)}
+                className="focus:outline-none"
+                name="identity"
+              >
+                <option value="">পরিচয়পত্র / জন্ম সনদ বেছে নিন</option>
+                <option value="voterId">জাতীয় পরিচয়পত্র</option>
+                <option value="birthCertificate">জন্ম সনদ</option>
+              </select>
+              <Input
+                name={identity}
+                color="blue"
+                className="!bg-[#c1fffc]  focus:bg-white"
+              />
+            </div>
+            <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+              <select
+                required
+                value={guardian}
+                onChange={(e) => setGuardian(e.target.value)}
+                className="focus:outline-none"
+                name="guardian"
+              >
+                <option value="">পিতা / স্বামী বেছে নিন</option>
+                <option value="father">পিতা</option>
+                <option value="husband">স্বামী</option>
+              </select>
+              <Input
+                name={guardian}
+                color="blue"
+                className="!bg-[#c1fffc]  focus:bg-white"
+              />
+            </div>
+          </div>
+          {/* table two */}
+          <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+            <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+              <h1 className="text-black">মাতাঃ</h1>
+              <Input
+                name="mother"
+                color="blue"
+                className="!bg-[#c1fffc]  focus:bg-white"
+              />
+            </div>
+            <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+              <h1 className="text-black">গ্রাম/মহল্লা</h1>
+              <Input
+                name="village"
+                color="blue"
+                className="!bg-[#c1fffc]  focus:bg-white"
+              />
+            </div>{" "}
+            <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+              <h1 className="text-black">ওয়ার্ড</h1>
+              <Input
+                name="word"
+                color="blue"
+                className="!bg-[#c1fffc]  focus:bg-white"
+              />
+            </div>
+          </div>
+          {/* tabel three */}
+          <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+            <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+              <h1 className="text-black">ডাকঘরঃ</h1>
+              <Input
+                name="postOffice"
+                color="blue"
+                className="!bg-[#c1fffc]  focus:bg-white"
+              />
+            </div>
+
+            <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+              <h1 className="text-black">ছবি (সম্প্রতি তোলা ৫*৫ সে.মি )</h1>
+              <Input
+                name="photo"
+                type="file"
+                color="blue"
+                className="!bg-[#c1fffc]  focus:bg-white"
+              />
+            </div>
+            <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+              <h1 className="text-black">সংযুক্তি</h1>
+              <Input
+                name="attachment"
+                type="file"
+                color="blue"
+                className="!bg-[#c1fffc]  focus:bg-white"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col w-full lg:w-[95%] mx-auto lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+            <div className=" flex w-full lg:mt-0 items-center   md:mt-4 mt-3 ">
+              <h1 className="text-black w-full text-[14px] md:text-[15px] md:w-[200px] lg:w-[200px]">
+                আমার জানামতে:
+              </h1>
+              <Input
+                name="postOffice"
+                color="blue"
+                className="!bg-[#c1fffc]  focus:bg-white"
+              />
+            </div>
+
+            <div className="w-full flex items-center md:gap-5 gap-3 lg:mt-0 md:mt-4 mt-3 ">
+              <h1 className="text-black">এবং</h1>
+              <Input
+                name="photo"
+                type="text"
+                color="blue"
+                className="!bg-[#c1fffc]  focus:bg-white"
+              />
+            </div>
+            <div className="w-full flex items-center lg:mt-0 md:mt-4 mt-3 ">
+              <h1 className="text-black">এই উভয় নামে একই ব্যাক্তি</h1>
+            </div>
+          </div>
+          {/* tabel 4 */}
+          {/* <TableTwo rows={banglaRows} setRows={setBanglaRows} /> */}
+
+          {/* english form */}
+          {isEngOpen && (
+            <div>
+              {/* table one */}
+              <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+                <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                  <h1 className="text-black">Name</h1>
+                  <Input
+                    name="eng_name"
+                    color="blue"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>
+                <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                  <select
+                    required
+                    value={eng_identity}
+                    onChange={(e) => set_eng_Identity(e.target.value)}
+                    className="focus:outline-none"
+                    name="eng_identity"
+                  >
+                    <option value="">Select NID or Birth Certificate</option>
+                    <option value="eng_voterId">NID</option>
+                    <option value="eng_birthCertificate">
+                      Birth Certificate
+                    </option>
+                  </select>
+                  <Input
+                    name={eng_identity}
+                    color="blue"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>
+                <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                  <select
+                    required
+                    value={eng_guardian}
+                    onChange={(e) => set_eng_Guardian(e.target.value)}
+                    className="focus:outline-none"
+                    name="eng_guardian"
+                  >
+                    <option value="">Select Father or Husband</option>
+                    <option value="eng_father">Father</option>
+                    <option value="eng_husband">Husband</option>
+                  </select>
+                  <Input
+                    name={eng_guardian}
+                    color="blue"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>
+              </div>
+              {/* table two */}
+              <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+                <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                  <h1 className="text-black">Mother</h1>
+                  <Input
+                    name="eng_mother"
+                    color="blue"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>
+                <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                  <h1 className="text-black">Loacation</h1>
+                  <Input
+                    name="eng_village"
+                    color="blue"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>{" "}
+                <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                  <h1 className="text-black">Word Number</h1>
+                  <Input
+                    name="eng_word"
+                    color="blue"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>
+              </div>
+              {/* tabel three */}
+              <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+                <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                  <h1 className="text-black">Post Office</h1>
+                  <Input
+                    name="eng_postOffice"
+                    color="blue"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>
+
+                <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                  <h1 className="text-black">Photo (Recently taken 5*5cm)</h1>
+                  <Input
+                    name="eng_photo"
+                    type="file"
+                    color="blue"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>
+                <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                  <h1 className="text-black">Attachment</h1>
+                  <Input
+                    name="eng_attachment"
+                    type="file"
+                    color="blue"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col w-full lg:w-[95%] mx-auto lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+                <div className=" flex w-full lg:mt-0 items-center   md:mt-4 mt-3 ">
+                  <h1 className="text-black w-full text-[14px] md:text-[15px] md:w-[200px] lg:w-[200px]">
+                    To my knowledge:
+                  </h1>
+                  <Input
+                    name=""
+                    color="blue"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>
+
+                <div className="w-full flex items-center md:gap-5 gap-3 lg:mt-0 md:mt-4 mt-3 ">
+                  <h1 className="text-black">and</h1>
+                  <Input
+                    name=""
+                    type="text"
+                    color="blue"
+                    className="!bg-[#c1fffc]  focus:bg-white"
+                  />
+                </div>
+                <div className="w-full flex items-center lg:mt-0 md:mt-4 mt-3 ">
+                  <h1 className="text-black">
+                    Both these names are the same person
+                  </h1>
+                </div>
+              </div>
+              {/* tabel 4 */}
+              {/* <TableTwo rows={englishRows} setRows={setEnglishRows} /> */}
+            </div>
+          )}
+          <div>
+            <div className="flex justify-center items-start p-2 md:mx-16 mx-5 mt-5  lg:pt-3 lg:mx-4 lg:px-2 gap-2  lg:mt-10 lg:h-[70px] bg-[#F8DDCC]">
+              <input
+                className="mt-1"
+                type="checkbox"
+                required
+                id="bangla-terms"
+              />
+              <label
+                htmlFor="bangla-terms"
+                className="text-black  text-[12px] lg:text-[14px]"
+              >
+                আমি এই মর্মে অঙ্গীকার করছি যে, উপরে বর্ণিত তথ্যাবলী সম্পূর্ণ
+                সত্য। যেকোন সময় আমার প্রদত্ত তথ্য অসত্য প্রমাণিত হলে
+                সনদ/প্রত্যয়ন বাতিল বলে গণ্য হবে এবং আইনানুগ ব্যবস্থা গ্রহণ করা
+                হবে।
+              </label>
+            </div>
+          </div>
+          {!isUserLoading && !isUnionLoading && (
+            <div className="flex justify-center mt-9 gap-2 md:gap-2 items-center pb-3 md:pb-5 lg:pb-1 lg:gap-2">
+              <button
+                type="submit"
+                className="bg-[#84BC46] text-white md:py-2 md:px-5 px-4 py-2 lg:py-2 lg:px-5 rounded-md"
+              >
+                {spinner ? <Spinner /> : "সংরক্ষণ করুন"}
+              </button>
+              <button
+                type="reset"
+                className="bg-[#ea542a] text-white md:py-2 md:px-5 px-4 py-2 lg:py-2 lg:px-5 rounded-md"
+              >
+                রিসেট করুন
+              </button>
+            </div>
+          )}
+        </form>{" "}
       </div>
-    );
+    </div>
+  );
 };
 
 export default CertificateName;
