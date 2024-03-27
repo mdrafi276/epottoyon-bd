@@ -41,6 +41,12 @@ const AuthProvider = ({ children }) => {
         });
     };
 
+    const updatePicture = (photo) => {
+        return updatePicture(auth.currentUser, {
+            photoURL: photo,
+        });
+    };
+
     const verifyEmail = () => {
         return sendEmailVerification(auth.currentUser);
     };
@@ -67,6 +73,7 @@ const AuthProvider = ({ children }) => {
         logOut,
         signIn,
         updateUser,
+        updatePicture,
         verifyEmail,
         resetPassword,
     };

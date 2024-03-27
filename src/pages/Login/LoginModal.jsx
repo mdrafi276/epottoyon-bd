@@ -91,7 +91,7 @@ const LoginModal = () => {
                 >
                     <form
                         onSubmit={handleLogin}
-                        className="p-12 border-[6px] rounded-lg border-blue-700"
+                        className="p-12 border-[6px] h-[600px] rounded-lg border-blue-700"
                     >
                         <svg
                             onClick={() => setOpenLoginModal(false)}
