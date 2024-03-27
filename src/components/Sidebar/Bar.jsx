@@ -58,7 +58,7 @@ const Bar = ({ setDrawerOpen }) => {
           >
             {/* sdfk */}
             {/* dashobrdroute */}
-            <Link to="/dashboard/dashboardHome">
+            <Link to="/dashboard">
               {" "}
               <ListItem>
                 <ListItemPrefix>
