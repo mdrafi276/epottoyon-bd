@@ -255,9 +255,9 @@ const Tradelicense = () => {
             {/* table one */}
             <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
               <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                <h1 className="text-black">নাম</h1>
+                <h1 className="text-black">পতিস্থানের নাম</h1>
                 <Input
-                  name="name"
+                  name=""
                   color="blue"
                   className="!bg-[#c1fffc]  focus:bg-white"
                 />
@@ -302,9 +302,9 @@ const Tradelicense = () => {
             {/* table two */}
             <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
               <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
-                <h1 className="text-black">মাতাঃ</h1>
+                <h1 className="text-black"> নাম</h1>
                 <Input
-                  name="mother"
+                  name="name"
                   color="blue"
                   className="!bg-[#c1fffc]  focus:bg-white"
                 />
@@ -326,7 +326,6 @@ const Tradelicense = () => {
                 />
               </div>
             </div>
-            {/* tabel three */}
             <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
               <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
                 <h1 className="text-black">ডাকঘরঃ</h1>
@@ -351,6 +350,96 @@ const Tradelicense = () => {
                 <Input
                   name="attachment"
                   type="file"
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                <h1 className="text-black"> ঠিকানা</h1>
+                <Input
+                  name=""
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>
+              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                <h1 className="text-black">ব্যবসার ধরণ</h1>
+                <Input
+                  name=""
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>{" "}
+              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                <h1 className="text-black">ব্যবসার স্থান</h1>
+                <Input
+                  name=""
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col w-full lg:w-[95%] mx-auto lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+              <div className=" flex w-full flex-col lg:flex-row lg:mt-0 lg:items-center   md:mt-4 mt-3 ">
+                <h1 className="text-black w-full text-[15px] md:text-[15px] md:w-[200px] lg:w-[180px]">
+                  বৈধতার মেয়াদ :
+                </h1>
+                <Input
+                  name=""
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>
+
+              <div className="w-full flex flex-col lg:flex-row lg:items-center md:gap-5 gap-3 lg:mt-0 md:mt-4 mt-3 ">
+                <h1 className="text-black lg:w-[130px]">অর্থ বৎসর</h1>
+                <Input
+                  name=""
+                  type="text"
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>
+            </div>
+            {/* tabel three */}
+
+            <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                <h1 className="text-black">ফি প্রদানের পরিমান (টাকা)</h1>
+                <Input
+                  name=""
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>
+
+              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                <h1 className="text-black">ভ্যাট আদায় (টাকা)</h1>
+                <Input
+                  name=""
+                  type="text"
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>
+              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                <h1 className="text-black">কর আদায় (টাকা)</h1>
+                <Input
+                  name=""
+                  type="text"
+                  color="blue"
+                  className="!bg-[#c1fffc]  focus:bg-white"
+                />
+              </div>
+            </div>
+            <div className="md:mx-3 md:px-[48px] lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+              <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[99%] mx-auto">
+                <h1 className="text-black">মোট (টাকা)</h1>
+                <Input
+                  name=""
+                  type="text"
                   color="blue"
                   className="!bg-[#c1fffc]  focus:bg-white"
                 />
@@ -438,7 +527,6 @@ const Tradelicense = () => {
                     />
                   </div>
                 </div>
-                {/* tabel three */}
                 <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
                   <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
                     <h1 className="text-black">Post Office</h1>
@@ -468,6 +556,96 @@ const Tradelicense = () => {
                     />
                   </div>
                 </div>
+                <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                    <h1 className="text-black">Address</h1>
+                    <Input
+                      name=""
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>
+                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                    <h1 className="text-black">Business Type </h1>
+                    <Input
+                      name=""
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>{" "}
+                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                    <h1 className="text-black">place of business</h1>
+                    <Input
+                      name=""
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col w-full lg:w-[95%] mx-auto lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+                  <div className=" flex w-full flex-col lg:flex-row lg:mt-0 lg:items-center   md:mt-4 mt-3 ">
+                    <h1 className="text-black w-full text-[14px] md:text-[15px] md:w-[200px] lg:w-[180px]">
+                      Validity period :
+                    </h1>
+                    <Input
+                      name=""
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>
+
+                  <div className="w-full flex flex-col lg:flex-row lg:items-center md:gap-5 gap-3 lg:mt-0 md:mt-4 mt-3 ">
+                    <h1 className="text-black lg:w-[130px]">Money year</h1>
+                    <Input
+                      name=""
+                      type="text"
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                    <h1 className="text-black">Fee Amount ( Taka )</h1>
+                    <Input
+                      name=""
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>
+
+                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                    <h1 className="text-black">VAT Collection (Taka)</h1>
+                    <Input
+                      name=""
+                      type="text"
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>
+                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[300px]">
+                    <h1 className="text-black">Tax Collection (Taka)</h1>
+                    <Input
+                      name=""
+                      type="text"
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>
+                </div>
+                <div className="md:mx-3 md:px-[48px] lg:px-0 px-5  lg:mt-5  justify-center lg:gap-8 ">
+                  <div className="w-full lg:mt-0 md:mt-4 mt-3 lg:w-[99%] mx-auto">
+                    <h1 className="text-black">Total Price</h1>
+                    <Input
+                      name=""
+                      type="text"
+                      color="blue"
+                      className="!bg-[#c1fffc]  focus:bg-white"
+                    />
+                  </div>
+                </div>
+                {/* tabel three */}
+
                 {/* tabel 4 */}
                 {/* <TableTwo rows={englishRows} setRows={setEnglishRows} /> */}
               </div>

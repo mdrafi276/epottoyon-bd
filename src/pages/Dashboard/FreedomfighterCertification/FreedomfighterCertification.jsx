@@ -357,7 +357,7 @@ const FreedomfighterCertification = () => {
           </div>
           <div className="mx-5 md:mx-16 lg:mx-5 mt-2 ">
             <h1 className="text-[14px] text-start text-black md:text-[14px] lg:text-[15px]">
-              মুক্তিযোদ্ধার তথ্য
+              মুক্তিযোদ্ধার তথ্য:-
             </h1>
           </div>
           <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-2  justify-center lg:gap-8 ">
