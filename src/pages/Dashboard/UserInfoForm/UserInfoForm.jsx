@@ -1,14 +1,19 @@
 import { Input } from "@material-tailwind/react";
+import { useQuery } from "@tanstack/react-query";
+import { getUserForInfoForm } from "../../../api/certificates";
+import { useContext } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const UserInfoForm = () => {
-//api fields
-  //by fetching
+    const { user, loading } = useContext(AuthContext);
+    //api fields
+    //by fetching
     //user_id
     //name_en
     //e_mail
     //mobile
 
-  //from form fields
+    //from form fields
     //photo
     //voter_birth_id: birth
     //voter_id: voterId
@@ -17,6 +22,18 @@ const UserInfoForm = () => {
     //voter_birth_photo
     //birth_date
     //present_address_type
+
+    const { data: fetchedUser } = useQuery({
+        queryKey: ["fetchedUser", user],
+        queryFn: async () => {
+            if (user.email) {
+                return await getUserForInfoForm(user.email);
+            }
+            return null;
+        },
+    });
+
+    console.log(fetchedUser);
 
     const handleSubmit = (e) => {
         e.preventDefault();
