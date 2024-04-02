@@ -1,102 +1,90 @@
-[
-    {
-        "id": 1,
-        "label": "হোল্ডিং ট্যাক্স",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
+{
+    "name": "udcbd",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+      "dev": "vite",
+      "build": "vite build",
+      "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+      "preview": "vite preview"
     },
-    {
-        "id": 2,
-        "label": "ক্ষমতা অর্পণ প্রত্যয়ন",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
+    "dependencies": {
+      "@emailjs/browser": "^4.3.3",
+      "@heroicons/react": "^2.1.1",
+      "@material-tailwind/react": "^2.1.9",
+      "@tanstack/react-query": "^5.25.0",
+      "axios": "^1.6.7",
+      "firebase": "^10.8.1",
+      "localforage": "^1.10.0",
+      "match-sorter": "^6.3.4",
+      "prop-types": "^15.8.1",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "react-fast-marquee": "^1.6.4",
+      "react-icons": "^5.0.1",
+      "react-qr-code": "^2.0.12",
+      "react-router-dom": "^6.22.2",
+      "react-table": "^7.8.0",
+      "react-to-print": "^2.15.1",
+      "sort-by": "^1.2.0",
+      "sweetalert2": "^11.10.6"
     },
-    {
-        "id": 3,
-        "label": "পারিবারিক সনদ",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
-    },
-    {
-        "id": 4,
-        "label": "উত্তরাধিকার সনদ",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
-    },
-    {
-        "id": 5,
-        "label": "ওয়ারিশ সনদ",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
-    },
-    {
-        "id": 6,
-        "label": "মৃত্যু সনদ",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
-    },
-    {
-        "id": 7,
-        "label": "নাগরিকত্ব সনদ",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
-    },
-    {
-        "id": 8,
-        "label": "জাতীয়তা সনদ ",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
-    },
-    {
-        "id": 9,
-        "label": "পুনঃবিবাহ সনদ",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
-    },
-    {
-        "id": 10,
-        "label": "ভূমিহীন সনদ",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
-    },
-    {
-        "id": 11,
-        "label": "নতুন ভোটার প্রত্যয়ন",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
-    },
-    {
-        "id": 12,
-        "label": "বিধবা প্রত্যয়ন",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
-    },
-    {
-        "id": 13,
-        "label": "অবিভাবক সম্পত্তি সনদ",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
-    },
-    {
-        "id": 14,
-        "label": "সম্প্রদায় সনদ ",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
-    },
-    {
-        "id": 15,
-        "label": "অবিবাহিত সনদ",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
-    },
-    {
-        "id": 16,
-        "label": "কৃষি প্রত্যয়ন",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
-    },
-    {
-        "id": 17,
-        "label": "মুক্তিযোদ্ধা প্রত্যয়ন",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
-    },
-    {
-        "id": 18,
-        "label": "বার্ষিক আয়ের সনদ",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
-    },
-    {
-        "id": 19,
-        "label": "এতিম সনদ",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
-    },
-    {
-        "id": 20,
-        "label": "বিবাহিত সনদ",
-        "image": "https://i.ibb.co/Gs3L4ss/1693396995blog.jpg"
+    "devDependencies": {
+      "@types/react": "^18.2.56",
+      "@types/react-dom": "^18.2.19",
+      "@vitejs/plugin-react": "^4.2.1",
+      "autoprefixer": "^10.4.17",
+      "eslint": "^8.56.0",
+      "eslint-plugin-react": "^7.33.2",
+      "eslint-plugin-react-hooks": "^4.6.0",
+      "eslint-plugin-react-refresh": "^0.4.5",
+      "postcss": "^8.4.35",
+      "tailwindcss": "^3.4.1",
+      "vite": "^5.1.4"
     }
-]
+      "name": "udcbd",
+      "homepage": "https://eprottoyon.com",
+      "private": true,
+      "version": "0.0.0",
+      "type": "module",
+      "scripts": {
+          "dev": "vite",
+          "build": "vite build",
+          "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+          "preview": "vite preview"
+      },
+      "dependencies": {
+          "@emailjs/browser": "^4.3.3",
+          "@heroicons/react": "^2.1.1",
+          "@material-tailwind/react": "^2.1.9",
+          "@tanstack/react-query": "^5.25.0",
+          "axios": "^1.6.7",
+          "firebase": "^10.8.1",
+          "localforage": "^1.10.0",
+          "match-sorter": "^6.3.4",
+          "prop-types": "^15.8.1",
+          "react": "^18.2.0",
+          "react-dom": "^18.2.0",
+          "react-fast-marquee": "^1.6.4",
+          "react-icons": "^5.0.1",
+          "react-router-dom": "^6.22.2",
+          "sort-by": "^1.2.0",
+          "sweetalert2": "^11.10.6",
+          "react-table": "^7.8.0"
+      },
+      "devDependencies": {
+          "@types/react": "^18.2.56",
+          "@types/react-dom": "^18.2.19",
+          "@vitejs/plugin-react": "^4.2.1",
+          "autoprefixer": "^10.4.17",
+          "eslint": "^8.56.0",
+          "eslint-plugin-react": "^7.33.2",
+          "eslint-plugin-react-hooks": "^4.6.0",
+          "eslint-plugin-react-refresh": "^0.4.5",
+          "postcss": "^8.4.35",
+          "tailwindcss": "^3.4.1",
+          "vite": "^5.1.4"
+      }
+  }
+  
