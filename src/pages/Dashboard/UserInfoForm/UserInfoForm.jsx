@@ -23,6 +23,8 @@ const UserInfoForm = () => {
     //birth_date
     //present_address_type
 
+    //when a user creates an account there will also be a row for him in the user_info table. and when the request will always be patch
+
     const { data: fetchedUser } = useQuery({
         queryKey: ["fetchedUser", user],
         queryFn: async () => {
@@ -32,8 +34,6 @@ const UserInfoForm = () => {
             return null;
         },
     });
-
-    console.log(fetchedUser);
 
     const handleSubmit = (e) => {
         e.preventDefault();
