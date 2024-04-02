@@ -51,6 +51,7 @@ import AutoRickshawTradeLicense from "../../pages/Dashboard/AutoRickshawTradeLic
 import UnmarriedCertificate from "../../pages/Dashboard/UnmarriedCertificate/UnmarriedCertificate";
 import MiscellaneousCertificates from "../../pages/Dashboard/MiscellaneousCertificates/MiscellaneousCertificates";
 import ConstructionPermissionCertificate from "../../pages/Dashboard/ConstructionPermissionCertificate/ConstructionPermissionCertificate";
+import CertificateDetails from "../../pages/Dashboard/CertificateDetails/CertificateDetails";
 
 const MainRouter = createBrowserRouter([
   {
@@ -263,6 +264,10 @@ const MainRouter = createBrowserRouter([
       {
         path: "/dashboard/apply-for-certificate/অবকাঠামো নির্মাণের অনুমতি সনদ",
         element: <ConstructionPermissionCertificate />,
+      },
+      {
+        path: "/dashboard/apply-for-certificate/certificateDetails",
+        element: <CertificateDetails />,
       },
     ],
   },
