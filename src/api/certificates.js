@@ -88,3 +88,10 @@ export const addOarishes = async (newOarishes) => {
     const { data } = await axiosSecure.post("/oarishes/add-oarishes", newOarishes);
     return data;
 };
+
+export const getUserForInfoForm = async (email) => {
+    const { data } = await axiosSecure.get(
+        `/users/get-user-for-info-form?email=${email}`
+    );
+    return data;
+};
