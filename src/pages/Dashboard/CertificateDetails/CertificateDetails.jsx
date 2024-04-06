@@ -26,7 +26,7 @@ const CertificateDetails = () => {
                         </button>
                     </div>
                 </div>
-                <div className="bg-white rounded-b-md">
+                {/* <div className="bg-white rounded-b-md">
                     <div className="flex flex-col lg:pt-5  lg:pb-5  justify-center mx-auto  lg:w-[98%] lg:flex-row gap-5 ">
                         <div className="lg:w-[400px] border border-gray-300">
                             <h1 className="text-black border-b border-gray-300  dark:text-white lg:py-4 text-center  lg:text-[21px]">
@@ -154,7 +154,7 @@ const CertificateDetails = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="w-full flex justify-center items-center mt-5">
                     <button
                         onClick={handlePrint}
