@@ -95,3 +95,8 @@ export const getUserForInfoForm = async (email) => {
     );
     return data;
 };
+
+export const getAllApplications = async (page) => {
+    const { data } = await axiosSecure.get(`/applications?page=${page}`);
+    return data;
+};
