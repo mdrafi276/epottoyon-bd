@@ -1,4 +1,5 @@
 
+import { FaPhone } from "react-icons/fa";
 import QRCode from "react-qr-code";
 
 const PdfCertificate = () => {
@@ -32,7 +33,7 @@ const PdfCertificate = () => {
                 চেয়ারম্যানের নাম: মোঃ আবু বকর সিদ্দিক,
               </h1>
               <h1 className="text-[12px] text-center text-black md:text-[18px] lg:text-[16px]">
-                chairman@gmail.com, <span>+880 1880384564</span>
+               <span className="flex justify-center items-center gap-2"> chairman@gmail.com, <span className="lg:ml-2"><FaPhone/></span> <span>+880 1880384564</span></span>
               </h1>
             </div>
             <figure>
