@@ -1,19 +1,18 @@
-import { Input, Select, Card, Typography } from "@material-tailwind/react";
+import {
+    Input,
+    Select,
+    Typography,
+    Spinner,
+    Button,
+    IconButton,
+} from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
 import { getAllApplications } from "../../../api/certificates";
+import { useState } from "react";
 
 const AllCertificate = () => {
-    let page = 1;
-    const {
-        data: applications,
-        loading,
-        isError,
-        error,
-    } = useQuery({
-        queryFn: async () => await getAllApplications(page),
-        queryKey: ["applications"],
-    });
-    console.log(applications);
+    const [activePage, setActivePage] = useState(1);
 
     const TABLE_HEAD = [
         "Applicant",
@@ -24,45 +23,77 @@ const AllCertificate = () => {
         "Actions",
     ];
 
-    const TABLE_ROWS = [
-        {
-            Applicant: "মোঃ শহিদুল ইসলাম",
-            occupation: "গয়হাটা",
-            startDate: "মৃত্যু সনদ",
-            previousJob: "33007043047",
-            previousEmployment: "ABC Technologies",
-            educationLevel: "Bachelor's Degree",
-            yearsOfExperience: "6",
-            certifications: "AWS Certified Developer",
-            skills: "JavaScript, React, Node.js",
-        },
-        {
-            Applicant: "মোঃ শহিদুল ইসলাম",
-            occupation: "গয়হাটা",
-            startDate: "মৃত্যু সনদ",
-            previousJob: "33007043047",
-            previousEmployment: "ABC Technologies",
-            educationLevel: "Bachelor's Degree",
-            yearsOfExperience: "6",
-            certifications: "AWS Certified Developer",
-            skills: "JavaScript, React, Node.js",
-        },
-        {
-            Applicant: "মোঃ শহিদুল ইসলাম",
-            occupation: "গয়হাটা",
-            startDate: "মৃত্যু সনদ",
-            previousJob: "33007043047",
-            previousEmployment: "ABC Technologies",
-            educationLevel: "Bachelor's Degree",
-            yearsOfExperience: "6",
-            certifications: "AWS Certified Developer",
-            skills: "JavaScript, React, Node.js",
-        },
-    ];
+    const {
+        data: applications,
+        isLoading,
+        refetch,
+        isError,
+        error,
+    } = useQuery({
+        queryFn: async () => await getAllApplications(activePage),
+        queryKey: ["application", activePage],
+    });
+
+    const getItemProps = (index) => ({
+        variant: activePage === index ? "filled" : "text",
+        color: "gray",
+        onClick: () => setActivePage(index),
+    });
+
+    const next = () => {
+        if (activePage === applications?.totalPages) return;
+        setActivePage(activePage + 1);
+    };
+
+    const prev = () => {
+        if (activePage === 1) return;
+        setActivePage(activePage - 1);
+    };
+
+    const MAX_PAGE_BUTTONS = 5; 
+    const renderPaginationButtons = () => {
+        const totalPages = applications?.totalPages || 0;
+        let startPage = Math.max(1, activePage - Math.floor(MAX_PAGE_BUTTONS / 2));
+        let endPage = Math.min(totalPages, startPage + MAX_PAGE_BUTTONS - 1);
+
+        // Adjust the start page if we're at the end of the page range
+        if (endPage - startPage + 1 < MAX_PAGE_BUTTONS) {
+            startPage = Math.max(1, endPage - MAX_PAGE_BUTTONS + 1);
+        }
+
+        const pages = [];
+        for (let i = startPage; i <= endPage; i++) {
+            pages.push(
+                <IconButton key={i} {...getItemProps(i)}>
+                    {i}
+                </IconButton>
+            );
+        }
+
+        return (
+            <>
+                {startPage > 1 && (
+                    <>
+                        <IconButton {...getItemProps(1)}>1</IconButton>
+                        {startPage > 2 && <span>...</span>}
+                    </>
+                )}
+                {pages}
+                {endPage < totalPages && (
+                    <>
+                        {endPage < totalPages - 1 && <span>...</span>}
+                        <IconButton {...getItemProps(totalPages)}>
+                            {totalPages}
+                        </IconButton>
+                    </>
+                )}
+            </>
+        );
+    };
 
     return (
-        <div className="bg-[#F4F6F9] lg:pt-5">
-            <div className="bg-white pl-2 lg:pl-2 min-h-screen mx-auto">
+        <section className="bg-[#F4F6F9] lg:pt-5">
+            <div className="bg-white pl-2 lg:pl-2 min-h-screen mx-auto pb-20">
                 <div className="flex md:py-4 py-3 lg:py-4 justify-start items-center gap-4 lg:gap-5">
                     <h1 className="text-black md:text-[21px] lg:text-4xl font-bold ">
                         Applications for Sanad
@@ -73,8 +104,8 @@ const AllCertificate = () => {
                 </div>
                 <h1 className="border-b border-gray-600 w-[98%] mx-auto"></h1>
                 <div>
-                    <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5  justify-center items-center lg:gap-8 ">
-                        <div className=" lg:mt-0 md:mt-4 mt-3">
+                    <div className="flex flex-col sm:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5 flex-wrap justify-center items-center sm:gap-3 ">
+                        <div className="w-full sm:w-fit lg:mt-0 md:mt-4 mt-3">
                             <h1 className="text-black">Tracking Number</h1>
                             <Input
                                 name=""
@@ -82,7 +113,7 @@ const AllCertificate = () => {
                                 className="!bg-[#c1fffc]  focus:bg-white"
                             />
                         </div>
-                        <div className=" lg:mt-0 md:mt-4 mt-3">
+                        <div className="w-full sm:w-fit lg:mt-0 md:mt-4 mt-3">
                             <h1 className="text-black">Start Date</h1>
                             <Input
                                 type="date"
@@ -91,7 +122,7 @@ const AllCertificate = () => {
                                 className="!bg-[#c1fffc]  focus:bg-white"
                             />
                         </div>{" "}
-                        <div className=" lg:mt-0 md:mt-4 mt-3">
+                        <div className="w-full sm:w-fit lg:mt-0 md:mt-4 mt-3">
                             <h1 className="text-black">End Date</h1>
                             <Input
                                 type="date"
@@ -100,7 +131,7 @@ const AllCertificate = () => {
                                 className="!bg-[#c1fffc]  focus:bg-white"
                             />
                         </div>
-                        <div className=" lg:mt-0 md:mt-4 mt-3">
+                        <div className="w-full sm:w-fit lg:mt-0 md:mt-4 mt-3">
                             <h1 className="text-black ">Status</h1>
                             <Select className="cursor-pointer bg-[#C1FFFC]">
                                 <option>Panding</option>
@@ -109,227 +140,155 @@ const AllCertificate = () => {
                         </div>
                     </div>
                 </div>
-                {/* cololm first  */}
                 <div className="py-2 border-gray-600 border-t mt-8 pt-5   ">
                     <h1 className="font-bold text-black ">Total 5550</h1>
                 </div>
-                <Card className="max-w-[980px] mx-auto">
-                    <div className="overflow-auto text-left">
-                        <thead>
-                            <tr>
-                                {TABLE_HEAD.map((head) => (
-                                    <th
-                                        key={head}
-                                        className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
+
+                <table className="w-[960px] mx-auto shadow-lg overflow-x-scroll">
+                    <thead>
+                        <tr>
+                            {TABLE_HEAD.map((head) => (
+                                <th
+                                    key={head}
+                                    className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
+                                >
+                                    <Typography
+                                        variant="small"
+                                        color="blue-gray"
+                                        className="font-normal leading-none opacity-70"
                                     >
+                                        {head}
+                                    </Typography>
+                                </th>
+                            ))}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {isLoading ? (
+                            <tr>
+                                <td>
+                                    <Spinner
+                                        color="green"
+                                        className="mx-auto h-16 w-16 my-5"
+                                    />
+                                </td>
+                            </tr>
+                        ) : isError ? (
+                            <>
+                                {console.error(error)}
+                                <tr>
+                                    <td colSpan="6" className="text-center">
+                                        {error.message}
+                                        {". "}
+                                        <span
+                                            onClick={refetch}
+                                            className="text-blue-500 hover:underline cursor-pointer"
+                                        >
+                                            Try Again
+                                        </span>
+                                    </td>
+                                </tr>
+                            </>
+                        ) : (
+                            applications?.rows?.map((certificate, index) => (
+                                <tr
+                                    key={index}
+                                    className={
+                                        index % 2 === 0 ? "bg-blue-gray-50/50" : ""
+                                    }
+                                >
+                                    <td className="p-4">
                                         <Typography
                                             variant="small"
                                             color="blue-gray"
-                                            className="font-normal leading-none opacity-70"
+                                            className="font-normal text-center"
                                         >
-                                            {head}
+                                            {certificate?.applicant}
                                         </Typography>
-                                    </th>
-                                ))}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {TABLE_ROWS.map(
-                                (
-                                    {
-                                        Applicant,
-                                        occupation,
-                                        startDate,
-                                        previousJob,
-                                        previousEmployment,
-                                        educationLevel,
-                                        yearsOfExperience,
-                                        certifications,
-                                        skills,
-                                        languagesSpoken,
-                                        location,
-                                        company,
-                                    },
-                                    index
-                                ) => (
-                                    <tr
-                                        key={index}
-                                        className={
-                                            index % 2 === 0 ? "bg-blue-gray-50/50" : ""
-                                        }
-                                    >
-                                        <td className="p-4">
-                                            <Typography
-                                                variant="small"
-                                                color="blue-gray"
-                                                className="font-normal"
-                                            >
-                                                {Applicant}
-                                            </Typography>
-                                        </td>
-                                        <td className="p-4">
-                                            <Typography
-                                                variant="small"
-                                                color="blue-gray"
-                                                className="font-normal"
-                                            >
-                                                {occupation}
-                                            </Typography>
-                                        </td>
-                                        <td className="p-4">
-                                            <Typography
-                                                variant="small"
-                                                color="blue-gray"
-                                                className="font-normal"
-                                            >
-                                                {startDate}
-                                            </Typography>
-                                        </td>
-                                        <td className="p-4">
-                                            <Typography
-                                                variant="small"
-                                                color="blue-gray"
-                                                className="font-normal"
-                                            >
-                                                {previousJob}
-                                            </Typography>
-                                        </td>
-                                        <td className="p-4">
-                                            <Typography
-                                                variant="small"
-                                                color="blue-gray"
-                                                className="font-normal"
-                                            >
-                                                {previousEmployment}
-                                            </Typography>
-                                        </td>
-                                        <td className="p-4">
-                                            <Typography
-                                                variant="small"
-                                                color="blue-gray"
-                                                className="font-normal"
-                                            >
-                                                {educationLevel}
-                                            </Typography>
-                                        </td>
-                                        <td className="p-4">
-                                            <Typography
-                                                variant="small"
-                                                color="blue-gray"
-                                                className="font-normal"
-                                            >
-                                                {yearsOfExperience}
-                                            </Typography>
-                                        </td>
-                                        <td className="p-4">
-                                            <Typography
-                                                variant="small"
-                                                color="blue-gray"
-                                                className="font-normal"
-                                            >
-                                                {certifications}
-                                            </Typography>
-                                        </td>
-                                        <td className="p-4">
-                                            <Typography
-                                                variant="small"
-                                                color="blue-gray"
-                                                className="font-normal"
-                                            >
-                                                {skills}
-                                            </Typography>
-                                        </td>
-                                        <td className="p-4">
-                                            <Typography
-                                                variant="small"
-                                                color="blue-gray"
-                                                className="font-normal"
-                                            >
-                                                {languagesSpoken}
-                                            </Typography>
-                                        </td>
-                                        <td className="p-4">
-                                            <Typography
-                                                variant="small"
-                                                color="blue-gray"
-                                                className="font-normal"
-                                            ></Typography>
-                                        </td>
-                                    </tr>
-                                )
-                            )}
-                        </tbody>
+                                    </td>
+                                    <td className="p-4">
+                                        <Typography
+                                            variant="small"
+                                            color="blue-gray"
+                                            className="font-normal text-center"
+                                        >
+                                            {certificate?.union_id}
+                                        </Typography>
+                                    </td>
+                                    <td className="p-4">
+                                        <Typography
+                                            variant="small"
+                                            color="blue-gray"
+                                            className="font-normal text-center"
+                                        >
+                                            {certificate?.sanad_id}
+                                        </Typography>
+                                    </td>
+                                    <td className="p-4">
+                                        <Typography
+                                            variant="small"
+                                            color="blue-gray"
+                                            className="font-normal text-center"
+                                        >
+                                            {certificate?.id}
+                                        </Typography>
+                                    </td>
+                                    <td className="p-4">
+                                        <Typography
+                                            variant="small"
+                                            color="blue-gray"
+                                            className="font-normal text-center"
+                                        >
+                                            {certificate?.status}
+                                        </Typography>
+                                    </td>
+                                    <td className="p-4">
+                                        <Typography
+                                            variant="small"
+                                            color="blue-gray"
+                                            className="font-normal text-center"
+                                        >
+                                            edit
+                                        </Typography>
+                                    </td>
+                                </tr>
+                            ))
+                        )}
+                    </tbody>
+                </table>
+
+                <div className="flex items-center justify-center pt-8 gap-4">
+                    <Button
+                        variant="text"
+                        className="flex items-center gap-2"
+                        onClick={prev}
+                        disabled={activePage === 1}
+                    >
+                        <FaArrowLeft /> Previous
+                    </Button>
+                    <div className="flex items-center gap-2 flex-wrap">
+                        {/* {Array.from(
+                            { length: applications?.totalPages },
+                            (_, i) => i + 1
+                        ).map((pageNumber) => (
+                            <IconButton key={pageNumber} {...getItemProps(pageNumber)}>
+                                {pageNumber}
+                            </IconButton>
+                        ))}*/}
+                        {renderPaginationButtons()}
                     </div>
-                </Card>
-                {/* <div className=" overflow-x- max-w-screen-xl mx-auto ">
-                    {" "}
-                    <div className="flex justify-center    items-center  ">
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[50px] text-center py-3 lg:w-[130px]">
-                            Applicant
-                        </h1>
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[50px] text-center py-3 lg:w-[130px]">
-                            Union
-                        </h1>
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[50px] text-center py-3 lg:w-[130px]">
-                            Sanad Type{" "}
-                        </h1>
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[50px] text-center py-3 lg:w-[130px]">
-                            Sanad Tracking No.
-                        </h1>
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[50px] text-center py-3 lg:w-[100px]">
-                            Transaction Phone{" "}
-                        </h1>
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[50px] text-center py-3 lg:w-[90px]">
-                            Amount
-                        </h1>
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[50px] text-center py-3 lg:w-[100px]">
-                            Payment Method
-                        </h1>
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[50px] text-center py-3 lg:w-[100px]">
-                            Transaction No.
-                        </h1>
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[50px] text-center py-3 lg:w-[80px]">
-                            Status
-                        </h1>
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[50px] text-center py-3 lg:w-[280px]">
-                            Actions
-                        </h1>
-                    </div>
-                    <div className="flex justify-center    items-center  ">
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[80px] text-center py-3 lg:w-[130px]">
-                            মৃত মগরব আলী ভূইয়া
-                        </h1>
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[80px] text-center py-3 lg:w-[130px]">
-                            ধলাপাড়া
-                        </h1>
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[80px] text-center py-3 lg:w-[130px]">
-                            ওয়ারিশ সনদ{" "}
-                        </h1>
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[80px] text-center py-3 lg:w-[130px]">
-                            25144733017{" "}
-                        </h1>
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[80px] text-center py-3 lg:w-[100px]">
-                            Transaction Phone{" "}
-                        </h1>
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[80px] text-center py-3 lg:w-[90px]">
-                            Amount
-                        </h1>
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[80px] text-center py-3 lg:w-[100px]">
-                            Payment Method
-                        </h1>
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[80px] text-center py-3 lg:w-[100px]">
-                            Transaction No.
-                        </h1>
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[80px] text-center py-3 lg:w-[80px]">
-                            Status
-                        </h1>
-                        <h1 className="border-black border text-black lg:text-[13px] font-semibold lg:h-[80px] text-center py-3 lg:w-[280px]">
-                            Actions
-                        </h1>
-                    </div>
-                </div> */}
+                    <Button
+                        variant="text"
+                        className="flex items-center gap-2"
+                        onClick={next}
+                        disabled={activePage === applications?.totalPages}
+                    >
+                        Next
+                        <FaArrowRight />
+                    </Button>
+                </div>
             </div>
-        </div>
+        </section>
     );
 };
 
