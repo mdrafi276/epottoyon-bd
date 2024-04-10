@@ -52,7 +52,8 @@ import UnmarriedCertificate from "../../pages/Dashboard/UnmarriedCertificate/Unm
 import MiscellaneousCertificates from "../../pages/Dashboard/MiscellaneousCertificates/MiscellaneousCertificates";
 import ConstructionPermissionCertificate from "../../pages/Dashboard/ConstructionPermissionCertificate/ConstructionPermissionCertificate";
 import CertificateDetails from "../../pages/Dashboard/CertificateDetails/CertificateDetails";
-import QrCodeDetails from "../../pages/Dashboard/QrcodeDetails/QrCodeDetails";
+import CertificateVerification from "../../pages/Dashboard/QrcodeDetails/CertificateVerification";
+import QrCertificateDetails from "../../pages/Dashboard/QrCertificateDetails/QrCertificateDetails";
 
 const MainRouter = createBrowserRouter([
   {
@@ -85,8 +86,12 @@ const MainRouter = createBrowserRouter([
         element: <Trams />,
       },
       {
-        path: "/qe-code-details",
-        element: <QrCodeDetails />,
+        path: "/certificate-verification",
+        element: <CertificateVerification />,
+      },
+      {
+        path: "/qr-code-details",
+        element: <QrCertificateDetails />,
       },
     ],
   },

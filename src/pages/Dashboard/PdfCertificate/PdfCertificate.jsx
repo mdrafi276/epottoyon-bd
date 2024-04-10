@@ -1,4 +1,5 @@
 
+import { Button } from "@material-tailwind/react";
 import { FaPhone } from "react-icons/fa";
 import QRCode from "react-qr-code";
 
@@ -33,7 +34,14 @@ const PdfCertificate = () => {
                 চেয়ারম্যানের নাম: মোঃ আবু বকর সিদ্দিক,
               </h1>
               <h1 className="text-[12px] text-center text-black md:text-[18px] lg:text-[16px]">
-               <span className="flex justify-center items-center gap-2"> chairman@gmail.com, <span className="lg:ml-2"><FaPhone/></span> <span>+880 1880384564</span></span>
+                <span className="flex justify-center items-center gap-2">
+                  {" "}
+                  chairman@gmail.com,{" "}
+                  <span className="lg:ml-2">
+                    <FaPhone />
+                  </span>{" "}
+                  <span>+880 1880384564</span>
+                </span>
               </h1>
             </div>
             <figure>
@@ -96,6 +104,49 @@ const PdfCertificate = () => {
                   আমি তার জীবনের সার্বিক উন্নতি অ মঙ্গল কামনা করি ।{" "}
                 </h1>
               </div>
+            </div>
+            {/* table  */}
+            <div className="overflow-x-auto mx-3">
+              <Button className="my-4" color="blue">
+                Add Row
+              </Button>
+              <table className="w-full border-collapse">
+                <thead className="bg-blue-500 text-white">
+                  <tr>
+                    <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
+                      ক্রমিক
+                    </th>
+                    <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
+                      hello
+                    </th>
+                    <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
+                      hello
+                    </th>
+                    <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
+                      hello
+                    </th>
+
+                    <th className="text-[10px] md:text-[16px]  px-3 md:px-4 py-2">
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="bg-gray-100 text-gray-700">
+                  <tr>
+                    <td className="md:px-4 py-2 border border-gray-600">
+                      <input
+                        type="text"
+                        value=""
+                        className="w-full bg-transparent focus:outline-none text-center"
+                      />
+                    </td>
+
+                    <td className="  md:px-4 py-2 border border-black">
+                      <Button color="red">Remove</Button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
           <div className="flex justify-around items-center  ">

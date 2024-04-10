@@ -5,38 +5,38 @@ export const MainContext = createContext(null);
 
 const MainProvider = ({ children }) => {
     const mainMenuItems = [
-        {
-            label: "প্রথম পাতা",
-            link: "/",
-        },
-        {
-            label: "সেবাসমূহ",
-            link: "/services",
-        },
-        {
-            label: "আবেদনের অবস্থা জানুন",
-            link: "/application-status",
-        },
-        {
-            label: "সনদ যাচাইকরণ",
-            link: "/certificate-verification",
-        },
-        {
-            label: "ফর্মস",
-            link: "/forms",
-        },
-        {
-            label: "ব্যবহার নির্দেশিকা",
-            link: "/usage-guidelines",
-        },
-        {
-            label: "সচরাচর জিজ্ঞাসা",
-            link: "/faq",
-        },
-        {
-            label: "ডিজিটাল বাংলাদেশ",
-            link: "/digital-bangladesh",
-        },
+      {
+        label: "প্রথম পাতা",
+        link: "/",
+      },
+      {
+        label: "সেবাসমূহ",
+        link: "/services",
+      },
+      {
+        label: "আবেদনের অবস্থা জানুন",
+        link: "/application-status",
+      },
+      {
+        label: "সনদ যাচাইকরণ",
+        link: "/certificate-verification",
+      },
+      {
+        label: "ফর্মস",
+        link: "/forms",
+      },
+      {
+        label: "ব্যবহার নির্দেশিকা",
+        link: "/usage-guidelines",
+      },
+      {
+        label: "সচরাচর জিজ্ঞাসা",
+        link: "/faq",
+      },
+      {
+        label: "ডিজিটাল বাংলাদেশ",
+        link: "/digital-bangladesh",
+      },
     ];
 
     const topMenuItems = [
