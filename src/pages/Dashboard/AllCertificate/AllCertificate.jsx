@@ -36,7 +36,7 @@ const AllCertificate = () => {
 
     const getItemProps = (index) => ({
         variant: activePage === index ? "filled" : "text",
-        color: "gray",
+        color: activePage === index ? "amber" : "gray",
         onClick: () => setActivePage(index),
     });
 
@@ -50,7 +50,7 @@ const AllCertificate = () => {
         setActivePage(activePage - 1);
     };
 
-    const MAX_PAGE_BUTTONS = 5; 
+    const MAX_PAGE_BUTTONS = 7;
     const renderPaginationButtons = () => {
         const totalPages = applications?.totalPages || 0;
         let startPage = Math.max(1, activePage - Math.floor(MAX_PAGE_BUTTONS / 2));
@@ -260,6 +260,7 @@ const AllCertificate = () => {
                 <div className="flex items-center justify-center pt-8 gap-4">
                     <Button
                         variant="text"
+                        color="amber"
                         className="flex items-center gap-2"
                         onClick={prev}
                         disabled={activePage === 1}
@@ -267,18 +268,11 @@ const AllCertificate = () => {
                         <FaArrowLeft /> Previous
                     </Button>
                     <div className="flex items-center gap-2 flex-wrap">
-                        {/* {Array.from(
-                            { length: applications?.totalPages },
-                            (_, i) => i + 1
-                        ).map((pageNumber) => (
-                            <IconButton key={pageNumber} {...getItemProps(pageNumber)}>
-                                {pageNumber}
-                            </IconButton>
-                        ))}*/}
                         {renderPaginationButtons()}
                     </div>
                     <Button
                         variant="text"
+                        color="amber"
                         className="flex items-center gap-2"
                         onClick={next}
                         disabled={activePage === applications?.totalPages}
