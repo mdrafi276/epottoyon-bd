@@ -5,11 +5,14 @@ import {
     Spinner,
     Button,
     IconButton,
+    Tooltip,
 } from "@material-tailwind/react";
+import { MdFindInPage } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
 import { getAllApplications } from "../../../api/certificates";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const AllCertificate = () => {
     const [activePage, setActivePage] = useState(1);
@@ -243,13 +246,15 @@ const AllCertificate = () => {
                                         </Typography>
                                     </td>
                                     <td className="p-4">
-                                        <Typography
-                                            variant="small"
-                                            color="blue-gray"
-                                            className="font-normal text-center"
-                                        >
-                                            edit
-                                        </Typography>
+                                        <Tooltip content="View Certificate">
+                                            <Link
+                                                to={`/dashboard/certificate/${certificate?.id}`}
+                                            >
+                                                <IconButton color="blue">
+                                                    <MdFindInPage className="text-2xl" />
+                                                </IconButton>
+                                            </Link>
+                                        </Tooltip>
                                     </td>
                                 </tr>
                             ))
