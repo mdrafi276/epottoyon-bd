@@ -136,7 +136,6 @@ const PdfCertificate = () => {
                     <td className="md:px-4 py-2 border border-gray-600">
                       <input
                         type="text"
-                        value=""
                         className="w-full bg-transparent focus:outline-none text-center"
                       />
                     </td>

@@ -56,231 +56,231 @@ import CertificateVerification from "../../pages/Dashboard/QrcodeDetails/Certifi
 import QrCertificateDetails from "../../pages/Dashboard/QrCertificateDetails/QrCertificateDetails";
 
 const MainRouter = createBrowserRouter([
-  {
-    path: "/",
-    element: <MainLayout />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
-      {
-        path: "/loRegister",
-        element: <LoyalRegister />,
-      },
-      {
-        path: "/reset-password",
-        element: <ResetPassword />,
-      },
+    {
+        path: "/",
+        element: <MainLayout />,
+        children: [
+            {
+                index: true,
+                element: <Home />,
+            },
+            {
+                path: "/register",
+                element: <Register />,
+            },
+            {
+                path: "/loRegister",
+                element: <LoyalRegister />,
+            },
+            {
+                path: "/reset-password",
+                element: <ResetPassword />,
+            },
 
-      {
-        path: "/contact",
-        element: <ContactUs />,
-      },
-      {
-        path: "/terms-and-conditions",
-        element: <Trams />,
-      },
-      {
-        path: "/certificate-verification",
-        element: <CertificateVerification />,
-      },
-      {
-        path: "/qr-code-details",
-        element: <QrCertificateDetails />,
-      },
-    ],
-  },
-  {
-    path: "/dashboard",
-    element: <DashboardLayout />,
-    children: [
-      {
-        index: true,
-        element: <Dashboard />,
-      },
-      {
-        path: "/dashboard/profile",
-        element: <Profile />,
-      },
-      {
-        path: "/dashboard/edit-information",
-        element: <EditInformation />,
-      },
-      {
-        path: "/dashboard/change-password",
-        element: <ChangePassword />,
-      },
-      {
-        path: "/dashboard/twofactor",
-        element: <TwoFactorAuthenthication />,
-      },
-      {
-        path: "/dashboard/user-info-form",
-        element: <UserInfoForm />,
-      },
-      {
-        path: "/dashboard/union-info-form",
-        element: <UnionInfoForm />,
-      },
-      {
-        path: "/dashboard/all-certificate",
-        element: <AllCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate",
-        element: <ApplyForCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/পারিবারিক সনদ",
-        element: <FamilyCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/ওয়ারিশ সনদ",
-        element: <InheritanceCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/উত্তরাধিকার সনদ",
-        element: <SuccessionCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/নাগরিক সনদ",
-        element: <CitizenshipCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/মৃত্যু সনদ",
-        element: <DeathCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/জাতীয়তা সনদ",
-        element: <NationalityCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/পুনঃবিবাহ না হওয়া সনদ",
-        element: <NonRemarriageCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/নতুন ভোটার প্রত্যয়ন",
-        element: <NewVoterAttestation />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/ভূমিহীন সনদ",
-        element: <LandlessCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/বিধবা প্রত্যয়ন",
-        element: <WidowAttestation />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/অভিভাবকের অনুমতিপত্র",
-        element: <ParentsPermission />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/সম্প্রদায় সনদ",
-        element: <CommunityCharter />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/কৃষি প্রত্যয়ন",
-        element: <AgriculturalCertification />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/মুক্তিযোদ্ধা প্রত্যয়ন",
-        element: <FreedomfighterCertification />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/বাৎসরিক আয়ের সনদপত্র",
-        element: <AnnualIncomeCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/এতিম সনদ",
-        element: <OrphanCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/বিবাহিত সনদ",
-        element: <MarriageMertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/মাসিক আয়ের সনদ",
-        element: <MonthlyIncomeCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/চারিত্রিক সনদ",
-        element: <CharacterCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/উপজাতি সনদ",
-        element: <TribalCharter />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/জাতীয় পরিচয় তথ্য সংশোধন",
-        element: <NationalIdentityInformation />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/নিঃসন্তান প্রত্যয়ন",
-        element: <ChildlessnessCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/আর্থিক অস্বচ্ছলতার সনদ",
-        element: <CertificateOfFinancialInsolvency />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/অনাপত্তি সনদ",
-        element: <NoObjectionCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/ভোটার এলাকা স্থানান্তর প্রত্যয়ন",
-        element: <VoterAreaTransferCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/প্রতিবন্ধী সনদ",
-        element: <DisabilityCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/প্রত্যায়ন পত্র নাম",
-        element: <CertificateName />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/বেকারত্ব সনদ",
-        element: <UnemploymentCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/পুনঃবিবাহ প্রত্যয়ন",
-        element: <RemarriageCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/ট্রেড লাইসেন্স",
-        element: <Tradelicense />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/স্থায়ী বাসিন্দা সনদ",
-        element: <PermanentResidentCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/অবিবাহিত সনদ",
-        element: <UnmarriedCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/অটো রিক্সা ট্রেডলাইসেন্স",
-        element: <AutoRickshawTradeLicense />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/বিবিধ সনদ",
-        element: <MiscellaneousCertificates />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/অবকাঠামো নির্মাণের অনুমতি সনদ",
-        element: <ConstructionPermissionCertificate />,
-      },
-      {
-        path: "/dashboard/apply-for-certificate/certificateDetails",
-        element: <CertificateDetails />,
-      },
-    ],
-  },
+            {
+                path: "/contact",
+                element: <ContactUs />,
+            },
+            {
+                path: "/terms-and-conditions",
+                element: <Trams />,
+            },
+            {
+                path: "/certificate-verification",
+                element: <CertificateVerification />,
+            },
+            {
+                path: "/qr-code-details",
+                element: <QrCertificateDetails />,
+            },
+        ],
+    },
+    {
+        path: "/dashboard",
+        element: <DashboardLayout />,
+        children: [
+            {
+                index: true,
+                element: <Dashboard />,
+            },
+            {
+                path: "/dashboard/profile",
+                element: <Profile />,
+            },
+            {
+                path: "/dashboard/edit-information",
+                element: <EditInformation />,
+            },
+            {
+                path: "/dashboard/change-password",
+                element: <ChangePassword />,
+            },
+            {
+                path: "/dashboard/twofactor",
+                element: <TwoFactorAuthenthication />,
+            },
+            {
+                path: "/dashboard/user-info-form",
+                element: <UserInfoForm />,
+            },
+            {
+                path: "/dashboard/union-info-form",
+                element: <UnionInfoForm />,
+            },
+            {
+                path: "/dashboard/all-certificate",
+                element: <AllCertificate />,
+            },
+            {
+                path: "/dashboard/certificate/:id",
+                element: <CertificateDetails />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate",
+                element: <ApplyForCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/পারিবারিক সনদ",
+                element: <FamilyCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/ওয়ারিশ সনদ",
+                element: <InheritanceCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/উত্তরাধিকার সনদ",
+                element: <SuccessionCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/নাগরিক সনদ",
+                element: <CitizenshipCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/মৃত্যু সনদ",
+                element: <DeathCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/জাতীয়তা সনদ",
+                element: <NationalityCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/পুনঃবিবাহ না হওয়া সনদ",
+                element: <NonRemarriageCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/নতুন ভোটার প্রত্যয়ন",
+                element: <NewVoterAttestation />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/ভূমিহীন সনদ",
+                element: <LandlessCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/বিধবা প্রত্যয়ন",
+                element: <WidowAttestation />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/অভিভাবকের অনুমতিপত্র",
+                element: <ParentsPermission />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/সম্প্রদায় সনদ",
+                element: <CommunityCharter />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/কৃষি প্রত্যয়ন",
+                element: <AgriculturalCertification />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/মুক্তিযোদ্ধা প্রত্যয়ন",
+                element: <FreedomfighterCertification />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/বাৎসরিক আয়ের সনদপত্র",
+                element: <AnnualIncomeCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/এতিম সনদ",
+                element: <OrphanCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/বিবাহিত সনদ",
+                element: <MarriageMertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/মাসিক আয়ের সনদ",
+                element: <MonthlyIncomeCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/চারিত্রিক সনদ",
+                element: <CharacterCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/উপজাতি সনদ",
+                element: <TribalCharter />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/জাতীয় পরিচয় তথ্য সংশোধন",
+                element: <NationalIdentityInformation />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/নিঃসন্তান প্রত্যয়ন",
+                element: <ChildlessnessCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/আর্থিক অস্বচ্ছলতার সনদ",
+                element: <CertificateOfFinancialInsolvency />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/অনাপত্তি সনদ",
+                element: <NoObjectionCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/ভোটার এলাকা স্থানান্তর প্রত্যয়ন",
+                element: <VoterAreaTransferCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/প্রতিবন্ধী সনদ",
+                element: <DisabilityCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/প্রত্যায়ন পত্র নাম",
+                element: <CertificateName />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/বেকারত্ব সনদ",
+                element: <UnemploymentCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/পুনঃবিবাহ প্রত্যয়ন",
+                element: <RemarriageCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/ট্রেড লাইসেন্স",
+                element: <Tradelicense />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/স্থায়ী বাসিন্দা সনদ",
+                element: <PermanentResidentCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/অবিবাহিত সনদ",
+                element: <UnmarriedCertificate />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/অটো রিক্সা ট্রেডলাইসেন্স",
+                element: <AutoRickshawTradeLicense />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/বিবিধ সনদ",
+                element: <MiscellaneousCertificates />,
+            },
+            {
+                path: "/dashboard/apply-for-certificate/অবকাঠামো নির্মাণের অনুমতি সনদ",
+                element: <ConstructionPermissionCertificate />,
+            },
+        ],
+    },
 ]);
 
 export default MainRouter;

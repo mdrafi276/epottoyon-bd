@@ -1,16 +1,17 @@
 import { useRef } from "react";
 import { FaDownload } from "react-icons/fa6";
-import ReactToPrint from "react-to-print";
-
 import { useReactToPrint } from "react-to-print";
 import PdfCertificate from "../PdfCertificate/PdfCertificate";
+import { useParams } from "react-router-dom";
 
 const CertificateDetails = () => {
+    const { id } = useParams();
     const printRef = useRef();
 
     const handlePrint = useReactToPrint({
         content: () => printRef.current,
     });
+
     return (
         <div className=" bg-[#F4F6F9] min-h-screen ">
             <div className="w-[99%] mx-auto  lg:py-8  ">
@@ -26,7 +27,9 @@ const CertificateDetails = () => {
                         </button>
                     </div>
                 </div>
-                {/* <div className="bg-white rounded-b-md">
+                {/* TODO: ask rafi about this commented code. */}
+                <span>
+                    {/* <div className="bg-white rounded-b-md">
                     <div className="flex flex-col lg:pt-5  lg:pb-5  justify-center mx-auto  lg:w-[98%] lg:flex-row gap-5 ">
                         <div className="lg:w-[400px] border border-gray-300">
                             <h1 className="text-black border-b border-gray-300  dark:text-white lg:py-4 text-center  lg:text-[21px]">
@@ -155,6 +158,7 @@ const CertificateDetails = () => {
                         </div>
                     </div>
                 </div> */}
+                </span>
                 <div className="w-full flex justify-center items-center mt-5">
                     <button
                         onClick={handlePrint}
