@@ -7,7 +7,7 @@ import {
     IconButton,
     Tooltip,
 } from "@material-tailwind/react";
-import { MdFindInPage } from "react-icons/md";
+import { FaCircleInfo } from "react-icons/fa6";
 import { useQuery } from "@tanstack/react-query";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
 import { getAllApplications } from "../../../api/certificates";
@@ -251,7 +251,7 @@ const AllCertificate = () => {
                                                 to={`/dashboard/certificate/${certificate?.id}`}
                                             >
                                                 <IconButton color="blue">
-                                                    <MdFindInPage className="text-2xl" />
+                                                    <FaCircleInfo className="text-xl" />
                                                 </IconButton>
                                             </Link>
                                         </Tooltip>

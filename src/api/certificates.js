@@ -100,3 +100,8 @@ export const getAllApplications = async (page) => {
     const { data } = await axiosSecure.get(`/applications?page=${page}`);
     return data;
 };
+
+export const getCertificateById = async (id) => {
+    const { data } = await axiosSecure.get(`/applications/application-details?id=${id}`);
+    return data;
+};
