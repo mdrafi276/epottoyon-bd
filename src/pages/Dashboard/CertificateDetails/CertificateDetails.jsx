@@ -5,7 +5,8 @@ import PdfCertificate from "../PdfCertificate/PdfCertificate";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getCertificateById } from "../../../api/certificates";
-import { Spinner } from "@material-tailwind/react";
+import { Spinner, Typography } from "@material-tailwind/react";
+import DetailsTable from "./DetailsTable";
 
 const CertificateDetails = () => {
     const { id } = useParams();
@@ -37,8 +38,6 @@ const CertificateDetails = () => {
         queryKey: ["application", id],
         queryFn: async () => await getCertificateById(id),
     });
-
-    console.log(certificate);
 
     const handlePrint = useReactToPrint({
         content: () => printRef.current,
@@ -84,11 +83,13 @@ const CertificateDetails = () => {
                         প্রিন্ট সার্টিফিকেট <FaDownload className="mb-1 text-xl" />
                     </button>
                 </div>
-                <div ref={printRef} className="lg:mt-5 ">
+
+                <DetailsTable certificate={certificate} />
+                {/* <div ref={printRef} className="lg:mt-5 ">
                     <div>
                         <PdfCertificate />
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );

@@ -105,3 +105,13 @@ export const getCertificateById = async (id) => {
     const { data } = await axiosSecure.get(`/applications/application-details?id=${id}`);
     return data;
 };
+
+export const getUnionNameById = async (id) => {
+    const { data } = await axiosSecure.get(`/unions/get-name-by-id?id=${id}`);
+    return data;
+};
+
+export const getCertificateTypeById = async (id) => {
+    const { data } = await axiosSecure.get(`/blogs/get-type-by-id?id=${id}`);
+    return data;
+};
