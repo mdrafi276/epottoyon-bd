@@ -94,7 +94,7 @@ const AllCertificate = () => {
     return (
         <section className="bg-[#F4F6F9] lg:pt-5">
             <div className="bg-white pl-2 lg:pl-2 min-h-screen mx-auto pb-20">
-                <div className="flex md:py-4 py-3 lg:py-4 justify-start items-center gap-4 lg:gap-5">
+                <div className="flex  md:py-4 py-3 lg:py-4 justify-start items-center gap-4 lg:gap-5">
                     <h1 className="text-black md:text-[21px] lg:text-4xl font-bold ">
                         Applications for Sanad
                     </h1>
@@ -104,7 +104,7 @@ const AllCertificate = () => {
                 </div>
                 <h1 className="border-b border-gray-600 w-[98%] mx-auto"></h1>
                 <div>
-                    <div className="flex flex-col sm:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5 flex-wrap justify-center items-center sm:gap-3 ">
+                    <div className="flex flex-col lg:flex-row  md:px-16 lg:px-0 px-5  lg:mt-5 flex-wrap justify-center items-center sm:gap-3 ">
                         <div className="w-full sm:w-fit lg:mt-0 md:mt-4 mt-3">
                             <h1 className="text-black">Tracking Number</h1>
                             <Input
