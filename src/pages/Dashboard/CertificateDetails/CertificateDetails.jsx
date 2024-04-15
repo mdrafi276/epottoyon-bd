@@ -85,11 +85,11 @@ const CertificateDetails = () => {
                 </div>
 
                 <DetailsTable certificate={certificate} />
-                {/* <div ref={printRef} className="lg:mt-5 ">
+                <div ref={printRef} className="lg:mt-5">
                     <div>
                         <PdfCertificate />
                     </div>
-                </div> */}
+                </div>
             </div>
         </div>
     );

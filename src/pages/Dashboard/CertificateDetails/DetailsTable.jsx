@@ -19,16 +19,16 @@ const DetailsTable = ({ certificate }) => {
     const Row = ({ bnKey, enKey, value }) => {
         return (
             <tr className="even:bg-blue-gray-50/50 bg-white">
-                <td className="p-4 text-center">
-                    <Typography variant="small" color="blue-gray" className="text-center">
+                <td className="py-4 px-12">
+                    <Typography variant="small" color="blue-gray">
                         {!!certificate?.language || certificate?.language === "en"
                             ? enKey
                             : bnKey}
                     </Typography>
                 </td>
 
-                <td className="p-4 text-center">
-                    <Typography variant="small" color="blue-gray" className="text-center">
+                <td className="py-4 px-12">
+                    <Typography variant="small" color="blue-gray">
                         {value || "N/A"}
                     </Typography>
                 </td>
@@ -72,6 +72,30 @@ const DetailsTable = ({ certificate }) => {
                         bnKey={certificate?.husband ? "স্বামী" : "পিতা"}
                         enKey={certificate?.husband ? "Husband" : "Father"}
                         value={certificate?.father_husband_name || certificate?.husband}
+                    />
+
+                    <Row
+                        bnKey="মাতার নাম"
+                        enKey="Mother's name"
+                        value={certificate?.mother_name}
+                    />
+
+                    <Row
+                        bnKey="ঠিকানা"
+                        enKey="Address"
+                        value={certificate?.village_name || certificate?.mrgram}
+                    />
+
+                    <Row
+                        bnKey={
+                            certificate?.nid ? "জাতীয় পরিচয়পত্র নম্বর" : "জন্ম সনদ নম্বর "
+                        }
+                        enKey={
+                            certificate?.nid
+                                ? "National Nid Number"
+                                : "Birth Certificate Number"
+                        }
+                        value={certificate?.nid_birth || certificate?.nid}
                     />
 
                     <Row
