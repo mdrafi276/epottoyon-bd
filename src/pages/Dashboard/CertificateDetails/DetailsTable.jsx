@@ -14,8 +14,6 @@ const DetailsTable = ({ certificate }) => {
         queryFn: async () => await getCertificateTypeById(certificate?.sanad_id),
     });
 
-    console.log(certificate);
-
     const Row = ({ bnKey, enKey, value }) => {
         return (
             <tr className="even:bg-blue-gray-50/50 bg-white">
