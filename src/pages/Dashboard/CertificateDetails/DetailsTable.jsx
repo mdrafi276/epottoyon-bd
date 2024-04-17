@@ -40,24 +40,27 @@ const DetailsTable = ({ certificate }) => {
         <div className="rounded-lg shadow-lg max-w-screen-lg mx-auto mt-20">
             <table className="w-full">
                 <tbody>
-                    <Row bnKey="নাম" enKey="Name" value={certificate?.applicant} />
                     <Row
                         bnKey="সনদের ধরণ"
                         enKey="Certificate Type"
                         value={sanadType?.description}
                     />
+                    <Row bnKey="নাম" enKey="Name" value={certificate?.applicant} />
                     <Row
-                        bnKey="ট্রাককিং নম্বর"
-                        enKey="Tracking Number"
-                        value={certificate?.id}
+                        bnKey={certificate?.husband ? "স্বামী" : "পিতা"}
+                        enKey={certificate?.husband ? "Husband" : "Father"}
+                        value={certificate?.father_husband_name || certificate?.husband}
                     />
-
                     <Row
-                        bnKey="ওয়ার্ড নম্বর"
-                        enKey="Ward Number"
-                        value={certificate?.applicant}
+                        bnKey="মাতার নাম"
+                        enKey="Mother's name"
+                        value={certificate?.mother_name}
                     />
-
+                    <Row
+                        bnKey="ঠিকানা"
+                        enKey="Address"
+                        value={certificate?.village_name || certificate?.mrgram}
+                    />
                     <Row
                         bnKey="ইউনিয়ন"
                         enKey="Union"
@@ -67,25 +70,11 @@ const DetailsTable = ({ certificate }) => {
                                 : unionName?.bn_name
                         }
                     />
-
                     <Row
-                        bnKey={certificate?.husband ? "স্বামী" : "পিতা"}
-                        enKey={certificate?.husband ? "Husband" : "Father"}
-                        value={certificate?.father_husband_name || certificate?.husband}
+                        bnKey="ওয়ার্ড নম্বর"
+                        enKey="Ward Number"
+                        value={certificate?.applicant}
                     />
-
-                    <Row
-                        bnKey="মাতার নাম"
-                        enKey="Mother's name"
-                        value={certificate?.mother_name}
-                    />
-
-                    <Row
-                        bnKey="ঠিকানা"
-                        enKey="Address"
-                        value={certificate?.village_name || certificate?.mrgram}
-                    />
-
                     <Row
                         bnKey={
                             certificate?.nid ? "জাতীয় পরিচয়পত্র নম্বর" : "জন্ম সনদ নম্বর "
@@ -97,7 +86,11 @@ const DetailsTable = ({ certificate }) => {
                         }
                         value={certificate?.nid_birth || certificate?.nid}
                     />
-
+                    <Row
+                        bnKey="ট্রাককিং নম্বর"
+                        enKey="Tracking Number"
+                        value={certificate?.id}
+                    />
                     <Row
                         bnKey="আবেদনের তারিখ"
                         enKey="Applied Date"
