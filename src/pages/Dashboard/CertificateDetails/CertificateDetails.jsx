@@ -4,7 +4,12 @@ import { useReactToPrint } from "react-to-print";
 import PdfCertificate from "../PdfCertificate/PdfCertificate";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { getCertificateById } from "../../../api/certificates";
+import {
+    getCertificateById,
+    getCertificateTypeById,
+    getUnionNameById,
+    getUpazillaNameById,
+} from "../../../api/certificates";
 import { Spinner, Typography } from "@material-tailwind/react";
 import DetailsTable from "./DetailsTable";
 
@@ -38,6 +43,23 @@ const CertificateDetails = () => {
         queryKey: ["application", id],
         queryFn: async () => await getCertificateById(id),
     });
+
+    const { data: unionName } = useQuery({
+        queryKey: ["unionName", certificate],
+        queryFn: async () => getUnionNameById(certificate?.id),
+    });
+
+    const { data: upazillaName } = useQuery({
+        queryKey: ["upazillaName", certificate, unionName],
+        queryFn: async () => getUpazillaNameById(unionName?.upazilla_id),
+    });
+
+    const { data: sanadType } = useQuery({
+        queryKey: ["sanad_type", certificate],
+        queryFn: async () => await getCertificateTypeById(certificate?.sanad_id),
+    });
+
+    console.log(certificate);
 
     const handlePrint = useReactToPrint({
         content: () => printRef.current,
@@ -84,10 +106,19 @@ const CertificateDetails = () => {
                     </button>
                 </div>
 
-                <DetailsTable certificate={certificate} />
+                <DetailsTable
+                    certificate={certificate}
+                    unionName={unionName}
+                    sanadType={sanadType}
+                />
                 <div ref={printRef} className="lg:mt-5">
                     <div>
-                        <PdfCertificate />
+                        <PdfCertificate
+                            certificate={certificate}
+                            unionName={unionName}
+                            upazillaName={upazillaName}
+                            sanadType={sanadType?.description}
+                        />
                     </div>
                 </div>
             </div>
