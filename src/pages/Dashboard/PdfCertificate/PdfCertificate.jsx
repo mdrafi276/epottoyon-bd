@@ -3,8 +3,13 @@ import { Button } from "@material-tailwind/react";
 import { FaPhone } from "react-icons/fa";
 import QRCode from "react-qr-code";
 
-const PdfCertificate = ({ certificate, unionName, upazillaName, sanadType }) => {
-    console.log(!!certificate?.language);
+const PdfCertificate = ({
+    certificate,
+    unionName,
+    upazillaName,
+    districtName,
+    sanadType,
+}) => {
     return (
         <div className="bg-white md:pt-16 lg:pt-5">
             {" "}
@@ -36,7 +41,11 @@ const PdfCertificate = ({ certificate, unionName, upazillaName, sanadType }) => 
                             {certificate?.language === "en" || !!certificate?.language
                                 ? upazillaName?.name
                                 : upazillaName?.bn_name}
-                            , জেলা : গাইবান্ধা।
+                            , জেলা :{" "}
+                            {certificate?.language === "en" || !!certificate?.language
+                                ? districtName?.name
+                                : districtName?.bn_name}
+                            ।
                         </h1>
                         <h1 className="text-[12px] text-center font-semibold text-[#3cd1d3] md:text-[14px] lg:text-[18px]">
                             চেয়ারম্যান: মোঃ আবু বকর সিদ্দিক,

@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import {
     getCertificateById,
     getCertificateTypeById,
+    getDistrictNameById,
     getUnionNameById,
     getUpazillaNameById,
 } from "../../../api/certificates";
@@ -52,6 +53,11 @@ const CertificateDetails = () => {
     const { data: upazillaName } = useQuery({
         queryKey: ["upazillaName", certificate, unionName],
         queryFn: async () => getUpazillaNameById(unionName?.upazilla_id),
+    });
+
+    const { data: districtName } = useQuery({
+        queryKey: ["districtName", certificate, unionName, upazillaName],
+        queryFn: async () => getDistrictNameById(upazillaName?.district_id),
     });
 
     const { data: sanadType } = useQuery({
@@ -117,6 +123,7 @@ const CertificateDetails = () => {
                             certificate={certificate}
                             unionName={unionName}
                             upazillaName={upazillaName}
+                            districtName={districtName}
                             sanadType={sanadType?.description}
                         />
                     </div>

@@ -7,11 +7,7 @@ const App = () => {
 
     return (
         <div>
-            <h1>Dynamic Table</h1>
-            {/* <Table 
-          
-            />
-            <Button onClick={() => console.log(data)}>Log Data</Button> */}
+            <h1>Dashboard</h1>
         </div>
     );
 };

@@ -120,3 +120,8 @@ export const getUpazillaNameById = async (id) => {
     const { data } = await axiosSecure.get(`/upazillas/get-name-by-id?id=${id}`);
     return data;
 };
+
+export const getDistrictNameById = async (id) => {
+    const { data } = await axiosSecure.get(`/districts/get-name-by-id?id=${id}`);
+    return data;
+};
