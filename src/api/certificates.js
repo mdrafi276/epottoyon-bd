@@ -125,3 +125,8 @@ export const getDistrictNameById = async (id) => {
     const { data } = await axiosSecure.get(`/districts/get-name-by-id?id=${id}`);
     return data;
 };
+
+export const getUnionInfoForPdf = async (id) => {
+    const { data } = await axiosSecure.get(`/union-infos/get-for-pdf?id=${id}`);
+    return data;
+};

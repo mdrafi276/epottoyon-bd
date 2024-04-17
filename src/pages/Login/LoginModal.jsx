@@ -55,7 +55,7 @@ const LoginModal = () => {
                     }
                 } catch (error) {
                     console.error("Sign-in error:", error);
-                    alert(error.message);
+                    alert(error.response.data.error);
                     setLoading(false);
                 }
             } else {

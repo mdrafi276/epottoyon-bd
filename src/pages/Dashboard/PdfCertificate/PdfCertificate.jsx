@@ -1,15 +1,18 @@
 /* eslint-disable react/prop-types */
 import { Button } from "@material-tailwind/react";
+import { useQuery } from "@tanstack/react-query";
 import { FaPhone } from "react-icons/fa";
 import QRCode from "react-qr-code";
+import { getUnionInfoForPdf } from "../../../api/certificates";
 
-const PdfCertificate = ({
-    certificate,
-    unionName,
-    upazillaName,
-    districtName,
-    sanadType,
-}) => {
+const PdfCertificate = (props) => {
+    const { certificate, unionName, upazillaName, districtName, sanadType } = props;
+
+    const { data: unionInfo } = useQuery({
+        queryKey: ["unionInfo", unionName],
+        queryFn: async () => await getUnionInfoForPdf(unionName?.id),
+    });
+
     return (
         <div className="bg-white md:pt-16 lg:pt-5">
             {" "}
@@ -48,6 +51,7 @@ const PdfCertificate = ({
                             ।
                         </h1>
                         <h1 className="text-[12px] text-center font-semibold text-[#3cd1d3] md:text-[14px] lg:text-[18px]">
+                            {/*TODO: if the union doesn't have a row in unionInfo then it'll take a input about it. */}
                             চেয়ারম্যান: মোঃ আবু বকর সিদ্দিক,
                         </h1>
                         <h1 className="text-[12px] text-center text-black md:text-[13px] lg:text-[16px]">
@@ -78,17 +82,17 @@ const PdfCertificate = ({
                     <div className="flex lg:w-[90%] md:w-[90%] w-[85%] mx-auto  items-start justify-between   ">
                         <div>
                             <h1 className="text-[12px] lg:text-[18px] md:text-[15px] text-center ">
-                                স্মারক নং - 0037
+                                স্মারক নং - {certificate?.id}
                             </h1>
                         </div>
                         <div>
                             <h1 className="text-[12px] lg:mt-8 md:mt-8 md:text-[20px] lg:text-[26px] bg-[#B4D5FF] rounded-t-full rounded-b-full rounded-s-full rounded-r-full md:py-4  md:px-[30px] lg:px-[68px] text-black font-normal text-center ">
-                                উত্তরাধিকার সনদপত্র
+                                {sanadType}
                             </h1>
                         </div>
                         <div className="flex flex-col items-center justify-end">
                             <h1 className="text-[12px] md:text-[15px] lg:text-[18px] text-center ">
-                                তারিখঃ 28/03/2024
+                                তারিখঃ {certificate?.date || certificate?.form_date}
                             </h1>
                             <figure>
                                 <img
@@ -103,22 +107,18 @@ const PdfCertificate = ({
                         <div className="w-[90%] mx-auto md:mt-4 lg:mt-8  ">
                             {" "}
                             <h1 className="text-[12px] text-justify lg:mt-3 md:leading-7 lg:leading-8 md:text-[14px] lg:text-[17px]  ">
-                                এই মর্মে আর্থিক ভূমিহীন সনদ প্রদান করা যাইতেছে যে,{" "}
-                                <span>মোঃ খোকন মিয়া </span>জাতীয় পরিচয়পত্র / জন্ম সনদ নং:
-                                <span>২৮৩৫৭১৪১৫১</span> পিতা/স্বামীঃ{" "}
-                                <span> সামচুল হক মালংগি</span>, মাতাঃ{" "}
-                                <span>আমেনা বেগম</span>, গ্রামঃ
-                                <span>উকুমালী সরদার কান্দি</span>, ওয়ার্ডঃ <span>০৯</span>
-                                , ডাকঘরঃ<span>পালেরচর হাট-৮০১০</span>, ইউনিয়নেঃ{" "}
-                                <span>পালেরচর</span>, উপজেলাঃ <span>জাজিরা</span>, জেলাঃ
-                                <span> শরীয়তপুর</span> তিনি আমার ইউনিয়নের <span>০৯ </span>
-                                নং ওয়ার্ডের একজন স্থায়ী বাসিন্দা। আমি তাকে ব্যক্তি গত ভাবে
+                                এই মর্মে আর্থিক ভূমিহীন সনদ প্রদান করা যাইতেছে যে, মান্নান
+                                মলঙ্গী জাতীয় পরিচয়পত্র / জন্ম সনদ নং: ৪৬৩৫৭৭৫৩২৫
+                                পিতা/স্বামীঃ শুকুর মলঙ্গী, গ্রামঃউকুমালী সরদার কান্দি,
+                                ওয়ার্ডঃ ০৯, ডাকঘরঃপালেরচর হাট-৮০১০, ইউনিয়নেঃ পালেরচর,
+                                উপজেলাঃ জাজিরা,, জেলাঃ শরীয়তপুর তিনি আমার ইউনিয়নের ০৯ নং
+                                ওয়ার্ডের একজন স্থায়ী বাসিন্দা। আমি তাকে ব্যক্তি গত ভাবে
                                 চিনি ও জানি। সে সমাজ বা রাষ্ট্র বিরোধী কোন প্রকার কাজের
                                 সহিত জড়িত নাই। সে অত্র ইউনিয়নের একজন স্থায়ী বাসিন্দা ও
                                 নাগরিক। আমার জানা মতে সে একজন ভূমিহীন।
                             </h1>
                             <h1 className="text-[12px] md:mt-2 lg:mt-3 lg:leading-9 md:text-[16px] lg:text-[21px]">
-                                আমি তার জীবনের সার্বিক উন্নতি অ মঙ্গল কামনা করি ।{" "}
+                                আমি তার জীবনের সার্বিক উন্নতি ও মঙ্গল কামনা করি।
                             </h1>
                         </div>
                     </div>

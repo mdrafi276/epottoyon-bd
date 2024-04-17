@@ -60,7 +60,7 @@ const FamilyCertificate = () => {
         queryKey: ["unionInfo", user, userInfo],
         queryFn: async () => {
             if (userInfo && userInfo.id) {
-                return await getUsersUnion(userInfo.id);
+                return await getUsersUni]on(userInfo.id);
             }
             return null;
         },
