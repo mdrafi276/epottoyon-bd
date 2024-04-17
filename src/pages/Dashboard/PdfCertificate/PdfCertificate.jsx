@@ -4,7 +4,7 @@ import QRCode from "react-qr-code";
 
 const PdfCertificate = () => {
     return (
-      <div className="bg-white md:pt-10 lg:pt-5">
+      <div className="bg-white md:pt-16 lg:pt-5">
         {" "}
         <div className=" md:w-[680px] w-[97%] lg:w-[900px] bg-[#F2EEEB]  mx-auto border-4  border-[#7030A0] lg:mt-2">
           <div className="flex justify-between md:w-[90%] lg:w-[90%] mx-auto mt-8  md:mt-5 lg:mt-8 items center ">
@@ -54,19 +54,19 @@ const PdfCertificate = () => {
           </div>
           <div className=" bg-opa lg:pb-16 md:pb-14 lg:pt-5 lg:mt-1 md:mt-1   bg-center  bg-no-repeat">
             {" "}
-            <div className="flex lg:w-[90%] md:w-[90%] w-[85%] mx-auto justify-between   ">
+            <div className="flex lg:w-[90%] md:w-[90%] w-[85%] mx-auto  items-start justify-between   ">
               <div>
-                <h1 className="text-[12px] lg:text-[18px] text-center ">
+                <h1 className="text-[12px] lg:text-[18px] md:text-[15px] text-center ">
                   স্মারক নং - 0037
                 </h1>
               </div>
               <div>
-                <h1 className="text-[12px] lg:mt-8 md:mt-8 md:text-[20px] lg:text-[26px] bg-[#B4D5FF] rounded-full py-1 md:px-[60px] lg:px-[68px] text-black font-normal text-center ">
+                <h1 className="text-[12px] lg:mt-8 md:mt-8 md:text-[20px] lg:text-[26px] bg-[#B4D5FF] rounded-t-full rounded-b-full rounded-s-full rounded-r-full md:py-4  md:px-[30px] lg:px-[68px] text-black font-normal text-center ">
                   উত্তরাধিকার সনদপত্র
                 </h1>
               </div>
               <div className="flex flex-col items-center justify-end">
-                <h1 className="text-[12px] lg:text-[18px] text-center ">
+                <h1 className="text-[12px] md:text-[15px] lg:text-[18px] text-center ">
                   তারিখঃ 28/03/2024
                 </h1>
                 <figure>
@@ -81,7 +81,7 @@ const PdfCertificate = () => {
             <div>
               <div className="w-[90%] mx-auto md:mt-4 lg:mt-8  ">
                 {" "}
-                <h1 className="text-[12px] text-justify lg:mt-3 md:leading-4 lg:leading-8 md:text-[13px] lg:text-[17px]  ">
+                <h1 className="text-[12px] text-justify lg:mt-3 md:leading-7 lg:leading-8 md:text-[14px] lg:text-[17px]  ">
                   এই মর্মে আর্থিক ভূমিহীন সনদ প্রদান করা যাইতেছে যে,{" "}
                   <span>মোঃ খোকন মিয়া </span>জাতীয় পরিচয়পত্র / জন্ম সনদ নং:
                   <span>২৮৩৫৭১৪১৫১</span> পিতা/স্বামীঃ{" "}
@@ -159,9 +159,9 @@ const PdfCertificate = () => {
               অনুমোদন কারীর সীল ও স্বাক্ষর
             </h1>
           </div>
-          <div className=" flex justify-between mx-auto w-full lg:w-[90%] md:w-[90%] items-center lg:mt-5 lg:mb-14 md:mb-10 md:mt-4">
+          <div className=" flex justify-between mx-auto w-full lg:w-[90%] md:w-[80%] items-center lg:mt-5 lg:mb-14 md:mb-10 md:mt-4">
             <QRCode
-              size={70}
+              size={90}
               bgColor="white"
               fgColor="black"
               value="https://www.udcbd.net/"

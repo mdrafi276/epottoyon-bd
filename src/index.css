@@ -6,7 +6,7 @@ option {
     color: black;
 }
 .bg-opa{
-    background-image: linear-gradient(rgba(238, 237, 237, 0.834), rgba(238, 237, 237, 0.834)), url('https://i.ibb.co/pLSQ92Y/1693790199blog.jpg');
+    background-image: linear-gradient(rgba(238, 237, 237, 0.587), rgba(238, 237, 237, 0.563)), url('https://i.ibb.co/pLSQ92Y/1693790199blog.jpg');
     background-size: 400px;
     margin: auto;
 }
