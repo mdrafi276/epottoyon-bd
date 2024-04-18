@@ -11,28 +11,12 @@ import {
     getUnionNameById,
     getUpazillaNameById,
 } from "../../../api/certificates";
-import { Spinner, Typography } from "@material-tailwind/react";
+import { Spinner } from "@material-tailwind/react";
 import DetailsTable from "./DetailsTable";
 
 const CertificateDetails = () => {
     const { id } = useParams();
     const printRef = useRef();
-
-    const dynamicContents = [
-        "word-number",
-        "union-name",
-        "union-logo",
-        "upazilla",
-        "zilla",
-        "chairman-name",
-        "id",
-        "sanad-type",
-        "date",
-        "applicant",
-        "identity",
-        "guardian",
-        "post-office",
-    ];
 
     const {
         data: certificate,

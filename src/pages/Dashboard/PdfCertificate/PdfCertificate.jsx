@@ -18,6 +18,13 @@ const PdfCertificate = (props) => {
         queryFn: async () => await getOarishesDetails(certificate?.id),
     });
 
+    const serial = oarishes?.no?.split(",");
+    const names = oarishes?.o_name?.split(",");
+    const relations = oarishes?.o_relation?.split(",");
+    const ids = oarishes?.rnid?.split(",");
+    const birthdays = oarishes?.rbirth?.split(",");
+    const comments = oarishes?.rcom?.split(",");
+
     return (
         <div className="bg-white md:pt-16 lg:pt-5">
             {" "}
@@ -148,33 +155,45 @@ const PdfCertificate = (props) => {
                                         ক্রমিক
                                     </th>
                                     <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
-                                        hello
+                                        নাম
                                     </th>
                                     <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
-                                        hello
+                                        সম্পর্ক
                                     </th>
                                     <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
-                                        hello
+                                        ভোটার/জম্ম নিবন্ধন
                                     </th>
-
+                                    <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
+                                        জন্মতারিখ
+                                    </th>
                                     <th className="text-[10px] md:text-[16px]  px-3 md:px-4 py-2">
-                                        Actions
+                                        মন্তব্য
                                     </th>
                                 </tr>
                             </thead>
                             <tbody className="bg-gray-100 text-gray-700">
-                                <tr>
-                                    <td className="md:px-4 py-2 border border-gray-600">
-                                        <input
-                                            type="text"
-                                            className="w-full bg-transparent focus:outline-none text-center"
-                                        />
-                                    </td>
-
-                                    <td className="  md:px-4 py-2 border border-black">
-                                        <Button color="red">Remove</Button>
-                                    </td>
-                                </tr>
+                                {serial?.map((serial, index) => (
+                                    <tr key={serial}>
+                                        <td className="md:px-4 py-2 border border-gray-600">
+                                            {serial}
+                                        </td>
+                                        <td className="  md:px-4 py-2 border border-black">
+                                            {names[index]}
+                                        </td>
+                                        <td className="  md:px-4 py-2 border border-black">
+                                            {relations[index]}
+                                        </td>
+                                        <td className="  md:px-4 py-2 border border-black">
+                                            {ids[index]}
+                                        </td>
+                                        <td className="  md:px-4 py-2 border border-black">
+                                            {birthdays[index]}
+                                        </td>
+                                        <td className="  md:px-4 py-2 border border-black">
+                                            {comments[index]}
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
                     </div>
