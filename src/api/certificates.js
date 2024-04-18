@@ -130,3 +130,10 @@ export const getUnionInfoForPdf = async (id) => {
     const { data } = await axiosSecure.get(`/union-infos/get-for-pdf?id=${id}`);
     return data;
 };
+
+export const getOarishesDetails = async (applicationId) => {
+    const { data } = await axiosSecure.get(
+        `/oarishes/details?applicationId=${applicationId}`
+    );
+    return data;
+};

@@ -10,7 +10,7 @@ import {
 import { FaCircleInfo } from "react-icons/fa6";
 import { useQuery } from "@tanstack/react-query";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
-import { getAllApplications } from "../../../api/certificates";
+import { getAllApplications, getAllCertificates } from "../../../api/certificates";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -33,8 +33,13 @@ const AllCertificate = () => {
         isError,
         error,
     } = useQuery({
-        queryFn: async () => await getAllApplications(activePage),
         queryKey: ["application", activePage],
+        queryFn: async () => await getAllApplications(activePage),
+    });
+
+    const { data: sanadTypes } = useQuery({
+        queryKey: ["sanadTypes"],
+        queryFn: getAllCertificates,
     });
 
     const getItemProps = (index) => ({
@@ -193,71 +198,77 @@ const AllCertificate = () => {
                                 </tr>
                             </>
                         ) : (
-                            applications?.rows?.map((certificate, index) => (
-                                <tr
-                                    key={index}
-                                    className={
-                                        index % 2 === 0 ? "bg-blue-gray-50/50" : ""
-                                    }
-                                >
-                                    <td className="p-4">
-                                        <Typography
-                                            variant="small"
-                                            color="blue-gray"
-                                            className="font-normal text-center"
-                                        >
-                                            {certificate?.applicant}
-                                        </Typography>
-                                    </td>
-                                    <td className="p-4">
-                                        <Typography
-                                            variant="small"
-                                            color="blue-gray"
-                                            className="font-normal text-center"
-                                        >
-                                            {certificate?.union_id}
-                                        </Typography>
-                                    </td>
-                                    <td className="p-4">
-                                        <Typography
-                                            variant="small"
-                                            color="blue-gray"
-                                            className="font-normal text-center"
-                                        >
-                                            {certificate?.sanad_id}
-                                        </Typography>
-                                    </td>
-                                    <td className="p-4">
-                                        <Typography
-                                            variant="small"
-                                            color="blue-gray"
-                                            className="font-normal text-center"
-                                        >
-                                            {certificate?.id}
-                                        </Typography>
-                                    </td>
-                                    <td className="p-4">
-                                        <Typography
-                                            variant="small"
-                                            color="blue-gray"
-                                            className="font-normal text-center"
-                                        >
-                                            {certificate?.status}
-                                        </Typography>
-                                    </td>
-                                    <td className="p-4">
-                                        <Tooltip content="View Certificate">
-                                            <Link
-                                                to={`/dashboard/certificate/${certificate?.id}`}
+                            applications?.rows?.map((certificate, index) => {
+                                const sanadType = sanadTypes?.find(
+                                    (type) => type?.id == certificate?.sanad_id
+                                );
+
+                                return (
+                                    <tr
+                                        key={index}
+                                        className={
+                                            index % 2 === 0 ? "bg-blue-gray-50/50" : ""
+                                        }
+                                    >
+                                        <td className="p-4">
+                                            <Typography
+                                                variant="small"
+                                                color="blue-gray"
+                                                className="font-normal text-center"
                                             >
-                                                <IconButton color="blue">
-                                                    <FaCircleInfo className="text-xl" />
-                                                </IconButton>
-                                            </Link>
-                                        </Tooltip>
-                                    </td>
-                                </tr>
-                            ))
+                                                {certificate?.applicant}
+                                            </Typography>
+                                        </td>
+                                        <td className="p-4">
+                                            <Typography
+                                                variant="small"
+                                                color="blue-gray"
+                                                className="font-normal text-center"
+                                            >
+                                                {certificate?.union_id}
+                                            </Typography>
+                                        </td>
+                                        <td className="p-4">
+                                            <Typography
+                                                variant="small"
+                                                color="blue-gray"
+                                                className="font-normal text-center"
+                                            >
+                                                {sanadType?.description}
+                                            </Typography>
+                                        </td>
+                                        <td className="p-4">
+                                            <Typography
+                                                variant="small"
+                                                color="blue-gray"
+                                                className="font-normal text-center"
+                                            >
+                                                {certificate?.id}
+                                            </Typography>
+                                        </td>
+                                        <td className="p-4">
+                                            <Typography
+                                                variant="small"
+                                                color="blue-gray"
+                                                className="font-normal text-center"
+                                            >
+                                                {certificate?.status}
+                                            </Typography>
+                                        </td>
+                                        <td className="p-4">
+                                            <Tooltip content="View Certificate">
+                                                <Link
+                                                    to={`/dashboard/certificate/${certificate?.id}`}
+                                                >
+                                                    <IconButton color="blue">
+                                                        <FaCircleInfo className="text-xl" />
+                                                    </IconButton>
+                                                </Link>
+                                            </Tooltip>
+                                        </td>
+                                    </tr>
+                                );
+                            })
                         )}
                     </tbody>
                 </table>

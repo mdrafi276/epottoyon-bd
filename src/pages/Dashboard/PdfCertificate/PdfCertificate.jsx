@@ -3,7 +3,7 @@ import { Button } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
 import { FaPhone } from "react-icons/fa";
 import QRCode from "react-qr-code";
-import { getUnionInfoForPdf } from "../../../api/certificates";
+import { getOarishesDetails, getUnionInfoForPdf } from "../../../api/certificates";
 
 const PdfCertificate = (props) => {
     const { certificate, unionName, upazillaName, districtName, sanadType } = props;
@@ -11,6 +11,11 @@ const PdfCertificate = (props) => {
     const { data: unionInfo } = useQuery({
         queryKey: ["unionInfo", unionName],
         queryFn: async () => await getUnionInfoForPdf(unionName?.id),
+    });
+
+    const { data: oarishes } = useQuery({
+        queryKey: ["oarishes", certificate],
+        queryFn: async () => await getOarishesDetails(certificate?.id),
     });
 
     return (
@@ -107,15 +112,27 @@ const PdfCertificate = (props) => {
                         <div className="w-[90%] mx-auto md:mt-4 lg:mt-8  ">
                             {" "}
                             <h1 className="text-[12px] text-justify lg:mt-3 md:leading-7 lg:leading-8 md:text-[14px] lg:text-[17px]  ">
-                                এই মর্মে আর্থিক ভূমিহীন সনদ প্রদান করা যাইতেছে যে, মান্নান
-                                মলঙ্গী জাতীয় পরিচয়পত্র / জন্ম সনদ নং: ৪৬৩৫৭৭৫৩২৫
-                                পিতা/স্বামীঃ শুকুর মলঙ্গী, গ্রামঃউকুমালী সরদার কান্দি,
-                                ওয়ার্ডঃ ০৯, ডাকঘরঃপালেরচর হাট-৮০১০, ইউনিয়নেঃ পালেরচর,
-                                উপজেলাঃ জাজিরা,, জেলাঃ শরীয়তপুর তিনি আমার ইউনিয়নের ০৯ নং
-                                ওয়ার্ডের একজন স্থায়ী বাসিন্দা। আমি তাকে ব্যক্তি গত ভাবে
-                                চিনি ও জানি। সে সমাজ বা রাষ্ট্র বিরোধী কোন প্রকার কাজের
-                                সহিত জড়িত নাই। সে অত্র ইউনিয়নের একজন স্থায়ী বাসিন্দা ও
-                                নাগরিক। আমার জানা মতে সে একজন ভূমিহীন।
+                                এই মর্মে আর্থিক {sanadType} প্রদান করা যাইতেছে যে,{" "}
+                                {certificate?.applicant}{" "}
+                                {certificate?.nid
+                                    ? "জাতীয় পরিচয়পত্র নম্বর"
+                                    : "জন্ম সনদ নম্বর "}
+                                :{certificate?.nid_birth || certificate?.nid}{" "}
+                                {certificate?.husband ? "স্বামী" : "পিতা"}:
+                                {certificate?.father_husband_name || certificate?.husband}
+                                , গ্রাম:{" "}
+                                {certificate?.village_name || certificate?.mrgram},
+                                ওয়ার্ডঃ {certificate?.ward_no || certificate?.mrword},
+                                ডাকঘর: {certificate?.mrdak}, ইউনিয়ন:{" "}
+                                {certificate?.language === "en" || !!certificate?.language
+                                    ? unionName?.name
+                                    : unionName?.bn_name}
+                                , উপজেলা: {upazillaName?.bn_name}, জেলা:{" "}
+                                {districtName?.bn_name} তিনি আমার ইউনিয়নের{" "}
+                                {certificate?.ward_no || certificate?.mrword} নং ওয়ার্ডের
+                                একজন স্থায়ী বাসিন্দা। আমি তাকে ব্যক্তি গত ভাবে চিনি ও
+                                জানি। সে সমাজ বা রাষ্ট্র বিরোধী কোন প্রকার কাজের সহিত জড়িত
+                                নাই। সে অত্র ইউনিয়নের একজন স্থায়ী বাসিন্দা ও নাগরিক।
                             </h1>
                             <h1 className="text-[12px] md:mt-2 lg:mt-3 lg:leading-9 md:text-[16px] lg:text-[21px]">
                                 আমি তার জীবনের সার্বিক উন্নতি ও মঙ্গল কামনা করি।
