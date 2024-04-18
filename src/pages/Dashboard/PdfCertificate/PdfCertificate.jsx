@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { Button } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
 import { FaPhone } from "react-icons/fa";
 import QRCode from "react-qr-code";
@@ -8,10 +7,10 @@ import { getOarishesDetails, getUnionInfoForPdf } from "../../../api/certificate
 const PdfCertificate = (props) => {
     const { certificate, unionName, upazillaName, districtName, sanadType } = props;
 
-    const { data: unionInfo } = useQuery({
-        queryKey: ["unionInfo", unionName],
-        queryFn: async () => await getUnionInfoForPdf(unionName?.id),
-    });
+    // const { data: unionInfo } = useQuery({
+    //     queryKey: ["unionInfo", unionName],
+    //     queryFn: async () => await getUnionInfoForPdf(unionName?.id),
+    // });
 
     const { data: oarishes } = useQuery({
         queryKey: ["oarishes", certificate],
