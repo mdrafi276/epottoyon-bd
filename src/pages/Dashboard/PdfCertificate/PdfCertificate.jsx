@@ -219,7 +219,7 @@ const PdfCertificate = (props) => {
                         size={90}
                         bgColor="white"
                         fgColor="black"
-                        value="https://www.udcbd.net/"
+                        value={`https://udcbd.web.app/landing/certificate-details/${certificate?.id}`}
                     />
                     <div>
                         <h1 className="text-[12px] lg:text-[16px] text-center">
