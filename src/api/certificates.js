@@ -115,3 +115,25 @@ export const getCertificateTypeById = async (id) => {
     const { data } = await axiosSecure.get(`/blogs/get-type-by-id?id=${id}`);
     return data;
 };
+
+export const getUpazillaNameById = async (id) => {
+    const { data } = await axiosSecure.get(`/upazillas/get-name-by-id?id=${id}`);
+    return data;
+};
+
+export const getDistrictNameById = async (id) => {
+    const { data } = await axiosSecure.get(`/districts/get-name-by-id?id=${id}`);
+    return data;
+};
+
+export const getUnionInfoForPdf = async (id) => {
+    const { data } = await axiosSecure.get(`/union-infos/get-for-pdf?id=${id}`);
+    return data;
+};
+
+export const getOarishesDetails = async (applicationId) => {
+    const { data } = await axiosSecure.get(
+        `/oarishes/details?applicationId=${applicationId}`
+    );
+    return data;
+};

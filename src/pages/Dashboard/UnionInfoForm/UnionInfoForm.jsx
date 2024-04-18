@@ -148,6 +148,7 @@ const UnionInfoForm = () => {
                 const response = await getUser(user?.email);
 
                 const unionInfos = {
+                    //TODO: Add columns about leftover fields.
                     division_id: selectedDivision,
                     district_id: selectedDistrict,
                     upazilla_id: selectedUpazilla,

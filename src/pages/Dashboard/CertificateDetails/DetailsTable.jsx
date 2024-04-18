@@ -1,21 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Typography } from "@material-tailwind/react";
-import { useQuery } from "@tanstack/react-query";
-import { getCertificateTypeById, getUnionNameById } from "../../../api/certificates";
 
-const DetailsTable = ({ certificate }) => {
-    const { data: unionName } = useQuery({
-        queryKey: ["unionName", certificate],
-        queryFn: async () => getUnionNameById(certificate?.id),
-    });
-
-    const { data: sanadType } = useQuery({
-        queryKey: ["sanad_type", certificate],
-        queryFn: async () => await getCertificateTypeById(certificate?.sanad_id),
-    });
-
-    console.log(certificate);
-
+const DetailsTable = ({ certificate, unionName, sanadType }) => {
     const Row = ({ bnKey, enKey, value }) => {
         return (
             <tr className="even:bg-blue-gray-50/50 bg-white">
@@ -73,7 +59,7 @@ const DetailsTable = ({ certificate }) => {
                     <Row
                         bnKey="ওয়ার্ড নম্বর"
                         enKey="Ward Number"
-                        value={certificate?.applicant}
+                        value={certificate?.ward_no || certificate?.mrword}
                     />
                     <Row
                         bnKey={
