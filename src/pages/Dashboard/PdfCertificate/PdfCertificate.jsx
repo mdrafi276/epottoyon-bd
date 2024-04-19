@@ -9,10 +9,10 @@ import { Link } from "react-router-dom";
 const PdfCertificate = (props) => {
     const { certificate, unionName, upazillaName, districtName, sanadType } = props;
 
-    // const { data: unionInfo } = useQuery({
-    //     queryKey: ["unionInfo", unionName],
-    //     queryFn: async () => await getUnionInfoForPdf(unionName?.id),
-    // });
+    const { data: unionInfo } = useQuery({
+        queryKey: ["unionInfo", unionName],
+        queryFn: async () => await getUnionInfoForPdf(unionName?.id),
+    });
 
     const { data: oarishes } = useQuery({
         queryKey: ["oarishes", certificate],
@@ -100,7 +100,7 @@ const PdfCertificate = (props) => {
                         </div>
                         <div>
                             <h1 className="text-[12px] lg:mt-8 md:mt-8 md:text-[20px] lg:text-[26px] bg-[#B4D5FF] rounded-t-full rounded-b-full rounded-s-full rounded-r-full md:py-4  md:px-[30px] lg:px-[68px] text-black font-normal text-center ">
-                                {sanadType}
+                                {sanadType?.description}
                             </h1>
                         </div>
                         <div className="flex flex-col items-center justify-end">
@@ -120,8 +120,8 @@ const PdfCertificate = (props) => {
                         <div className="w-[90%] mx-auto md:mt-4 lg:mt-8  ">
                             {" "}
                             <h1 className="text-[12px] text-justify lg:mt-3 md:leading-7 lg:leading-8 md:text-[14px] lg:text-[17px]  ">
-                                এই মর্মে আর্থিক {sanadType} প্রদান করা যাইতেছে যে,{" "}
-                                {certificate?.applicant}{" "}
+                                এই মর্মে আর্থিক {sanadType?.description} প্রদান করা
+                                যাইতেছে যে, {certificate?.applicant}{" "}
                                 {certificate?.nid
                                     ? "জাতীয় পরিচয়পত্র নম্বর"
                                     : "জন্ম সনদ নম্বর "}
@@ -147,57 +147,60 @@ const PdfCertificate = (props) => {
                             </h1>
                         </div>
                     </div>
-                    {/* table  */}
-                    <div className="overflow-x-auto md:w-[90%] lg:mt-3 md:mt-3 w-full lg:w-[90%] mx-auto">
-                        <table className="w-full border-collapse">
-                            <thead className="bg-blue-500 text-white">
-                                <tr>
-                                    <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
-                                        ক্রমিক
-                                    </th>
-                                    <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
-                                        নাম
-                                    </th>
-                                    <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
-                                        সম্পর্ক
-                                    </th>
-                                    <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
-                                        ভোটার/জম্ম নিবন্ধন
-                                    </th>
-                                    <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
-                                        জন্মতারিখ
-                                    </th>
-                                    <th className="text-[10px] md:text-[16px]  px-3 md:px-4 py-2">
-                                        মন্তব্য
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody className="bg-gray-100 text-gray-700">
-                                {serial?.map((serial, index) => (
-                                    <tr key={serial}>
-                                        <td className="md:px-4 py-2 border border-gray-600">
-                                            {serial}
-                                        </td>
-                                        <td className="  md:px-4 py-2 border border-black">
-                                            {names[index]}
-                                        </td>
-                                        <td className="  md:px-4 py-2 border border-black">
-                                            {relations[index]}
-                                        </td>
-                                        <td className="  md:px-4 py-2 border border-black">
-                                            {ids[index]}
-                                        </td>
-                                        <td className="  md:px-4 py-2 border border-black">
-                                            {birthdays[index]}
-                                        </td>
-                                        <td className="  md:px-4 py-2 border border-black">
-                                            {comments[index]}
-                                        </td>
+                    {(sanadType?.id === 1 ||
+                        sanadType?.id === 2 ||
+                        sanadType?.id === 3) && (
+                        <div className="overflow-x-auto md:w-[90%] lg:mt-3 md:mt-3 w-full lg:w-[90%] mx-auto">
+                            <table className="w-full border-collapse">
+                                <thead className="bg-blue-500 text-white">
+                                    <tr>
+                                        <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
+                                            ক্রমিক
+                                        </th>
+                                        <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
+                                            নাম
+                                        </th>
+                                        <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
+                                            সম্পর্ক
+                                        </th>
+                                        <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
+                                            ভোটার/জম্ম নিবন্ধন
+                                        </th>
+                                        <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
+                                            জন্মতারিখ
+                                        </th>
+                                        <th className="text-[10px] md:text-[16px]  px-3 md:px-4 py-2">
+                                            মন্তব্য
+                                        </th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
+                                </thead>
+                                <tbody className="bg-gray-100 text-gray-700">
+                                    {serial?.map((serial, index) => (
+                                        <tr key={serial}>
+                                            <td className="md:px-4 py-2 border border-gray-600">
+                                                {serial}
+                                            </td>
+                                            <td className="  md:px-4 py-2 border border-black">
+                                                {names[index]}
+                                            </td>
+                                            <td className="  md:px-4 py-2 border border-black">
+                                                {relations[index]}
+                                            </td>
+                                            <td className="  md:px-4 py-2 border border-black">
+                                                {ids[index]}
+                                            </td>
+                                            <td className="  md:px-4 py-2 border border-black">
+                                                {birthdays[index]}
+                                            </td>
+                                            <td className="  md:px-4 py-2 border border-black">
+                                                {comments[index]}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
                 </div>
                 <div className="flex justify-between w-full md:w-[90%] lg:w-[90%] mx-auto  items-center  ">
                     <div className="lg:w-[120px] md:w-[100px] border-gray-400 flex rounded-full justify-center items-center md:h-[100px] lg:h-[120px] border-2">
@@ -223,10 +226,6 @@ const PdfCertificate = (props) => {
                         fgColor="black"
                         value={`https://udcbd.web.app/landing/certificate-details/${certificate?.id}`}
                     />
-
-                    <Link to={`/landing/certificate-details/${certificate?.id}`}>
-                        <Button>Sanad Table</Button>
-                    </Link>
 
                     <div>
                         <h1 className="text-[12px] lg:text-[16px] text-center">

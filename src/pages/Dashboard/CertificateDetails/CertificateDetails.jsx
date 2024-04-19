@@ -108,7 +108,7 @@ const CertificateDetails = () => {
                             unionName={unionName}
                             upazillaName={upazillaName}
                             districtName={districtName}
-                            sanadType={sanadType?.description}
+                            sanadType={sanadType}
                         />
                     </div>
                 </div>
