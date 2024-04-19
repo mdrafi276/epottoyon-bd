@@ -46,7 +46,7 @@ const PdfCertificate = (props) => {
                         <h1 className="text-[14px] text-center font-semibold lg:text-[28px] md:text-[19px] text-[#7030A0]">
                             {(!!certificate?.word_no || !!certificate?.mrword) &&
                                 `${certificate?.word_no || certificate?.mrword} নং `}
-                            {certificate?.language === "en" || !!certificate?.language
+                            {certificate?.language === "en"
                                 ? unionName?.name
                                 : unionName?.bn_name}{" "}
                             ইউনিয়ন পরিষদ
@@ -54,11 +54,11 @@ const PdfCertificate = (props) => {
 
                         <h1 className="text-[14px] text-center text-black md:text-[15px] lg:text-[18px]">
                             উপজেলা :{" "}
-                            {certificate?.language === "en" || !!certificate?.language
+                            {certificate?.language === "en"
                                 ? upazillaName?.name
                                 : upazillaName?.bn_name}
                             , জেলা :{" "}
-                            {certificate?.language === "en" || !!certificate?.language
+                            {certificate?.language === "en"
                                 ? districtName?.name
                                 : districtName?.bn_name}
                             ।

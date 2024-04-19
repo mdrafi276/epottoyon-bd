@@ -7,6 +7,7 @@ import {
     getCertificateTypeById,
     getUnionNameById,
 } from "../../api/certificates";
+import { convertToBengaliNumber } from "../../utils/utils";
 
 const CertificateLanding = () => {
     const { id } = useParams();
@@ -37,9 +38,7 @@ const CertificateLanding = () => {
             <tr className="even:bg-blue-gray-50/50 bg-white">
                 <td className="py-4 px-4 sm:px-12">
                     <Typography variant="small" color="blue-gray">
-                        {!!certificate?.language || certificate?.language === "en"
-                            ? enKey
-                            : bnKey}
+                        {certificate?.language === "en" ? enKey : bnKey}
                     </Typography>
                 </td>
 
@@ -97,7 +96,7 @@ const CertificateLanding = () => {
                         bnKey="ইউনিয়ন"
                         enKey="Union"
                         value={
-                            certificate?.language === "en" || !!certificate?.language
+                            certificate?.language === "en"
                                 ? unionName?.name
                                 : unionName?.bn_name
                         }
@@ -121,7 +120,11 @@ const CertificateLanding = () => {
                     <Row
                         bnKey="ট্রাককিং নম্বর"
                         enKey="Tracking Number"
-                        value={certificate?.id}
+                        value={
+                            certificate?.language === "en"
+                                ? certificate?.id
+                                : convertToBengaliNumber(certificate?.id)
+                        }
                     />
                     <Row
                         bnKey="আবেদনের তারিখ"

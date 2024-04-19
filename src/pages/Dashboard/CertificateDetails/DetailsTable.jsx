@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Typography } from "@material-tailwind/react";
+import { convertToBengaliNumber } from "../../../utils/utils";
 
 const DetailsTable = ({ certificate, unionName, sanadType }) => {
     const Row = ({ bnKey, enKey, value }) => {
@@ -7,9 +8,7 @@ const DetailsTable = ({ certificate, unionName, sanadType }) => {
             <tr className="even:bg-blue-gray-50/50 bg-white">
                 <td className="py-4 px-12">
                     <Typography variant="small" color="blue-gray">
-                        {!!certificate?.language || certificate?.language === "en"
-                            ? enKey
-                            : bnKey}
+                        {certificate?.language === "en" ? enKey : bnKey}
                     </Typography>
                 </td>
 
@@ -51,7 +50,7 @@ const DetailsTable = ({ certificate, unionName, sanadType }) => {
                         bnKey="ইউনিয়ন"
                         enKey="Union"
                         value={
-                            certificate?.language === "en" || !!certificate?.language
+                            certificate?.language === "en"
                                 ? unionName?.name
                                 : unionName?.bn_name
                         }
@@ -75,7 +74,11 @@ const DetailsTable = ({ certificate, unionName, sanadType }) => {
                     <Row
                         bnKey="ট্রাককিং নম্বর"
                         enKey="Tracking Number"
-                        value={certificate?.id}
+                        value={
+                            certificate?.language === "en"
+                                ? certificate?.id
+                                : convertToBengaliNumber(certificate?.id)
+                        }
                     />
                     <Row
                         bnKey="আবেদনের তারিখ"

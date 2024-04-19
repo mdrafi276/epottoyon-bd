@@ -49,8 +49,6 @@ const CertificateDetails = () => {
         queryFn: async () => await getCertificateTypeById(certificate?.sanad_id),
     });
 
-    console.log(certificate);
-
     const handlePrint = useReactToPrint({
         content: () => printRef.current,
     });
