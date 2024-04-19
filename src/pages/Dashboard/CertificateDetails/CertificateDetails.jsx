@@ -53,6 +53,8 @@ const CertificateDetails = () => {
         content: () => printRef.current,
     });
 
+    console.log(certificate);
+
     return isLoading ? (
         <Spinner color="green" className="mx-auto h-16 w-16 my-5" />
     ) : isError ? (

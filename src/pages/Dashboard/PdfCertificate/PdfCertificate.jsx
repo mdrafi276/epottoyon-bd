@@ -3,8 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FaPhone } from "react-icons/fa";
 import QRCode from "react-qr-code";
 import { getOarishesDetails, getUnionInfoForPdf } from "../../../api/certificates";
-import { Button } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { convertToBengaliNumber } from "../../../utils/utils";
 
 const PdfCertificate = (props) => {
     const { certificate, unionName, upazillaName, districtName, sanadType } = props;
@@ -26,9 +25,12 @@ const PdfCertificate = (props) => {
     const birthdays = oarishes?.rbirth?.split(",");
     const comments = oarishes?.rcom?.split(",");
 
+    //TODO: Add id attribute in the sanadtype on backend
+
+    //TODO: configure the english vertion of the sanadType
+
     return (
         <div className="bg-white md:pt-16 lg:pt-5">
-            {" "}
             <div className=" md:w-[680px] w-[97%] lg:w-[900px] bg-[#F2EEEB]  mx-auto border-4  border-[#7030A0] lg:mt-2">
                 <div className="flex justify-between md:w-[90%] lg:w-[90%] mx-auto mt-8  md:mt-5 lg:mt-8 items center ">
                     <figure>
@@ -40,16 +42,33 @@ const PdfCertificate = (props) => {
                     </figure>
                     <div>
                         <h1 className="text-[12px] text-center lg:text-[22px] md:text-[16px] text-[#A85BB4]"></h1>
+
                         <h1 className="text-[13px] text-center lg:text-[20px] md:text-[15px] text-[#A85BB4]">
-                            গণপ্রজাতন্ত্রী বাংলাদেশ সরকার
-                        </h1>
-                        <h1 className="text-[14px] text-center font-semibold lg:text-[28px] md:text-[19px] text-[#7030A0]">
-                            {(!!certificate?.word_no || !!certificate?.mrword) &&
-                                `${certificate?.word_no || certificate?.mrword} নং `}
                             {certificate?.language === "en"
-                                ? unionName?.name
-                                : unionName?.bn_name}{" "}
-                            ইউনিয়ন পরিষদ
+                                ? "Government of the People's Republic of Bangladesh"
+                                : "গণপ্রজাতন্ত্রী বাংলাদেশ সরকার"}
+                        </h1>
+
+                        <h1 className="text-[14px] text-center font-semibold lg:text-[28px] md:text-[19px] text-[#7030A0]">
+                            {certificate?.language === "en"
+                                ? `Union Parishad No. ${
+                                      (!!certificate?.word_no || !!certificate?.mrword) &&
+                                      `${certificate?.word_no || certificate?.mrword} নং `
+                                  },  ${
+                                      certificate?.language === "en"
+                                          ? unionName?.name
+                                          : unionName?.bn_name
+                                  } `
+                                : `${
+                                      (!!certificate?.word_no || !!certificate?.mrword) &&
+                                      `${certificate?.word_no || certificate?.mrword} নং `
+                                  }
+                            ${
+                                certificate?.language === "en"
+                                    ? unionName?.name
+                                    : unionName?.bn_name
+                            } 
+                            ইউনিয়ন পরিষদ`}
                         </h1>
 
                         <h1 className="text-[14px] text-center text-black md:text-[15px] lg:text-[18px]">
@@ -95,7 +114,17 @@ const PdfCertificate = (props) => {
                     <div className="flex lg:w-[90%] md:w-[90%] w-[85%] mx-auto  items-start justify-between   ">
                         <div>
                             <h1 className="text-[12px] lg:text-[18px] md:text-[15px] text-center ">
-                                স্মারক নং - {certificate?.id}
+                                {`  
+                                ${
+                                    certificate?.language === "en"
+                                        ? "Tracking Number: "
+                                        : "স্মারক নং: "
+                                }
+                               ${
+                                   certificate?.language === "en"
+                                       ? certificate?.id
+                                       : convertToBengaliNumber(certificate?.id)
+                               }`}
                             </h1>
                         </div>
                         <div>
@@ -105,7 +134,8 @@ const PdfCertificate = (props) => {
                         </div>
                         <div className="flex flex-col items-center justify-end">
                             <h1 className="text-[12px] md:text-[15px] lg:text-[18px] text-center ">
-                                তারিখঃ {certificate?.date || certificate?.form_date}
+                                {certificate?.language === "en" ? "Date:" : "তারিখ:"}{" "}
+                                {certificate?.date || certificate?.form_date}
                             </h1>
                             <figure>
                                 <img
@@ -118,32 +148,67 @@ const PdfCertificate = (props) => {
                     </div>
                     <div>
                         <div className="w-[90%] mx-auto md:mt-4 lg:mt-8  ">
-                            {" "}
                             <h1 className="text-[12px] text-justify lg:mt-3 md:leading-7 lg:leading-8 md:text-[14px] lg:text-[17px]  ">
-                                এই মর্মে আর্থিক {sanadType?.description} প্রদান করা
-                                যাইতেছে যে, {certificate?.applicant}{" "}
-                                {certificate?.nid
-                                    ? "জাতীয় পরিচয়পত্র নম্বর"
-                                    : "জন্ম সনদ নম্বর "}
-                                :{certificate?.nid_birth || certificate?.nid}{" "}
-                                {certificate?.husband ? "স্বামী" : "পিতা"}:
-                                {certificate?.father_husband_name || certificate?.husband}
-                                , গ্রাম:{" "}
-                                {certificate?.village_name || certificate?.mrgram},
-                                ওয়ার্ডঃ {certificate?.ward_no || certificate?.mrword},
-                                ডাকঘর: {certificate?.mrdak}, ইউনিয়ন:{" "}
-                                {certificate?.language === "en" || !!certificate?.language
-                                    ? unionName?.name
-                                    : unionName?.bn_name}
-                                , উপজেলা: {upazillaName?.bn_name}, জেলা:{" "}
-                                {districtName?.bn_name} তিনি আমার ইউনিয়নের{" "}
-                                {certificate?.ward_no || certificate?.mrword} নং ওয়ার্ডের
+                                {certificate?.language === "en"
+                                    ? `In this regard, an ${
+                                          sanadType?.description
+                                      } is being provided for ${
+                                          certificate?.applicant
+                                      }, ${
+                                          certificate?.nid
+                                              ? "National Id Card No:"
+                                              : "Birth Certificate No: "
+                                      }
+                                    :${
+                                        certificate?.nid_birth || certificate?.nid
+                                    }${" "},  ${
+                                          certificate?.husband ? "Husband:" : "Father:"
+                                      }
+                                    ${
+                                        certificate?.father_husband_name ||
+                                        certificate?.husband
+                                    }, Village: ${
+                                          certificate?.village_name || certificate?.mrgram
+                                      }, Ward: ${
+                                          certificate?.ward_no || certificate?.mrword
+                                      }, Post Office: ${certificate?.mrdak}, Union:  ${
+                                          unionName?.name
+                                      }, Upazila: ${upazillaName?.name}, District:  ${
+                                          districtName?.name
+                                      }. They are+ a permanent resident in Ward No. ${
+                                          certificate?.ward_no || certificate?.mrword
+                                      } of my union. I know them personally. they are not involved in any anti-social or anti-state activities. They are a permanent resident and citizen of this union.`
+                                    : ` এই মর্মে আর্থিক ${
+                                          sanadType?.description
+                                      } প্রদান করা
+                                যাইতেছে যে, ${certificate?.applicant}${" "}
+                                ${
+                                    certificate?.nid
+                                        ? "জাতীয় পরিচয়পত্র নম্বর"
+                                        : "জন্ম সনদ নম্বর "
+                                }
+                                :${certificate?.nid_birth || certificate?.nid}${" "}
+                                ${certificate?.husband ? "স্বামী" : "পিতা"}:
+                                ${
+                                    certificate?.father_husband_name ||
+                                    certificate?.husband
+                                }
+                                , গ্রাম:${" "}
+                                ${certificate?.village_name || certificate?.mrgram},
+                                ওয়ার্ডঃ ${certificate?.ward_no || certificate?.mrword},
+                                ডাকঘর: ${certificate?.mrdak}, ইউনিয়ন:${" "}
+                                ${unionName?.bn_name}
+                                , উপজেলা: ${upazillaName?.bn_name}, জেলা:${" "}
+                                ${districtName?.bn_name} তিনি আমার ইউনিয়নের${" "}
+                                ${certificate?.ward_no || certificate?.mrword} নং ওয়ার্ডের
                                 একজন স্থায়ী বাসিন্দা। আমি তাকে ব্যক্তি গত ভাবে চিনি ও
                                 জানি। সে সমাজ বা রাষ্ট্র বিরোধী কোন প্রকার কাজের সহিত জড়িত
-                                নাই। সে অত্র ইউনিয়নের একজন স্থায়ী বাসিন্দা ও নাগরিক।
+                                নাই। সে অত্র ইউনিয়নের একজন স্থায়ী বাসিন্দা ও নাগরিক।`}
                             </h1>
                             <h1 className="text-[12px] md:mt-2 lg:mt-3 lg:leading-9 md:text-[16px] lg:text-[21px]">
-                                আমি তার জীবনের সার্বিক উন্নতি ও মঙ্গল কামনা করি।
+                                {certificate?.language === "en"
+                                    ? " I wish them overall development and prosperity in life."
+                                    : "আমি তার জীবনের সার্বিক উন্নতি ও মঙ্গল কামনা করি।"}
                             </h1>
                         </div>
                     </div>
@@ -155,22 +220,34 @@ const PdfCertificate = (props) => {
                                 <thead className="bg-blue-500 text-white">
                                     <tr>
                                         <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
-                                            ক্রমিক
+                                            {certificate?.language === "en"
+                                                ? "Serial"
+                                                : "ক্রমিক"}
                                         </th>
                                         <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
-                                            নাম
+                                            {certificate?.language === "en"
+                                                ? "Name"
+                                                : "নাম"}
                                         </th>
                                         <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
-                                            সম্পর্ক
+                                            {certificate?.language === "en"
+                                                ? "Relation"
+                                                : "সম্পর্ক"}
                                         </th>
                                         <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
-                                            ভোটার/জম্ম নিবন্ধন
+                                            {certificate?.language === "en"
+                                                ? "Voter/Birth Certificate Number"
+                                                : "ভোটার/জম্ম নিবন্ধন"}
                                         </th>
                                         <th className=" text-[10px]  md:text-[16px] lg:px-4 py-2">
-                                            জন্মতারিখ
+                                            {certificate?.language === "en"
+                                                ? "Birthday"
+                                                : "জন্মতারিখ"}
                                         </th>
                                         <th className="text-[10px] md:text-[16px]  px-3 md:px-4 py-2">
-                                            মন্তব্য
+                                            {certificate?.language === "en"
+                                                ? "Comment"
+                                                : "মন্তব্য"}
                                         </th>
                                     </tr>
                                 </thead>
@@ -204,19 +281,26 @@ const PdfCertificate = (props) => {
                 </div>
                 <div className="flex justify-between w-full md:w-[90%] lg:w-[90%] mx-auto  items-center  ">
                     <div className="lg:w-[120px] md:w-[100px] border-gray-400 flex rounded-full justify-center items-center md:h-[100px] lg:h-[120px] border-2">
-                        {" "}
                         <h1 className="text-[12px] lg:text-[15px]  text-gray-400 text-center">
-                            কার্যালয়ের সীল
+                            {certificate?.language === "en"
+                                ? "Office Seal"
+                                : "কার্যালয়ের সীল"}
                         </h1>
                     </div>
                     <h1 className="text-[12px] lg:text-[15px] border-t-2 lg:pt-3 border-black  text-center">
-                        প্রস্তুত কারীর সীল ও স্বাক্ষর
+                        {certificate?.language === "en"
+                            ? "Preparer's Signature"
+                            : "প্রস্তুত কারীর সীল ও স্বাক্ষর"}
                     </h1>
                     <h1 className="text-[12px] lg:text-[15px] border-t-2 lg:pt-3 border-black  text-center">
-                        ইউপি সদস্যর সীল ও স্বাক্ষর
+                        {certificate?.language === "en"
+                            ? "UP Member's Signature"
+                            : "ইউপি সদস্যর সীল ও স্বাক্ষর"}
                     </h1>
                     <h1 className="text-[12px] lg:text-[15px] border-t-2 lg:pt-3 border-black  text-center">
-                        অনুমোদন কারীর সীল ও স্বাক্ষর
+                        {certificate?.language === "en"
+                            ? "Approver's Signature"
+                            : "অনুমোদন কারীর সীল ও স্বাক্ষর"}
                     </h1>
                 </div>
                 <div className=" flex justify-between mx-auto w-full lg:w-[90%] md:w-[80%] items-center lg:mt-5 lg:mb-14 md:mb-10 md:mt-4">
@@ -229,8 +313,9 @@ const PdfCertificate = (props) => {
 
                     <div>
                         <h1 className="text-[12px] lg:text-[16px] text-center">
-                            সনদটি যাচাই করতে আপনার মোবাইলে থাকা QR CODE অ্যাপ দিয়ে
-                            স্ক্যান করুন
+                            {certificate?.language === "en"
+                                ? "To verify the certificate, please scan the QR code provided."
+                                : " সনদটি যাচাই করতে আপনার মোবাইলে থাকা QR CODE অ্যাপ দিয়ে স্ক্যান করুন"}
                         </h1>
                     </div>
                 </div>
