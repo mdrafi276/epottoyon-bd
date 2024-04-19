@@ -3,6 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { FaPhone } from "react-icons/fa";
 import QRCode from "react-qr-code";
 import { getOarishesDetails, getUnionInfoForPdf } from "../../../api/certificates";
+import { Button } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 const PdfCertificate = (props) => {
     const { certificate, unionName, upazillaName, districtName, sanadType } = props;
@@ -221,6 +223,11 @@ const PdfCertificate = (props) => {
                         fgColor="black"
                         value={`https://udcbd.web.app/landing/certificate-details/${certificate?.id}`}
                     />
+
+                    <Link to={`/landing/certificate-details/${certificate?.id}`}>
+                        <Button>Sanad Table</Button>
+                    </Link>
+
                     <div>
                         <h1 className="text-[12px] lg:text-[16px] text-center">
                             সনদটি যাচাই করতে আপনার মোবাইলে থাকা QR CODE অ্যাপ দিয়ে
