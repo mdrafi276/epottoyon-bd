@@ -118,7 +118,7 @@ const PdfCertificate = (props) => {
               <div className="w-[90%] mx-auto md:mt-2 lg:mt-8  ">
                 {" "}
                 <h1 className="text-[12px] text-justify lg:mt-3 md:leading-7 lg:leading-8 md:text-[14px] lg:text-[17px]  ">
-                  এই মর্মে আর্থিক {sanadType} প্রদান করা যাইতেছে যে,{" "}
+                  এই মর্মে  {sanadType} প্রদান করা যাইতেছে যে,{" "}
                   {certificate?.applicant}{" "}
                   {certificate?.nid
                     ? "জাতীয় পরিচয়পত্র নম্বর"
@@ -139,7 +139,7 @@ const PdfCertificate = (props) => {
                   বা রাষ্ট্র বিরোধী কোন প্রকার কাজের সহিত জড়িত নাই। সে অত্র
                   ইউনিয়নের একজন স্থায়ী বাসিন্দা ও নাগরিক।
                 </h1>
-                <h1 className="text-[12px] md:mt-2 lg:mt-3 lg:leading-9 md:text-[16px] lg:text-[21px]">
+                <h1 className="text-[12px] md:mt-2 lg:mt-3 lg:leading-9 md:text-[14px] lg:text-[21px]">
                   আমি তার জীবনের সার্বিক উন্নতি ও মঙ্গল কামনা করি।
                 </h1>
               </div>
@@ -172,10 +172,10 @@ const PdfCertificate = (props) => {
                 <tbody className="bg-transparent text-gray-900">
                   {serial?.map((serial, index) => (
                     <tr key={serial}>
-                      <td className="md:px-4 py-0 border  md:text-[14px] border-gray-600">
+                      <td className="md:px-3 py-0 border  md:text-[14px] border-gray-600">
                         {serial}
                       </td>
-                      <td className="  md:px-7 py-0 border  md:text-[14px] border-black">
+                      <td className="  md:px-4 py-0 border  md:text-[14px] border-black">
                         {names[index]}
                       </td>
                       <td className="  md:px-4 py-0 border  md:text-[14px] border-black">
@@ -197,7 +197,7 @@ const PdfCertificate = (props) => {
             </div>
           </div>
           <div className="flex justify-between w-full md:w-[90%] lg:w-[90%] mx-auto  items-center  ">
-            <div className="lg:w-[120px] md:w-[100px] border-gray-400 flex rounded-full justify-center items-center md:h-[100px] lg:h-[120px] border-2">
+            <div className="lg:w-[120px] md:w-[90px] border-gray-400 flex rounded-full justify-center items-center md:h-[90px] lg:h-[120px] border-2">
               {" "}
               <h1 className="text-[12px] lg:text-[15px] md:text-[10px]  text-gray-400 text-center">
                 কার্যালয়ের সীল
@@ -207,13 +207,13 @@ const PdfCertificate = (props) => {
               প্রস্তুত কারীর সীল ও স্বাক্ষর
             </h1>
             <h1 className="text-[12px] lg:text-[15px] border-t-2 lg:pt-3 border-black  text-center">
-              ইউপি সদস্যর সীল ও স্বাক্ষর
+              {/* ইউপি সদস্যর সীল ও স্বাক্ষর */}
             </h1>
             <h1 className="text-[12px] lg:text-[15px] border-t-2 lg:pt-3 border-black  text-center">
               অনুমোদন কারীর সীল ও স্বাক্ষর
             </h1>
           </div>
-          <div className=" flex justify-between mx-auto w-full lg:w-[90%] md:w-[80%] items-center lg:mt-5 lg:mb-14 md:mb-8 md:mt-2">
+          <div className=" flex justify-between mx-auto w-full lg:w-[90%] md:w-[80%] items-end lg:mt-5 lg:mb-10 md:mb-4 md:mt-2">
             <QRCode
               size={70}
               bgColor="white"
