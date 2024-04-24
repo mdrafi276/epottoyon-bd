@@ -22,31 +22,31 @@ const DetailsTable = ({ certificate, unionName, sanadType }) => {
     };
 
     return (
-        <div className="rounded-lg shadow-lg max-w-screen-lg mx-auto mt-20">
+        <div className="rounded-lg shadow-lg max-w-[800px] border-4 border-cyan-600 mx-auto mt-20">
             <table className="w-full">
                 <tbody>
-                    <Row
-                        bnKey="সনদের ধরণ"
+                    <Row  className="text-center "
+                        bnKey="সনদের ধরণ            ঃ "
                         enKey="Certificate Type"
                         value={sanadType?.description}
                     />
-                    <Row bnKey="নাম" enKey="Name" value={certificate?.applicant} />
+                    <Row className="text-center" bnKey="নাম " enKey="Name" value={certificate?.applicant} />
                     <Row
                         bnKey={certificate?.husband ? "স্বামী" : "পিতা"}
                         enKey={certificate?.husband ? "Husband" : "Father"}
                         value={certificate?.father_husband_name || certificate?.husband}
                     />
-                    <Row
+                    <Row  className="text-center"
                         bnKey="মাতার নাম"
                         enKey="Mother's name"
                         value={certificate?.mother_name}
                     />
-                    <Row
+                    <Row className="text-center"
                         bnKey="ঠিকানা"
                         enKey="Address"
                         value={certificate?.village_name || certificate?.mrgram}
                     />
-                    <Row
+                    <Row className="text-center"
                         bnKey="ইউনিয়ন"
                         enKey="Union"
                         value={
