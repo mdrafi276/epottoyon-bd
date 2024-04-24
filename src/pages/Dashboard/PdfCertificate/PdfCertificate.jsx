@@ -320,9 +320,7 @@ const PdfCertificate = (props) => {
                     </div>
                 </div>
             </div>
-          </div>
         </div>
-      </div>
     );
 };
 
