@@ -15,6 +15,8 @@ import { Spinner } from "@material-tailwind/react";
 import DetailsTable from "./DetailsTable";
 
 const CertificateDetails = () => {
+    // TODO: make one certificate with the same id and make multilingual functionality.
+
     const { id } = useParams();
     const printRef = useRef();
 
