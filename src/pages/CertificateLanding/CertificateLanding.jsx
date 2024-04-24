@@ -1,18 +1,48 @@
 /* eslint-disable react/prop-types */
-import { Typography } from "@material-tailwind/react";
-import { convertToBengaliNumber } from "../../../utils/utils";
+import { Spinner, Typography } from "@material-tailwind/react";
+import { useQuery } from "@tanstack/react-query";
+import { useParams } from "react-router-dom";
+import {
+    getCertificateById,
+    getCertificateTypeById,
+    getUnionNameById,
+} from "../../api/certificates";
+import { convertToBengaliNumber } from "../../utils/utils";
 
-const DetailsTable = ({ certificate, unionName, sanadType }) => {
+const CertificateLanding = () => {
+    const { id } = useParams();
+
+    const {
+        data: certificate,
+        isLoading,
+        isError,
+        refetch,
+        error,
+    } = useQuery({
+        queryKey: ["application", id],
+        queryFn: async () => await getCertificateById(id),
+    });
+
+    const { data: unionName } = useQuery({
+        queryKey: ["unionName", certificate],
+        queryFn: async () => getUnionNameById(certificate?.id),
+    });
+
+    const { data: sanadType } = useQuery({
+        queryKey: ["sanad_type", certificate],
+        queryFn: async () => await getCertificateTypeById(certificate?.sanad_id),
+    });
+
     const Row = ({ bnKey, enKey, value }) => {
         return (
             <tr className="even:bg-blue-gray-50/50 bg-white">
-                <td className="py-4 px-12">
+                <td className="py-4 px-4 sm:px-12">
                     <Typography variant="small" color="blue-gray">
                         {certificate?.language === "en" ? enKey : bnKey}
                     </Typography>
                 </td>
 
-                <td className="py-4 px-12">
+                <td className="py-4 px-4 sm:px-12">
                     <Typography variant="small" color="blue-gray">
                         {value || "N/A"}
                     </Typography>
@@ -21,8 +51,24 @@ const DetailsTable = ({ certificate, unionName, sanadType }) => {
         );
     };
 
-    return (
-        <div className="rounded-lg shadow-lg max-w-screen-lg mx-auto mt-20">
+    return isLoading ? (
+        <Spinner color="green" className="mx-auto h-16 w-16 my-5" />
+    ) : isError ? (
+        <>
+            {console.error(error)}
+            <p className="text-center">
+                {error.message}
+                {". "}
+                <span
+                    onClick={refetch}
+                    className="text-blue-500 hover:underline cursor-pointer"
+                >
+                    Try Again
+                </span>
+            </p>
+        </>
+    ) : (
+        <div className="rounded-lg shadow-lg max-w-screen-lg w-11/12 mx-auto my-4">
             <table className="w-full">
                 <tbody>
                     <Row
@@ -91,4 +137,4 @@ const DetailsTable = ({ certificate, unionName, sanadType }) => {
     );
 };
 
-export default DetailsTable;
+export default CertificateLanding;

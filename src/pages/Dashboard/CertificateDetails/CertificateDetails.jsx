@@ -49,11 +49,11 @@ const CertificateDetails = () => {
         queryFn: async () => await getCertificateTypeById(certificate?.sanad_id),
     });
 
-    console.log(certificate);
-
     const handlePrint = useReactToPrint({
         content: () => printRef.current,
     });
+
+    console.log(certificate);
 
     return isLoading ? (
         <Spinner color="green" className="mx-auto h-16 w-16 my-5" />
@@ -108,7 +108,7 @@ const CertificateDetails = () => {
                             unionName={unionName}
                             upazillaName={upazillaName}
                             districtName={districtName}
-                            sanadType={sanadType?.description}
+                            sanadType={sanadType}
                         />
                     </div>
                 </div>

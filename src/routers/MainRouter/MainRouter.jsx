@@ -54,6 +54,8 @@ import ConstructionPermissionCertificate from "../../pages/Dashboard/Constructio
 import CertificateDetails from "../../pages/Dashboard/CertificateDetails/CertificateDetails";
 import CertificateVerification from "../../pages/Dashboard/QrcodeDetails/CertificateVerification";
 import QrCertificateDetails from "../../pages/Dashboard/QrCertificateDetails/QrCertificateDetails";
+import LandingLayout from "../../layouts/LandingLayout/LandingLayout";
+import CertificateLanding from "../../pages/CertificateLanding/CertificateLanding";
 
 const MainRouter = createBrowserRouter([
     {
@@ -278,6 +280,16 @@ const MainRouter = createBrowserRouter([
             {
                 path: "/dashboard/apply-for-certificate/অবকাঠামো নির্মাণের অনুমতি সনদ",
                 element: <ConstructionPermissionCertificate />,
+            },
+        ],
+    },
+    {
+        path: "/landing",
+        element: <LandingLayout />,
+        children: [
+            {
+                path: `/landing/certificate-details/:id`,
+                element: <CertificateLanding />,
             },
         ],
     },

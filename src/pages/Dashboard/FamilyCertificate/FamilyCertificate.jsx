@@ -237,7 +237,7 @@ const FamilyCertificate = () => {
                 <div>
                     <h1 className="text-xl  font-bold   text-white md:text-2xl lg:text-xl   text-start lg:pl-2 bg-[#8BC34A] py-2">
                         {" "}
-                        আবেদন &gt; নাগরিক সনদ
+                        আবেদন &gt; পারিবারিক সনদ
                     </h1>
                 </div>{" "}
                 <div className="flex justify-end gap-5 md:gap-12 items-center text-xl text-white md:text-2xl lg:text-xl lg:mt-5 mt-3  lg:pl-2 bg-[#aa2ec3] p-2 pr-8">
