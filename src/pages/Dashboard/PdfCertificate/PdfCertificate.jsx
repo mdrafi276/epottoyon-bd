@@ -30,26 +30,26 @@ const PdfCertificate = (props) => {
     //TODO: configure the english vertion of the sanadType
 
     return (
-      <div className="bg-white md:pt-16 lg:pt-5">
-        <div className=" md:w-[680px] w-[97%] lg:w-[900px] bg-[#F2EEEB]  mx-auto border-4  border-[#7030A0] lg:mt-2">
-          <div className="flex justify-between md:w-[90%] lg:w-[90%] mx-auto mt-8  md:mt-5 lg:mt-8 items center ">
+      <div className="bg-white md:pt-16 lg:pt-16 ">
+        <div className=" md:w-[680px] w-[97%] lg:w-[680px] bg-[#F2EEEB]  mx-auto border-4  border-[#7030A0] lg:mt-2">
+          <div className="flex justify-between md:w-[90%] lg:w-[90%] mx-auto mt-8  md:mt-5 lg:mt-5 items center ">
             <figure>
               <img
-                className=" w-[70px] md:w-[100px] md:h-[100px] lg:w-[130px] lg:h-[130px] "
+                className=" w-[70px] md:w-[100px] md:h-[100px] lg:w-[100px] lg:h-[100px] "
                 src="https://i.ibb.co/xYGCHWW/1693790199blog-removebg-preview.png"
                 alt=""
               />
             </figure>
             <div>
-              <h1 className="text-[12px] text-center lg:text-[22px] md:text-[16px] text-[#A85BB4]"></h1>
+              <h1 className="text-[12px] text-center lg:text-[16px] md:text-[16px] text-[#A85BB4]"></h1>
 
-              <h1 className="text-[13px] text-center lg:text-[20px] md:text-[15px] text-[#A85BB4]">
+              <h1 className="text-[13px] text-center lg:text-[15px] md:text-[15px] text-[#A85BB4]">
                 {certificate?.language === "en"
                   ? "Government of the People's Republic of Bangladesh"
                   : "গণপ্রজাতন্ত্রী বাংলাদেশ সরকার"}
               </h1>
 
-              <h1 className="text-[14px] text-center font-semibold lg:text-[28px] md:text-[19px] text-[#7030A0]">
+              <h1 className="text-[14px] text-center font-semibold lg:text-[19px] md:text-[19px] text-[#7030A0]">
                 {certificate?.language === "en"
                   ? `Union Parishad No. ${
                       (!!certificate?.word_no || !!certificate?.mrword) &&
@@ -71,7 +71,7 @@ const PdfCertificate = (props) => {
                             ইউনিয়ন পরিষদ`}
               </h1>
 
-              <h1 className="text-[14px] text-center text-black md:text-[15px] lg:text-[18px]">
+              <h1 className="text-[14px] text-center text-black md:text-[15px] lg:text-[15px]">
                 উপজেলা :{" "}
                 {certificate?.language === "en"
                   ? upazillaName?.name
@@ -82,11 +82,11 @@ const PdfCertificate = (props) => {
                   : districtName?.bn_name}
                 ।
               </h1>
-              <h1 className="text-[12px] text-center font-semibold text-[#3cd1d3] md:text-[14px] lg:text-[18px]">
+              <h1 className="text-[12px] text-center font-semibold text-[#3cd1d3] md:text-[14px] lg:text-[14px]">
                 {/*TODO: if the union doesn't have a row in unionInfo then it'll take a input about it. */}
                 চেয়ারম্যান: মোঃ আবু বকর সিদ্দিক,
               </h1>
-              <h1 className="text-[12px] text-center text-black md:text-[13px] lg:text-[16px]">
+              <h1 className="text-[12px] text-center text-black md:text-[13px] lg:text-[12px]">
                 <span className="flex justify-center items-center gap-2">
                   {" "}
                   chairman@gmail.com,{" "}
@@ -109,7 +109,7 @@ const PdfCertificate = (props) => {
             <h1 className="md:border border border-b border-black"></h1>
             <h1 className="md:border border border-b mt-[3px] border-black"></h1>
           </div>
-          <div className="bg-opa lg:pb-16 md:pb-2 lg:pt-5 lg:mt-1 md:mt-1   bg-center  bg-no-repeat">
+          <div className="bg-opa lg:pb-2 md:pb-2 lg:pt-5 lg:mt-1 md:mt-1   bg-center  bg-no-repeat">
             {" "}
             <div className="flex lg:w-[90%] md:w-[90%] w-[85%] mx-auto  items-start justify-between   ">
               <div>
@@ -128,18 +128,18 @@ const PdfCertificate = (props) => {
                 </h1>
               </div>
               <div>
-                <h1 className="text-[12px] lg:mt-8 md:mt-6 md:text-[19px] lg:text-[26px] bg-[#B4D5FF] rounded-t-full rounded-b-full rounded-s-full rounded-r-full md:py-3  md:px-[30px] lg:px-[68px] text-black font-normal text-center">
+                <h1 className="text-[12px] lg:mt-6 md:mt-6 md:text-[19px] lg:text-[19px] bg-[#B4D5FF] rounded-t-full rounded-b-full rounded-s-full rounded-r-full md:py-3 lg:py-3  md:px-[30px] lg:px-[30px] text-black font-normal text-center">
                   {sanadType?.description}
                 </h1>
               </div>
               <div className="flex flex-col items-center justify-end">
-                <h1 className="text-[12px] md:text-[15px] lg:text-[18px] text-center">
+                <h1 className="text-[12px] md:text-[15px] lg:text-[15px] text-center">
                   {certificate?.language === "en" ? "Date:" : "তারিখ:"}{" "}
                   {certificate?.date || certificate?.form_date}
                 </h1>
                 <figure>
                   <img
-                    className="w-[70px] md:w-[60px] md:h-[60px] lg:w-[90px] lg:h-[90px] "
+                    className="w-[70px] md:w-[60px] md:h-[60px] lg:w-[60px] lg:h-[60px] "
                     src="https://i.ibb.co/xYGCHWW/1693790199blog-removebg-preview.png"
                     alt=""
                   />
@@ -147,8 +147,8 @@ const PdfCertificate = (props) => {
               </div>
             </div>
             <div>
-              <div className="w-[90%] mx-auto md:mt-4 lg:mt-8  ">
-                <h1 className="text-[12px] text-justify lg:mt-3 md:leading-7 lg:leading-8 md:text-[14px] lg:text-[17px] ">
+              <div className="w-[90%] mx-auto md:mt-4 lg:mt-4  ">
+                <h1 className="text-[12px] text-justify lg:mt-3 md:leading-7 lg:leading-7 md:text-[14px] lg:text-[14px] ">
                   {certificate?.language === "en"
                     ? `In this regard, an ${
                         sanadType?.description
@@ -212,7 +212,7 @@ const PdfCertificate = (props) => {
                                 জানি। সে সমাজ বা রাষ্ট্র বিরোধী কোন প্রকার কাজের সহিত জড়িত
                                 নাই। সে অত্র ইউনিয়নের একজন স্থায়ী বাসিন্দা ও নাগরিক।`}
                 </h1>
-                <h1 className="text-[12px] md:mt-2 lg:mt-3 lg:leading-9 md:text-[14px] lg:text-[21px]">
+                <h1 className="text-[12px] md:mt-2 lg:mt-3 lg:leading-9 md:text-[14px] lg:text-[14px]">
                   {certificate?.language === "en"
                     ? " I wish them overall development and prosperity in life."
                     : "আমি তার জীবনের সার্বিক উন্নতি ও মঙ্গল কামনা করি।"}
@@ -226,23 +226,23 @@ const PdfCertificate = (props) => {
                 <table className="w-full border-collapse">
                   <thead className="bg-blue-500 text-white">
                     <tr>
-                      <th className="text-[10px]  md:text-[14px] lg:px-4 py-2">
+                      <th className="text-[10px]  md:text-[14px]  py-2">
                         {certificate?.language === "en" ? "Serial" : "ক্রমিক"}
                       </th>
-                      <th className="  text-[10px]  md:text-[14px] lg:px-4 py-2">
+                      <th className="  text-[10px]  md:text-[14px]  py-2">
                         {certificate?.language === "en" ? "Name" : "নাম"}
                       </th>
-                      <th className="  text-[10px]  md:text-[14px] lg:px-4 py-2">
+                      <th className="  text-[10px]  md:text-[14px]  py-2">
                         {certificate?.language === "en"
                           ? "Relation"
                           : "সম্পর্ক"}
                       </th>
-                      <th className="  text-[10px]  md:text-[14px] lg:px-4 py-2">
+                      <th className="  text-[10px]  md:text-[14px]  py-2">
                         {certificate?.language === "en"
                           ? "Voter/Birth Certificate Number"
                           : "ভোটার/জম্ম নিবন্ধন"}
                       </th>
-                      <th className="  text-[10px]  md:text-[14px] lg:px-4 py-2">
+                      <th className="  text-[10px]  md:text-[14px]  py-2">
                         {certificate?.language === "en"
                           ? "Birthday"
                           : "জন্মতারিখ"}
@@ -281,28 +281,28 @@ const PdfCertificate = (props) => {
             )}
           </div>
           <div className="flex justify-between w-full md:w-[90%] lg:w-[90%] mx-auto  items-center  ">
-            <div className="lg:w-[120px] md:w-[90px] border-gray-400 flex rounded-full justify-center items-center md:h-[90px] lg:h-[120px] border-2">
-              <h1 className="text-[12px] lg:text-[15px] md:text-[10px]  text-gray-400 text-center">
+            <div className="lg:w-[90px] md:w-[90px] border-gray-400 flex rounded-full justify-center items-center md:h-[90px] lg:h-[90px] border-2">
+              <h1 className="text-[12px] lg:text-[10px] md:text-[10px]  text-gray-400 text-center">
                 {certificate?.language === "en"
                   ? "Office Seal"
                   : "কার্যালয়ের সীল"}
               </h1>
             </div>
-            <h1 className="text-[12px] lg:text-[15px] border-t-2 lg:pt-3 border-black  text-center">
+            <h1 className="text-[12px] lg:text-[12px] border-t-2  border-black  text-center">
               {certificate?.language === "en"
                 ? "Preparer's Signature"
                 : "প্রস্তুত কারীর সীল ও স্বাক্ষর"}
             </h1>
-            <h1 className="text-[12px] lg:text-[15px] border-t-2 lg:pt-3 border-black  text-center">
+            <h1 className="text-[12px] lg:text-[12px] border-t-2 border-black  text-center">
               {certificate?.language === "en" ? "" : ""}
             </h1>
-            <h1 className="text-[12px] lg:text-[15px] border-t-2 lg:pt-3 border-black  text-center">
+            <h1 className="text-[12px] lg:text-[12px] border-t-2  border-black  text-center">
               {certificate?.language === "en"
                 ? "Approver's Signature"
                 : "অনুমোদন কারীর সীল ও স্বাক্ষর"}
             </h1>
           </div>
-          <div className="  flex justify-between mx-auto w-full lg:w-[90%] md:w-[80%] items-end lg:mt-5 lg:mb-10 md:mb-4 md:mt-2">
+          <div className="  flex justify-between mx-auto w-full lg:w-[80%] md:w-[80%] items-end lg:mt-2 lg:mb-4 md:mb-4 md:mt-2">
             <QRCode
               size={70}
               bgColor="white"
@@ -311,7 +311,7 @@ const PdfCertificate = (props) => {
             />
 
             <div>
-              <h1 className="text-[12px] lg:text-[16px] text-center">
+              <h1 className="text-[12px] lg:text-[12px] text-center">
                 {certificate?.language === "en"
                   ? "To verify the certificate, please scan the QR code provided."
                   : " সনদটি যাচাই করতে আপনার মোবাইলে থাকা QR CODE অ্যাপ দিয়ে স্ক্যান করুন"}
