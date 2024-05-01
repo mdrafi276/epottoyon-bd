@@ -25,8 +25,6 @@ const PdfCertificate = (props) => {
     const birthdays = oarishes?.rbirth?.split(",");
     const comments = oarishes?.rcom?.split(",");
 
-    //TODO: Add id attribute in the sanadtype on backend
-
     //TODO: configure the english vertion of the sanadType
 
     return (

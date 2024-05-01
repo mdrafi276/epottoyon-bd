@@ -15,8 +15,6 @@ import { Spinner } from "@material-tailwind/react";
 import DetailsTable from "./DetailsTable";
 
 const CertificateDetails = () => {
-    // TODO: make one certificate with the same id and make multilingual functionality.
-
     const { id } = useParams();
     const printRef = useRef();
 
@@ -54,8 +52,6 @@ const CertificateDetails = () => {
     const handlePrint = useReactToPrint({
         content: () => printRef.current,
     });
-
-    console.log(certificate);
 
     return isLoading ? (
         <Spinner color="green" className="mx-auto h-16 w-16 my-5" />

@@ -27,7 +27,7 @@ const DetailsTable = ({ certificate, unionName, sanadType }) => {
                 <tbody>
                     <Row
                         className="text-center "
-                        bnKey="সনদের ধরণ            ঃ "
+                        bnKey="সনদের ধরণ:"
                         enKey="Certificate Type"
                         value={
                             certificate?.language === "en"
