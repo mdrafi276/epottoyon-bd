@@ -42,8 +42,6 @@ const FamilyCertificate = () => {
         },
     ]);
 
-    //FIXME:https://www.udcbd.net/setting/unioninfo/1694876087union17.jpg
-
     //fetch user's data
     const { data: userInfo, isLoading: isUserLoading } = useQuery({
         queryKey: ["userInfo", user],
@@ -127,38 +125,28 @@ const FamilyCertificate = () => {
                 eng_attachment && (await uploadImage(eng_attachment));
 
             const application = {
+                is_multilingual: isEngOpen,
                 union_id: unionInfo?.id,
-                applied_union_no: unionInfo?.id,
                 union_logo: unionInfo?.logo,
-                applied_upazilla_name: unionInfo?.upazilla_id,
-                applied_zilla_name: unionInfo?.district_id,
                 applied_chairman_name: unionInfo?.chairman,
                 applicant: name,
                 user_id: userInfo?.id,
                 user_info_id: null,
                 //TODO: user info form
                 status: "approved",
-                language: "bn",
                 sanad_file: attachmentData?.data?.url,
                 sanad_id: 1,
-                application: userInfo?.name,
-                form_date: bn_date,
                 nid_birth: birthCertificate,
                 nid: voterId,
                 father_husband_name: father,
                 husband: husband,
                 mother_name: mother,
-                village_name: village,
-                union_name: unionInfo?.name,
-                upazilla_name: unionInfo?.id,
-                zilla_name: unionInfo?.district_id,
-                ward_no: word,
-                name: name,
                 mrgram: village,
                 mrdak: postOffice,
                 mrword: word,
-                date: bn_date,
                 photo: photoData?.data?.url,
+                date: bn_date,
+                eng_date: date,
             };
 
             const eng_application = {
@@ -192,8 +180,8 @@ const FamilyCertificate = () => {
                 mrgram: eng_village,
                 mrdak: eng_postOffice,
                 mrword: eng_word,
-                date: date,
                 photo: eng_photoData?.data?.url,
+                date: date,
             };
             const res = await addCertificate(application);
             const eng_res = isEngOpen && (await addCertificate(eng_application));

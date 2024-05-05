@@ -88,6 +88,37 @@ const CertificateDetails = () => {
             </button>
           </div>
         </div>
+    return isLoading ? (
+        <Spinner color="green" className="mx-auto h-16 w-16 my-5" />
+    ) : isError ? (
+        <>
+            {console.error(error)}
+            <p className="text-center">
+                {error.message}
+                {". "}
+                <span
+                    onClick={refetch}
+                    className="text-blue-500 hover:underline cursor-pointer"
+                >
+                    Try Again
+                </span>
+            </p>
+        </>
+    ) : (
+        <div className=" bg-[#F4F6F9] min-h-screen ">
+            <div className="w-[99%] mx-auto  lg:py-8  ">
+                <div className="flex justify-end gap-5 lg:px-5  items-center rounded-t-md  bg-white border-b border-gray-300 lg:py-5  ">
+                    <div>
+                        <h1 className="lg:py-2 lg:px-5 md:px-5 py-1 px-4  md:py-2 text-[14px] md:text-[15px] lg:text-[15px] rounded-md bg-[#28A745] text-white">
+                            Status: approved
+                        </h1>
+                    </div>
+                    <div className="">
+                        <button className="lg:py-2 lg:px-5 md:px-5 py-1 px-4  md:py-2 text-[14px] md:text-[15px] lg:text-[15px] rounded-md text-[#DC3545]  hover:bg-[#DC3545] border border-[#DC3545] hover:text-white ">
+                            reject
+                        </button>
+                    </div>
+                </div>
 
         <div className="w-full flex justify-center items-center mt-5">
           <button
