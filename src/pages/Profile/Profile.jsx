@@ -4,7 +4,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const Profile = () => {
   const {user} = useContext(AuthContext)
-  console.log(user)
+  console.log(user);
   return (
     <div>
       <div className="w-[90%] mx-auto lg:my-20 my-10 md:my-14   ">
@@ -82,7 +82,7 @@ const Profile = () => {
               </div>
               <div className="lg:w-[600px] w-full md:w-full border-l  p-3 md:p-3  border-gray-500  ">
                 <h1 className="text-black  lg:text-[16px] md:text-[15px] text-[12px]">
-                hi
+                  hi
                 </h1>
               </div>
             </div>
@@ -126,7 +126,7 @@ const Profile = () => {
               </div>
               <div className="lg:w-[600px] w-full md:w-full border-l  p-3 md:p-3  border-gray-500  ">
                 <h1 className="text-black  lg:text-[16px] md:text-[15px] text-[12px]">
-                  Sunday, July 9th 2023, 10:11 AM +06 (8 months ago)
+                  {user.metadata.creationTime}
                 </h1>
               </div>
             </div>
@@ -137,7 +137,7 @@ const Profile = () => {
               </div>
               <div className="lg:w-[600px] w-full md:w-full border-l  p-3 md:p-3  border-gray-500  ">
                 <h1 className="ttext-black  lg:text-[16px] md:text-[15px] text-[12px]">
-                  Monday, March 18th 2024, 2:35 PM +06 (1 hour ago)
+                  {user.metadata.lastSignInTime}
                 </h1>
               </div>
             </div>
